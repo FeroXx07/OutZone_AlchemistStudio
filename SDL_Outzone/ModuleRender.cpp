@@ -49,10 +49,10 @@ update_status ModuleRender::PreUpdate()
 
 update_status ModuleRender::Update()	
 {
-	int speed = 20;
-	
-	if (App->input->keyboard[SDL_SCANCODE_W] == 1)
-	{	
+	//int speed = 1;
+	/*
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+	{
 		//camera.y += speed;
 		if ((camera.y += speed) >= 14359){
 			camera.y = 14359;
@@ -62,23 +62,30 @@ update_status ModuleRender::Update()
 			camera.y += speed;
 		}
 	}
-			
 
-		if (App->input->keyboard[SDL_SCANCODE_S] == 1)
-			
-		{
-			//camera.y += speed;
-			if ((camera.y -= speed) <= 0){
-				camera.y = 0;
-			}
-			else{
-				camera.y -= speed;
-			}
+
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+
+	{
+		//camera.y += speed;
+		if ((camera.y -= speed) <= 0){
+			camera.y = 0;
 		}
+		else{
+			camera.y -= speed;
+		}
+	}
+	*/
+	
+	int speed = 3;
+
+	if(App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+		camera.y += speed;
+
+	if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		camera.y -= speed;
 
 	
-
-	// TODO 1: Make the camera move left and right
 
 	return update_status::UPDATE_CONTINUE;
 }

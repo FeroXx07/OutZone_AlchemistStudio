@@ -3,8 +3,11 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
-#include "ModuleBackground.h"
+#include "ModuleScene1.h"
 #include "ModulePlayer.h"
+#include "ModuleFadeToBlack.h"
+#include "ModuleParticles.h"
+#include "ModuleMenu.h"
 
 Application::Application()
 {
@@ -12,8 +15,11 @@ Application::Application()
 	modules[1] = render = new ModuleRender();
 	modules[2] = input = new ModuleInput();
 	modules[3] = textures = new ModuleTextures();
-	modules[4] = background = new ModuleBackground();
+	modules[4] = scene_1 = new ModuleScene1();
 	modules[5] = player = new ModulePlayer();
+	modules[6] = particles = new ModuleParticles();
+	modules[7] = fade = new ModuleFadeToBlack();
+	modules[8] = menu = new ModuleMenu();
 }	
 
 Application::~Application()
@@ -26,11 +32,15 @@ bool Application::Init()
 {
 	bool ret = true;
 
+	// Disable all stopped modules here
+	player->Disable();
+	// ---
+
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
-		ret = modules[i]->Start();
+		ret = modules[i]->IsEnabled() ? modules[i]->Start() : true;
 
 	return ret;
 }
@@ -40,13 +50,13 @@ update_status Application::Update()
 	update_status ret = UPDATE_CONTINUE;
 
 	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
-		ret = modules[i]->PreUpdate();
+		ret = modules[i]->IsEnabled() ? modules[i]->PreUpdate() : UPDATE_CONTINUE;
 
 	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
-		ret = modules[i]->Update();
+		ret = modules[i]->IsEnabled() ? modules[i]->Update() : UPDATE_CONTINUE;
 
 	for(int i = 0; i < NUM_MODULES && ret == UPDATE_CONTINUE; ++i)
-		ret = modules[i]->PostUpdate();
+		ret = modules[i]->IsEnabled() ? modules[i]->PostUpdate() : UPDATE_CONTINUE;
 
 	return ret;
 }
