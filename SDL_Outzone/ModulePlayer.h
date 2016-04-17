@@ -27,6 +27,10 @@ public:
 	Animation down;
 	Animation left;
 	Animation right;
+	Animation Drightop;
+	Animation Lefthtop;
+	Animation Drighbot;
+	Animation Lefthbot;
 	iPoint position;
 };
 
