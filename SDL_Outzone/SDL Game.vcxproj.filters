@@ -53,9 +53,6 @@
     <ClInclude Include="ModuleParticles.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleSceneSpace.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
     <ClInclude Include="ModuleMenu.h">
       <Filter>Modules</Filter>
     </ClInclude>
@@ -92,9 +89,6 @@
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleParticles.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleSceneSpace.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleMenu.cpp">

@@ -118,7 +118,7 @@ update_status ModulePlayer::Update()
 	if(App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
 		position.y -= speed;
-		App->scene_1->back.y += speed;
+		
 		if(current_animation != &up)
 		{
 			up.Reset();

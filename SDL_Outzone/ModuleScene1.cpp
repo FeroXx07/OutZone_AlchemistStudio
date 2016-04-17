@@ -14,7 +14,7 @@ ModuleScene1::ModuleScene1()
 	back.x = 0;
 	back.y = 0;
 	back.w = 240;
-	back.h = 14359;
+	back.h = 3312;
 }
 
 ModuleScene1::~ModuleScene1()
@@ -25,7 +25,7 @@ bool ModuleScene1::Start()
 {
 	LOG("Loading space scene");
 
-	background = App->textures->Load("rtype/Maps.png");
+	backgroundo = App->textures->Load("rtype/Maps1.png");
 
 	App->player->Enable();
 
@@ -37,7 +37,7 @@ bool ModuleScene1::CleanUp()
 {
 	LOG("Unloading space scene");
 
-	App->textures->Unload(background);
+	App->textures->Unload(backgroundo);
 	App->player->Disable();
 
 	return true;
@@ -54,7 +54,7 @@ update_status ModuleScene1::Update()
 
 
 	// Draw everything --------------------------------------
-	App->render->Blit(background, 0, -14034, &back, 0.75f);
+	App->render->Blit(backgroundo, 0, -3312+SCREEN_HEIGHT, &back, 0.75f);
 	//App->render->Blit(background, 0, 0, NULL);
 
 	return UPDATE_CONTINUE;
