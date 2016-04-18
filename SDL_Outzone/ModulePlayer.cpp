@@ -193,7 +193,7 @@ update_status ModulePlayer::Update()
 	{
 		int i = 0;
 		i++;
-		App->particles->AddParticle(App->particles->shoot, position.x + 19, position.y - 8);
+ 		App->particles->AddParticle(App->particles->shoot, position.x + 19, position.y - 8);
 		//App->particles->AddParticle(App->particles->shoot, position.x +11, position.y, 500);
 
 
