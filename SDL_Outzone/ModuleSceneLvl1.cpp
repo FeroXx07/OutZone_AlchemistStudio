@@ -34,7 +34,7 @@ bool ModuleSceneLvl1::Start()
 	App->collision->Enable();
 	App->enemies->Enable();
 
-	App->audio->PlayMusic("rtype/stage1.ogg", 1.0f);
+	App->audio->PlayMusic("rtype/outzone_002.ogg", 1.0f);
 	
 	// Colliders ---
 	App->collision->AddCollider({ 120, 2650, 30, 62 }, COLLIDER_WALL);
