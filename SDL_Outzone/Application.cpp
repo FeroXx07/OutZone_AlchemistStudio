@@ -3,23 +3,30 @@
 #include "ModuleRender.h"
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
-#include "ModuleScene1.h"
+#include "ModuleAudio.h"
+#include "ModuleSceneLvl1.h"
+#include "ModuleSceneIntro.h"
+#include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleParticles.h"
-#include "ModuleMenu.h"
+#include "ModuleEnemies.h"
 
 Application::Application()
 {
-	modules[0] = window = new ModuleWindow();
-	modules[1] = render = new ModuleRender();
-	modules[2] = input = new ModuleInput();
-	modules[3] = textures = new ModuleTextures();
-	modules[4] = scene_1 = new ModuleScene1();
-	modules[5] = player = new ModulePlayer();
-	modules[6] = particles = new ModuleParticles();
-	modules[7] = fade = new ModuleFadeToBlack();
-	modules[8] = menu = new ModuleMenu();
+	int i = 0;
+	modules[i++] = window = new ModuleWindow();
+	modules[i++] = render = new ModuleRender();
+	modules[i++] = input = new ModuleInput();
+	modules[i++] = textures = new ModuleTextures();
+	modules[i++] = audio = new ModuleAudio();
+	modules[i++] = scene_intro = new ModuleSceneIntro();
+	modules[i++] = scene_lvl1 = new ModuleSceneLvl1();
+	modules[i++] = enemies = new ModuleEnemies();
+	modules[i++] = player = new ModulePlayer();
+	modules[i++] = particles = new ModuleParticles();
+	modules[i++] = collision = new ModuleCollision();
+	modules[i++] = fade = new ModuleFadeToBlack();
 }	
 
 Application::~Application()
@@ -32,9 +39,12 @@ bool Application::Init()
 {
 	bool ret = true;
 
-	// Disable all stopped modules here
+	// Deactivate modules here ----
+	scene_lvl1->Disable();
 	player->Disable();
-	// ---
+	collision->Disable();
+	enemies->Disable();
+	// ----------------------------
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)
 		ret = modules[i]->Init();
@@ -66,7 +76,7 @@ bool Application::CleanUp()
 	bool ret = true;
 
 	for(int i = NUM_MODULES - 1; i >= 0 && ret == true; --i)
-		ret = modules[i]->CleanUp();
+		ret = modules[i]->IsEnabled() ? modules[i]->CleanUp() : true;
 
 	return ret;
 }

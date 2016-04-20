@@ -6,6 +6,7 @@
 #include "p2Point.h"
 
 struct SDL_Texture;
+struct Collider;
 
 class ModulePlayer : public Module
 {
@@ -16,11 +17,11 @@ public:
 	bool Start();
 	update_status Update();
 	bool CleanUp();
+	void OnCollision(Collider* c1, Collider* c2);
 
 public:
 
 	SDL_Texture* graphics = nullptr;
-	//SDL_Rect camera;
 	Animation* current_animation = nullptr;
 	Animation idle;
 	Animation up;
@@ -32,6 +33,8 @@ public:
 	Animation Drighbot;
 	Animation Lefthbot;
 	iPoint position;
+	Collider* playercollision = nullptr;
+	bool destroyed = false;
 };
 
 #endif

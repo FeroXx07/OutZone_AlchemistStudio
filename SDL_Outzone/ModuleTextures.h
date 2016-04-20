@@ -5,6 +5,7 @@
 #include "Globals.h"
 
 #define MAX_TEXTURES 50
+#define MAX_TEXTURE_PATH 100
 
 struct SDL_Texture;
 
@@ -22,7 +23,6 @@ public:
 
 public:
 	SDL_Texture* textures[MAX_TEXTURES];
-	uint last_texture = 0;
 };
 
 #endif // __ModuleTextures_H__
