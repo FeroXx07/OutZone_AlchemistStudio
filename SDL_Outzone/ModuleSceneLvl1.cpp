@@ -8,6 +8,7 @@
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleSceneLvl1.h"
+#include "ModuleFadeToBlack.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -75,6 +76,11 @@ update_status ModuleSceneLvl1::Update()
 
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, -3634 + SCREEN_HEIGHT, &back, 0.75f);
+
+	if ((App->player->position.y == -4284) && App->fade->IsFading() == false)
+	{
+		App->fade->FadeToBlack(this, (Module*)App->scene_intro);
+	}
 	
 	return UPDATE_CONTINUE;
 }
