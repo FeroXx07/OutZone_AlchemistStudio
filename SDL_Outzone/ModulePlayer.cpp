@@ -143,11 +143,16 @@ update_status ModulePlayer::Update()
 		else{
 			position.x += speed;
 		}
-		if (current_animation != &right)
-		{
-			right.Reset();
+		//if (current_animation != &right)
+	//	{
+			//right.Reset();
 			current_animation = &right;
+		//}
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+			current_animation = &idle;
+
 		}
+
 
 	}
 
@@ -160,30 +165,25 @@ update_status ModulePlayer::Update()
 			position.y += speed;
 		}
 
-		if (current_animation != &down)
-		{
-			down.Reset();
+		//if (current_animation != &down)
+		//{
+			//down.Reset();
 			current_animation = &down;
-		}
+	//	}
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
-
-			if (current_animation != &Drighbot)
-			{
-
-				current_animation = &Drighbot;
-
-
+			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+				current_animation = &down;
+			}
+			else{
+				current_animation = &Drightop;
 			}
 		}
-
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-
-			if (current_animation != &Lefthbot)
-			{
-
-				current_animation = &Lefthbot;
-
-
+			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+				current_animation = &down;
+			}
+			else{
+				current_animation = &Lefthtop;
 			}
 		}
 	}
@@ -197,35 +197,30 @@ update_status ModulePlayer::Update()
 			position.y -= speed;
 		}
 
-		if (current_animation != &up)
-		{
-			up.Reset();
+		//if (current_animation != &up)
+		//{
+		//	up.Reset();
 			current_animation = &up;
 
 
-		}
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
-
-			if (current_animation != &Drightop)
-			{
-
-				current_animation = &Drightop;
-
-
+		//}
+			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+					current_animation = &up;
+				}
+				else{
+					current_animation = &Drightop;
+				}
 			}
-		}
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-
-			if (current_animation != &Lefthtop)
-			{
-
-				current_animation = &Lefthtop;
-
-
+			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+				if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+					current_animation = &up;
+				}
+				else{
+					current_animation = &Lefthtop;
+				}
 			}
-		}
 	}
-
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
 		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
