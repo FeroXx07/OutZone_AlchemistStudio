@@ -116,7 +116,15 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	int speed = 2;
+	int speed = 8;
+	//8
+
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
+		if (App->player->position.y <= (130 - (App->render->camera.y / 2))){
+			App->render->camera.y += speed;
+		}
+	}
+	speed = 2;
 	//2
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
@@ -200,8 +208,12 @@ update_status ModulePlayer::Update()
 		//if (current_animation != &up)
 		//{
 		//	up.Reset();
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT){
+			current_animation = &idle;
+		}
+		else{
 			current_animation = &up;
-
+		}
 
 		//}
 			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){

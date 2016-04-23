@@ -50,14 +50,7 @@ update_status ModuleRender::PreUpdate()
 
 update_status ModuleRender::Update()	
 {
-	int speed = 8;
-	//8
 
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
-		if (App->player->position.y <= (130 - (camera.y / 2))){
-			camera.y += speed;
-		}
-	}
 
 	return update_status::UPDATE_CONTINUE;
 }
