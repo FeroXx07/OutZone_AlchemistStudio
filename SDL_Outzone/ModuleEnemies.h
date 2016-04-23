@@ -16,6 +16,7 @@ enum ENEMY_TYPES
 {
 	NO_TYPE,
 	REDBIRD,
+	TURRET1,
 };
 
 class Enemy;

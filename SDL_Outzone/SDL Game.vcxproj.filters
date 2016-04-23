@@ -80,6 +80,9 @@
     <ClInclude Include="ModuleSceneLvl1.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Turret1.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -132,6 +135,9 @@
     </ClCompile>
     <ClCompile Include="ModuleSceneLvl1.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Turret1.cpp">
+      <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
