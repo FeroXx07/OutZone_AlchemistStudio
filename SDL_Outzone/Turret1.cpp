@@ -1,7 +1,9 @@
 #include "Application.h"
+#include"ModuleEnemies.h"
 #include "Enemy_RedBird.h"
 #include "ModuleCollision.h"
 #include "Turret1.h"
+
 
 Enemy_Turret1::Enemy_Turret1(int x, int y) : Enemy(x, y)
 {
@@ -22,6 +24,22 @@ Enemy_Turret1::Enemy_Turret1(int x, int y) : Enemy(x, y)
 	turret1__315.PushBack({254,56,24,45});
 	turret1__337_5.PushBack({299,55,24,46});
 
+	turret1__0.loop = false;
+	turret1__22_5.loop = false;
+	turret1__45.loop = false;
+	turret1__67_5.loop = false;
+	turret1__90.loop = false;
+	turret1__112_5.loop = false;
+	turret1__135.loop = false;
+	turret1__157_5.loop = false;
+	turret1__180.loop = false;
+	turret1__202_5.loop = false;
+	turret1__225.loop = false;
+	turret1__247_5.loop = false;
+	turret1__270.loop = false;
+	turret1__292_5.loop = false;
+	turret1__315.loop = false;
+	turret1__337_5.loop = false;
 	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
