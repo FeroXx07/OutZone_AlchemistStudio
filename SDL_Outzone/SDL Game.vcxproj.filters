@@ -56,6 +56,9 @@
     <ClInclude Include="ModuleParticles.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleSceneSpace.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
     <ClInclude Include="ModuleAudio.h">
       <Filter>Modules</Filter>
     </ClInclude>
@@ -77,10 +80,10 @@
     <ClInclude Include="Path.h">
       <Filter>Containers</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleSceneLvl1.h">
-      <Filter>Modules</Filter>
+    <ClInclude Include="Enemy_Cookies.h">
+      <Filter>Modules\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Turret1.h">
+    <ClInclude Include="Enemy_tank.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
@@ -115,6 +118,9 @@
     <ClCompile Include="ModuleParticles.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleSceneSpace.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
     <ClCompile Include="ModuleAudio.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
@@ -133,10 +139,10 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleSceneLvl1.cpp">
-      <Filter>Modules</Filter>
+    <ClCompile Include="Enemy_Cookies.cpp">
+      <Filter>Modules\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Turret1.cpp">
+    <ClCompile Include="Enemy_tank.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>

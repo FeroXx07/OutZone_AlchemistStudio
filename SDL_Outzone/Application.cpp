@@ -4,7 +4,7 @@
 #include "ModuleInput.h"
 #include "ModuleTextures.h"
 #include "ModuleAudio.h"
-#include "ModuleSceneLvl1.h"
+#include "ModuleSceneSpace.h"
 #include "ModuleSceneIntro.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
@@ -21,7 +21,7 @@ Application::Application()
 	modules[i++] = textures = new ModuleTextures();
 	modules[i++] = audio = new ModuleAudio();
 	modules[i++] = scene_intro = new ModuleSceneIntro();
-	modules[i++] = scene_lvl1 = new ModuleSceneLvl1();
+	modules[i++] = scene_space = new ModuleSceneSpace();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();
@@ -40,7 +40,7 @@ bool Application::Init()
 	bool ret = true;
 
 	// Deactivate modules here ----
-	scene_lvl1->Disable();
+	scene_space->Disable();
 	player->Disable();
 	collision->Disable();
 	enemies->Disable();

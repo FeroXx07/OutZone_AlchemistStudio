@@ -23,7 +23,6 @@ Enemy_RedBird::Enemy_RedBird(int x, int y) : Enemy(x, y)
 
 void Enemy_RedBird::Move()
 {
-	/*
 	if(going_up)
 	{
 		if(wave > 1.0f)
@@ -38,8 +37,7 @@ void Enemy_RedBird::Move()
 		else
 			wave -= 0.05f;
 	}
-	
+
 	position.y = original_y + (25.0f * sinf(wave));
 	position.x -= 1;
-	*/
 }

@@ -2,7 +2,6 @@
 #define __PATH_H__
 
 #include "p2Point.h"
-#include "Animation.h"
 #define MAX_STEPS 25
 
 struct Step
@@ -10,6 +9,7 @@ struct Step
 	uint frames = 1;
 	fPoint speed;
 	Animation* animation = nullptr;
+	
 };
 
 class Path
@@ -18,7 +18,7 @@ public:
 	bool loop = true;
 	Step steps[MAX_STEPS];
 	fPoint accumulated_speed = {0.0f, 0.0f};
-
+	
 private:
 	uint current_frame = 0;
 	uint last_step = 0;

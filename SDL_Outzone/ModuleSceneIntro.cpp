@@ -18,11 +18,11 @@ ModuleSceneIntro::~ModuleSceneIntro()
 // Load assets
 bool ModuleSceneIntro::Start()
 {
-	LOG("Loading intro");
+	LOG("Loading space intro");
 	
 	background = App->textures->Load("Outzone/UI_Title.png");
 
-	App->audio->PlayMusic("rtype/intro.ogg", 1.0f);
+	//App->audio->PlayMusic("rtype/intro.ogg", 1.0f);
 	fx = App->audio->LoadFx("rtype/starting.wav");
 	App->render->camera.x = App->render->camera.y = 0;
 	
@@ -32,7 +32,7 @@ bool ModuleSceneIntro::Start()
 // UnLoad assets
 bool ModuleSceneIntro::CleanUp()
 {
-	LOG("Unloading lvl1 scene");
+	LOG("Unloading space scene");
 
 	App->textures->Unload(background);
 	App->audio->UnLoadFx(fx);
@@ -47,7 +47,7 @@ update_status ModuleSceneIntro::Update()
 
 	if(App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN && App->fade->IsFading() == false)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->scene_lvl1);
+		App->fade->FadeToBlack(this, (Module*)App->scene_space);
 		App->audio->PlayFx(fx);
 	}
 

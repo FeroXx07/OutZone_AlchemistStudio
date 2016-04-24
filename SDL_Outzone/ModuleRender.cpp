@@ -3,7 +3,6 @@
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
 #include "ModuleInput.h"
-#include "ModulePlayer.h"
 #include "SDL/include/SDL.h"
 
 ModuleRender::ModuleRender() : Module()
@@ -50,7 +49,19 @@ update_status ModuleRender::PreUpdate()
 
 update_status ModuleRender::Update()	
 {
+	int speed = 3;
 
+	if(App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)
+		camera.y += speed;
+
+	if(App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)
+		camera.y -= speed;
+
+	if(App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)
+		camera.x -= speed;
+
+	if(App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)
+		camera.x += speed;
 
 	return update_status::UPDATE_CONTINUE;
 }
@@ -81,10 +92,10 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, f
 {
 	bool ret = true;
 	SDL_Rect rect;
-	rect.x = (int)(camera.x * speed) + x * SCREEN_SIZE;
-	rect.y = (int)(camera.y * speed) + y * SCREEN_SIZE;
+	rect.x = (int)(-camera.x * speed) + x * SCREEN_SIZE;
+	rect.y = (int)(-camera.y * speed) + y * SCREEN_SIZE;
 
-	if (section != NULL)
+	if(section != NULL)
 	{
 		rect.w = section->w;
 		rect.h = section->h;
@@ -97,7 +108,7 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section, f
 	rect.w *= SCREEN_SIZE;
 	rect.h *= SCREEN_SIZE;
 
-	if (SDL_RenderCopy(renderer, texture, section, &rect) != 0)
+	if(SDL_RenderCopy(renderer, texture, section, &rect) != 0)
 	{
 		LOG("Cannot blit to screen. SDL_RenderCopy error: %s", SDL_GetError());
 		ret = false;

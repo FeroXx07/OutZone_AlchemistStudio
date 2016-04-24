@@ -6,8 +6,8 @@
 #include "ModuleTextures.h"
 #include "Enemy.h"
 #include "Enemy_RedBird.h"
-#include"Turret1.h"
-
+#include "Enemy_Cookies.h"
+#include "Enemy_tank.h"
 #define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()
@@ -24,7 +24,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites = App->textures->Load("Outzone/Turret1.png");
+	sprites = App->textures->Load("rtype/enemies.png");
 
 	return true;
 }
@@ -36,11 +36,11 @@ update_status ModuleEnemies::PreUpdate()
 	{
 		if(queue[i].type != ENEMY_TYPES::NO_TYPE)
 		{
-			if(queue[i].y * SCREEN_SIZE < App->render->camera.y + (App->render->camera.h * SCREEN_SIZE) + SPAWN_MARGIN)
+			if(queue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
 			{
 				SpawnEnemy(queue[i]);
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
-				LOG("Spawning enemy at %d", queue[i].y * SCREEN_SIZE);
+				LOG("Spawning enemy at %d", queue[i].x * SCREEN_SIZE);
 			}
 		}
 	}
@@ -67,9 +67,9 @@ update_status ModuleEnemies::PostUpdate()
 	{
 		if(enemies[i] != nullptr)
 		{
-			if(enemies[i]->position.y * SCREEN_SIZE < (App->render->camera.y) - SPAWN_MARGIN)
+			if(enemies[i]->position.x * SCREEN_SIZE < (App->render->camera.x) - SPAWN_MARGIN)
 			{
-				LOG("DeSpawning enemy at %d", enemies[i]->position.y * SCREEN_SIZE);
+				LOG("DeSpawning enemy at %d", enemies[i]->position.x * SCREEN_SIZE);
 				delete enemies[i];
 				enemies[i] = nullptr;
 			}
@@ -130,11 +130,17 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			case ENEMY_TYPES::REDBIRD:
 			enemies[i] = new Enemy_RedBird(info.x,info.y);
 			break;
+			case ENEMY_TYPES::BROWCOOKIES:
+				enemies[i] = new Enemy_Cookies(info.x, info.y);
+				break;
 
-			case ENEMY_TYPES::TURRET1:
-			enemies[i] = new Enemy_Turret1(info.x, info.y);
-			break;
+			case ENEMY_TYPES::TANK:
+				enemies[i] = new Enemy_Tank(info.x, info.y);
+				break;
+
 		}
+		
+		
 	}
 }
 

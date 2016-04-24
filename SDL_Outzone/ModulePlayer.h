@@ -33,7 +33,8 @@ public:
 	Animation Drighbot;
 	Animation Lefthbot;
 	iPoint position;
-	Collider* playercollision = nullptr;
+	
+	Collider* col;
 	bool destroyed = false;
 };
 

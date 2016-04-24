@@ -9,9 +9,6 @@
 
 #include "SDL/include/SDL_timer.h"
 
-#define weaponshootlife 30
-#define laserlife 2000
-
 ModuleParticles::ModuleParticles()
 {
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
@@ -26,151 +23,11 @@ ModuleParticles::ModuleParticles()
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.3f;
 
-	//1st q
-
-	laser0.anim.PushBack({ 17, 146, 4, 16 });
-	laser0.anim.speed = 0.2f;
-	laser0.speed.y = -10;
-	laser0.life = laserlife;
-
-	laser22_5.anim.PushBack({ 199, 162, 9, 16 });
-	laser22_5.anim.speed = 0.2f;
-	laser22_5.speed.x = -10;
-	laser22_5.speed.y = -10;
-	laser22_5.life = laserlife;
-
-	laser45.anim.PushBack({ 228, 172, 12, 14 });
-	laser45.anim.speed = 0.2f;
-	laser45.speed.x = 7;
-	laser45.speed.y = -7;
-	laser45.life = laserlife;
-
-	laser67_5.anim.PushBack({ 216, 212, 15, 10 });
-	laser67_5.anim.speed = 0.2f;
-	laser67_5.speed.x = -10;
-	laser67_5.speed.y = -10;
-	laser67_5.life = laserlife;
-
-	//4st q
-	laser90.anim.PushBack({ 219, 243, 16, 4 });
-	laser90.anim.speed = 0.2f;
-	laser90.speed.x = 10;
-	laser90.life = laserlife;
-
-	laser112_5.anim.PushBack({ 156, 194, 16, 10 });
-	laser112_5.anim.speed = 0.2f;
-	laser112_5.speed.x = -10;
-	laser112_5.speed.y = -10;
-	laser112_5.life = laserlife;
-
-	laser135.anim.PushBack({ 149, 222, 13, 14 });
-	laser135.anim.speed = 0.2f;
-	laser135.speed.x = 7;
-	laser135.speed.y = 7;
-	laser135.life = laserlife;
-
-	laser157_5.anim.PushBack({ 106, 201, 10, 16 });
-	laser157_5.anim.speed = 0.2f;
-	laser157_5.speed.x = -10;
-	laser157_5.speed.y = -10;
-	laser157_5.life = laserlife;
-
-	//3st q
-	laser180.anim.PushBack({ 79, 207, 4, 16 });
-	laser180.anim.speed = 0.2f;
-	laser180.speed.y = 10;
-	laser180.life = laserlife;
-
-	laser202_5.anim.PushBack({ 15, 205, 9, 16 });
-	laser202_5.anim.speed = 0.2f;
-	laser202_5.speed.x = -10;
-	laser202_5.speed.y = -10;
-	laser202_5.life = laserlife;
-
-	laser225.anim.PushBack({ 39, 213, 13, 14 });
-	laser225.anim.speed = 0.2f;
-	laser225.speed.x = -7;
-	laser225.speed.y = 7;
-	laser225.life = laserlife;
-
-	laser247_5.anim.PushBack({ 29, 256, 16, 10 });
-	laser247_5.anim.speed = 0.2f;
-	laser247_5.speed.x = -10;
-	laser247_5.speed.y = -10;
-	laser247_5.life = laserlife;
-
-	//2st q
-	laser270.anim.PushBack({ 28, 289, 15, 4 });
-	laser270.anim.speed = 0.2f;
-	laser270.speed.x = -10;
-	laser270.life = laserlife;
-
-	laser292_5.anim.PushBack({ 85, 272, 16, 10 });
-	laser292_5.anim.speed = 0.2f;
-	laser292_5.speed.x = -10;
-	laser292_5.speed.y = -10;
-	laser292_5.life = laserlife;
-
-	laser315.anim.PushBack({ 121, 259, 13, 14 });
-	laser315.anim.speed = 0.2f;
-	laser315.speed.x = -7;
-	laser315.speed.y = -7;
-	laser315.life = laserlife;
-
-	laser337_5.anim.PushBack({ 170, 283, 9, 16 });
-	laser337_5.anim.speed = 0.2f;
-	laser337_5.speed.x = -10;
-	laser337_5.speed.y = -10;
-	laser337_5.life = laserlife;
-
-	//Weapon shoots
-	laserweaponshoot0.anim.PushBack({ 12, 166, 14, 16 });
-	laserweaponshoot0.life = weaponshootlife;
-
-	laserweaponshoot22_5.anim.PushBack({ 188, 181, 15, 16 });
-	laserweaponshoot22_5.life = weaponshootlife;
-
-	laserweaponshoot45.anim.PushBack({ 212, 187, 14, 14 });
-	laserweaponshoot45.life = weaponshootlife;
-
-	laserweaponshoot67_5.anim.PushBack({ 197, 218, 16, 14 });
-	laserweaponshoot67_5.life = weaponshootlife;
-
-	laserweaponshoot90.anim.PushBack({ 199, 238, 16, 14 });
-	laserweaponshoot90.life = weaponshootlife;
-
-	laserweaponshoot112_5.anim.PushBack({ 137, 184, 16, 14 });
-	laserweaponshoot112_5.life = weaponshootlife;
-
-	laserweaponshoot135.anim.PushBack({ 134, 207, 13, 15 });
-	laserweaponshoot135.life = weaponshootlife;
-
-	laserweaponshoot157_5.anim.PushBack({ 96, 183, 14, 16 });
-	laserweaponshoot157_5.life = weaponshootlife;
-
-	laserweaponshoot180.anim.PushBack({ 74, 187, 14, 16 });
-	laserweaponshoot180.life = weaponshootlife;
-
-	laserweaponshoot202_5.anim.PushBack({ 21, 186, 14, 17 });
-	laserweaponshoot202_5.life = weaponshootlife;
-
-	laserweaponshoot225.anim.PushBack({ 53, 198, 14, 15 });
-	laserweaponshoot225.life = weaponshootlife;
-
-	laserweaponshoot247_5.anim.PushBack({ 47, 245, 16, 15 });
-	laserweaponshoot247_5.life = weaponshootlife;
-
-	laserweaponshoot270.anim.PushBack({ 46, 284, 15, 14 });
-	laserweaponshoot270.life = weaponshootlife;
-
-	laserweaponshoot292_5.anim.PushBack({ 104, 278, 16, 14 });
-	laserweaponshoot292_5.life = weaponshootlife;
-
-	laserweaponshoot315.anim.PushBack({ 136, 273, 13, 16 });
-	laserweaponshoot315.life = weaponshootlife;
-
-	laserweaponshoot337_5.anim.PushBack({ 176, 301, 14, 16 });
-	laserweaponshoot337_5.life = weaponshootlife;
+	laser.anim.PushBack({232, 103, 16, 12});
+	laser.anim.PushBack({249, 103, 16, 12});
+	laser.anim.speed = 0.2f;
+	laser.speed.x = 5;
+	laser.life = 3000;
 }
 
 ModuleParticles::~ModuleParticles()
@@ -180,11 +37,11 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("Outzone/particlesoutzone.png");
+	graphics = App->textures->Load("rtype/particles.png");
 
 	// Load particles fx particle
 	explosion.fx = App->audio->LoadFx("rtype/explosion.wav");
-	laser0.fx = App->audio->LoadFx("rtype/laser.wav");
+	laser.fx = App->audio->LoadFx("rtype/laser.wav");
 
 	return true;
 }
