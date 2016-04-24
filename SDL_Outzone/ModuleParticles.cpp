@@ -41,7 +41,7 @@ bool ModuleParticles::Start()
 
 	// Load particles fx particle
 	explosion.fx = App->audio->LoadFx("rtype/explosion.wav");
-	laser.fx = App->audio->LoadFx("rtype/laser.wav");
+	laser.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
 
 	return true;
 }
