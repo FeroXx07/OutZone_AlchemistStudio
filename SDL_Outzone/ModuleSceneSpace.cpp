@@ -32,30 +32,28 @@ bool ModuleSceneSpace::Start()
 	//App->audio->PlayMusic("rtype/stage1.ogg", 1.0f);
 	
 	// Colliders ---
-	App->collision->AddCollider({0, 224, 3930, 16}, COLLIDER_WALL);
-	App->collision->AddCollider({1375, 0, 111, 96}, COLLIDER_WALL);
-	App->collision->AddCollider({1375, 145, 111, 96}, COLLIDER_WALL);
-	App->collision->AddCollider({ 60, 1894, 30, 62 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 180, 1664, 30, 62 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0, 1634, 30, 62 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 90, 1545, 30, 62 }, COLLIDER_WALL);
+	
+	App->collision->AddCollider({ 60, -1621, 30, 62 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 180, -1651, 30, 62 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, -1681, 30, 62 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 90, -1770, 30, 62 }, COLLIDER_WALL);
 
-	App->collision->AddCollider({ 0, 2194, 31, 37 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0, -2060, 117, 139 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 186, -2061, 54, 136 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0, -1796, 56, 131 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 127, -1794, 114, 136 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, -1121, 31, 37 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, -1255, 117, 139 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 186, -1254, 54, 136 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, -1519, 56, 131 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 127, -1521, 114, 136 }, COLLIDER_WALL);
 
 	App->collision->AddCollider({ 120, -665, 30, 62 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 180, -2590, 30, 62 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0, -2472, 30, 62 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 152, -2323, 30, 62 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 151, -3188, 89, 87 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 177, -3275, 64, 34 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0, -3377, 90, 98 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0, -3158, 51, 24 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 0, -416, 90, 60 }, COLLIDER_WALL);
-	App->collision->AddCollider({ 150, -416, 90, 60 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 180, -725, 30, 62 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, -843, 30, 62 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 150, -993, 30, 62 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 151, -127, 89, 87 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 177, -40, 64, 34 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, -134, 90, 196 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, -157, 51, 24 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, -2899, 90, 60 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 150, -2899, 90, 60 }, COLLIDER_WALL);
 
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 600, 80);
