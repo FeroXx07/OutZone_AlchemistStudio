@@ -29,6 +29,19 @@ ModuleParticles::ModuleParticles()
 	laser.anim.speed = 0.2f;
 	laser.speed.x = 5;
 	laser.life = 3000;
+
+	//
+
+	lascoll.anim.PushBack({ 136, 137, 18, 18 });
+	lascoll2.anim.PushBack({ 135, 157, 18, 18 });
+	lascoll3.anim.PushBack({ 81, 140, 17, 18 });
+	lascoll4.anim.PushBack({ 86, 165, 8, 8 });
+	laser.anim.speed = 0.2f;
+	/*
+	lascoll.PushBack({ 136, 137, 18, 18 });
+	lascoll.PushBack({ 136, 137, 18, 18 });
+	lascoll.loop = false;
+	lascoll.speed = 0.05f;*/
 	//1st q
 
 	laser0.anim.PushBack({ 17, 146, 4, 16 });
@@ -281,7 +294,10 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if(active[i] != nullptr && active[i]->collider == c1)
 		{
-			//AddParticle(explosion, active[i]->position.x, active[i]->position.y);
+			AddParticle(lascoll4, (active[i]->position.x) - 4, (active[i]->position.y) + 5);
+			AddParticle(lascoll3, (active[i]->position.x) - 7, active[i]->position.y);
+			AddParticle(lascoll2, (active[i]->position.x)-7, active[i]->position.y);
+			AddParticle(lascoll, (active[i]->position.x)-7, active[i]->position.y);
 			delete active[i];
 			active[i] = nullptr;
 			break;

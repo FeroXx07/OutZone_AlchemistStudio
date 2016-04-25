@@ -50,6 +50,10 @@ private:
 
 public:
 
+	Particle lascoll;
+	Particle lascoll2;
+	Particle lascoll3;
+	Particle lascoll4;
 	Particle explosion;
 	Particle laser;
 	Particle laser0;
