@@ -20,7 +20,7 @@ bool ModuleSceneIntro::Start()
 {
 	LOG("Loading space intro");
 	
-	background = App->textures->Load("Outzone/UI_Title.png");
+	background = App->textures->Load("Outzone/MenuPixel.png");
 
 	//App->audio->PlayMusic("rtype/intro.ogg", 1.0f);
 	fx = App->audio->LoadFx("rtype/starting.wav");
