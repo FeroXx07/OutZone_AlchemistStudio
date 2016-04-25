@@ -186,7 +186,7 @@ bool ModuleParticles::Start()
 	graphics = App->textures->Load("Outzone/particlesoutzone.png");
 
 	// Load particles fx particle
-	explosion.fx = App->audio->LoadFx("rtype/explosion.wav");
+	explosion.fx = App->audio->LoadFx("Outzone/outzone_033.wav");
 	laser0.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
 	laser22_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
 	laser45.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
