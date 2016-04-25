@@ -296,8 +296,8 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		{
 			AddParticle(lascoll4, (active[i]->position.x) - 4, (active[i]->position.y) + 5);
 			AddParticle(lascoll3, (active[i]->position.x) - 7, active[i]->position.y);
-			AddParticle(lascoll2, (active[i]->position.x)-7, active[i]->position.y);
-			AddParticle(lascoll, (active[i]->position.x)-7, active[i]->position.y);
+			AddParticle(lascoll2, (active[i]->position.x)-7, (active[i]->position.y)-6);
+			AddParticle(lascoll, (active[i]->position.x)-7, (active[i]->position.y)-6);
 			delete active[i];
 			active[i] = nullptr;
 			break;
