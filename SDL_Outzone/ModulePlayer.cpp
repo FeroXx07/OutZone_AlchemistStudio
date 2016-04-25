@@ -152,11 +152,8 @@ update_status ModulePlayer::Update()
 	}*/
 	int speed = 1.5;
 	//2
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
-		if (App->player->position.y <= (130 + (App->render->camera.y / 2))){
-			App->render->camera.y -= speed;
-		}
-	}
+	
+
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
@@ -223,20 +220,24 @@ update_status ModulePlayer::Update()
 			}
 		}
 	}
+
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
+		//if (App->player->position.y <= (130 + (App->render->camera.y / 2))){
+			//App->render->camera.y -= speed +9 ;
+		//}
 		lastkeypressed = LAST_KEY::LAST_KEY_W;
 		if ((position.y -= speed) >= (280 - (App->render->camera.y / 2))){
 			position.y = (280 - (App->render->camera.y / 2));
 			
 			}
 		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
-			if (App->player->position.y <= (130 - (App->render->camera.y / 2))){
-				App->render->camera.y -= speed +2;
+			if (App->player->position.y <= (130 + (App->render->camera.y / 2))){
+				App->render->camera.y -= speed +1;
 			}
 		}
 		else{
-			position.y -= speed;
+			//position.y -= speed;
 		}
 
 		current_animation = &up;
