@@ -18,9 +18,21 @@ public:
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
+	enum LAST_KEY
+	{
+		NO_KEY_PRESSED = 0,
+		LAST_KEY_W,
+		LAST_KEY_WD,
+		LAST_KEY_WA,
+		LAST_KEY_A,
+		LAST_KEY_S,
+		LAST_KEY_SA,
+		LAST_KEY_SD,
+		LAST_KEY_D
+	};
 
 public:
-
+	LAST_KEY lastkeypressed = LAST_KEY::NO_KEY_PRESSED;
 	SDL_Texture* graphics = nullptr;
 	Animation* current_animation = nullptr;
 	Animation idle;

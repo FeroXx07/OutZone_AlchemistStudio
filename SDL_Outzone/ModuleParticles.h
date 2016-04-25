@@ -52,6 +52,39 @@ public:
 
 	Particle explosion;
 	Particle laser;
+	Particle laser0;
+	Particle laser22_5;
+	Particle laser45;
+	Particle laser67_5;
+	Particle laser90;
+	Particle laser112_5;
+	Particle laser135;
+	Particle laser157_5;
+	Particle laser180;
+	Particle laser202_5;
+	Particle laser225;
+	Particle laser247_5;
+	Particle laser270;
+	Particle laser292_5;
+	Particle laser315;
+	Particle laser337_5;
+
+	Particle laserweaponshoot0;
+	Particle laserweaponshoot22_5;
+	Particle laserweaponshoot45;
+	Particle laserweaponshoot67_5;
+	Particle laserweaponshoot90;
+	Particle laserweaponshoot112_5;
+	Particle laserweaponshoot135;
+	Particle laserweaponshoot157_5;
+	Particle laserweaponshoot180;
+	Particle laserweaponshoot202_5;
+	Particle laserweaponshoot225;
+	Particle laserweaponshoot247_5;
+	Particle laserweaponshoot270;
+	Particle laserweaponshoot292_5;
+	Particle laserweaponshoot315;
+	Particle laserweaponshoot337_5;
 };
 
 #endif // __MODULEPARTICLES_H__
