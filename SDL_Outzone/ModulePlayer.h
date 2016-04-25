@@ -54,7 +54,7 @@ public:
 	Animation idle_sa;
 	Animation idle_sd;
 	Animation idle_d;
-	Collider* col;
+	Collider* playercollision;
 	bool destroyed = false;
 };
 

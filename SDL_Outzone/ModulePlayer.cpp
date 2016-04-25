@@ -95,10 +95,10 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("Outzone/playermovement.png");
 
 	destroyed = false;
-	position.x = 150;
-	position.y = 120;
+	position.x = 105;
+	position.y = 250;
 
-	col = App->collision->AddCollider({position.x, position.y, 28, 32}, COLLIDER_PLAYER, this);
+	playercollision = App->collision->AddCollider({ position.x, position.y, 28, 32 }, COLLIDER_PLAYER, this);
 
 	return true;
 }
@@ -109,7 +109,7 @@ bool ModulePlayer::CleanUp()
 	LOG("Unloading player");
 
 	App->textures->Unload(graphics);
-	App->collision->EraseCollider(col);
+	App->collision->EraseCollider(playercollision);
 
 	return true;
 }
@@ -117,44 +117,16 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	//position.x += 1; // Automatic movement
-	/*
-	int speed = 1;
-
-	if(App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
-	{
-		position.x -= speed;
-	}
-
-	if(App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
-	{
-		position.x += speed;
-	}
-
-	if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
-	{
-		position.y += speed;
-		if(current_animation != &down)
-		{
-			down.Reset();
-			current_animation = &down;
+	int speed = 8;
+	//8
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
+		if (App->player->position.y <= (150 + (App->render->camera.y / 2))){
+			App->render->camera.y -= speed;
 		}
 	}
 
-	if(App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
-	{
-		position.y -= speed;
-		if(current_animation != &up)
-		{
-			up.Reset();
-			current_animation = &up;
-		}
-	}*/
-	int speed = 1.5;
+	speed = 2;
 	//2
-	
-
-
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		lastkeypressed = LAST_KEY::LAST_KEY_A;
@@ -164,7 +136,6 @@ update_status ModulePlayer::Update()
 		else{
 			position.x -= speed;
 		}
-
 		if (current_animation != &left)
 		{
 			left.Reset();
@@ -181,24 +152,25 @@ update_status ModulePlayer::Update()
 		else{
 			position.x += speed;
 		}
-	
 		current_animation = &right;
-		//}
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-			current_animation = &idle;
-
+			current_animation = &idle_w;
 		}
 	}
+
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
 		lastkeypressed = LAST_KEY::LAST_KEY_S;
-		if ((position.y += speed) >= (280 - (App->render->camera.y / 2))){
-			position.y = (280 - (App->render->camera.y / 2));
+		if ((position.y += speed) >= (280 + (App->render->camera.y / 2))){
+			position.y = (280 + (App->render->camera.y / 2));
 		}
 		else{
 			position.y += speed;
 		}
 
+		//if (current_animation != &down)
+		//{
+		//down.Reset();
 		current_animation = &down;
 		//	}
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
@@ -223,29 +195,28 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		//if (App->player->position.y <= (130 + (App->render->camera.y / 2))){
-			//App->render->camera.y -= speed +9 ;
-		//}
 		lastkeypressed = LAST_KEY::LAST_KEY_W;
-		if ((position.y -= speed) >= (280 - (App->render->camera.y / 2))){
-			position.y = (280 - (App->render->camera.y / 2));
-			
-			}
-		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
-			if (App->player->position.y <= (130 + (App->render->camera.y / 2))){
-				App->render->camera.y -= speed +1;
-			}
+		if ((position.y -= speed) <= -3160){
+			position.y = -3160;
 		}
 		else{
-			//position.y -= speed;
+			position.y -= speed;
 		}
 
-		current_animation = &up;
-		//	}
+		//if (current_animation != &up)
+		//{
+		//	up.Reset();
+		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT){
+			current_animation = &idle_w;
+		}
+		else{
+			current_animation = &up;
+		}
+
+		//}
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
 			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
 				current_animation = &up;
-				
 			}
 			else{
 				current_animation = &Drightop;
@@ -265,7 +236,6 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
 	{
-		//App->particles->AddParticle(App->particles->laser, position.x + 20, position.y, COLLIDER_PLAYER_SHOT);
 		if (lastkeypressed == LAST_KEY_W){
 			App->particles->AddParticle(App->particles->laser0, position.x + 18, position.y, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laserweaponshoot0, position.x + 13, position.y - 13);
@@ -304,12 +274,10 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
-	{
+		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE){
 		if (lastkeypressed == LAST_KEY_W){
 			current_animation = &idle_w;
 		}
@@ -338,14 +306,13 @@ update_status ModulePlayer::Update()
 			current_animation = &idle_w;
 		}
 	}
-	
-		//current_animation = &idle;
 
-	col->SetPos(position.x, position.y);
-
+	// TODO 3: Update collider position to player position
+	playercollision->SetPos(position.x, (position.y));
+	//Collision->rect.x  += speed;
 	// Draw everything --------------------------------------
-	if(destroyed == false)
-		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+	//TODO 4
 
 	return UPDATE_CONTINUE;
 }
@@ -353,7 +320,12 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if(c1 == col && destroyed == false && App->fade->IsFading() == false)
+	if (c1 == playercollision && destroyed == false && App->fade->IsFading() == false)
+	{
+		
+	}
+	/*
+	if (c1 == playercollision && destroyed == false && App->fade->IsFading() == false)
 	{
 		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
 
@@ -365,4 +337,5 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		destroyed = true;
 	}
+	*/
 }
