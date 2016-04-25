@@ -12,8 +12,16 @@
 
 ModulePlayer::ModulePlayer()
 {
+	
 	// idle animation
-	idle.PushBack({ 24, 343, 29, 38 });
+	idle_w.PushBack({ 24, 343, 29, 38 });
+	idle_wa.PushBack({ 58, 79, 29, 36 });
+	idle_wd.PushBack({ 19, 24, 27, 36 });
+	idle_a.PushBack({ 21, 137, 28, 33 });
+	idle_s.PushBack({ 191, 285, 31, 39 });
+	idle_sa.PushBack({ 63, 187, 30, 37 });
+	idle_sd.PushBack({ 27, 238, 28, 37 });
+	idle_d.PushBack({ 61, 25, 27, 35 });
 	//MOVEMENT
 	// move upwards
 	up.PushBack({ 65, 344, 27, 37 });
@@ -296,11 +304,41 @@ update_status ModulePlayer::Update()
 	}
 
 
-	if(App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-	   && App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE 
-	   && App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-	   && App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
-		current_animation = &idle;
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
+	{
+		if (lastkeypressed == LAST_KEY_W){
+			current_animation = &idle_w;
+		}
+		else if (lastkeypressed == LAST_KEY_A){
+			current_animation = &idle_a;
+		}
+		else if (lastkeypressed == LAST_KEY_S){
+			current_animation = &idle_s;
+		}
+		else if (lastkeypressed == LAST_KEY_D){
+			current_animation = &idle_d;
+		}
+		else if (lastkeypressed == LAST_KEY_WA){
+			current_animation = &idle_wa;
+		}
+		else if (lastkeypressed == LAST_KEY_WD){
+			current_animation = &idle_wd;
+		}
+		else if (lastkeypressed == LAST_KEY_SA){
+			current_animation = &idle_sa;
+		}
+		else if (lastkeypressed == LAST_KEY_SD){
+			current_animation = &idle_sd;
+		}
+		else{
+			current_animation = &idle_w;
+		}
+	}
+	
+		//current_animation = &idle;
 
 	col->SetPos(position.x, position.y);
 

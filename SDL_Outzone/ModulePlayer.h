@@ -45,7 +45,15 @@ public:
 	Animation Drighbot;
 	Animation Lefthbot;
 	iPoint position;
-	
+
+	Animation idle_w;
+	Animation idle_wa;
+	Animation idle_wd;
+	Animation idle_a;
+	Animation idle_s;
+	Animation idle_sa;
+	Animation idle_sd;
+	Animation idle_d;
 	Collider* col;
 	bool destroyed = false;
 };
