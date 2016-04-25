@@ -67,7 +67,7 @@ ModulePlayer::ModulePlayer()
 	Lefthtop.PushBack({ 58, 79, 29, 36 });
 	Lefthtop.PushBack({ 97, 78, 28, 37 });
 	Lefthtop.loop = true;
-	Lefthtop.speed = 0.05f;
+	Lefthtop.speed = 0.09f;
 	//Diagonal right bot
 	Drighbot.PushBack({ 27, 238, 28, 37 });
 	Drighbot.PushBack({ 66, 238, 27, 37 });
@@ -117,6 +117,7 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	PreviousPos = position;
 	int speed = 4;
 	//8
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
@@ -127,6 +128,7 @@ update_status ModulePlayer::Update()
 
 	speed = 1;
 	//2
+
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
 		lastkeypressed = LAST_KEY::LAST_KEY_A;
@@ -320,9 +322,13 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
+	
 	if (c1 == playercollision && destroyed == false && App->fade->IsFading() == false)
 	{
-		
+		int speed = 1;
+		position = PreviousPos;
+		//ADD IFS
+		//position.y = position.y - speed; 
 	}
 	/*
 	if (c1 == playercollision && destroyed == false && App->fade->IsFading() == false)

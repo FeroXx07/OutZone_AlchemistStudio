@@ -45,7 +45,7 @@ public:
 	Animation Drighbot;
 	Animation Lefthbot;
 	iPoint position;
-
+	iPoint PreviousPos;
 	Animation idle_w;
 	Animation idle_wa;
 	Animation idle_wd;
