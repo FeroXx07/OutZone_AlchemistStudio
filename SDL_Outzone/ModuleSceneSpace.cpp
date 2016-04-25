@@ -22,7 +22,7 @@ bool ModuleSceneSpace::Start()
 {
 	LOG("Loading space scene");
 	
-	background = App->textures->Load("Outzone/Maps1.png");
+	background = App->textures->Load("Outzone/MapRealSize.png");
 
 	App->player->Enable();
 	App->particles->Enable();
