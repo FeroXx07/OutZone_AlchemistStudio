@@ -90,7 +90,7 @@ bool ModulePlayer::Start()
 	position.x = 150;
 	position.y = 120;
 
-	col = App->collision->AddCollider({position.x, position.y, 32, 16}, COLLIDER_PLAYER, this);
+	col = App->collision->AddCollider({position.x, position.y, 28, 32}, COLLIDER_PLAYER, this);
 
 	return true;
 }
