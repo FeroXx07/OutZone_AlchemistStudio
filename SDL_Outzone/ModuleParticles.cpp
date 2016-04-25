@@ -9,7 +9,7 @@
 
 #include "SDL/include/SDL_timer.h"
 #define weaponshootlife 30
-#define laserlife 2000
+#define laserlife 500
 ModuleParticles::ModuleParticles()
 {
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
