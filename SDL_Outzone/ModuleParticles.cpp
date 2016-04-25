@@ -187,7 +187,22 @@ bool ModuleParticles::Start()
 
 	// Load particles fx particle
 	explosion.fx = App->audio->LoadFx("rtype/explosion.wav");
-	laser.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laser0.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laser22_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laser45.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laser67_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laser90.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laser112_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laser135.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laser157_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laser180.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laser202_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laser225.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laser247_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laser270.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laser292_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laser315.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laser337_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
 
 	return true;
 }
