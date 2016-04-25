@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "Enemy_RedBird.h"
 #include "Enemy_Cookies.h"
+#include "Enemy_Turret1.h"
 #include "Enemy_tank.h"
 #define SPAWN_MARGIN 50
 
@@ -24,7 +25,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites = App->textures->Load("rtype/enemies.png");
+	sprites = App->textures->Load("Outzone/Turret1.png");
 
 	return true;
 }
@@ -138,6 +139,9 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				enemies[i] = new Enemy_Tank(info.x, info.y);
 				break;
 
+			case ENEMY_TYPES::TURRET1:
+				enemies[i] = new Enemy_Turret1(info.x, info.y);
+				break;
 		}
 		
 		

@@ -18,6 +18,7 @@ enum ENEMY_TYPES
 	REDBIRD,
 	BROWCOOKIES,
 	TANK,
+	TURRET1,
 };
 
 class Enemy;

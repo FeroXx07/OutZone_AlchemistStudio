@@ -71,6 +71,9 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWCOOKIES, 695, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWCOOKIES, 715, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::TANK, 715, 150);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 123, -568);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 3, -538);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 183, -628);
 
 	return true;
 }
