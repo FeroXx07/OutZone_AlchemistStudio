@@ -6,7 +6,7 @@
 #include "SDL/include/SDL_timer.h"
 #include <math.h>
 
-#define RADIUS 300
+#define RADIUS 250
 #define PI 3.14159265
 #define ANGLE_CONVERT (180.0 / PI)
 #define ANGLE_CONVERT_REVERSE (PI / 180.0)

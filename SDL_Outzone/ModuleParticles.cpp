@@ -192,7 +192,7 @@ ModuleParticles::ModuleParticles()
 	enemyshoot.anim.PushBack({ 152, 301, 7, 7 });
 	laser337_5.speed.x = 10;
 	laser337_5.speed.y = 10;
-	enemyshoot.life = laserlife;
+	enemyshoot.life = 1500;
 }
 
 ModuleParticles::~ModuleParticles()
