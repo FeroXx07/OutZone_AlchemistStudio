@@ -36,7 +36,7 @@ ModuleParticles::ModuleParticles()
 	playerexplosion.anim.PushBack({ 136, 875, 121, 118 });
 	//playerexplosion.life = 10;
 	playerexplosion.anim.loop = false;
-	playerexplosion.anim.speed = 0.5f;
+	playerexplosion.anim.speed = 0.4f;
 
 	/*
 	laser.anim.PushBack({232, 103, 16, 12});
