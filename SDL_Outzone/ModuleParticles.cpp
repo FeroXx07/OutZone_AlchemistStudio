@@ -25,6 +25,19 @@ ModuleParticles::ModuleParticles()
 	explosionturret.anim.loop = false;
 	explosionturret.anim.speed = 0.3f;
 
+	playerexplosion.anim.PushBack({ 60, 581, 18, 18 });
+	playerexplosion.anim.PushBack({ 169, 575, 34, 33 });
+	playerexplosion.anim.PushBack({ 37, 628, 66, 71 });
+	playerexplosion.anim.PushBack({ 21, 447, 88, 93 });
+	playerexplosion.anim.PushBack({ 124, 439, 120, 115 });
+	playerexplosion.anim.PushBack({ 134, 746, 116, 116 });
+	playerexplosion.anim.PushBack({ 124, 439, 120, 115 });
+	playerexplosion.anim.PushBack({ 21, 877, 116, 115 });
+	playerexplosion.anim.PushBack({ 136, 875, 121, 118 });
+	//playerexplosion.life = 10;
+	playerexplosion.anim.loop = false;
+	playerexplosion.anim.speed = 0.5f;
+
 	/*
 	laser.anim.PushBack({232, 103, 16, 12});
 	laser.anim.PushBack({249, 103, 16, 12});
@@ -194,6 +207,7 @@ ModuleParticles::ModuleParticles()
 	laser337_5.speed.x = 10;
 	laser337_5.speed.y = 10;
 	enemyshoot.life = 1500;
+
 }
 
 ModuleParticles::~ModuleParticles()

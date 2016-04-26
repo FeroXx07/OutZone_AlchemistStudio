@@ -55,6 +55,7 @@ public:
 	Particle lascoll3;
 	Particle lascoll4;
 	Particle explosionturret;
+	Particle playerexplosion;
 	Particle laser;
 	Particle laser0;
 	Particle laser22_5;

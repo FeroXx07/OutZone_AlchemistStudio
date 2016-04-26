@@ -483,7 +483,23 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == playercollision && destroyed == false && App->fade->IsFading() == false)
 	{
-		int speed = 1;
-		position = PreviousPos;
+		//int speed = 1;
+		//position = PreviousPos;
+		App->player->Disable();
+
+		App->particles->AddParticle(App->particles->playerexplosion, position.x + 3, position.y + 3, COLLIDER_NONE, 0);
+		/*App->particles->AddParticle(App->particles->playerexplosion1, position.x, position.y, COLLIDER_NONE, 0);
+		App->particles->AddParticle(App->particles->playerexplosion2, position.x - 20, position.y - 20, COLLIDER_NONE, 0);
+		App->particles->AddParticle(App->particles->playerexplosion3, position.x - 30, position.y - 30, COLLIDER_NONE, 0);
+		App->particles->AddParticle(App->particles->playerexplosion4, position.x - 40, position.y - 50, COLLIDER_NONE, 0);
+		App->particles->AddParticle(App->particles->playerexplosion5, position.x - 40, position.y - 50, COLLIDER_NONE, 0);
+		App->particles->AddParticle(App->particles->playerexplosion6, position.x - 40, position.y - 50, COLLIDER_NONE, 0);
+		App->particles->AddParticle(App->particles->playerexplosion7, position.x - 40, position.y - 50, COLLIDER_NONE, 0);
+		App->particles->AddParticle(App->particles->playerexplosion8, position.x - 40, position.y - 50, COLLIDER_NONE, 0);*/
+
+
+		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
+
+		destroyed = true;
 	}
 }
