@@ -2,12 +2,15 @@
 #include "Enemy_Turret1.h"
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
-
+#include "ModuleParticles.h"
+#include "SDL/include/SDL_timer.h"
 #include <math.h>
 
 #define RADIUS 300
 #define PI 3.14159265
 #define ANGLE_CONVERT (180.0 / PI)
+#define ANGLE_CONVERT_REVERSE (PI / 180.0)
+#define ENEMY_SHOOT_SPEED 6
 
 Enemy_Turret1::Enemy_Turret1(int x, int y) : Enemy(x, y)
 {
@@ -119,4 +122,52 @@ void Enemy_Turret1::Move()
 	}
 	position.y = original_y;
 	position.x = original_x;
+}
+
+void Enemy_Turret1::Shoot()
+{
+	unsigned int currentTime = 0;
+	bool left = false;
+	float angle = 0;
+	int i = 0;
+
+	currentTime = SDL_GetTicks();
+
+	if (((App->player->position.x <= (original_x + RADIUS)) || (App->player->position.x <= (original_x - RADIUS))) && ((App->player->position.y <= (original_y + RADIUS)) || (App->player->position.y <= (original_y - RADIUS)))){
+		
+		if (App->player->position.x >= original_x){
+			left = false;
+		}
+		else{
+			left = true;
+		}
+
+		angle = ((float)acos((((App->player->position.x + 14 - original_x) * 0) + ((App->player->position.y + 16 - original_y) * 1)) / (sqrt((double)((App->player->position.x + 14 - original_x)*(App->player->position.x + 14 - original_x) + (App->player->position.y + 16 - original_y)*(App->player->position.y + 16 - original_y)))*sqrt((double)(0 * 0 + 1 * 1))))) * ANGLE_CONVERT;
+		//LOG("Angle %.2f", angle);
+		
+		if (currentTime > (lastTime + 1200)) {
+			if (left == true){
+				if ((angle < 90) && (angle >= 0)){
+					App->particles->enemyshoot.speed.x = -ENEMY_SHOOT_SPEED * sin(angle * ANGLE_CONVERT_REVERSE);
+					App->particles->enemyshoot.speed.y = ENEMY_SHOOT_SPEED * cos(angle * ANGLE_CONVERT_REVERSE);
+				}
+				else{
+					App->particles->enemyshoot.speed.x = -ENEMY_SHOOT_SPEED * sin(angle * ANGLE_CONVERT_REVERSE);
+					App->particles->enemyshoot.speed.y = ENEMY_SHOOT_SPEED * cos(angle * ANGLE_CONVERT_REVERSE);
+				}
+			}
+			else{
+				if ((angle < 90) && (angle >= 0)){
+					App->particles->enemyshoot.speed.x = ENEMY_SHOOT_SPEED * sin(angle * ANGLE_CONVERT_REVERSE);
+					App->particles->enemyshoot.speed.y = ENEMY_SHOOT_SPEED * cos(angle * ANGLE_CONVERT_REVERSE);
+				}
+				else{
+					App->particles->enemyshoot.speed.x = ENEMY_SHOOT_SPEED * sin(angle * ANGLE_CONVERT_REVERSE);
+					App->particles->enemyshoot.speed.y = ENEMY_SHOOT_SPEED * cos(angle * ANGLE_CONVERT_REVERSE);
+				}
+			}
+			App->particles->AddParticle(App->particles->enemyshoot, original_x, original_y, COLLIDER_ENEMY_SHOT);
+			lastTime = currentTime;
+		}
+	}
 }

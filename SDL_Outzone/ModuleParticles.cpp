@@ -9,7 +9,7 @@
 
 #include "SDL/include/SDL_timer.h"
 #define weaponshootlife 30
-#define laserlife 500
+#define laserlife 600
 ModuleParticles::ModuleParticles()
 {
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
@@ -24,12 +24,13 @@ ModuleParticles::ModuleParticles()
 	explosion.anim.loop = false;
 	explosion.anim.speed = 0.3f;
 
+	/*
 	laser.anim.PushBack({232, 103, 16, 12});
 	laser.anim.PushBack({249, 103, 16, 12});
 	laser.anim.speed = 0.2f;
 	laser.speed.x = 5;
 	laser.life = 3000;
-
+	*/
 	//
 
 	lascoll.anim.PushBack({ 136, 137, 18, 18 });
@@ -187,6 +188,11 @@ ModuleParticles::ModuleParticles()
 
 	laserweaponshoot337_5.anim.PushBack({ 176, 301, 14, 16 });
 	laserweaponshoot337_5.life = weaponshootlife;
+
+	enemyshoot.anim.PushBack({ 152, 301, 7, 7 });
+	laser337_5.speed.x = 10;
+	laser337_5.speed.y = 10;
+	enemyshoot.life = laserlife;
 }
 
 ModuleParticles::~ModuleParticles()

@@ -89,6 +89,8 @@ public:
 	Particle laserweaponshoot292_5;
 	Particle laserweaponshoot315;
 	Particle laserweaponshoot337_5;
+
+	Particle enemyshoot;
 };
 
 #endif // __MODULEPARTICLES_H__

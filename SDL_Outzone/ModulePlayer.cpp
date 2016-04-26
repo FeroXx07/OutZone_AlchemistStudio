@@ -309,12 +309,10 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	// TODO 3: Update collider position to player position
 	playercollision->SetPos(position.x, (position.y));
-	//Collision->rect.x  += speed;
+
 	// Draw everything --------------------------------------
 	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
-	//TODO 4
 
 	return UPDATE_CONTINUE;
 }
@@ -322,26 +320,9 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	
 	if (c1 == playercollision && destroyed == false && App->fade->IsFading() == false)
 	{
 		int speed = 1;
 		position = PreviousPos;
-		//ADD IFS
-		//position.y = position.y - speed; 
 	}
-	/*
-	if (c1 == playercollision && destroyed == false && App->fade->IsFading() == false)
-	{
-		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
-
-		App->particles->AddParticle(App->particles->explosion, position.x, position.y, COLLIDER_NONE, 150);
-		App->particles->AddParticle(App->particles->explosion, position.x + 8, position.y + 11, COLLIDER_NONE, 220);
-		App->particles->AddParticle(App->particles->explosion, position.x - 7, position.y + 12, COLLIDER_NONE, 670);
-		App->particles->AddParticle(App->particles->explosion, position.x + 5, position.y - 5, COLLIDER_NONE, 480);
-		App->particles->AddParticle(App->particles->explosion, position.x - 4, position.y - 4, COLLIDER_NONE, 350);
-
-		destroyed = true;
-	}
-	*/
 }

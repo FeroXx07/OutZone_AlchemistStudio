@@ -8,6 +8,7 @@
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleSceneSpace.h"
+#include "ModuleFadeToBlack.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -56,6 +57,7 @@ bool ModuleSceneSpace::Start()
 	App->collision->AddCollider({ 150, -2908, 90, 70 }, COLLIDER_WALL);
 
 	// Enemies ---
+	/*
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 600, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 625, 80);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 640, 80);
@@ -71,6 +73,7 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWCOOKIES, 695, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::BROWCOOKIES, 715, 50);
 	App->enemies->AddEnemy(ENEMY_TYPES::TANK, 715, 150);
+	*/
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 123, -568);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 3, -538);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 183, -628);
@@ -98,6 +101,9 @@ update_status ModuleSceneSpace::Update()
 {
 	// Move camera forward -----------------------------
 	//App->render->camera.x += 1 * SCREEN_SIZE;
+	if (App->player->position.y <= -3160){
+		App->fade->FadeToBlack(this, (Module*)App->scene_intro);
+	}
 
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, -3314, NULL);

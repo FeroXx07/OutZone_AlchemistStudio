@@ -12,6 +12,7 @@ private:
 	bool going_up = true;
 	int original_y = 0;
 	int original_x = 0;
+	unsigned int lastTime = 0;
 
 	Animation turret1__0;
 	Animation turret1__22_5;
@@ -35,6 +36,7 @@ public:
 	Enemy_Turret1(int x, int y);
 
 	void Move();
+	void Shoot();
 };
 
 #endif // __ENEMY_TURRET1_H__
