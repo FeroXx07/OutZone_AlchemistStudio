@@ -30,7 +30,7 @@ bool ModuleSceneSpace::Start()
 	App->collision->Enable();
 	App->enemies->Enable();
 
-	App->audio->PlayMusic("rtype/stage1.ogg", 1.0f);
+	App->audio->PlayMusic("Outzone/outzone_002.ogg", 1.0f);
 	
 	// Colliders ---
 	
