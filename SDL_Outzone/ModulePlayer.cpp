@@ -487,7 +487,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		//position = PreviousPos;
 		App->player->Disable();
 
-		App->particles->AddParticle(App->particles->playerexplosion, position.x + 3, position.y + 3, COLLIDER_NONE, 0);
+		App->particles->AddParticle(App->particles->playerexplosion, position.x - 47, position.y - 54, COLLIDER_NONE);
 		/*App->particles->AddParticle(App->particles->playerexplosion, position.x, position.y, COLLIDER_NONE, 0);
 		App->particles->AddParticle(App->particles->playerexplosion, position.x - 20, position.y - 20, COLLIDER_NONE, 0);
 		App->particles->AddParticle(App->particles->playerexplosion, position.x - 30, position.y - 30, COLLIDER_NONE, 0);

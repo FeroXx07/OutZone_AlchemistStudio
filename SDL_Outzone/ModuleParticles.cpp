@@ -25,16 +25,16 @@ ModuleParticles::ModuleParticles()
 	explosionturret.anim.loop = false;
 	explosionturret.anim.speed = 0.3f;
 
-	playerexplosion.anim.PushBack({ 60, 581, 18, 18 });
-	playerexplosion.anim.PushBack({ 169, 575, 34, 33 });
-	playerexplosion.anim.PushBack({ 37, 628, 66, 71 });
-	playerexplosion.anim.PushBack({ 21, 447, 88, 93 });
-	playerexplosion.anim.PushBack({ 124, 439, 120, 115 });
-	playerexplosion.anim.PushBack({ 134, 746, 116, 116 });
-	playerexplosion.anim.PushBack({ 124, 439, 120, 115 });
-	playerexplosion.anim.PushBack({ 21, 877, 116, 115 });
-	playerexplosion.anim.PushBack({ 136, 875, 121, 118 });
-	//playerexplosion.life = 10;
+	playerexplosion.anim.PushBack({ 348, 16, 118, 116 });
+	playerexplosion.anim.PushBack({ 462, 16, 118, 116 });
+	playerexplosion.anim.PushBack({ 584, 16, 118, 116 });
+	playerexplosion.anim.PushBack({ 700, 16, 118, 116 });
+	playerexplosion.anim.PushBack({ 307, 185, 118, 116 });
+	playerexplosion.anim.PushBack({ 425, 185, 118, 116 });
+	playerexplosion.anim.PushBack({ 541, 185, 118, 116 });
+	playerexplosion.anim.PushBack({ 659, 185, 118, 116 });
+	playerexplosion.anim.PushBack({ 775, 185, 118, 118 });
+	//playerexplosion.life = 1;
 	playerexplosion.anim.loop = false;
 	playerexplosion.anim.speed = 0.4f;
 
