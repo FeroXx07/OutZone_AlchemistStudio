@@ -15,14 +15,15 @@ ModuleParticles::ModuleParticles()
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
 
-	explosion.anim.PushBack({274, 296, 33, 30});
-	explosion.anim.PushBack({313, 296, 33, 30});
-	explosion.anim.PushBack({346, 296, 33, 30});
-	explosion.anim.PushBack({382, 296, 33, 30});
-	explosion.anim.PushBack({419, 296, 33, 30});
-	explosion.anim.PushBack({457, 296, 33, 30});
-	explosion.anim.loop = false;
-	explosion.anim.speed = 0.3f;
+	explosionturret.anim.PushBack({117, 332, 33, 38});
+	explosionturret.anim.PushBack({215, 333, 35, 35});
+	explosionturret.anim.PushBack({ 14, 387, 38, 38 });
+	explosionturret.anim.PushBack({ 98, 390, 30, 35 });
+	explosionturret.anim.PushBack({ 138, 387, 31, 38 });
+	explosionturret.anim.PushBack({ 179, 386, 31, 39 });
+	explosionturret.anim.PushBack({ 219, 384, 27, 42 });
+	explosionturret.anim.loop = false;
+	explosionturret.anim.speed = 0.3f;
 
 	/*
 	laser.anim.PushBack({232, 103, 16, 12});
@@ -202,10 +203,10 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	graphics = App->textures->Load("Outzone/particlesoutzone.png");
+	graphics = App->textures->Load("Outzone/particlesoutzoneREAL.png");
 
 	// Load particles fx particle
-	explosion.fx = App->audio->LoadFx("Outzone/outzone_033.wav");
+	explosionturret.fx = App->audio->LoadFx("Outzone/outzone_033.wav");
 	laser0.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
 	laser22_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
 	laser45.fx = App->audio->LoadFx("Outzone/outzone_040.wav");

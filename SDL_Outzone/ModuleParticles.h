@@ -54,7 +54,7 @@ public:
 	Particle lascoll2;
 	Particle lascoll3;
 	Particle lascoll4;
-	Particle explosion;
+	Particle explosionturret;
 	Particle laser;
 	Particle laser0;
 	Particle laser22_5;
