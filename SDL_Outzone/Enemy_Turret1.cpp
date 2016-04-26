@@ -3,10 +3,11 @@
 #include "ModuleCollision.h"
 #include "ModulePlayer.h"
 #include "ModuleParticles.h"
+#include "ModuleRender.h"
 #include "SDL/include/SDL_timer.h"
 #include <math.h>
 
-#define RADIUS 250
+#define RANGE 30
 #define PI 3.14159265
 #define ANGLE_CONVERT (180.0 / PI)
 #define ANGLE_CONVERT_REVERSE (PI / 180.0)
@@ -44,7 +45,7 @@ void Enemy_Turret1::Move()
 	bool left = false;
 	float angle = 0;
 
-	if (((App->player->position.x <= (original_x + RADIUS)) || (App->player->position.x <= (original_x - RADIUS))) && ((App->player->position.y <= (original_y + RADIUS)) || (App->player->position.y <= (original_y - RADIUS)))){
+	if ((original_y >= (App->render->camera.y / 2) - RANGE) && (original_y <= (App->render->camera.y / 2) + 340 - RANGE)){
 		//left or right of the turret
 		if (App->player->position.x >= original_x){
 			left = false;
@@ -133,7 +134,7 @@ void Enemy_Turret1::Shoot()
 
 	currentTime = SDL_GetTicks();
 
-	if (((App->player->position.x <= (original_x + RADIUS)) || (App->player->position.x <= (original_x - RADIUS))) && ((App->player->position.y <= (original_y + RADIUS)) || (App->player->position.y <= (original_y - RADIUS)))){
+	if ((original_y >= (App->render->camera.y / 2) - RANGE) && (original_y <= (App->render->camera.y / 2) + 340 - RANGE)){
 		
 		if (App->player->position.x >= original_x){
 			left = false;
