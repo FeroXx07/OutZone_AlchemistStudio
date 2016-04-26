@@ -52,8 +52,8 @@ ModuleParticles::ModuleParticles()
 
 	laser22_5.anim.PushBack({ 199, 162, 9, 16 });
 	laser22_5.anim.speed = 0.2f;
-	laser22_5.speed.x = -10;
-	laser22_5.speed.y = -10;
+	laser22_5.speed.x = 4;
+	laser22_5.speed.y = -9;
 	laser22_5.life = laserlife;
 
 	laser45.anim.PushBack({ 228, 172, 12, 14 });
@@ -64,8 +64,8 @@ ModuleParticles::ModuleParticles()
 
 	laser67_5.anim.PushBack({ 216, 212, 15, 10 });
 	laser67_5.anim.speed = 0.2f;
-	laser67_5.speed.x = -10;
-	laser67_5.speed.y = -10;
+	laser67_5.speed.x = 9;
+	laser67_5.speed.y = -4;
 	laser67_5.life = laserlife;
 
 	//4st q
@@ -76,8 +76,8 @@ ModuleParticles::ModuleParticles()
 
 	laser112_5.anim.PushBack({ 156, 194, 16, 10 });
 	laser112_5.anim.speed = 0.2f;
-	laser112_5.speed.x = -10;
-	laser112_5.speed.y = -10;
+	laser112_5.speed.x = 9;
+	laser112_5.speed.y = 4;
 	laser112_5.life = laserlife;
 
 	laser135.anim.PushBack({ 149, 222, 13, 14 });
@@ -88,8 +88,8 @@ ModuleParticles::ModuleParticles()
 
 	laser157_5.anim.PushBack({ 106, 201, 10, 16 });
 	laser157_5.anim.speed = 0.2f;
-	laser157_5.speed.x = -10;
-	laser157_5.speed.y = -10;
+	laser157_5.speed.x = 4;
+	laser157_5.speed.y = 9;
 	laser157_5.life = laserlife;
 
 	//3st q
@@ -100,8 +100,8 @@ ModuleParticles::ModuleParticles()
 
 	laser202_5.anim.PushBack({ 15, 205, 9, 16 });
 	laser202_5.anim.speed = 0.2f;
-	laser202_5.speed.x = -10;
-	laser202_5.speed.y = -10;
+	laser202_5.speed.x = -4;
+	laser202_5.speed.y = 9;
 	laser202_5.life = laserlife;
 
 	laser225.anim.PushBack({ 39, 213, 13, 14 });
@@ -112,8 +112,8 @@ ModuleParticles::ModuleParticles()
 
 	laser247_5.anim.PushBack({ 29, 256, 16, 10 });
 	laser247_5.anim.speed = 0.2f;
-	laser247_5.speed.x = -10;
-	laser247_5.speed.y = -10;
+	laser247_5.speed.x = -9;
+	laser247_5.speed.y = 4;
 	laser247_5.life = laserlife;
 
 	//2st q
@@ -124,8 +124,8 @@ ModuleParticles::ModuleParticles()
 
 	laser292_5.anim.PushBack({ 85, 272, 16, 10 });
 	laser292_5.anim.speed = 0.2f;
-	laser292_5.speed.x = -10;
-	laser292_5.speed.y = -10;
+	laser292_5.speed.x = -9;
+	laser292_5.speed.y = -4;
 	laser292_5.life = laserlife;
 
 	laser315.anim.PushBack({ 121, 259, 13, 14 });
@@ -136,8 +136,8 @@ ModuleParticles::ModuleParticles()
 
 	laser337_5.anim.PushBack({ 170, 283, 9, 16 });
 	laser337_5.anim.speed = 0.2f;
-	laser337_5.speed.x = -10;
-	laser337_5.speed.y = -10;
+	laser337_5.speed.x = -4;
+	laser337_5.speed.y = -9;
 	laser337_5.life = laserlife;
 
 	//Weapon shoots
