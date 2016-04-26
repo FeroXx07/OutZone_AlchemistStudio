@@ -300,13 +300,16 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if(active[i] != nullptr && active[i]->collider == c1)
 		{
-			AddParticle(lascoll4, (active[i]->position.x) - 4, (active[i]->position.y) + 5);
-			AddParticle(lascoll3, (active[i]->position.x) - 7, active[i]->position.y);
-			AddParticle(lascoll2, (active[i]->position.x)-7, (active[i]->position.y)-6);
-			AddParticle(lascoll, (active[i]->position.x)-7, (active[i]->position.y)-6);
-			delete active[i];
-			active[i] = nullptr;
-			break;
+			if (c1->type != COLLIDER_ENEMY_SHOT){
+				AddParticle(lascoll4, (active[i]->position.x) - 4, (active[i]->position.y) + 5);
+				AddParticle(lascoll3, (active[i]->position.x) - 7, active[i]->position.y);
+				AddParticle(lascoll2, (active[i]->position.x) - 7, (active[i]->position.y) - 6);
+				AddParticle(lascoll, (active[i]->position.x) - 7, (active[i]->position.y) - 6);
+			}
+				delete active[i];
+				active[i] = nullptr;
+				break;
+			
 		}
 	}
 }
