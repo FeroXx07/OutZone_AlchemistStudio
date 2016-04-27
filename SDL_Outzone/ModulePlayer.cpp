@@ -87,10 +87,10 @@ ModulePlayer::ModulePlayer()
 	Drighbot.loop = true;
 	Drighbot.speed = 0.1f;
 	//Diagonal left bot
-	Lefthbot.PushBack({ 115, 181, 33, 46 });
-	Lefthbot.PushBack({ 150, 181, 38, 46 });
-	Lefthbot.PushBack({ 186, 181, 38, 46 });
-	Lefthbot.PushBack({ 223, 181, 38, 46 });
+	Lefthbot.PushBack({ 117, 187, 30, 36 });
+	Lefthbot.PushBack({ 150, 188, 31, 38 });
+	Lefthbot.PushBack({ 188, 188, 31, 39 });
+	Lefthbot.PushBack({ 225, 190, 28, 37 });
 	Lefthbot.loop = true;
 	Lefthbot.speed = 0.1f;
 }
@@ -518,6 +518,7 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
+	
 	if (c1 == playercollision && destroyed == false && App->fade->IsFading() == false)
 	{
 	if (c2->type == COLLIDER_WALL){
@@ -541,4 +542,5 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			destroyed = true;
 		}
 	}
+	
 }
