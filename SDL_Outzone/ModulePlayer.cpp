@@ -523,7 +523,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	if (c2->type == COLLIDER_WALL){
 			int speed = 1;
 			int height;
-			if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 1))
+			if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 2))
 			{
 				position = PreviousPos;
 				collisionWallT = true;
