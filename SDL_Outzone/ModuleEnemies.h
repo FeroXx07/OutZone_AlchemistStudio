@@ -19,6 +19,7 @@ enum ENEMY_TYPES
 	BROWCOOKIES,
 	TANK,
 	TURRET1,
+	MAZURKA,
 };
 
 class Enemy;

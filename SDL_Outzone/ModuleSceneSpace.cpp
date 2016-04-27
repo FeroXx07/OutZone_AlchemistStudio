@@ -57,23 +57,7 @@ bool ModuleSceneSpace::Start()
 	App->collision->AddCollider({ 150, -2908, 90, 70 }, COLLIDER_WALL);
 
 	// Enemies ---
-	/*
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 600, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 625, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 640, 80);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 665, 80);
-	
-	// TODO 1: Add a new wave of red birds
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 650, 120);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 675, 120);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 695, 120);
-	App->enemies->AddEnemy(ENEMY_TYPES::REDBIRD, 715, 120);
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWCOOKIES, 650, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWCOOKIES, 675, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWCOOKIES, 695, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::BROWCOOKIES, 715, 50);
-	App->enemies->AddEnemy(ENEMY_TYPES::TANK, 715, 150);
-	*/
+
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 123, -568);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 3, -538);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 183, -628);
@@ -92,6 +76,8 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 10, -1886);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 190, -1879);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 168, -1923);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::MAZURKA, 90, -3100);
 
 	return true;
 }
