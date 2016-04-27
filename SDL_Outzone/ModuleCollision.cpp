@@ -106,10 +106,10 @@ update_status ModuleCollision::PreUpdate()
 			{
 				if (matrix[c1->type][c2->type] && c1->callback)
 				{
-					App->render->Blit(App->player->graphics, App->player->PreviousPos.x, App->player->PreviousPos.y, &(App->player->current_animation->GetCurrentFrame()));
-					App->player->collisionPrint = true;
-					c1->callback->OnCollision(c1, c2);
 
+						App->render->Blit(App->player->graphics, App->player->PreviousPos.x, App->player->PreviousPos.y, &(App->player->current_animation->GetCurrentFrame()));
+						App->player->collisionPrint = true;
+						c1->callback->OnCollision(c1, c2);
 
 
 				}
