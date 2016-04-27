@@ -23,7 +23,7 @@ bool ModuleSceneIntro::Start()
 	background = App->textures->Load("Outzone/MenuPixel.png");
 
 	//App->audio->PlayMusic("rtype/intro.ogg", 1.0f);
-	//fx = App->audio->LoadFx("rtype/starting.wav");
+	fx = App->audio->LoadFx("Outzone/outzone_001.wav");
 	App->render->camera.x = App->render->camera.y = 0;
 	
 	return true;
