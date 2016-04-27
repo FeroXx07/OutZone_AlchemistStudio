@@ -106,7 +106,7 @@ bool ModulePlayer::Start()
 	position.x = 105;
 	position.y = 250;
 
-	playercollision = App->collision->AddCollider({ position.x, position.y, 28, 32 }, COLLIDER_PLAYER, this);
+	playercollision = App->collision->AddCollider({ position.x, position.y + 2, 28, 30 }, COLLIDER_PLAYER, this);
 
 	return true;
 }
@@ -473,7 +473,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	playercollision->SetPos(position.x, (position.y));
+	playercollision->SetPos(position.x, (position.y + 2));
 
 	// Draw everything --------------------------------------
 	if (current_animation == nullptr){
@@ -485,7 +485,7 @@ update_status ModulePlayer::Update()
 }
 
 
-void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
+void ModulePlayer::OnCollision(Collider* c1, Collider* c2) 
 {
 	if (c1 == playercollision && destroyed == false && App->fade->IsFading() == false)
 	{
@@ -496,14 +496,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		else{
 			App->player->Disable();
 			App->particles->AddParticle(App->particles->playerexplosion, position.x - 47, position.y - 54, COLLIDER_NONE);
-			/*App->particles->AddParticle(App->particles->playerexplosion, position.x, position.y, COLLIDER_NONE, 0);
-			App->particles->AddParticle(App->particles->playerexplosion, position.x - 20, position.y - 20, COLLIDER_NONE, 0);
-			App->particles->AddParticle(App->particles->playerexplosion, position.x - 30, position.y - 30, COLLIDER_NONE, 0);
-			App->particles->AddParticle(App->particles->playerexplosion, position.x - 40, position.y - 50, COLLIDER_NONE, 0);
-			App->particles->AddParticle(App->particles->playerexplosion, position.x - 40, position.y - 50, COLLIDER_NONE, 0);
-			App->particles->AddParticle(App->particles->playerexplosion, position.x - 40, position.y - 50, COLLIDER_NONE, 0);
-			App->particles->AddParticle(App->particles->playerexplosion, position.x - 40, position.y - 50, COLLIDER_NONE, 0);
-			App->particles->AddParticle(App->particles->playerexplosion, position.x - 40, position.y - 50, COLLIDER_NONE, 0);*/
 			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
 			destroyed = true;
 		}

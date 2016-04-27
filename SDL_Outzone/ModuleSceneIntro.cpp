@@ -25,7 +25,6 @@ bool ModuleSceneIntro::Start()
 	//App->audio->PlayMusic("rtype/intro.ogg", 1.0f);
 	fx = App->audio->LoadFx("rtype/starting.wav");
 	App->render->camera.x = App->render->camera.y = 0;
-	
 	return true;
 }
 
@@ -36,7 +35,6 @@ bool ModuleSceneIntro::CleanUp()
 
 	App->textures->Unload(background);
 	App->audio->UnLoadFx(fx);
-	
 	return true;
 }
 

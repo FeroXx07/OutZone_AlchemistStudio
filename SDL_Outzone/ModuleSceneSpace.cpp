@@ -77,6 +77,21 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 123, -568);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 3, -538);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 183, -628);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 123, -928);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 190, -1998);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 3, -2006);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 70, -2013);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 18, -1968);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 130, -2020);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 93, -1975);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 145, -1968);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 40, -1929);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 138, -1900);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 100, -1929);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 70, -1893);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 10, -1886);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 190, -1879);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 168, -1923);
 
 	return true;
 }
