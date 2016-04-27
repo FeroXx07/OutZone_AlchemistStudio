@@ -422,9 +422,9 @@ update_status ModulePlayer::Update()
 			App->particles->AddParticle(App->particles->laserweaponshoot135, position.x + 15, position.y + 15);
 		}
 	}
-	if (App->input->keyboard[SDL_SCANCODE_X] == KEY_STATE::KEY_REPEAT)
+	if (App->input->keyboard[SDL_SCANCODE_X] == KEY_STATE::KEY_DOWN)
 	{
-		App->particles->AddParticle(App->particles->bomb, position.x-110, position.y-200, COLLIDER_PLAYER_SHOT);
+		App->particles->AddParticle(App->particles->bomb, App->render->camera.x/2, App->render->camera.y/2, COLLIDER_BOMB);
 	}
 	/*
 	//N,S,E,W,NE,NW,SE,SW

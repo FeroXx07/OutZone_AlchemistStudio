@@ -16,25 +16,26 @@ ModuleParticles::ModuleParticles()
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
 	//bomb
-	bomb.anim.PushBack({ 4788, 97, 240, 320 });
-	bomb.anim.PushBack({948, 97, 240, 320 });
-	bomb.anim.PushBack({ 1188, 97, 240, 320 });
-	bomb.anim.PushBack({1428, 97, 240, 320 });
-	bomb.anim.PushBack({ 1668, 97, 240, 320 });
-	bomb.anim.PushBack({ 1908, 97, 240, 320 });
-	bomb.anim.PushBack({ 2148, 97, 240, 320 });
-	bomb.anim.PushBack({ 2388, 97, 240, 320 });
-	bomb.anim.PushBack({ 2628, 97, 240, 320 });
-	bomb.anim.PushBack({ 2868, 97, 240, 320 });
-	bomb.anim.PushBack({ 3108, 97, 240, 320 });
-	bomb.anim.PushBack({ 3348, 97, 240, 320 });
-	bomb.anim.PushBack({ 3588, 97, 240, 320 });
-	bomb.anim.PushBack({ 3828, 97, 240, 320 });
-	bomb.anim.PushBack({ 4068, 97, 240, 320 });
-	bomb.anim.PushBack({ 4308, 97, 240, 320 });
-	bomb.anim.PushBack({ 4548, 97, 240, 320 });
+	bomb.anim.PushBack({ 0, 490, 240, 320 });
+	bomb.anim.PushBack({240, 490, 240, 320 });
+	bomb.anim.PushBack({ 480, 490, 240, 320 });
+	bomb.anim.PushBack({720, 490, 240, 320 });
+	bomb.anim.PushBack({ 960, 490, 240, 320 });
+	bomb.anim.PushBack({ 1200, 490, 240, 320 });
+	bomb.anim.PushBack({ 1440, 490, 240, 320 });
+	bomb.anim.PushBack({ 1680, 490, 240, 320 });
+	bomb.anim.PushBack({1920, 490, 240, 320 });
+	bomb.anim.PushBack({ 2160, 490, 240, 320 });
+	bomb.anim.PushBack({ 2400, 490, 240, 320 });
+	bomb.anim.PushBack({ 2640, 490, 240, 320 });
+	bomb.anim.PushBack({ 2880, 490, 240, 320 });
+	bomb.anim.PushBack({ 3120, 490, 240, 320 });
+	bomb.anim.PushBack({ 3360, 490, 240, 320 });
+	bomb.anim.PushBack({ 3600, 490, 240, 320 });
+	bomb.anim.PushBack({ 3840, 490, 240, 320 });
+	bomb.anim.speed = 0.5f;
 	bomb.speed.x = 0;
-	bomb.speed.y = -10;
+	bomb.speed.y = 0;
 
 
 	explosionturret.anim.PushBack({117, 332, 33, 38});
