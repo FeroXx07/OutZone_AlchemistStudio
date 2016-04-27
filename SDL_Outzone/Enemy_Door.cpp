@@ -12,7 +12,7 @@ Enemy_Door::Enemy_Door(int x, int y) : Enemy(x, y)
 
 	animation = &Door;
 
-	collider = App->collision->AddCollider({ 0, 0, 116, 108 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 116, 108 }, COLLIDER_TYPE::COLLIDER_DOOR, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;

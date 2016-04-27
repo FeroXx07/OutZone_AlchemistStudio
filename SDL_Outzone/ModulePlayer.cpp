@@ -499,7 +499,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	
 	if (c1 == playercollision && destroyed == false && App->fade->IsFading() == false)
 	{
-	if (c2->type == COLLIDER_WALL){
+		if (c2->type == COLLIDER_WALL || c2->type == COLLIDER_DOOR){
 			int speed = 1;
 			int height;
 			if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 2))
