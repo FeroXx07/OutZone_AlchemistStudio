@@ -23,6 +23,45 @@ You can combine the keys above to use the diagonal movement.
 
 SPACE -> To shoot.
 
+X -> Bomb.
+
+
+##Win lose condition
+
+Win -> Achieve the end of the level.
+
+Lose -> Get shoot by an enemy.
+
+
+##Changelist
+
+- Level 1, win screen, lose screen, intro screen implemented.
+
+- All level 1 collisions.
+
+- Movement W,A,S,D + Diagonals
+
+- Shoots for all directions, if you shoot W and then move to a diagonal shoot another shoot.
+
+- Rotating turrets to the direction of the player.
+
+- Turrets shoot to the player, following him.
+
+- The player slips through the walls.
+
+- Turret enemy.
+
+- Static boss.
+
+- Door.
+
+- Bomb.
+
+
+##Project wiki
+
+https://github.com/nicobabot/OutZone_AlchemistStudio/wiki
+
 
 ## Credits
 
