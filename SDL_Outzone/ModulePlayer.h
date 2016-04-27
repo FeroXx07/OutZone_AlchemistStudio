@@ -40,6 +40,8 @@ public:
 	ModulePlayer();
 	~ModulePlayer();
 
+	unsigned int playerinitialtime = 0;
+	unsigned int playertime = 0;
 	unsigned int playercurrenttime = 0;
 	unsigned int playeractiontime = 0;
 	bool Start();

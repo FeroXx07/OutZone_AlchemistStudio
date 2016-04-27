@@ -21,7 +21,7 @@ bool ModuleWinScreen::Start()
 {
 	LOG("Loading game over");
 
-	background = App->textures->Load("Outzone/Gamefinal1v.1.png");
+	background = App->textures->Load("Outzone/Gamefinal1.png");
 
 	//App->audio->PlayMusic("rtype/intro.ogg", 1.0f);
 	//	fx = App->audio->LoadFx("rtype/starting.wav");

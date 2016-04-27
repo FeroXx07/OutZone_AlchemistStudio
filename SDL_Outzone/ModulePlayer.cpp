@@ -426,46 +426,14 @@ update_status ModulePlayer::Update()
 	{
 		App->particles->AddParticle(App->particles->bomb, App->render->camera.x/2, App->render->camera.y/2, COLLIDER_BOMB);
 	}
-	/*
-	//N,S,E,W,NE,NW,SE,SW
-	if (lastkeypressed == LAST_KEY_W){
-	App->particles->AddParticle(App->particles->laser0, position.x + 18, position.y, COLLIDER_PLAYER_SHOT);
-	App->particles->AddParticle(App->particles->laserweaponshoot0, position.x + 13, position.y - 13);
-	}
-	else if (lastkeypressed == LAST_KEY_A){
-	App->particles->AddParticle(App->particles->laser270, position.x - 2, position.y + 5, COLLIDER_PLAYER_SHOT);
-	App->particles->AddParticle(App->particles->laserweaponshoot270, position.x - 12, position.y + 2);
-	}
-	else if (lastkeypressed == LAST_KEY_S){
-	App->particles->AddParticle(App->particles->laser180, position.x + 5, position.y + 13, COLLIDER_PLAYER_SHOT);
-	App->particles->AddParticle(App->particles->laserweaponshoot180, position.x + 1, position.y + 23);
-	}
-	else if (lastkeypressed == LAST_KEY_D){
-	App->particles->AddParticle(App->particles->laser90, position.x + 15, position.y + 10, COLLIDER_PLAYER_SHOT);
-	App->particles->AddParticle(App->particles->laserweaponshoot90, position.x + 25, position.y + 4);
-	}
-	else if (lastkeypressed == LAST_KEY_WA){
-	App->particles->AddParticle(App->particles->laser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-	App->particles->AddParticle(App->particles->laserweaponshoot315, position.x, position.y - 10);
-	}
-	else if (lastkeypressed == LAST_KEY_WD){
-	App->particles->AddParticle(App->particles->laser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-	App->particles->AddParticle(App->particles->laserweaponshoot45, position.x + 23, position.y - 8);
-	}
-	else if (lastkeypressed == LAST_KEY_SA){
-	App->particles->AddParticle(App->particles->laser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-	App->particles->AddParticle(App->particles->laserweaponshoot225, position.x - 8, position.y + 13);
-	}
-	else if (lastkeypressed == LAST_KEY_SD){
-	App->particles->AddParticle(App->particles->laser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-	App->particles->AddParticle(App->particles->laserweaponshoot135, position.x + 15, position.y + 15);
-	}
-	*/
 
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE){
+
+		playertime = SDL_GetTicks();
+
 		if (lastkeypressed == LAST_KEY_W){
 			current_animation = &idle_w;
 		}
@@ -493,6 +461,12 @@ update_status ModulePlayer::Update()
 		else{
 			current_animation = &idle_w;
 		}
+
+		if (playertime > (playerinitialtime + 7000)) {
+			App->particles->AddParticle(App->particles->goahead, (App->render->camera.x / 2) + 95, (App->render->camera.y / 2) + 60);
+			playerinitialtime = playertime;
+		}
+
 	}
 
 	playercollision->SetPos(position.x, (position.y + 2));

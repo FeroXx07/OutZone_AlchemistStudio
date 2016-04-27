@@ -229,6 +229,22 @@ ModuleParticles::ModuleParticles()
 	enemyshoot.anim.PushBack({ 152, 301, 7, 7 });
 	enemyshoot.life = 1500;
 
+	goahead.anim.PushBack({ 4, 437, 50, 48 });
+	goahead.anim.PushBack({ 0, 0, 1, 1 });
+	goahead.anim.PushBack({ 4, 437, 50, 48 });
+	goahead.anim.PushBack({ 0, 0, 1, 1 });
+	goahead.anim.PushBack({ 4, 437, 50, 48 });
+	goahead.anim.PushBack({ 0, 0, 1, 1 });
+	goahead.anim.PushBack({ 4, 437, 50, 48 });
+	goahead.anim.PushBack({ 0, 0, 1, 1 });
+	goahead.anim.PushBack({ 4, 437, 50, 48 });
+	goahead.anim.PushBack({ 0, 0, 1, 1 });
+	goahead.anim.PushBack({ 4, 437, 50, 48 });
+	goahead.anim.PushBack({ 0, 0, 1, 1 });
+	goahead.anim.speed = 0.2f;
+	goahead.anim.loop = true;
+	goahead.life = 2000;
+
 }
 
 ModuleParticles::~ModuleParticles()
