@@ -5,34 +5,34 @@
 #include "ModuleInput.h"
 #include "ModuleRender.h"
 #include "ModuleFadeToBlack.h"
-#include "ModuleSceneIntro.h"
+#include "ModuleSceneGameOver.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
-ModuleSceneIntro::ModuleSceneIntro()
+ModuleGameOver::ModuleGameOver()
 {}
 
-ModuleSceneIntro::~ModuleSceneIntro()
+ModuleGameOver::~ModuleGameOver()
 {}
 
 // Load assets
-bool ModuleSceneIntro::Start()
+bool ModuleGameOver::Start()
 {
-	LOG("Loading space intro");
+	LOG("Loading game over");
 	
-	background = App->textures->Load("Outzone/MenuPixel.png");
+	background = App->textures->Load("Outzone/GameOver.png");
 
 	//App->audio->PlayMusic("rtype/intro.ogg", 1.0f);
-	//fx = App->audio->LoadFx("rtype/starting.wav");
+//	fx = App->audio->LoadFx("rtype/starting.wav");
 	App->render->camera.x = App->render->camera.y = 0;
 	
 	return true;
 }
 
 // UnLoad assets
-bool ModuleSceneIntro::CleanUp()
+bool ModuleGameOver::CleanUp()
 {
-	LOG("Unloading space scene");
+	LOG("Unloading game over");
 
 	App->textures->Unload(background);
 	App->audio->UnLoadFx(fx);
@@ -41,13 +41,13 @@ bool ModuleSceneIntro::CleanUp()
 }
 
 // Update: draw background
-update_status ModuleSceneIntro::Update()
+update_status ModuleGameOver::Update()
 {
 	App->render->Blit(background, 0, 0, NULL);
 
 	if(App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_DOWN && App->fade->IsFading() == false)
 	{
-		App->fade->FadeToBlack(this, (Module*)App->scene_space);
+		App->fade->FadeToBlack((Module*)App->scene_gameover, (Module*)App->scene_intro);
 		App->audio->PlayFx(fx);
 	}
 

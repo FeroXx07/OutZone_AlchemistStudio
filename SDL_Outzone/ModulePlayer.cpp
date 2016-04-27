@@ -537,7 +537,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		else{
 			App->player->Disable();
 			App->particles->AddParticle(App->particles->playerexplosion, position.x - 47, position.y - 54, COLLIDER_NONE);
-			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_intro);
+			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
 			destroyed = true;
 		}
 	}
