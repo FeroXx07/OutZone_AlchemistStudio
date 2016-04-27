@@ -474,8 +474,11 @@ update_status ModulePlayer::Update()
 	playercollision->SetPos(position.x, (position.y));
 
 	// Draw everything --------------------------------------
-	App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
-
+	if (current_animation == nullptr){
+	}
+	else{
+		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+	}
 	return UPDATE_CONTINUE;
 }
 
