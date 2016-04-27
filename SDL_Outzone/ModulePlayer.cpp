@@ -494,14 +494,20 @@ update_status ModulePlayer::Update()
 	playercollision->SetPos(position.x, (position.y + 2));
 
 	// Draw everything --------------------------------------
-	if (collisionPrint == true)
-	{
-		App->render->Blit(graphics, PreviousPos.x, PreviousPos.y, &(current_animation->GetCurrentFrame()));
-		//collisionPrint = false;
+	if (current_animation == nullptr){
 	}
-	else
-	{
-		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+	else{
+		if (collisionPrint == true)
+		{
+			App->render->Blit(graphics, PreviousPos.x, PreviousPos.y, &(current_animation->GetCurrentFrame()));
+			//collisionPrint = false;
+		}
+		else
+		{
+
+			App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
+
+		}
 	}
 		
 	
