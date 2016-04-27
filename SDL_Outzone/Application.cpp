@@ -12,6 +12,7 @@
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
 #include "ModuleSceneGameOver.h"
+#include"ModuleWinScreen.h"
 
 Application::Application()
 {
@@ -24,6 +25,7 @@ Application::Application()
 	modules[i++] = scene_intro = new ModuleSceneIntro();
 	modules[i++] = scene_space = new ModuleSceneSpace();
 	modules[i++] = scene_gameover = new ModuleGameOver();
+	modules[i++] = scene_gamewin = new ModuleWinScreen();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = player = new ModulePlayer();
 	modules[i++] = particles = new ModuleParticles();
@@ -42,6 +44,7 @@ bool Application::Init()
 	bool ret = true;
 
 	// Deactivate modules here ----
+	scene_gamewin->Disable();
 	scene_space->Disable();
 	scene_gameover->Disable();
 	player->Disable();
