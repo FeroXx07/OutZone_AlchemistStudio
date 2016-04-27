@@ -20,6 +20,7 @@ enum ENEMY_TYPES
 	TANK,
 	TURRET1,
 	MAZURKA,
+	DOOR,
 };
 
 class Enemy;

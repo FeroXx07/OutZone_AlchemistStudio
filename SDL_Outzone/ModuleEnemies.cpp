@@ -10,6 +10,7 @@
 #include "Enemy_Turret1.h"
 #include "Enemy_Mazurka.h"
 #include "Enemy_tank.h"
+#include "Enemy_Door.h"
 #define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()
@@ -149,6 +150,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 			case ENEMY_TYPES::MAZURKA:
 				enemies[i] = new Enemy_Mazurka(info.x, info.y);
+				break;
+
+			case ENEMY_TYPES::DOOR:
+				enemies[i] = new Enemy_Door(info.x, info.y);
 				break;
 		}
 		
