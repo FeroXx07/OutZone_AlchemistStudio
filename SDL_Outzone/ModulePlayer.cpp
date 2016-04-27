@@ -93,7 +93,6 @@ ModulePlayer::ModulePlayer()
 	Lefthbot.PushBack({ 223, 181, 38, 46 });
 	Lefthbot.loop = true;
 	Lefthbot.speed = 0.1f;
-
 }
 
 ModulePlayer::~ModulePlayer()
@@ -136,20 +135,21 @@ update_status ModulePlayer::Update()
 		if (App->player->position.y <= (150 + (App->render->camera.y / 2))){
 			App->render->camera.y -= speed;
 		}
+		
 	}
 
 	speed = 1;
 	//2
 
-	if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
+	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
-		if (lastkeypressed != LAST_KEY_A){
-			beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
-		}
-		lastkeypressed = LAST_KEY::LAST_KEY_A;
-
 		if ((position.x -= speed) <= 0){
 			position.x = 0;
+		}
+		if (collisionWallS == true)
+		{
+			position.x = PreviousPos.x;
+			collisionWallS = false;
 		}
 		else{
 			position.x -= speed;
@@ -161,15 +161,15 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE))
+	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
-		if (lastkeypressed != LAST_KEY_D){
-			beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
-		}
-		lastkeypressed = LAST_KEY::LAST_KEY_D;
-
 		if ((position.x += speed) >= 215){
 			position.x = 215;
+		}
+		if (collisionWallS == true)
+		{
+			position.x = PreviousPos.x;
+			collisionWallS = false;
 		}
 		else{
 			position.x += speed;
@@ -180,12 +180,12 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 	{
-		lastkeypressed = LAST_KEY::LAST_KEY_S;
-
-		if (lastkeypressed != LAST_KEY_S){
-			beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
+		if (collisionWallT == true)
+		{
+			position.y = PreviousPos.y;
+			collisionWallT = false;
 		}
 		if ((position.y += speed) >= (280 + (App->render->camera.y / 2))){
 			position.y = (280 + (App->render->camera.y / 2));
@@ -193,103 +193,130 @@ update_status ModulePlayer::Update()
 		else{
 			position.y += speed;
 		}
+
 		current_animation = &down;
-	}
-
-	if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)){
-		if ((position.y += speed) >= (280 + (App->render->camera.y / 2))){
-			position.y = (280 + (App->render->camera.y / 2));
-		}
-		else{
-			position.y += speed;
-		}
-
-		if ((position.x += speed) >= 215){
-			position.x = 215;
-		}
-		else{
-			position.x += speed;
-		}
-
-
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-			current_animation = &down;
-		}
-		else{
-			current_animation = &Drighbot;
-			if (lastkeypressed != LAST_KEY_SD){
-				beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
-			}
-			lastkeypressed = LAST_KEY::LAST_KEY_SD;
-		}
-	}
-
-	if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)){
-		if ((position.x -= speed) <= 0){
-			position.x = 0;
-		}
-		else{
-			position.x -= speed;
-		}
-
-		if ((position.y += speed) >= (280 + (App->render->camera.y / 2))){
-			position.y = (280 + (App->render->camera.y / 2));
-		}
-		else{
-			position.y += speed;
-		}
 
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
-			current_animation = &down;
-		}
-		else{
-			current_animation = &Lefthbot;
-			if (lastkeypressed != LAST_KEY_SA){
-				beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
+			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+				current_animation = &down;
 			}
-			lastkeypressed = LAST_KEY::LAST_KEY_SA;
+			else{
+				current_animation = &Drighbot;
+			}
+		}
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+				current_animation = &down;
+			}
+			else{
+				current_animation = &Lefthbot;
+			}
 		}
 	}
 
-	if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		lastkeypressed = LAST_KEY::LAST_KEY_W;
-
 		if ((position.y -= speed) <= -3160){
 			position.y = -3160;
+		}
+		if (collisionWallT == true)
+		{
+			position.y = PreviousPos.y;
+			collisionWallT = false;
 		}
 		else{
 			position.y -= speed;
 		}
 
+		//if (current_animation != &up)
+		//{
+		//	up.Reset();
 		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT){
 			current_animation = &idle_w;
 		}
 		else{
 			current_animation = &up;
 		}
+
+		//}
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+				current_animation = &up;
+			}
+			else{
+				current_animation = &Drightop;
+			}
+		}
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+				current_animation = &up;
+			}
+			else{
+				current_animation = &Lefthtop;
+			}
+		}
+	}
+
+	if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
+	{
+		if (lastkeypressed != LAST_KEY_A){
+			beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
+			playeractiontime = SDL_GetTicks();
+		}
+		lastkeypressed = LAST_KEY::LAST_KEY_A;
+	}
+
+	if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE))
+	{
+		if (lastkeypressed != LAST_KEY_D){
+			beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
+			playeractiontime = SDL_GetTicks();
+		}
+		lastkeypressed = LAST_KEY::LAST_KEY_D;
+	}
+
+	if (((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)) || ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)))
+	{
+		if (lastkeypressed != LAST_KEY_S){
+			beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
+			playeractiontime = SDL_GetTicks();
+		}
+		lastkeypressed = LAST_KEY::LAST_KEY_S;
+	}
+
+	if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)){
+		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+		}
+		else{
+			if (lastkeypressed != LAST_KEY_SD){
+				beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
+				playeractiontime = SDL_GetTicks();
+			}
+			lastkeypressed = LAST_KEY::LAST_KEY_SD;
+		}
+	}
+
+	if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)){
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+		}
+		else{
+			if (lastkeypressed != LAST_KEY_SA){
+				beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
+				playeractiontime = SDL_GetTicks();
+			}
+			lastkeypressed = LAST_KEY::LAST_KEY_SA;
+		}
+	}
+
+	if (((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)) || ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)))
+	{
+		lastkeypressed = LAST_KEY::LAST_KEY_W;
 	}
 
 	if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)){
-		if ((position.y -= speed) <= -3160){
-			position.y = -3160;
-		}
-		else{
-			position.y -= speed;
-		}
-		if ((position.x += speed) >= 215){
-			position.x = 215;
-		}
-		else{
-			position.x += speed;
-		}
-
-
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-			current_animation = &up;
 		}
 		else{
-			current_animation = &Drightop;
 			if (lastkeypressed != LAST_KEY_WD){
 				beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
 				playeractiontime = SDL_GetTicks();
@@ -298,29 +325,13 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)){
-		if ((position.y -= speed) <= -3160){
-			position.y = -3160;
-		}
-		else{
-			position.y -= speed;
-		}
-
-		if ((position.x -= speed) <= 0){
-			position.x = 0;
-		}
-		else{
-			position.x -= speed;
-		}
-
-
+	if (((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))){
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
-			current_animation = &up;
 		}
 		else{
-			current_animation = &Lefthtop;
 			if (lastkeypressed != LAST_KEY_WA){
 				beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
+				playeractiontime = SDL_GetTicks();
 			}
 			lastkeypressed = LAST_KEY::LAST_KEY_WA;
 		}
@@ -361,7 +372,7 @@ update_status ModulePlayer::Update()
 			App->particles->AddParticle(App->particles->laserweaponshoot315, position.x, position.y - 10);
 		}
 		else if (lastkeypressed == LAST_KEY_WD){
-			if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+ 			if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
 				if (beforelastkeypressed == LAST_KEY_W){
 					App->particles->AddParticle(App->particles->laser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
 					beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
@@ -478,22 +489,39 @@ update_status ModulePlayer::Update()
 	playercollision->SetPos(position.x, (position.y + 2));
 
 	// Draw everything --------------------------------------
-	if (current_animation == nullptr){
+	if (collisionPrint == true)
+	{
+		App->render->Blit(graphics, PreviousPos.x, PreviousPos.y, &(current_animation->GetCurrentFrame()));
+		//collisionPrint = false;
 	}
-	else{
+	else
+	{
 		App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
 	}
+		
+	
+
 	return UPDATE_CONTINUE;
 }
 
 
-void ModulePlayer::OnCollision(Collider* c1, Collider* c2) 
+void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (c1 == playercollision && destroyed == false && App->fade->IsFading() == false)
 	{
-		if (c2->type == COLLIDER_WALL){
+	if (c2->type == COLLIDER_WALL){
 			int speed = 1;
-			position = PreviousPos;
+			int height;
+			if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 1))
+			{
+				position = PreviousPos;
+				collisionWallT = true;
+			}
+		else if (((c2->rect.x + c2->rect.w) <= c1->rect.x + 1) || ((c1->rect.x + c1->rect.w) >= c2->rect.x + 1))
+			{
+				position = PreviousPos;
+				collisionWallS = true;
+			}
 		}
 		else{
 			App->player->Disable();

@@ -78,6 +78,9 @@ public:
 	iPoint PreviousPos;
 	Collider* playercollision;
 	bool destroyed = false;
+	bool collisionWallS = false;
+	bool collisionWallT = false;
+	bool collisionPrint = false;
 };
 
 #endif

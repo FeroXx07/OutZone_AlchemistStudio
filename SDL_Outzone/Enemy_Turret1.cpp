@@ -11,7 +11,7 @@
 #define PI 3.14159265
 #define ANGLE_CONVERT (180.0 / PI)
 #define ANGLE_CONVERT_REVERSE (PI / 180.0)
-#define ENEMY_SHOOT_SPEED 4
+#define ENEMY_SHOOT_SPEED 5
 
 Enemy_Turret1::Enemy_Turret1(int x, int y) : Enemy(x, y)
 {
