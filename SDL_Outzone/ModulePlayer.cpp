@@ -61,33 +61,35 @@ ModulePlayer::ModulePlayer()
 	right.loop = true;
 	right.speed = 0.1f;
 	//Diagonal right top
-	Drightop.PushBack({ 19, 24, 27, 36 });
-	Drightop.PushBack({ 297, 344, 25, 37 });
-	Drightop.PushBack({ 19, 24, 27, 36 });
-	Drightop.PushBack({ 297, 344, 25, 37 });
+	Drightop.PushBack({ 209, 79, 28, 40 });
+	Drightop.PushBack({ 238, 75, 27, 42 });
+	Drightop.PushBack({ 270, 74, 30, 41 });
+	Drightop.PushBack({ 305, 75, 26, 40 });
 	Drightop.loop = true;
-	Drightop.speed = 0.05f;
+	Drightop.speed = 0.1f;
 	//Diagonal left top
-	Lefthtop.PushBack({ 58, 79, 29, 36 });
-	Lefthtop.PushBack({ 97, 78, 28, 37 });
-	Lefthtop.PushBack({ 58, 79, 29, 36 });
-	Lefthtop.PushBack({ 97, 78, 28, 37 });
+	Lefthtop.PushBack({ 320, 216, 33, 40 });
+	Lefthtop.PushBack({ 355, 215, 35, 42 });
+	Lefthtop.PushBack({ 390, 215, 33, 42 });
+	Lefthtop.PushBack({ 425, 212, 33, 38 });
 	Lefthtop.loop = true;
-	Lefthtop.speed = 0.05f;
+	Lefthtop.speed = 0.1f;
 	//Diagonal right bot
-	Drighbot.PushBack({ 27, 238, 28, 37 });
-	Drighbot.PushBack({ 66, 238, 27, 37 });
-	Drighbot.PushBack({ 27, 238, 28, 37 });
-	Drighbot.PushBack({ 66, 238, 27, 37 });
+	Drighbot.PushBack({ 265, 140, 33, 44 });
+	Drighbot.PushBack({ 295, 143, 33, 41 });
+	Drighbot.PushBack({ 331, 143, 34, 44 });
+	Drighbot.PushBack({ 365, 143, 34, 44 });
+	Drighbot.PushBack({ 401, 143, 32, 44 });
 	Drighbot.loop = true;
-	Drighbot.speed = 0.05f;
+	Drighbot.speed = 0.1f;
 	//Diagonal left bot
-	Lefthbot.PushBack({ 63, 187, 30, 37 });
-	Lefthbot.PushBack({ 105, 288, 30, 36 });
-	Lefthbot.PushBack({ 63, 187, 30, 37 });
-	Lefthbot.PushBack({ 105, 288, 30, 36 });
+	Lefthbot.PushBack({ 115, 181, 33, 46 });
+	Lefthbot.PushBack({ 150, 181, 38, 46 });
+	Lefthbot.PushBack({ 186, 181, 38, 46 });
+	Lefthbot.PushBack({ 223, 181, 38, 46 });
 	Lefthbot.loop = true;
-	Lefthbot.speed = 0.05f;
+	Lefthbot.speed = 0.1f;
+
 }
 
 ModulePlayer::~ModulePlayer()
@@ -98,7 +100,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 
-	graphics = App->textures->Load("Outzone/playermovement.png");
+	graphics = App->textures->Load("Outzone/playermovement2.png");
 
 	destroyed = false;
 	position.x = 105;
