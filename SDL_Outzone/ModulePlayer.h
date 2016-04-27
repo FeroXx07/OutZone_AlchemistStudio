@@ -40,6 +40,8 @@ public:
 	ModulePlayer();
 	~ModulePlayer();
 
+	unsigned int playercurrenttime = 0;
+	unsigned int playeractiontime = 0;
 	bool Start();
 	update_status Update();
 	bool CleanUp();

@@ -9,6 +9,10 @@
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
 
+#include "SDL/include/SDL_timer.h"
+
+#define PLAYER_MULTIPLE_SHOOT_DELAY 750
+
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModulePlayer::ModulePlayer()
@@ -137,12 +141,13 @@ update_status ModulePlayer::Update()
 	speed = 1;
 	//2
 
-	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+	if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
 	{
 		if (lastkeypressed != LAST_KEY_A){
 			beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
 		}
 		lastkeypressed = LAST_KEY::LAST_KEY_A;
+
 		if ((position.x -= speed) <= 0){
 			position.x = 0;
 		}
@@ -156,12 +161,13 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+	if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE))
 	{
 		if (lastkeypressed != LAST_KEY_D){
 			beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
 		}
 		lastkeypressed = LAST_KEY::LAST_KEY_D;
+
 		if ((position.x += speed) >= 215){
 			position.x = 215;
 		}
@@ -174,12 +180,23 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+	if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
 	{
+		lastkeypressed = LAST_KEY::LAST_KEY_S;
+
 		if (lastkeypressed != LAST_KEY_S){
 			beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
 		}
-		lastkeypressed = LAST_KEY::LAST_KEY_S;
+		if ((position.y += speed) >= (280 + (App->render->camera.y / 2))){
+			position.y = (280 + (App->render->camera.y / 2));
+		}
+		else{
+			position.y += speed;
+		}
+		current_animation = &down;
+	}
+
+	if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)){
 		if ((position.y += speed) >= (280 + (App->render->camera.y / 2))){
 			position.y = (280 + (App->render->camera.y / 2));
 		}
@@ -187,37 +204,57 @@ update_status ModulePlayer::Update()
 			position.y += speed;
 		}
 
-		current_animation = &down;
-
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
-			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-				current_animation = &down;
-			}
-			else{
-				current_animation = &Drighbot;
-				if (lastkeypressed != LAST_KEY_SD){
-					beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
-				}
-				lastkeypressed = LAST_KEY::LAST_KEY_SD;
-			}
+		if ((position.x += speed) >= 215){
+			position.x = 215;
 		}
+		else{
+			position.x += speed;
+		}
+
+
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
-				current_animation = &down;
+			current_animation = &down;
+		}
+		else{
+			current_animation = &Drighbot;
+			if (lastkeypressed != LAST_KEY_SD){
+				beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
 			}
-			else{
-				current_animation = &Lefthbot;
-				if (lastkeypressed != LAST_KEY_SA){
-					beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
-				}
-				lastkeypressed = LAST_KEY::LAST_KEY_SA;
-			}
+			lastkeypressed = LAST_KEY::LAST_KEY_SD;
 		}
 	}
 
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+	if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)){
+		if ((position.x -= speed) <= 0){
+			position.x = 0;
+		}
+		else{
+			position.x -= speed;
+		}
+
+		if ((position.y += speed) >= (280 + (App->render->camera.y / 2))){
+			position.y = (280 + (App->render->camera.y / 2));
+		}
+		else{
+			position.y += speed;
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+			current_animation = &down;
+		}
+		else{
+			current_animation = &Lefthbot;
+			if (lastkeypressed != LAST_KEY_SA){
+				beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
+			}
+			lastkeypressed = LAST_KEY::LAST_KEY_SA;
+		}
+	}
+
+	if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
 	{
 		lastkeypressed = LAST_KEY::LAST_KEY_W;
+
 		if ((position.y -= speed) <= -3160){
 			position.y = -3160;
 		}
@@ -225,221 +262,186 @@ update_status ModulePlayer::Update()
 			position.y -= speed;
 		}
 
-		//if (current_animation != &up)
-		//{
-		//	up.Reset();
 		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT){
 			current_animation = &idle_w;
 		}
 		else{
 			current_animation = &up;
 		}
+	}
 
-		//}
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
-			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-				current_animation = &up;
-			}
-			else{
-				current_animation = &Drightop;
-				if (lastkeypressed != LAST_KEY_WD){
-					beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
-				}
-				lastkeypressed = LAST_KEY::LAST_KEY_WD;
-			}
+	if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)){
+		if ((position.y -= speed) <= -3160){
+			position.y = -3160;
 		}
+		else{
+			position.y -= speed;
+		}
+		if ((position.x += speed) >= 215){
+			position.x = 215;
+		}
+		else{
+			position.x += speed;
+		}
+
+
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
-				current_animation = &up;
+			current_animation = &up;
+		}
+		else{
+			current_animation = &Drightop;
+			if (lastkeypressed != LAST_KEY_WD){
+				beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
+				playeractiontime = SDL_GetTicks();
 			}
-			else{
-				current_animation = &Lefthtop;
-				if (lastkeypressed != LAST_KEY_WA){
-					beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
+			lastkeypressed = LAST_KEY::LAST_KEY_WD;
+		}
+	}
+
+	if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)){
+		if ((position.y -= speed) <= -3160){
+			position.y = -3160;
+		}
+		else{
+			position.y -= speed;
+		}
+
+		if ((position.x -= speed) <= 0){
+			position.x = 0;
+		}
+		else{
+			position.x -= speed;
+		}
+
+
+		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+			current_animation = &up;
+		}
+		else{
+			current_animation = &Lefthtop;
+			if (lastkeypressed != LAST_KEY_WA){
+				beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
+			}
+			lastkeypressed = LAST_KEY::LAST_KEY_WA;
+		}
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
+	{
+		playercurrenttime = SDL_GetTicks();
+		if (lastkeypressed == LAST_KEY_W){
+			App->particles->AddParticle(App->particles->laser0, position.x + 18, position.y, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laserweaponshoot0, position.x + 13, position.y - 13);
+		}
+		else if (lastkeypressed == LAST_KEY_A){
+			App->particles->AddParticle(App->particles->laser270, position.x - 2, position.y + 5, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laserweaponshoot270, position.x - 12, position.y + 2);
+		}
+		else if (lastkeypressed == LAST_KEY_S){
+			App->particles->AddParticle(App->particles->laser180, position.x + 5, position.y + 13, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laserweaponshoot180, position.x + 1, position.y + 23);
+		}
+		else if (lastkeypressed == LAST_KEY_D){
+			App->particles->AddParticle(App->particles->laser90, position.x + 15, position.y + 10, COLLIDER_PLAYER_SHOT);
+			App->particles->AddParticle(App->particles->laserweaponshoot90, position.x + 25, position.y + 4);
+		}
+		else if (lastkeypressed == LAST_KEY_WA){
+			if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+				if (beforelastkeypressed == LAST_KEY_W){
+					App->particles->AddParticle(App->particles->laser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+					beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
 				}
-				lastkeypressed = LAST_KEY::LAST_KEY_WA;
+				else if (beforelastkeypressed == LAST_KEY_A){
+					App->particles->AddParticle(App->particles->laser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+					beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+				}
+				playeractiontime = playercurrenttime;
 			}
-		}
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-	{
-		if (lastkeypressed == LAST_KEY_W){
-			if (beforelastkeypressed == LAST_KEY_A){
-				App->particles->AddParticle(App->particles->laser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laserweaponshoot315, position.x, position.y - 10);
-				beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-			}
-			if (beforelastkeypressed == LAST_KEY_D){
-				App->particles->AddParticle(App->particles->laser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser67_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laserweaponshoot45, position.x + 23, position.y - 8);
-				beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-			}
-			App->particles->AddParticle(App->particles->laser0, position.x + 18, position.y, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laserweaponshoot0, position.x + 13, position.y - 13);
-		}
-		else if (lastkeypressed == LAST_KEY_A){
-			if (beforelastkeypressed == LAST_KEY_W){
-				App->particles->AddParticle(App->particles->laser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laserweaponshoot315, position.x, position.y - 10);
-				beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-			}
-			if (beforelastkeypressed == LAST_KEY_S){
-				App->particles->AddParticle(App->particles->laser202_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser247_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laserweaponshoot225, position.x - 8, position.y + 13);
-				beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-			}
-			App->particles->AddParticle(App->particles->laser270, position.x - 2, position.y + 5, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laserweaponshoot270, position.x - 12, position.y + 2);
-		}
-		else if (lastkeypressed == LAST_KEY_S){
-			if (beforelastkeypressed == LAST_KEY_A){
-				App->particles->AddParticle(App->particles->laser202_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser247_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laserweaponshoot225, position.x - 8, position.y + 13);
-				beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-			}
-			if (beforelastkeypressed == LAST_KEY_D){
-				App->particles->AddParticle(App->particles->laser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laserweaponshoot135, position.x + 15, position.y + 15);
-				beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-			}
-			App->particles->AddParticle(App->particles->laser180, position.x + 5, position.y + 13, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laserweaponshoot180, position.x + 1, position.y + 23);
-		}
-		else if (lastkeypressed == LAST_KEY_D){
-			if (beforelastkeypressed == LAST_KEY_W){
- 				App->particles->AddParticle(App->particles->laser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser67_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laserweaponshoot45, position.x + 23, position.y - 8);
-				beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-			}
-			if (beforelastkeypressed == LAST_KEY_S){
-				App->particles->AddParticle(App->particles->laser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->laserweaponshoot135, position.x + 15, position.y + 15);
-				beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-			}
-			App->particles->AddParticle(App->particles->laser90, position.x + 15, position.y + 10, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laserweaponshoot90, position.x + 25, position.y + 4);
-		}
-
-		else if (lastkeypressed == LAST_KEY_WA){
-			/*
-			if (beforelastkeypressed == LAST_KEY_W){
-				App->particles->AddParticle(App->particles->laser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-				beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-			}
-			else if (beforelastkeypressed == LAST_KEY_A){
-				App->particles->AddParticle(App->particles->laser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-				beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-			}
-			*/
 			App->particles->AddParticle(App->particles->laser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laserweaponshoot315, position.x, position.y - 10);
 		}
 		else if (lastkeypressed == LAST_KEY_WD){
-			/*
-			if (beforelastkeypressed == LAST_KEY_W){
-				App->particles->AddParticle(App->particles->laser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-				beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+			if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+				if (beforelastkeypressed == LAST_KEY_W){
+					App->particles->AddParticle(App->particles->laser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+					beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+				}
+				else if (beforelastkeypressed == LAST_KEY_D){
+					App->particles->AddParticle(App->particles->laser67_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+					beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+				}
+				playeractiontime = playercurrenttime;
 			}
-			else if (beforelastkeypressed == LAST_KEY_D){
-				App->particles->AddParticle(App->particles->laser67_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-				beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-			}
-			*/
 			App->particles->AddParticle(App->particles->laser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laserweaponshoot45, position.x + 23, position.y - 8);
 		}
 		else if (lastkeypressed == LAST_KEY_SA){
-			/*
-			if (beforelastkeypressed == LAST_KEY_S){
-				App->particles->AddParticle(App->particles->laser202_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-				beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+			if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+				if (beforelastkeypressed == LAST_KEY_S){
+					App->particles->AddParticle(App->particles->laser202_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+					beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+				}
+				else if (beforelastkeypressed == LAST_KEY_A){
+					App->particles->AddParticle(App->particles->laser247_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+					beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+				}
+				playeractiontime = playercurrenttime;
 			}
-			else if (beforelastkeypressed == LAST_KEY_A){
-				App->particles->AddParticle(App->particles->laser247_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-				beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-			}
-			*/
 			App->particles->AddParticle(App->particles->laser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laserweaponshoot225, position.x - 8, position.y + 13);
 		}
 		else if (lastkeypressed == LAST_KEY_SD){
-			/*
-			if (beforelastkeypressed == LAST_KEY_S){
-				App->particles->AddParticle(App->particles->laser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-				beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+			if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+				if (beforelastkeypressed == LAST_KEY_S){
+					App->particles->AddParticle(App->particles->laser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+					beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+				}
+				else if (beforelastkeypressed == LAST_KEY_D){
+					App->particles->AddParticle(App->particles->laser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+					beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+				}
+				playeractiontime = playercurrenttime;
 			}
-			else if (beforelastkeypressed == LAST_KEY_D){
-				App->particles->AddParticle(App->particles->laser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-				beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-			}
-			*/
 			App->particles->AddParticle(App->particles->laser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
 			App->particles->AddParticle(App->particles->laserweaponshoot135, position.x + 15, position.y + 15);
 		}
-		else{
-			App->particles->AddParticle(App->particles->laser0, position.x + 18, position.y, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laserweaponshoot0, position.x + 13, position.y - 13);
-		}
 	}
-
 	/*
-	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
-	{
-		if (lastkeypressed == LAST_KEY_W){
-			App->particles->AddParticle(App->particles->laser0, position.x + 18, position.y, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laserweaponshoot0, position.x + 13, position.y - 13);
-		}
-		else if (lastkeypressed == LAST_KEY_A){
-			App->particles->AddParticle(App->particles->laser270, position.x - 2, position.y + 5, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laserweaponshoot270, position.x - 12, position.y + 2);
-		}
-		else if (lastkeypressed == LAST_KEY_S){
-			App->particles->AddParticle(App->particles->laser180, position.x + 5, position.y + 13, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laserweaponshoot180, position.x + 1, position.y + 23);
-		}
-		else if (lastkeypressed == LAST_KEY_D){
-			App->particles->AddParticle(App->particles->laser90, position.x + 15, position.y + 10, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laserweaponshoot90, position.x + 25, position.y + 4);
-		}
-		else if (lastkeypressed == LAST_KEY_WA){
-			App->particles->AddParticle(App->particles->laser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laserweaponshoot315, position.x, position.y - 10);
-		}
-		else if (lastkeypressed == LAST_KEY_WD){
-			App->particles->AddParticle(App->particles->laser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laserweaponshoot45, position.x + 23, position.y - 8);
-		}
-		else if (lastkeypressed == LAST_KEY_SA){
-			App->particles->AddParticle(App->particles->laser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laserweaponshoot225, position.x - 8, position.y + 13);
-		}
-		else if (lastkeypressed == LAST_KEY_SD){
-			App->particles->AddParticle(App->particles->laser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laserweaponshoot135, position.x + 15, position.y + 15);
-		}
-		else{
-			App->particles->AddParticle(App->particles->laser0, position.x + 18, position.y, COLLIDER_PLAYER_SHOT);
-			App->particles->AddParticle(App->particles->laserweaponshoot0, position.x + 13, position.y - 13);
-		}
+	//N,S,E,W,NE,NW,SE,SW
+	if (lastkeypressed == LAST_KEY_W){
+	App->particles->AddParticle(App->particles->laser0, position.x + 18, position.y, COLLIDER_PLAYER_SHOT);
+	App->particles->AddParticle(App->particles->laserweaponshoot0, position.x + 13, position.y - 13);
+	}
+	else if (lastkeypressed == LAST_KEY_A){
+	App->particles->AddParticle(App->particles->laser270, position.x - 2, position.y + 5, COLLIDER_PLAYER_SHOT);
+	App->particles->AddParticle(App->particles->laserweaponshoot270, position.x - 12, position.y + 2);
+	}
+	else if (lastkeypressed == LAST_KEY_S){
+	App->particles->AddParticle(App->particles->laser180, position.x + 5, position.y + 13, COLLIDER_PLAYER_SHOT);
+	App->particles->AddParticle(App->particles->laserweaponshoot180, position.x + 1, position.y + 23);
+	}
+	else if (lastkeypressed == LAST_KEY_D){
+	App->particles->AddParticle(App->particles->laser90, position.x + 15, position.y + 10, COLLIDER_PLAYER_SHOT);
+	App->particles->AddParticle(App->particles->laserweaponshoot90, position.x + 25, position.y + 4);
+	}
+	else if (lastkeypressed == LAST_KEY_WA){
+	App->particles->AddParticle(App->particles->laser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+	App->particles->AddParticle(App->particles->laserweaponshoot315, position.x, position.y - 10);
+	}
+	else if (lastkeypressed == LAST_KEY_WD){
+	App->particles->AddParticle(App->particles->laser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+	App->particles->AddParticle(App->particles->laserweaponshoot45, position.x + 23, position.y - 8);
+	}
+	else if (lastkeypressed == LAST_KEY_SA){
+	App->particles->AddParticle(App->particles->laser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+	App->particles->AddParticle(App->particles->laserweaponshoot225, position.x - 8, position.y + 13);
+	}
+	else if (lastkeypressed == LAST_KEY_SD){
+	App->particles->AddParticle(App->particles->laser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+	App->particles->AddParticle(App->particles->laserweaponshoot135, position.x + 15, position.y + 15);
 	}
 	*/
+
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
