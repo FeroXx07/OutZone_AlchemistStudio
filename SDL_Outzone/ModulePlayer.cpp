@@ -337,6 +337,16 @@ update_status ModulePlayer::Update()
 		}
 	}
 
+	//Left ctrl, left alt, i
+	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_I] == KEY_STATE::KEY_REPEAT)){
+		Invencible = true;
+	}
+
+	//Left ctrl, left alt, o
+	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_O] == KEY_STATE::KEY_REPEAT)){
+		Invencible = false;
+	}
+	
 	if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
 	{
 		lastkeypressed = LAST_KEY::LAST_KEY_W;
@@ -496,29 +506,29 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	
-	if (c1 == playercollision && destroyed == false && App->fade->IsFading() == false)
-	{
-		if (c2->type == COLLIDER_WALL || c2->type == COLLIDER_DOOR){
-			int speed = 1;
-			int height;
-			if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 2))
-			{
-				position = PreviousPos;
-				collisionWallT = true;
+	if (Invencible == false){
+		if (c1 == playercollision && destroyed == false && App->fade->IsFading() == false)
+		{
+			if (c2->type == COLLIDER_WALL || c2->type == COLLIDER_DOOR){
+				int speed = 1;
+				int height;
+				if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 2))
+				{
+					position = PreviousPos;
+					collisionWallT = true;
+				}
+				else if (((c2->rect.x + c2->rect.w) <= c1->rect.x + 1) || ((c1->rect.x + c1->rect.w) >= c2->rect.x + 1))
+				{
+					position = PreviousPos;
+					collisionWallS = true;
+				}
 			}
-		else if (((c2->rect.x + c2->rect.w) <= c1->rect.x + 1) || ((c1->rect.x + c1->rect.w) >= c2->rect.x + 1))
-			{
-				position = PreviousPos;
-				collisionWallS = true;
+			else{
+				App->player->Disable();
+				App->particles->AddParticle(App->particles->playerexplosion, position.x - 47, position.y - 54, COLLIDER_NONE);
+				App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
+				destroyed = true;
 			}
-		}
-		else{
-			App->player->Disable();
-			App->particles->AddParticle(App->particles->playerexplosion, position.x - 47, position.y - 54, COLLIDER_NONE);
-			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
-			destroyed = true;
 		}
 	}
-	
 }

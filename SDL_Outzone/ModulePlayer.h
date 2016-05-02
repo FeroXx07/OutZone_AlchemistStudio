@@ -45,6 +45,7 @@ public:
 	unsigned int playercurrenttime = 0;
 	unsigned int playeractiontime = 0;
 	bool Start();
+	bool Invencible = false;
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
