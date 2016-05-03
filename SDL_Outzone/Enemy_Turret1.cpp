@@ -11,7 +11,8 @@
 #define PI 3.14159265
 #define ANGLE_CONVERT (180.0 / PI)
 #define ANGLE_CONVERT_REVERSE (PI / 180.0)
-#define ENEMY_SHOOT_SPEED 5
+#define ENEMY_SHOOT_SPEED 4
+#define ENEMYSHOOTDELAY 2500
 
 Enemy_Turret1::Enemy_Turret1(int x, int y) : Enemy(x, y)
 {
@@ -146,7 +147,7 @@ void Enemy_Turret1::Shoot()
 		angle = ((float)acos((((App->player->position.x + 14 - original_x) * 0) + ((App->player->position.y + 16 - original_y) * 1)) / (sqrt((double)((App->player->position.x + 14 - original_x)*(App->player->position.x + 14 - original_x) + (App->player->position.y + 16 - original_y)*(App->player->position.y + 16 - original_y)))*sqrt((double)(0 * 0 + 1 * 1))))) * ANGLE_CONVERT;
 		//LOG("Angle %.2f", angle);
 		
-		if (currentTime > (lastTime + 2000)) {
+		if (currentTime > (lastTime + ENEMYSHOOTDELAY)) {
 			if (left == true){
 				if ((angle < 90) && (angle >= 0)){
 					App->particles->enemyshoot.speed.x = -ENEMY_SHOOT_SPEED * sin(angle * ANGLE_CONVERT_REVERSE);

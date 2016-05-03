@@ -132,7 +132,7 @@ update_status ModulePlayer::Update()
 	int speed = 4;
 	//8
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
-		if (App->player->position.y <= (150 + (App->render->camera.y / 2))){
+		if (App->player->position.y <= (160 + (App->render->camera.y / 2))){
 			App->render->camera.y -= speed;
 		}
 		

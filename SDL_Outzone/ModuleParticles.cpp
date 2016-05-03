@@ -9,8 +9,11 @@
 #include "ModulePlayer.h"
 
 #include "SDL/include/SDL_timer.h"
+
 #define weaponshootlife 30
 #define laserlife 600
+#define enemyshootlife 2000
+
 ModuleParticles::ModuleParticles()
 {
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
@@ -227,7 +230,7 @@ ModuleParticles::ModuleParticles()
 	laserweaponshoot337_5.life = weaponshootlife;
 
 	enemyshoot.anim.PushBack({ 152, 301, 7, 7 });
-	enemyshoot.life = 1500;
+	enemyshoot.life = enemyshootlife;
 
 	goahead.anim.PushBack({ 4, 437, 50, 48 });
 	goahead.anim.PushBack({ 0, 0, 1, 1 });
