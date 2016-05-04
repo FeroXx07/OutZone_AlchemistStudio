@@ -52,8 +52,8 @@ public:
 
 public:
 
-	LAST_KEY lastkeypressed = LAST_KEY::NO_KEY_PRESSED;
-	BEFORE_LAST_KEY beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+	LAST_KEY lastkeypressed = LAST_KEY::LAST_KEY_W;
+	BEFORE_LAST_KEY beforelastkeypressed = BEFORE_LAST_KEY::BEFORE_LAST_KEY_KEY_W;
 
 public:
 
