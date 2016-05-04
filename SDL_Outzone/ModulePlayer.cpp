@@ -368,13 +368,13 @@ update_status ModulePlayer::Update()
 	//WSD
 	if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
 	{
-		lastkeypressed = LAST_KEY::LAST_KEY_W;
+		lastkeypressed = LAST_KEY::LAST_KEY_WD;
 	}
 
 	//WAS
 	if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
 	{
-		lastkeypressed = LAST_KEY::LAST_KEY_W;
+		lastkeypressed = LAST_KEY::LAST_KEY_WA;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_DOWN)
