@@ -337,13 +337,11 @@ update_status ModulePlayer::Update()
 		}
 	}
 
-	//Left ctrl, left alt, i
-	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_I] == KEY_STATE::KEY_REPEAT)){
+	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN){
 		Invencible = true;
 	}
 
-	//Left ctrl, left alt, o
-	if ((App->input->keyboard[SDL_SCANCODE_LALT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LCTRL] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_O] == KEY_STATE::KEY_REPEAT)){
+	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN){
 		Invencible = false;
 	}
 	
