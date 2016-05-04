@@ -44,6 +44,8 @@ public:
 	unsigned int playertime = 0;
 	unsigned int playercurrenttime = 0;
 	unsigned int playeractiontime = 0;
+	unsigned int shootcurrenttime = 0;
+	unsigned int shootactiontime = 0;
 	bool Start();
 	bool Invencible = false;
 	update_status Update();
