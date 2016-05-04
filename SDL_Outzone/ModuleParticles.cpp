@@ -73,11 +73,12 @@ ModuleParticles::ModuleParticles()
 	*/
 	//
 
-	lascoll.anim.PushBack({ 136, 137, 18, 18 });
-	lascoll2.anim.PushBack({ 135, 157, 18, 18 });
-	lascoll3.anim.PushBack({ 81, 140, 17, 18 });
-	lascoll4.anim.PushBack({ 86, 165, 8, 8 });
-	laser.anim.speed = 0.2f;
+	lascoll.anim.PushBack({ 136, 158, 16, 16 });
+	lascoll.anim.PushBack({ 137, 139, 15, 15 });
+	lascoll.anim.PushBack({ 83, 161, 16, 15 });
+	lascoll.anim.PushBack({ 83, 139, 18, 19 });
+	lascoll.anim.loop = false;
+	lascoll.anim.speed = 0.25f;
 	/*
 	lascoll.PushBack({ 136, 137, 18, 18 });
 	lascoll.PushBack({ 136, 137, 18, 18 });
