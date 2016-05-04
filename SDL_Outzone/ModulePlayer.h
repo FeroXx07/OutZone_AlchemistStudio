@@ -48,6 +48,8 @@ public:
 	unsigned int shootactiontime = 0;
 	bool Start();
 	bool Invencible = false;
+	bool Superspeed = false;
+	bool Fly = false;
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);

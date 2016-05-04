@@ -129,9 +129,15 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	int speed = 0;
 	PreviousPos = position;
-	int speed = 4;
-	//8
+
+	if (Superspeed == true){
+		speed = 12;
+	}
+	else{
+		speed = 4;
+	}
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
 		if (App->player->position.y <= (160 + (App->render->camera.y / 2))){
 			App->render->camera.y -= speed;
@@ -139,8 +145,12 @@ update_status ModulePlayer::Update()
 		
 	}
 
-	speed = 1;
-	//2
+	if (Superspeed == true){
+		speed = 3;
+	}
+	else{
+		speed = 1;
+	}
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 	{
@@ -349,11 +359,27 @@ update_status ModulePlayer::Update()
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN){
 		Invencible = true;
 	}
-
+	
 	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN){
 		Invencible = false;
 	}
-	
+
+	if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN){
+		Superspeed = true;
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN){
+		Superspeed = false;
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN){
+		Fly = true;
+	}
+
+	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_STATE::KEY_DOWN){
+		Fly = false;
+	}
+
 	// AD
 	if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
 	{
@@ -538,43 +564,45 @@ update_status ModulePlayer::Update()
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (c1 == playercollision && destroyed == false && App->fade->IsFading() == false)
-	{
-		if (c2->type == COLLIDER_WALL)
+	if (Fly == false){
+		if (c1 == playercollision && destroyed == false && App->fade->IsFading() == false)
 		{
-			int speed = 1;
-			int height;
-			if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 2))
+			if (c2->type == COLLIDER_WALL)
 			{
-				position = PreviousPos;
-				collisionWallT = true;
+				int speed = 1;
+				int height;
+				if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 2))
+				{
+					position = PreviousPos;
+					collisionWallT = true;
+				}
+				else if (((c2->rect.x + c2->rect.w) <= c1->rect.x + 1) || ((c1->rect.x + c1->rect.w) >= c2->rect.x + 1))
+				{
+					position = PreviousPos;
+					collisionWallS = true;
+				}
 			}
-			else if (((c2->rect.x + c2->rect.w) <= c1->rect.x + 1) || ((c1->rect.x + c1->rect.w) >= c2->rect.x + 1))
+			else if (c2->type == COLLIDER_WALL)
 			{
-				position = PreviousPos;
-				collisionWallS = true;
+				int height;
+				if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 2))
+				{
+					position = PreviousPos;
+					collisionWallT = true;
+				}
+				else if (((c2->rect.x + c2->rect.w) <= c1->rect.x + 1) || ((c1->rect.x + c1->rect.w) >= c2->rect.x + 1))
+				{
+					position = PreviousPos;
+					collisionWallS = true;
+				}
 			}
-		}
-		else if (c2->type == COLLIDER_WALL)
-		{
-			int height;
-			if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 2))
-			{
-				position = PreviousPos;
-				collisionWallT = true;
-			}
-			else if (((c2->rect.x + c2->rect.w) <= c1->rect.x + 1) || ((c1->rect.x + c1->rect.w) >= c2->rect.x + 1))
-			{
-				position = PreviousPos;
-				collisionWallS = true;
-			}
-		}
-		else{
-			if (Invencible == false){
-				App->player->Disable();
-				App->particles->AddParticle(App->particles->playerexplosion, position.x - 47, position.y - 54, COLLIDER_NONE);
-				App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
-				destroyed = true;
+			else{
+				if (Invencible == false){
+					App->player->Disable();
+					App->particles->AddParticle(App->particles->playerexplosion, position.x - 47, position.y - 54, COLLIDER_NONE);
+					App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
+					destroyed = true;
+				}
 			}
 		}
 	}
