@@ -2,6 +2,6 @@
 ##Type:
 ##Severity:
 ##Steps to reproduce:
-##Actual result (screenshot?):
+##Actual result:
 ##Expected result:
 ##Build:
