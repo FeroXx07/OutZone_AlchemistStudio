@@ -357,27 +357,30 @@ update_status ModulePlayer::Update()
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN){
-		Invencible = true;
+		if (Invencible == false){
+			Invencible = true;
+		}
+		else{
+			Invencible = false;
+		}
 	}
 	
 	if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN){
-		Invencible = false;
+		if (Superspeed == false){
+			Superspeed = true;
+		}
+		else{
+			Superspeed = false;
+		}
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN){
-		Superspeed = true;
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN){
-		Superspeed = false;
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN){
-		Fly = true;
-	}
-
-	if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_STATE::KEY_DOWN){
-		Fly = false;
+		if (Fly == false){
+			Fly = true;
+		}
+		else{
+			Fly = false;
+		}
 	}
 
 	// AD
@@ -388,6 +391,12 @@ update_status ModulePlayer::Update()
 
 	// WS
 	if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
+	{
+		lastkeypressed = LAST_KEY::LAST_KEY_W;
+	}
+
+	// WASD
+	if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
 	{
 		lastkeypressed = LAST_KEY::LAST_KEY_W;
 	}
