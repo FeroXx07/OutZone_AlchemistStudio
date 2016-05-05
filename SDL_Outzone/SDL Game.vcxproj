@@ -78,6 +78,7 @@
     <ClInclude Include="Enemy_RedBird.h" />
     <ClInclude Include="Enemy_tank.h" />
     <ClInclude Include="Enemy_Turret1.h" />
+    <ClInclude Include="Enemy_Turret2.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
@@ -107,6 +108,7 @@
     <ClCompile Include="Enemy_RedBird.cpp" />
     <ClCompile Include="Enemy_tank.cpp" />
     <ClCompile Include="Enemy_Turret1.cpp" />
+    <ClCompile Include="Enemy_Turret2.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
