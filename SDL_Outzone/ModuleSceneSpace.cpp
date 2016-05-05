@@ -87,13 +87,14 @@ bool ModuleSceneSpace::Start()
 bool ModuleSceneSpace::CleanUp()
 {
 	LOG("Unloading space scene");
-
- 	App->textures->Unload(background);
-
+	
+	App->audio->Disable();
+	Mix_FadeOutMusic(500);
 	App->enemies->Disable();
 	App->collision->Disable();
 	App->particles->Disable();
 	App->player->Disable();
+	App->textures->Unload(background);
 
 	return true;
 }
