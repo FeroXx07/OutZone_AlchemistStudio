@@ -172,6 +172,9 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
+			if (c1->type == COLLIDER_PLAYER_SHOT && c2->type == COLLIDER_ENEMY){
+
+			}
 			App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
 			delete enemies[i];
 			enemies[i] = nullptr;

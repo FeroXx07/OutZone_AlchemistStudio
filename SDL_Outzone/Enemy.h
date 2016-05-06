@@ -12,9 +12,10 @@ class Enemy
 protected:
 	Animation* animation;
 	Collider* collider;
-
+	int live;
 public:
 	iPoint position;
+	
 
 public:
 	Enemy(int x, int y);

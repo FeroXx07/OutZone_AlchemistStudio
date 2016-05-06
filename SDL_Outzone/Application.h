@@ -40,6 +40,7 @@ public:
 	ModuleAudio* audio;
 	ModuleParticles* particles;
 	ModuleEnemies* enemies;
+	//EnemyT
 
 public:
 

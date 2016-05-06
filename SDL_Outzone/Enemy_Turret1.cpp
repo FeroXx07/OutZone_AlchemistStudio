@@ -16,6 +16,7 @@
 
 Enemy_Turret1::Enemy_Turret1(int x, int y) : Enemy(x, y)
 {
+	live = 100;
 	turret1__0.PushBack({ 342, 54, 29, 47 });
 	turret1__22_5.PushBack({ 342, 109, 29, 47 });
 	turret1__45.PushBack({ 297, 109, 29, 47 });
