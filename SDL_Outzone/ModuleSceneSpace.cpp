@@ -78,6 +78,9 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 190, -1879);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 168, -1923);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET2, 0, -1253);
+
+	//Turret need to be looking to the other side, new sprite.
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET2, 150, -1523);
 	App->enemies->AddEnemy(ENEMY_TYPES::MAZURKA, 90, -3100);
 
 	return true;

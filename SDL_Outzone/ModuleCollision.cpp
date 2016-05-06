@@ -22,7 +22,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_WALL2][COLLIDER_PLAYER] = true;
 	matrix[COLLIDER_WALL2][COLLIDER_ENEMY] = false;
 	matrix[COLLIDER_WALL2][COLLIDER_PLAYER_SHOT] = false;
-	matrix[COLLIDER_WALL2][COLLIDER_ENEMY_SHOT] = true;
+	matrix[COLLIDER_WALL2][COLLIDER_ENEMY_SHOT] = false;
 	matrix[COLLIDER_WALL2][COLLIDER_BOMB] = false;
 	matrix[COLLIDER_WALL2][COLLIDER_DOOR] = false;
 	matrix[COLLIDER_WALL2][COLLIDER_WALL2] = false;
@@ -79,7 +79,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_ENEMY_SHOT] = false;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_BOMB] = true;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_DOOR] = false;
-	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_WALL2] = true;
+	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_WALL2] = false;
 }
 
 // Destructor
