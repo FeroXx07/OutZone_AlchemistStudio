@@ -25,73 +25,74 @@ ModulePlayer::ModulePlayer()
 	position.y = 200;
 
 	// idle animation
-	idle_w.PushBack({ 24, 343, 29, 38 });
-	idle_wa.PushBack({ 58, 79, 29, 36 });
-	idle_wd.PushBack({ 19, 24, 27, 36 });
-	idle_a.PushBack({ 21, 137, 28, 33 });
-	idle_s.PushBack({ 191, 285, 31, 39 });
-	idle_sa.PushBack({ 63, 187, 30, 37 });
-	idle_sd.PushBack({ 27, 238, 28, 37 });
-	idle_d.PushBack({ 61, 25, 27, 35 });
+	idle_w.PushBack({ 0, 50, 40, 50 });
+	idle_wa.PushBack({ 0, 450, 40, 50 });
+	idle_wd.PushBack({ 40, 550, 40, 50 });
+	idle_a.PushBack({ 120, 100, 40, 50 });
+	idle_s.PushBack({ 120, 0, 40, 50 });
+	idle_sa.PushBack({ 120, 400, 40, 50 });
+	idle_sd.PushBack({ 120, 500, 40, 50 });
+	idle_d.PushBack({ 160, 150, 40, 50 });
 	//MOVEMENT
 	// move upwards
-	up.PushBack({ 65, 344, 27, 37 });
-	up.PushBack({ 102, 344, 27, 37 });
-	up.PushBack({ 138, 344, 26, 37 });
-	up.PushBack({ 173, 344, 28, 37 });
+	up.PushBack({ 0, 50, 40, 50 });
+	up.PushBack({ 40, 50, 40, 50 });
+	up.PushBack({ 80, 50, 40, 50 });
+	up.PushBack({ 120, 50, 40, 50 });
+	up.PushBack({ 160, 50, 40, 50 });
 	up.loop = true;
 	up.speed = 0.1f;
 
 	// Move down
-	down.PushBack({ 191, 285, 31, 39 });
-	down.PushBack({ 234, 285, 28, 39 });
-	down.PushBack({ 274, 287, 27, 37 });
-	down.PushBack({ 316, 285, 28, 39 });
+	down.PushBack({ 0, 0, 40, 50 });
+	down.PushBack({ 40, 0, 40, 50 });
+	down.PushBack({ 80, 0, 40, 50 });
+	down.PushBack({ 120, 0, 40, 50 });
+	down.PushBack({ 160, 0, 40, 50 });
 	down.loop = true;
 	down.speed = 0.1f;
 	//left
-	left.PushBack({ 21, 137, 28, 33 });
-	left.PushBack({ 59, 135, 28, 35 });
-	left.PushBack({ 97, 135, 29, 35 });
-	left.PushBack({ 136, 135, 27, 35 });
-	left.PushBack({ 173, 135, 29, 35 });
+	left.PushBack({ 0, 100, 40, 50 });
+	left.PushBack({ 40, 100, 40, 50 });
+	left.PushBack({ 80, 100, 40, 50 });
+	left.PushBack({ 120, 100, 40, 50 });
+	left.PushBack({ 160, 100, 40, 50 });
 	left.loop = true;
 	left.speed = 0.1f;
 	//right
-	right.PushBack({ 61, 25, 27, 35 });
-	right.PushBack({ 103, 25, 25, 36 });
-	right.PushBack({ 138, 26, 28, 35 });
-	right.PushBack({ 176, 24, 26, 37 });
-	right.PushBack({ 212, 26, 29, 35 });
+	right.PushBack({ 0, 150, 40, 50 });
+	right.PushBack({ 40, 150, 40, 50 });
+	right.PushBack({ 80, 150, 40, 50 });
+	right.PushBack({ 120, 150, 40, 50 });
+	right.PushBack({ 160, 150, 40, 50 });
 	right.loop = true;
 	right.speed = 0.1f;
 	//Diagonal right top
-	Drightop.PushBack({ 209, 79, 28, 40 });
-	Drightop.PushBack({ 238, 75, 27, 42 });
-	Drightop.PushBack({ 270, 74, 30, 41 });
-	Drightop.PushBack({ 305, 75, 26, 40 });
+	Drightop.PushBack({ 0, 550, 40, 50 });
+	Drightop.PushBack({ 40, 550, 40, 50 });
+	Drightop.PushBack({ 80, 550, 40, 50 });
+	Drightop.PushBack({ 120, 550, 40, 50 });
 	Drightop.loop = true;
 	Drightop.speed = 0.1f;
 	//Diagonal left top
-	Lefthtop.PushBack({ 320, 216, 33, 40 });
-	Lefthtop.PushBack({ 355, 215, 35, 42 });
-	Lefthtop.PushBack({ 390, 215, 33, 42 });
-	Lefthtop.PushBack({ 425, 212, 33, 38 });
+	Lefthtop.PushBack({ 0, 450, 40, 50 });
+	Lefthtop.PushBack({ 40, 450, 40, 50 });
+	Lefthtop.PushBack({ 80, 450, 40, 50 });
+	Lefthtop.PushBack({ 120, 450, 40, 50 });
 	Lefthtop.loop = true;
 	Lefthtop.speed = 0.1f;
 	//Diagonal right bot
-	Drighbot.PushBack({ 265, 140, 33, 44 });
-	Drighbot.PushBack({ 295, 143, 33, 41 });
-	Drighbot.PushBack({ 331, 143, 34, 44 });
-	Drighbot.PushBack({ 365, 143, 34, 44 });
-	Drighbot.PushBack({ 401, 143, 32, 44 });
+	Drighbot.PushBack({ 0, 500, 40, 50 });
+	Drighbot.PushBack({ 40, 500, 40, 50 });
+	Drighbot.PushBack({ 80, 500, 40, 50 });
+	Drighbot.PushBack({ 120, 500, 40, 50 });
 	Drighbot.loop = true;
 	Drighbot.speed = 0.1f;
 	//Diagonal left bot
-	Lefthbot.PushBack({ 117, 187, 30, 36 });
-	Lefthbot.PushBack({ 150, 188, 31, 38 });
-	Lefthbot.PushBack({ 188, 188, 31, 39 });
-	Lefthbot.PushBack({ 225, 190, 28, 37 });
+	Lefthbot.PushBack({ 0, 400, 40, 50 });
+	Lefthbot.PushBack({ 40, 400, 40, 50 });
+	Lefthbot.PushBack({ 80, 400, 40, 50 });
+	Lefthbot.PushBack({ 120, 400, 40, 50 });
 	Lefthbot.loop = true;
 	Lefthbot.speed = 0.1f;
 }
@@ -104,7 +105,7 @@ bool ModulePlayer::Start()
 {
 	LOG("Loading player");
 
-	graphics = App->textures->Load("Outzone/playermovement2.png");
+	graphics = App->textures->Load("Outzone/spritesheetPlayer.png");
 
 	destroyed = false;
 	position.x = 105;
