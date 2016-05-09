@@ -23,7 +23,7 @@ bool ModuleSceneSpace::Start()
 {
 	LOG("Loading space scene");
 	
-	background = App->textures->Load("Outzone/MapRealSize.png");
+	background = App->textures->Load("Outzone/level2.png");
 
 	App->player->Enable();
 	App->particles->Enable();
@@ -112,7 +112,7 @@ update_status ModuleSceneSpace::Update()
 	}
 
 	// Draw everything --------------------------------------
-	App->render->Blit(background, 0, -3314, NULL);
+	App->render->Blit(background, 0, -5121, NULL);
 	
 	return UPDATE_CONTINUE;
 }
