@@ -49,9 +49,11 @@ bool ModuleSceneSpaceUpper::CleanUp()
 // Update: draw background
 update_status ModuleSceneSpaceUpper::Update()
 {
+	/*
 	if (App->player->position.y <= -3160){
 		App->fade->FadeToBlack(this, (Module*)App->scene_gamewin);
 	}
+	*/
 	// Draw everything --------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
 		if (App->player->position.y == (160 + (App->render->camera.y / 2))){

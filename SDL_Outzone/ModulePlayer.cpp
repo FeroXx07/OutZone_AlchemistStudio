@@ -110,7 +110,7 @@ bool ModulePlayer::Start()
 	graphics = App->textures->Load("Outzone/spritesheetPlayer.png");
 
 	destroyed = false;
-	position.x = 105;
+	position.x = 100;
 	position.y = 250;
 
 	playercollision = App->collision->AddCollider({ position.x + PLAYERCOLIDERX, position.y + PLAYERCOLIDERY, 23, 28 }, COLLIDER_PLAYER, this);
@@ -177,8 +177,8 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 	{
-		if ((position.x += speed) >= 215){
-			position.x = 215;
+		if ((position.x += speed) >= 200){
+			position.x = 200;
 		}
 		if (collisionWallS == true)
 		{
@@ -230,8 +230,8 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		if ((position.y -= speed) <= -3160){
-			position.y = -3160;
+		if ((position.y -= speed) <= -4980){
+			position.y = -4980;
 		}
 		if (collisionWallT == true)
 		{

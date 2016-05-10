@@ -115,10 +115,11 @@ update_status ModuleSceneSpace::Update()
 {
 	// Move camera forward -----------------------------
 	//App->render->camera.x += 1 * SCREEN_SIZE;
+	/*
 	if (App->player->position.y <= -3160){
 		App->fade->FadeToBlack(this, (Module*)App->scene_gamewin);
 	}
-
+	*/
 	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, -5121, NULL);
 	
