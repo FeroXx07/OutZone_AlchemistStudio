@@ -12,6 +12,8 @@
 #include "ModuleFadeToBlack.h"
 #include "ModuleInput.h"
 
+#include "SDL/include/SDL_timer.h"
+
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModuleSceneSpaceUpper::ModuleSceneSpaceUpper()
@@ -52,7 +54,12 @@ update_status ModuleSceneSpaceUpper::Update()
 	}
 	// Draw everything --------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
-		App->render->Blit(background, 0, -5123, NULL);
+		if (App->player->position.y == (160 + (App->render->camera.y / 2))){
+			App->render->Blit(background, 0, -5123, NULL);
+		}
+		else{
+			App->render->Blit(background, 0, -5121, NULL);
+		}
 	}
 	else{
 		App->render->Blit(background, 0, -5121, NULL);
