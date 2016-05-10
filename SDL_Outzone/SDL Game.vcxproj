@@ -93,6 +93,7 @@
     <ClInclude Include="ModuleSceneGameOver.h" />
     <ClInclude Include="ModuleSceneIntro.h" />
     <ClInclude Include="ModuleSceneSpace.h" />
+    <ClInclude Include="ModuleSceneSpaceUpper.h" />
     <ClInclude Include="ModuleTextures.h" />
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="ModuleWinScreen.h" />
@@ -122,6 +123,7 @@
     <ClCompile Include="ModuleSceneGameOver.cpp" />
     <ClCompile Include="ModuleSceneIntro.cpp" />
     <ClCompile Include="ModuleSceneSpace.cpp" />
+    <ClCompile Include="ModuleSceneSpaceUpper.cpp" />
     <ClCompile Include="ModuleTextures.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="ModuleWinScreen.cpp" />

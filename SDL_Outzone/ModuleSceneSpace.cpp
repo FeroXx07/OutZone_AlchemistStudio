@@ -34,6 +34,12 @@ bool ModuleSceneSpace::Start()
 	
 	// Colliders ---
 	
+
+
+	App->collision->AddCollider({ 160, -508, 30, 70 }, COLLIDER_WALL);
+
+	/*
+	//Old coliders
 	App->collision->AddCollider({ 60, -1624, 30, 62 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 180, -1654, 30, 62 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 0, -1684, 30, 62 }, COLLIDER_WALL);
@@ -55,10 +61,12 @@ bool ModuleSceneSpace::Start()
 	App->collision->AddCollider({ 0, -160, 51, 24 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 0, -2908, 90, 70 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 150, -2908, 90, 70 }, COLLIDER_WALL);
-
+	*/
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPES::DOOR, 60, -2920);
 
+
+	/*
+	App->enemies->AddEnemy(ENEMY_TYPES::DOOR, 60, -2920);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 123, -568);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 3, -538);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 183, -628);
@@ -78,10 +86,10 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 190, -1879);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 168, -1923);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET2, 0, -1253);
-
 	//Turret need to be looking to the other side, new sprite.
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET2, 150, -1523);
 	App->enemies->AddEnemy(ENEMY_TYPES::MAZURKA, 90, -3100);
+	*/
 
 	return true;
 }

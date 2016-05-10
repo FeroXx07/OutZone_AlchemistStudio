@@ -13,6 +13,8 @@
 
 #define PLAYER_MULTIPLE_SHOOT_DELAY 750
 #define SHOOTDELAY 125
+#define PLAYERCOLIDERX 9
+#define PLAYERCOLIDERY 7
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -111,7 +113,7 @@ bool ModulePlayer::Start()
 	position.x = 105;
 	position.y = 250;
 
-	playercollision = App->collision->AddCollider({ position.x, position.y + 2, 28, 30 }, COLLIDER_PLAYER, this);
+	playercollision = App->collision->AddCollider({ position.x + PLAYERCOLIDERX, position.y + PLAYERCOLIDERY, 23, 28 }, COLLIDER_PLAYER, this);
 
 	return true;
 }
@@ -607,7 +609,7 @@ update_status ModulePlayer::Update()
 
 	}
 
-	playercollision->SetPos(position.x, (position.y + 2));
+	playercollision->SetPos(position.x + PLAYERCOLIDERX, position.y + PLAYERCOLIDERY);
 
 	// Draw everything --------------------------------------
 	if (current_animation == nullptr){
