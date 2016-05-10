@@ -7,8 +7,10 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
+#include "ModulePlayer.h"
 #include "ModuleSceneSpaceUpper.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleInput.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -49,7 +51,11 @@ update_status ModuleSceneSpaceUpper::Update()
 		App->fade->FadeToBlack(this, (Module*)App->scene_gamewin);
 	}
 	// Draw everything --------------------------------------
-	App->render->Blit(background, 0, -5121, NULL);
-	
+	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
+		App->render->Blit(background, 0, -5123, NULL);
+	}
+	else{
+		App->render->Blit(background, 0, -5121, NULL);
+	}
 	return UPDATE_CONTINUE;
 }
