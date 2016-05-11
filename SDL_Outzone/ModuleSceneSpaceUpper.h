@@ -16,6 +16,7 @@ public:
 	bool CleanUp();
 
 public:
+	bool firstimeblit = true;
 	SDL_Texture* background = nullptr;
 	SDL_Texture* stars = nullptr;
 };

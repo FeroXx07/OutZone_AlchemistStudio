@@ -16,7 +16,6 @@ public:
 	bool CleanUp();
 
 public:
-	
 	SDL_Texture* background = nullptr;
 	SDL_Texture* stars = nullptr;
 };

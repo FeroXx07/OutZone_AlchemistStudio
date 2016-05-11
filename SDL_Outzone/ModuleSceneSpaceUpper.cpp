@@ -57,14 +57,23 @@ update_status ModuleSceneSpaceUpper::Update()
 	// Draw everything --------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
 		if (App->player->position.y == (160 + (App->render->camera.y / 2))){
-			App->render->Blit(background, 0, -5123, NULL);
+			if (firstimeblit == true){
+				App->render->Blit(background, 0, -5121, NULL);
+				firstimeblit = false;
+			}
+			else{
+				App->render->Blit(background, 0, -5123, NULL);
+			}
 		}
 		else{
 			App->render->Blit(background, 0, -5121, NULL);
 		}
 	}
 	else{
-		App->render->Blit(background, 0, -5121, NULL);
+			App->render->Blit(background, 0, -5121, NULL);
+	}
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT){
+		firstimeblit = true;
 	}
 	return UPDATE_CONTINUE;
 }
