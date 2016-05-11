@@ -43,6 +43,16 @@ bool ModuleSceneSpace::Start()
 	App->collision->AddCollider({ 155, -2265, 100, 40 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 0, -2390, 37, 40 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 90, -2390, 150, 40 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 160, -508, 30, 70 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 160, -2908, 32, 110 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 64, -2908, 32, 110 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 190, -3100, 69, 108 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 0, -3100, 69, 108 }, COLLIDER_WALL);
+	App->collision->AddCollider({ 95, -2550, 68, 169 }, COLLIDER_WALL);
+
+
+	
+	App->collision->AddCollider({ 210, -3983, 25, 37 }, COLLIDER_HOLE);
 
 
 
