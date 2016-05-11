@@ -249,7 +249,7 @@ void ModuleCollision::DebugDraw()
 			App->render->DrawQuad(colliders[i]->rect, 150, 150, 0, alpha);
 			break;
 			case COLLIDER_HOLE:
-			App->render->DrawQuad(colliders[i]->rect, 0, 0, 0, alpha);
+			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
 			break;
 		}
 	}
