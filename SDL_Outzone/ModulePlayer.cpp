@@ -15,6 +15,7 @@
 #define SHOOTDELAY 125
 #define PLAYERCOLIDERX 9
 #define PLAYERCOLIDERY 7
+#define SUPERSPEED 5
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -135,12 +136,11 @@ update_status ModulePlayer::Update()
 	int speed = 0;
 	PreviousPos = position;
 
+	speed = 4;
 	if (Superspeed == true){
-		speed = 12;
+		speed *= SUPERSPEED;
 	}
-	else{
-		speed = 4;
-	}
+
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
 		if (App->player->position.y <= (160 + (App->render->camera.y / 2))){
 			App->render->camera.y -= speed;
@@ -148,11 +148,9 @@ update_status ModulePlayer::Update()
 		
 	}
 
+	speed = 1;
 	if (Superspeed == true){
-		speed = 3;
-	}
-	else{
-		speed = 1;
+		speed *= SUPERSPEED;
 	}
 
 	if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
