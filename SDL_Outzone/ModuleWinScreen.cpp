@@ -21,7 +21,7 @@ bool ModuleWinScreen::Start()
 {
 	LOG("Loading win screen");
 
-	background = App->textures->Load("Outzone/Congratulations.png");
+	background = App->textures->Load("Outzone/FinalScreen.png");
 
 	//App->audio->PlayMusic("rtype/intro.ogg", 1.0f);
 	//	fx = App->audio->LoadFx("rtype/starting.wav");
