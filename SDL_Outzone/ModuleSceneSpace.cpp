@@ -141,7 +141,7 @@ update_status ModuleSceneSpace::Update()
 	}
 	*/
 	// Draw everything --------------------------------------
-	App->render->Blit(background, 0, -5121, NULL);
+	App->render->Blit(background, 0, -5253, NULL);
 	
 	return UPDATE_CONTINUE;
 }

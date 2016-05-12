@@ -228,8 +228,8 @@ update_status ModulePlayer::Update()
 
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 	{
-		if ((position.y -= speed) <= -4980){
-			position.y = -4980;
+		if ((position.y -= speed) <= -5050){
+			position.y = -5050;
 		}
 		if (collisionWallT == true)
 		{
