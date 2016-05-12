@@ -51,11 +51,33 @@ bool ModuleSceneSpace::Start()
 
 
 	
-	App->collision->AddCollider({ 210, -3983, 25, 37 }, COLLIDER_HOLE);
+	App->collision->AddCollider({ 208, -3989, 35, 45 }, COLLIDER_HOLE);
 
+	App->collision->AddCollider({ 80, -4021, 48, 76 }, COLLIDER_HOLE);
 
+	App->collision->AddCollider({ 0, -4021, 32, 76 }, COLLIDER_HOLE);
 
-	//App->collision->AddCollider({ 120, -600, 30, 70 }, COLLIDER_HOLE);
+	App->collision->AddCollider({ 208, -4149, 35, 76 }, COLLIDER_HOLE);
+
+	App->collision->AddCollider({ 80, -4181, 48, 76 }, COLLIDER_HOLE);
+	App->collision->AddCollider({ 144, -4149, 18, 76 }, COLLIDER_HOLE);
+	App->collision->AddCollider({ 110, -4149, 48, 44 }, COLLIDER_HOLE);
+
+	App->collision->AddCollider({ 0, -4341, 52, 76 }, COLLIDER_HOLE);
+	App->collision->AddCollider({ 47, -4373, 19, 139 }, COLLIDER_HOLE);
+	App->collision->AddCollider({ 55, -4310, 70, 45 }, COLLIDER_HOLE);
+	App->collision->AddCollider({ 111, -4341, 19, 76 }, COLLIDER_HOLE);
+
+	App->collision->AddCollider({ 0, -4469, 66, 44 }, COLLIDER_HOLE);
+
+	App->collision->AddCollider({ 111, -4469, 19, 76 }, COLLIDER_HOLE);
+	App->collision->AddCollider({ 175, -4469, 66, 100 }, COLLIDER_HOLE);
+	App->collision->AddCollider({ 175, -4373, 66, 44 }, COLLIDER_HOLE);
+	App->collision->AddCollider({ 120, -4438, 70, 45 }, COLLIDER_HOLE);
+
+	App->collision->AddCollider({ 0, -4629, 66, 44 }, COLLIDER_HOLE);
+	App->collision->AddCollider({ 50, -4598, 70, 45 }, COLLIDER_HOLE);
+	App->collision->AddCollider({ 110, -4661, 20, 108 }, COLLIDER_HOLE);
 
 
 	/*
