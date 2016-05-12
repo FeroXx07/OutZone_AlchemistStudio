@@ -64,6 +64,8 @@ public:
 	SDL_Texture* graphics = nullptr;
 	Animation* current_animation = nullptr;
 
+	Animation fall;
+
 	Animation idle_w;
 	Animation idle_wa;
 	Animation idle_wd;
