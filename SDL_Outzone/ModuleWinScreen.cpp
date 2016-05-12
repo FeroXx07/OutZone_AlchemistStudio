@@ -19,9 +19,9 @@ ModuleWinScreen::~ModuleWinScreen()
 // Load assets
 bool ModuleWinScreen::Start()
 {
-	LOG("Loading game over");
+	LOG("Loading win screen");
 
-	background = App->textures->Load("Outzone/Gamefinal1.png");
+	background = App->textures->Load("Outzone/Congratulations.png");
 
 	//App->audio->PlayMusic("rtype/intro.ogg", 1.0f);
 	//	fx = App->audio->LoadFx("rtype/starting.wav");
