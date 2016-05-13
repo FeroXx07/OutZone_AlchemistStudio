@@ -50,6 +50,7 @@ public:
 	bool Invencible = false;
 	bool Superspeed = false;
 	bool Fly = false;
+	bool Immobile = false;
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);

@@ -154,10 +154,11 @@ update_status ModulePlayer::Update()
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
-			if (App->player->position.y <= (160 + (App->render->camera.y / 2))){
-				App->render->camera.y -= speed;
+			if (Immobile == false){
+				if (App->player->position.y <= (160 + (App->render->camera.y / 2))){
+					App->render->camera.y -= speed;
+				}
 			}
-
 		}
 
 		speed = 1;
@@ -167,16 +168,18 @@ update_status ModulePlayer::Update()
 
 		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 		{
-			if ((position.x -= speed) <= 0){
-				position.x = 0;
-			}
-			if (collisionWallS == true)
-			{
-				position.x = PreviousPos.x;
-				collisionWallS = false;
-			}
-			else{
-				position.x -= speed;
+			if (Immobile == false){
+				if ((position.x -= speed) <= 0){
+					position.x = 0;
+				}
+				if (collisionWallS == true)
+				{
+					position.x = PreviousPos.x;
+					collisionWallS = false;
+				}
+				else{
+					position.x -= speed;
+				}
 			}
 			if (current_animation != &left)
 			{
@@ -187,16 +190,18 @@ update_status ModulePlayer::Update()
 
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 		{
-			if ((position.x += speed) >= 200){
-				position.x = 200;
-			}
-			if (collisionWallS == true)
-			{
-				position.x = PreviousPos.x;
-				collisionWallS = false;
-			}
-			else{
-				position.x += speed;
+			if (Immobile == false){
+				if ((position.x += speed) >= 200){
+					position.x = 200;
+				}
+				if (collisionWallS == true)
+				{
+					position.x = PreviousPos.x;
+					collisionWallS = false;
+				}
+				else{
+					position.x += speed;
+				}
 			}
 			current_animation = &right;
 			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
@@ -206,18 +211,19 @@ update_status ModulePlayer::Update()
 
 		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
 		{
-			if (collisionWallT == true)
-			{
-				position.y = PreviousPos.y;
-				collisionWallT = false;
+			if (Immobile == false){
+				if (collisionWallT == true)
+				{
+					position.y = PreviousPos.y;
+					collisionWallT = false;
+				}
+				if ((position.y += speed) >= (280 + (App->render->camera.y / 2))){
+					position.y = (280 + (App->render->camera.y / 2));
+				}
+				else{
+					position.y += speed;
+				}
 			}
-			if ((position.y += speed) >= (280 + (App->render->camera.y / 2))){
-				position.y = (280 + (App->render->camera.y / 2));
-			}
-			else{
-				position.y += speed;
-			}
-
 			current_animation = &down;
 
 			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
@@ -240,18 +246,19 @@ update_status ModulePlayer::Update()
 
 		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 		{
-			if ((position.y -= speed) <= -5050){
-				position.y = -5050;
+			if (Immobile == false){
+				if ((position.y -= speed) <= -5050){
+					position.y = -5050;
+				}
+				if (collisionWallT == true)
+				{
+					position.y = PreviousPos.y;
+					collisionWallT = false;
+				}
+				else{
+					position.y -= speed;
+				}
 			}
-			if (collisionWallT == true)
-			{
-				position.y = PreviousPos.y;
-				collisionWallT = false;
-			}
-			else{
-				position.y -= speed;
-			}
-
 			//if (current_animation != &up)
 			//{
 			//	up.Reset();
@@ -393,6 +400,33 @@ update_status ModulePlayer::Update()
 			}
 			else{
 				Fly = false;
+			}
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN){
+			position.x = 100;
+			position.y = 250;
+			App->render->camera.y = 0;
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN){
+			position.x = 100;
+			position.y = -2256;
+			App->render->camera.y = -4832;
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_STATE::KEY_DOWN){
+			position.x = 100;
+			position.y = -4806;
+			App->render->camera.y = -9932;
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN){
+			if (Immobile == false){
+				Immobile = true;
+			}
+			else{
+				Immobile = false;
 			}
 		}
 
