@@ -132,10 +132,12 @@ update_status ModuleEffects::Update()
 	goaheadactiontime
 	*/
 	goaheadcurrenttime = SDL_GetTicks();
-	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+
+	if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE){
+		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) 
+		|| (App->player->position.y >= (170 + (App->render->camera.y / 2)))){
 
 		if (goaheadfirstloop == true){
 			goaheadactiontime = SDL_GetTicks();
