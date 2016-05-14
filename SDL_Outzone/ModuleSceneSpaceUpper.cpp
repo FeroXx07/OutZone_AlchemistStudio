@@ -7,10 +7,10 @@
 #include "ModuleCollision.h"
 #include "ModuleParticles.h"
 #include "ModuleEnemies.h"
-#include "ModulePlayer.h"
 #include "ModuleSceneSpaceUpper.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleInput.h"
+#include "ModuleEffects.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -41,6 +41,7 @@ bool ModuleSceneSpaceUpper::CleanUp()
 	App->collision->Disable();
 	App->particles->Disable();
 	App->player->Disable();
+	App->effects->Disable();
 	App->textures->Unload(background);
 
 	return true;

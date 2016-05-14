@@ -653,18 +653,6 @@ update_status ModulePlayer::Update()
 
 		}
 	}
-
-	if ((Invencible == true) || (Superspeed == true) || (Fly == true)){
-		godcurrenttime = SDL_GetTicks();
-		if (godcurrenttime > (godactiontime + 400)){
-			App->particles->AddParticle(App->particles->godmode, position.x, position.y);
-			godactiontime = godcurrenttime;
-		}
-	}
-
-
-
-	
 	playercollision->SetPos(position.x + PLAYERCOLIDERX, position.y + PLAYERCOLIDERY);
 
 	// Draw everything --------------------------------------

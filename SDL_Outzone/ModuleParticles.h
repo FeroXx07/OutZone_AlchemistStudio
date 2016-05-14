@@ -116,7 +116,6 @@ public:
 
 	Particle goahead;
 
-	Particle godmode;
 
 };
 

@@ -349,13 +349,6 @@ ModuleParticles::ModuleParticles()
 	goahead.anim.PushBack({ 0, 0, 1, 1 });
 	goahead.anim.speed = 0.1f;
 	goahead.anim.loop = true;
-
-	godmode.anim.PushBack({ 248, 47, 38, 38 });
-	godmode.anim.PushBack({ 286, 47, 38, 38 });
-	godmode.anim.PushBack({ 324, 47, 38, 38 });
-	godmode.anim.PushBack({ 362, 47, 38, 38 });
-	godmode.anim.speed = 0.2f;
-	godmode.anim.loop = true;
 }
 
 ModuleParticles::~ModuleParticles()

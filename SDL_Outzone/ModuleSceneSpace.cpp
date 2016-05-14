@@ -9,6 +9,7 @@
 #include "ModuleEnemies.h"
 #include "ModuleSceneSpace.h"
 #include "ModuleFadeToBlack.h"
+#include "ModuleEffects.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -26,6 +27,7 @@ bool ModuleSceneSpace::Start()
 	background = App->textures->Load("Outzone/level2.png");
 
 	App->player->Enable();
+	App->effects->Enable();
 	App->particles->Enable();
 	App->collision->Enable();
 	App->enemies->Enable();
@@ -147,6 +149,7 @@ bool ModuleSceneSpace::CleanUp()
 	App->collision->Disable();
 	App->particles->Disable();
 	App->player->Disable();
+	App->effects->Disable();
 	App->textures->Unload(background);
 
 	return true;

@@ -46,8 +46,7 @@ public:
 	unsigned int playeractiontime = 0;
 	unsigned int shootcurrenttime = 0;
 	unsigned int shootactiontime = 0;
-	unsigned int godcurrenttime = 0;
-	unsigned int godactiontime = 0;
+	
 	bool Start();
 	bool Invencible = false;
 	bool Superspeed = false;

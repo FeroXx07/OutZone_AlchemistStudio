@@ -107,6 +107,9 @@
     <ClInclude Include="ModuleSceneSpaceUpper.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="ModuleEffects.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -185,6 +188,9 @@
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="ModuleSceneSpaceUpper.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEffects.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
   </ItemGroup>
