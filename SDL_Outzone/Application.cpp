@@ -30,8 +30,8 @@ Application::Application()
 	modules[i++] = scene_gamewin = new ModuleWinScreen();
 	modules[i++] = enemies = new ModuleEnemies();
 	modules[i++] = player = new ModulePlayer();
-	modules[i++] = effects = new ModuleEffects();
 	modules[i++] = scene_space_upper = new ModuleSceneSpaceUpper();
+	modules[i++] = effects = new ModuleEffects();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();

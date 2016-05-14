@@ -606,11 +606,6 @@ update_status ModulePlayer::Update()
 			}
 		}
 
-		if (App->input->keyboard[SDL_SCANCODE_X] == KEY_STATE::KEY_DOWN)
-		{
-			App->particles->AddParticle(App->particles->bomb, App->render->camera.x / 2, App->render->camera.y / 2, COLLIDER_BOMB);
-		}
-
 		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE

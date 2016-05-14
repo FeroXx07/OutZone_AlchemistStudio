@@ -9,6 +9,7 @@
 #include "ModuleEffects.h"
 #include "ModuleAudio.h"
 #include "ModulePlayer.h"
+#include "ModuleRender.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -30,6 +31,26 @@ ModuleEffects::ModuleEffects()
 	god.PushBack({ 362, 47, 38, 38 });
 	god.loop = true;
 	god.speed = 0.2f;
+
+	bomb.PushBack({ 0, 341, 240, 320 });
+	bomb.PushBack({ 240, 341, 240, 320 });
+	bomb.PushBack({ 480, 341, 240, 320 });
+	bomb.PushBack({ 720, 341, 240, 320 });
+	bomb.PushBack({ 960, 341, 240, 320 });
+	bomb.PushBack({ 1200, 341, 240, 320 });
+	bomb.PushBack({ 0, 661, 240, 320 });
+	bomb.PushBack({ 240, 661, 240, 320 });
+	bomb.PushBack({ 480, 661, 240, 320 });
+	bomb.PushBack({ 720, 661, 240, 320 });
+	bomb.PushBack({ 960, 661, 240, 320 });
+	bomb.PushBack({ 1200, 661, 240, 320 });
+	bomb.PushBack({ 0, 981, 240, 320 });
+	bomb.PushBack({ 240, 981, 240, 320 });
+	bomb.PushBack({ 480, 981, 240, 320 });
+	bomb.PushBack({ 720, 981, 240, 320 });
+	bomb.PushBack({ 960, 981, 240, 320 });
+	bomb.loop = true;
+	bomb.speed = 0.5f;
 }
 
 ModuleEffects::~ModuleEffects()
@@ -60,6 +81,7 @@ bool ModuleEffects::CleanUp()
 
 update_status ModuleEffects::Update()
 {
+	//god
 	if ((App->player->Invencible == true) || (App->player->Superspeed == true) || (App->player->Fly == true)){
 		godcurrenttime = SDL_GetTicks();
 		if (godcurrenttime > (godactiontime + 400)){
@@ -71,10 +93,33 @@ update_status ModuleEffects::Update()
 		effect1 = NULL;
 	}
 	position = App->player->position;
-
 	if (effect1 != nullptr){
 		App->render->Blit(graphics, position.x, position.y, &(effect1->GetCurrentFrame()));
 	}
+	
+	//bomb
+	bombcurrenttime = SDL_GetTicks();
+	if (App->input->keyboard[SDL_SCANCODE_X] == KEY_STATE::KEY_DOWN)
+	{
+		bombactive = true;
+		effect2collider = App->collision->AddCollider({ App->render->camera.x, App->render->camera.y / 2, 240, 340 }, COLLIDER_BOMB);
+		bombactiontime = SDL_GetTicks();
+	}
+	if (bombcurrenttime > (bombactiontime + 700)){
+		bombactive = false;
+		App->collision->EraseCollider(effect2collider);
+	}
+	if (bombactive == true){
+		effect2 = &bomb;
+		effect2collider->SetPos(App->render->camera.x, App->render->camera.y / 2);
+	}
+	else{
+		effect2 = NULL;
+	}
+	if (effect2 != nullptr){
+		App->render->Blit(graphics, App->render->camera.x, App->render->camera.y / 2, &(effect2->GetCurrentFrame()));
+	}
+	
 
 	return UPDATE_CONTINUE;
 }

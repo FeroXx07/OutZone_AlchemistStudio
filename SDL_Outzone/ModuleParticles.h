@@ -49,7 +49,6 @@ private:
 	Particle* active[MAX_ACTIVE_PARTICLES];
 
 public:
-	Particle bomb;
 	Particle lascoll;
 	Particle lascoll2;
 	Particle lascoll3;

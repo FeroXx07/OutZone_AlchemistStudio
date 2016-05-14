@@ -245,6 +245,9 @@ void ModuleCollision::DebugDraw()
 			case COLLIDER_WALL2:
 			App->render->DrawQuad(colliders[i]->rect, 0, 150, 150, alpha);
 			break;
+			case COLLIDER_BOMB:
+				App->render->DrawQuad(colliders[i]->rect, 0, 0, 0, alpha);
+				break;
 			case COLLIDER_DOOR:
 			App->render->DrawQuad(colliders[i]->rect, 150, 150, 0, alpha);
 			break;

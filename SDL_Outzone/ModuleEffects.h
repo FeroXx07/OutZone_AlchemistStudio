@@ -19,16 +19,21 @@ public:
 	bool CleanUp();
 
 public:
+	bool bombactive = false;
 	unsigned int godcurrenttime = 0;
 	unsigned int godactiontime = 0;
+	unsigned int bombcurrenttime = 0;
+	unsigned int bombactiontime = 0;
 
 	SDL_Texture* graphics = nullptr;
 	Animation* effect1 = nullptr;
 	Animation* effect2 = nullptr;
+	Collider* effect2collider;
 	Animation* effect3 = nullptr;
 
 	Animation god;
 	Animation lascoll;
+	Animation bomb;
 
 	iPoint position;
 };

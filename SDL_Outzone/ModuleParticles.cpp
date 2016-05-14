@@ -18,27 +18,6 @@ ModuleParticles::ModuleParticles()
 {
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
-	//bomb
-	bomb.anim.PushBack({ 0, 341, 240, 320 });
-	bomb.anim.PushBack({240, 341, 240, 320 });
-	bomb.anim.PushBack({ 480, 341, 240, 320 });
-	bomb.anim.PushBack({ 720, 341, 240, 320 });
-	bomb.anim.PushBack({ 960, 341, 240, 320 });
-	bomb.anim.PushBack({ 1200, 341, 240, 320 });
-	bomb.anim.PushBack({ 0, 661, 240, 320 });
-	bomb.anim.PushBack({ 240, 661, 240, 320 });
-	bomb.anim.PushBack({ 480, 661, 240, 320 });
-	bomb.anim.PushBack({ 720, 661, 240, 320 });
-	bomb.anim.PushBack({ 960, 661, 240, 320 });
-	bomb.anim.PushBack({ 1200, 661, 240, 320 });
-	bomb.anim.PushBack({ 0, 981, 240, 320 });
-	bomb.anim.PushBack({ 240, 981, 240, 320 });
-	bomb.anim.PushBack({ 480, 981, 240, 320 });
-	bomb.anim.PushBack({ 720, 981, 240, 320 });
-	bomb.anim.PushBack({ 960, 981, 240, 320 });
-	bomb.anim.speed = 0.5f;
-	bomb.speed.x = 0;
-	bomb.speed.y = 0;
 
 	explosionturret.anim.PushBack({0, 153, 36, 39});
 	explosionturret.anim.PushBack({ 36, 153, 36, 39 });
