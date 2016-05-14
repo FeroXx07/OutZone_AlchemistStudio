@@ -120,6 +120,12 @@ update_status ModuleEffects::Update()
 		App->render->Blit(graphics, App->render->camera.x, App->render->camera.y / 2, &(effect2->GetCurrentFrame()));
 	}
 	
+	//go ahead
+
+
+
+
+
 
 	return UPDATE_CONTINUE;
 }
