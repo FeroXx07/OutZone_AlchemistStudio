@@ -56,6 +56,7 @@ public:
 	Particle lascoll4;
 	Particle explosionturret;
 	Particle playerexplosion;
+
 	Particle laser;
 	Particle laser0;
 	Particle laser22_5;
@@ -74,6 +75,24 @@ public:
 	Particle laser315;
 	Particle laser337_5;
 
+	Particle poweredlaser;
+	Particle poweredlaser0;
+	Particle poweredlaser22_5;
+	Particle poweredlaser45;
+	Particle poweredlaser67_5;
+	Particle poweredlaser90;
+	Particle poweredlaser112_5;
+	Particle poweredlaser135;
+	Particle poweredlaser157_5;
+	Particle poweredlaser180;
+	Particle poweredlaser202_5;
+	Particle poweredlaser225;
+	Particle poweredlaser247_5;
+	Particle poweredlaser270;
+	Particle poweredlaser292_5;
+	Particle poweredlaser315;
+	Particle poweredlaser337_5;
+
 	Particle laserweaponshoot0;
 	Particle laserweaponshoot22_5;
 	Particle laserweaponshoot45;
@@ -91,9 +110,13 @@ public:
 	Particle laserweaponshoot315;
 	Particle laserweaponshoot337_5;
 
+	Particle laserball;
+
 	Particle enemyshoot;
 
 	Particle goahead;
+
+	Particle godmode;
 
 };
 

@@ -557,8 +557,8 @@ update_status ModulePlayer::Update()
 						beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
 						playeractiontime = playercurrenttime;
 					}
-					App->particles->AddParticle(App->particles->laser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->laserweaponshoot315, position.x, position.y - 10);
+					App->particles->AddParticle(App->particles->laser315, position.x + 10, position.y + 1, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->laserweaponshoot315, position.x + 5, position.y - 4);
 				}
 				else if (lastkeypressed == LAST_KEY_WD){
 					if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
@@ -591,16 +591,16 @@ update_status ModulePlayer::Update()
 				else if (lastkeypressed == LAST_KEY_SD){
 					if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
 						if (beforelastkeypressed == LAST_KEY_S){
-							App->particles->AddParticle(App->particles->laser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->laser157_5, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
 						}
 						else if (beforelastkeypressed == LAST_KEY_D){
-							App->particles->AddParticle(App->particles->laser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->laser112_5, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
 						}
 						beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
 						playeractiontime = playercurrenttime;
 					}
-					App->particles->AddParticle(App->particles->laser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->laserweaponshoot135, position.x + 15, position.y + 15);
+					App->particles->AddParticle(App->particles->laser135, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->laserweaponshoot135, position.x + 22, position.y + 25);
 				}
 				shootactiontime = shootcurrenttime;
 			}
@@ -653,6 +653,17 @@ update_status ModulePlayer::Update()
 
 		}
 	}
+
+	if ((Invencible == true) || (Superspeed == true) || (Fly == true)){
+		godcurrenttime = SDL_GetTicks();
+		if (godcurrenttime > (godactiontime + 400)){
+			App->particles->AddParticle(App->particles->godmode, position.x, position.y);
+			godactiontime = godcurrenttime;
+		}
+	}
+
+
+
 	
 	playercollision->SetPos(position.x + PLAYERCOLIDERX, position.y + PLAYERCOLIDERY);
 

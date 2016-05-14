@@ -19,73 +19,67 @@ ModuleParticles::ModuleParticles()
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 		active[i] = nullptr;
 	//bomb
-	bomb.anim.PushBack({ 0, 490, 240, 320 });//
-	bomb.anim.PushBack({240, 490, 240, 320 });//
-	bomb.anim.PushBack({ 480, 490, 240, 320 });//
-	bomb.anim.PushBack({720, 490, 240, 320 });//
-	bomb.anim.PushBack({ 960, 490, 240, 320 });//
-	bomb.anim.PushBack({ 1200, 490, 240, 320 });//
-	bomb.anim.PushBack({ 1440, 490, 240, 320 });//
-	bomb.anim.PushBack({ 1680, 490, 240, 320 });//
-	bomb.anim.PushBack({1920, 490, 240, 320 });//
-	bomb.anim.PushBack({ 2160, 490, 240, 320 });//
-	bomb.anim.PushBack({ 2400, 490, 240, 320 });//
-	bomb.anim.PushBack({ 2640, 490, 240, 320 });//
-	bomb.anim.PushBack({ 2880, 490, 240, 320 });//
-	bomb.anim.PushBack({ 3120, 490, 240, 320 });//
-	bomb.anim.PushBack({ 3360, 490, 240, 320 });//
-	bomb.anim.PushBack({ 3600, 490, 240, 320 });//
-	bomb.anim.PushBack({ 3840, 490, 240, 320 });//
+	bomb.anim.PushBack({ 0, 341, 240, 320 });
+	bomb.anim.PushBack({240, 341, 240, 320 });
+	bomb.anim.PushBack({ 480, 341, 240, 320 });
+	bomb.anim.PushBack({ 720, 341, 240, 320 });
+	bomb.anim.PushBack({ 960, 341, 240, 320 });
+	bomb.anim.PushBack({ 1200, 341, 240, 320 });
+	bomb.anim.PushBack({ 0, 661, 240, 320 });
+	bomb.anim.PushBack({ 240, 661, 240, 320 });
+	bomb.anim.PushBack({ 480, 661, 240, 320 });
+	bomb.anim.PushBack({ 720, 661, 240, 320 });
+	bomb.anim.PushBack({ 960, 661, 240, 320 });
+	bomb.anim.PushBack({ 1200, 661, 240, 320 });
+	bomb.anim.PushBack({ 0, 981, 240, 320 });
+	bomb.anim.PushBack({ 240, 981, 240, 320 });
+	bomb.anim.PushBack({ 480, 981, 240, 320 });
+	bomb.anim.PushBack({ 720, 981, 240, 320 });
+	bomb.anim.PushBack({ 960, 981, 240, 320 });
 	bomb.anim.speed = 0.5f;
 	bomb.speed.x = 0;
 	bomb.speed.y = 0;
 
-
-	explosionturret.anim.PushBack({117, 332, 33, 38});//
-	explosionturret.anim.PushBack({215, 333, 35, 35});//
-	explosionturret.anim.PushBack({ 14, 387, 38, 38 });//
-	explosionturret.anim.PushBack({ 98, 390, 30, 35 });//
-	explosionturret.anim.PushBack({ 138, 387, 31, 38 });//
-	explosionturret.anim.PushBack({ 179, 386, 31, 39 });//
-	explosionturret.anim.PushBack({ 219, 384, 27, 42 });//
+	explosionturret.anim.PushBack({0, 153, 36, 39});
+	explosionturret.anim.PushBack({ 36, 153, 36, 39 });
+	explosionturret.anim.PushBack({ 72, 153, 36, 39 });
+	explosionturret.anim.PushBack({ 108, 153, 36, 39 });
+	explosionturret.anim.PushBack({ 144, 153, 36, 39 });
+	explosionturret.anim.PushBack({ 180, 153, 36, 39 });
+	explosionturret.anim.PushBack({ 216, 153, 36, 39 });
 	explosionturret.anim.loop = false;
 	explosionturret.anim.speed = 0.3f;
 
-	playerexplosion.anim.PushBack({ 348, 16, 118, 116 });//
-	playerexplosion.anim.PushBack({ 462, 16, 118, 116 });//
-	playerexplosion.anim.PushBack({ 584, 16, 118, 116 });//
-	playerexplosion.anim.PushBack({ 700, 16, 118, 116 });//
-	playerexplosion.anim.PushBack({ 307, 185, 118, 116 });//
-	playerexplosion.anim.PushBack({ 425, 185, 118, 116 });//
-	playerexplosion.anim.PushBack({ 541, 185, 118, 116 });//
-	playerexplosion.anim.PushBack({ 659, 185, 118, 116 });//
-	playerexplosion.anim.PushBack({ 775, 185, 118, 118 });//
-	//playerexplosion.life = 1;
+	playerexplosion.anim.PushBack({ 682, 114, 118, 115 });
+	playerexplosion.anim.PushBack({ 448, 228, 118, 115 });
+	playerexplosion.anim.PushBack({ 565, 228, 118, 115 });
+	playerexplosion.anim.PushBack({ 682, 228, 118, 115 });
+	playerexplosion.anim.PushBack({ 448, 0, 118, 115 });
+	playerexplosion.anim.PushBack({ 565, 0, 118, 115 });
+	playerexplosion.anim.PushBack({ 682, 0, 118, 115 });
+	playerexplosion.anim.PushBack({ 448, 114, 118, 115 });
+	playerexplosion.anim.PushBack({ 565, 114, 118, 115 });
 	playerexplosion.anim.loop = false;
 	playerexplosion.anim.speed = 0.4f;
 
-	/*
-	laser.anim.PushBack({232, 103, 16, 12});
-	laser.anim.PushBack({249, 103, 16, 12});
-	laser.anim.speed = 0.2f;
-	laser.speed.x = 5;
-	laser.life = 3000;
-	*/
-	//
-
-	lascoll.anim.PushBack({ 136, 158, 16, 16 });//
-	lascoll.anim.PushBack({ 137, 139, 15, 15 });//
-	lascoll.anim.PushBack({ 83, 161, 16, 15 });//
-	lascoll.anim.PushBack({ 83, 139, 18, 19 });//
+	//colision particle normal weapon
+	lascoll.anim.PushBack({ 180, 89, 16, 16 });
+	lascoll.anim.PushBack({ 144, 121, 16, 16 });
+	lascoll.anim.PushBack({ 142, 104, 16, 16 });
+	lascoll.anim.PushBack({ 141, 87, 16, 16 });
 	lascoll.anim.loop = false;
 	lascoll.anim.speed = 0.25f;
-	/*
-	lascoll.PushBack({ 136, 137, 18, 18 });
-	lascoll.PushBack({ 136, 137, 18, 18 });
-	lascoll.loop = false;
-	lascoll.speed = 0.05f;*/
-	//1st q
 
+	//colision particle 3shoot weapon
+	lascoll2.anim.PushBack({ 180, 107, 16, 16 });
+	lascoll2.anim.PushBack({ 161, 121, 16, 16 });
+	lascoll2.anim.PushBack({ 160, 103, 16, 16 });
+	lascoll2.anim.PushBack({ 161, 87, 16, 16 });
+	lascoll2.anim.loop = false;
+	lascoll2.anim.speed = 0.25f;
+
+	//Normal weapon
+	//1st q
 	laser0.anim.PushBack({ 26, 87, 4, 16 });
 	laser0.anim.speed = 0.2f;
 	laser0.speed.y = -10;
@@ -115,19 +109,19 @@ ModuleParticles::ModuleParticles()
 	laser90.speed.x = 10;
 	laser90.life = laserlife;
 
-	laser112_5.anim.PushBack({ 156, 194, 16, 10 });//
+	laser112_5.anim.PushBack({ 125, 123, 15, 8 });
 	laser112_5.anim.speed = 0.2f;
 	laser112_5.speed.x = 9;
 	laser112_5.speed.y = 4;
 	laser112_5.life = laserlife;
 
-	laser135.anim.PushBack({ 149, 222, 13, 14 });//
+	laser135.anim.PushBack({ 75, 118, 12, 13 });
 	laser135.anim.speed = 0.2f;
 	laser135.speed.x = 7;
 	laser135.speed.y = 7;
 	laser135.life = laserlife;
 
-	laser157_5.anim.PushBack({ 106, 201, 10, 16 });//
+	laser157_5.anim.PushBack({ 127, 86, 8, 16 });
 	laser157_5.anim.speed = 0.2f;
 	laser157_5.speed.x = 4;
 	laser157_5.speed.y = 9;
@@ -163,23 +157,127 @@ ModuleParticles::ModuleParticles()
 	laser270.speed.x = -10;
 	laser270.life = laserlife;
 
-	laser292_5.anim.PushBack({ 85, 272, 16, 10 });//
+	laser292_5.anim.PushBack({ 125, 123, 15, 8 });
 	laser292_5.anim.speed = 0.2f;
 	laser292_5.speed.x = -9;
 	laser292_5.speed.y = -4;
 	laser292_5.life = laserlife;
 
-	laser315.anim.PushBack({ 121, 259, 13, 14 });//
+	laser315.anim.PushBack({ 75, 118, 12, 13 });
 	laser315.anim.speed = 0.2f;
 	laser315.speed.x = -7;
 	laser315.speed.y = -7;
 	laser315.life = laserlife;
 
-	laser337_5.anim.PushBack({ 170, 283, 9, 16 });//
+	laser337_5.anim.PushBack({ 127, 86, 8, 16 });
 	laser337_5.anim.speed = 0.2f;
 	laser337_5.speed.x = -4;
 	laser337_5.speed.y = -9;
 	laser337_5.life = laserlife;
+
+	//3shoot weapon
+	//1st q
+	poweredlaser0.anim.PushBack({ 15, 87, 10, 16 });
+	poweredlaser0.anim.speed = 0.2f;
+	poweredlaser0.speed.y = -10;
+	poweredlaser0.life = laserlife;
+
+	poweredlaser22_5.anim.PushBack({ 108, 103, 13, 17 });
+	poweredlaser22_5.anim.speed = 0.2f;
+	poweredlaser22_5.speed.x = 4;
+	poweredlaser22_5.speed.y = -9;
+	poweredlaser22_5.life = laserlife;
+
+	poweredlaser45.anim.PushBack({ 108, 87, 15, 16 });
+	poweredlaser45.anim.speed = 0.2f;
+	poweredlaser45.speed.x = 7;
+	poweredlaser45.speed.y = -7;
+	poweredlaser45.life = laserlife;
+
+	poweredlaser67_5.anim.PushBack({ 108, 120, 16, 14 });
+	poweredlaser67_5.anim.speed = 0.2f;
+	poweredlaser67_5.speed.x = 9;
+	poweredlaser67_5.speed.y = -4;
+	poweredlaser67_5.life = laserlife;
+
+	//4st q
+	poweredlaser90.anim.PushBack({ 108, 135, 16, 10 });
+	poweredlaser90.anim.speed = 0.2f;
+	poweredlaser90.speed.x = 10;
+	poweredlaser90.life = laserlife;
+
+	poweredlaser112_5.anim.PushBack({ 124, 134, 16, 14 });
+	poweredlaser112_5.anim.speed = 0.2f;
+	poweredlaser112_5.speed.x = 9;
+	poweredlaser112_5.speed.y = 4;
+	poweredlaser112_5.life = laserlife;
+
+	poweredlaser135.anim.PushBack({ 72, 132, 15, 15 });
+	poweredlaser135.anim.speed = 0.2f;
+	poweredlaser135.speed.x = 7;
+	poweredlaser135.speed.y = 7;
+	poweredlaser135.life = laserlife;
+
+	poweredlaser157_5.anim.PushBack({ 125, 103, 14, 17 });
+	poweredlaser157_5.anim.speed = 0.2f;
+	poweredlaser157_5.speed.x = 4;
+	poweredlaser157_5.speed.y = 9;
+	poweredlaser157_5.life = laserlife;
+
+	//3st q
+	poweredlaser180.anim.PushBack({ 15, 87, 10, 16 });
+	poweredlaser180.anim.speed = 0.2f;
+	poweredlaser180.speed.y = 10;
+	poweredlaser180.life = laserlife;
+
+	poweredlaser202_5.anim.PushBack({ 108, 103, 13, 17 });
+	poweredlaser202_5.anim.speed = 0.2f;
+	poweredlaser202_5.speed.x = -4;
+	poweredlaser202_5.speed.y = 9;
+	poweredlaser202_5.life = laserlife;
+
+	poweredlaser225.anim.PushBack({ 108, 87, 15, 16 });
+	poweredlaser225.anim.speed = 0.2f;
+	poweredlaser225.speed.x = -7;
+	poweredlaser225.speed.y = 7;
+	poweredlaser225.life = laserlife;
+
+	poweredlaser247_5.anim.PushBack({ 108, 120, 16, 14 });
+	poweredlaser247_5.anim.speed = 0.2f;
+	poweredlaser247_5.speed.x = -9;
+	poweredlaser247_5.speed.y = 4;
+	poweredlaser247_5.life = laserlife;
+
+	//2st q
+	poweredlaser270.anim.PushBack({ 108, 135, 16, 10 });
+	poweredlaser270.anim.speed = 0.2f;
+	poweredlaser270.speed.x = -10;
+	poweredlaser270.life = laserlife;
+
+	poweredlaser292_5.anim.PushBack({ 124, 134, 16, 14 });
+	poweredlaser292_5.anim.speed = 0.2f;
+	poweredlaser292_5.speed.x = -9;
+	poweredlaser292_5.speed.y = -4;
+	poweredlaser292_5.life = laserlife;
+
+	poweredlaser315.anim.PushBack({ 72, 132, 15, 15 });
+	poweredlaser315.anim.speed = 0.2f;
+	poweredlaser315.speed.x = -7;
+	poweredlaser315.speed.y = -7;
+	poweredlaser315.life = laserlife;
+
+	poweredlaser337_5.anim.PushBack({ 125, 103, 14, 17 });
+	poweredlaser337_5.anim.speed = 0.2f;
+	poweredlaser337_5.speed.x = -4;
+	poweredlaser337_5.speed.y = -9;
+	poweredlaser337_5.life = laserlife;
+
+	//laserball
+	laserball.anim.PushBack({ 0, 63, 24, 24 });
+	laserball.anim.speed = 0.2f;
+	laserball.speed.x = 0;
+	laserball.speed.y = 0;
+	laserball.life = laserlife;
 
 	//Weapon shoots
 	laserweaponshoot0.anim.PushBack({ 0, 87, 14, 16 });
@@ -230,26 +328,34 @@ ModuleParticles::ModuleParticles()
 	laserweaponshoot337_5.anim.PushBack({ 57, 133, 14, 15 });
 	laserweaponshoot337_5.life = weaponshootlife;
 
-	enemyshoot.anim.PushBack({ 152, 301, 7, 7 });
+	enemyshoot.anim.PushBack({ 282, 36, 6, 6 });
 	enemyshoot.life = enemyshootlife;
 
-	/*
-	goahead.anim.PushBack({ 4, 437, 50, 48 });
+	goahead.anim.PushBack({ 198, 87, 50, 48 });
 	goahead.anim.PushBack({ 0, 0, 1, 1 });
-	goahead.anim.PushBack({ 4, 437, 50, 48 });
+	goahead.anim.PushBack({ 198, 87, 50, 48 });
 	goahead.anim.PushBack({ 0, 0, 1, 1 });
-	goahead.anim.PushBack({ 4, 437, 50, 48 });
+	goahead.anim.PushBack({ 198, 87, 50, 48 });
 	goahead.anim.PushBack({ 0, 0, 1, 1 });
-	goahead.anim.PushBack({ 4, 437, 50, 48 });
+	goahead.anim.PushBack({ 198, 87, 50, 48 });
 	goahead.anim.PushBack({ 0, 0, 1, 1 });
-	goahead.anim.PushBack({ 4, 437, 50, 48 });
+	goahead.anim.PushBack({ 198, 87, 50, 48 });
 	goahead.anim.PushBack({ 0, 0, 1, 1 });
-	goahead.anim.PushBack({ 4, 437, 50, 48 });
+	goahead.anim.PushBack({ 198, 87, 50, 48 });
 	goahead.anim.PushBack({ 0, 0, 1, 1 });
-	goahead.anim.speed = 0.2f;
+	goahead.anim.PushBack({ 198, 87, 50, 48 });
+	goahead.anim.PushBack({ 0, 0, 1, 1 });
+	goahead.anim.PushBack({ 198, 87, 50, 48 });
+	goahead.anim.PushBack({ 0, 0, 1, 1 });
+	goahead.anim.speed = 0.1f;
 	goahead.anim.loop = true;
-	goahead.life = 2000;
-	*/
+
+	godmode.anim.PushBack({ 248, 47, 38, 38 });
+	godmode.anim.PushBack({ 286, 47, 38, 38 });
+	godmode.anim.PushBack({ 324, 47, 38, 38 });
+	godmode.anim.PushBack({ 362, 47, 38, 38 });
+	godmode.anim.speed = 0.2f;
+	godmode.anim.loop = true;
 }
 
 ModuleParticles::~ModuleParticles()
