@@ -20,10 +20,13 @@ public:
 
 public:
 	bool bombactive = false;
+	bool goaheadfirstloop = true;
 	unsigned int godcurrenttime = 0;
 	unsigned int godactiontime = 0;
 	unsigned int bombcurrenttime = 0;
 	unsigned int bombactiontime = 0;
+	unsigned int goaheadcurrenttime = 0;
+	unsigned int goaheadactiontime = 0;
 
 	SDL_Texture* graphics = nullptr;
 	Animation* effect1 = nullptr;
@@ -34,6 +37,7 @@ public:
 	Animation god;
 	Animation lascoll;
 	Animation bomb;
+	Animation goahead;
 
 	iPoint position;
 };

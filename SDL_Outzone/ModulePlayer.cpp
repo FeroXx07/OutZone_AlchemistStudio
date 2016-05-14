@@ -611,8 +611,6 @@ update_status ModulePlayer::Update()
 			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE){
 
-			playertime = SDL_GetTicks();
-
 			if (lastkeypressed == LAST_KEY_W){
 				current_animation = &idle_w;
 			}
@@ -640,12 +638,6 @@ update_status ModulePlayer::Update()
 			else{
 				current_animation = &idle_w;
 			}
-
-			if (playertime > (playerinitialtime + 7000)) {
-				App->particles->AddParticle(App->particles->goahead, (App->render->camera.x / 2) + 95, (App->render->camera.y / 2) + 60);
-				playerinitialtime = playertime;
-			}
-
 		}
 	}
 	playercollision->SetPos(position.x + PLAYERCOLIDERX, position.y + PLAYERCOLIDERY);

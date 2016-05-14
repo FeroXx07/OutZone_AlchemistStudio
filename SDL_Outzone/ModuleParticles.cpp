@@ -309,25 +309,6 @@ ModuleParticles::ModuleParticles()
 
 	enemyshoot.anim.PushBack({ 282, 36, 6, 6 });
 	enemyshoot.life = enemyshootlife;
-
-	goahead.anim.PushBack({ 198, 87, 50, 48 });
-	goahead.anim.PushBack({ 0, 0, 1, 1 });
-	goahead.anim.PushBack({ 198, 87, 50, 48 });
-	goahead.anim.PushBack({ 0, 0, 1, 1 });
-	goahead.anim.PushBack({ 198, 87, 50, 48 });
-	goahead.anim.PushBack({ 0, 0, 1, 1 });
-	goahead.anim.PushBack({ 198, 87, 50, 48 });
-	goahead.anim.PushBack({ 0, 0, 1, 1 });
-	goahead.anim.PushBack({ 198, 87, 50, 48 });
-	goahead.anim.PushBack({ 0, 0, 1, 1 });
-	goahead.anim.PushBack({ 198, 87, 50, 48 });
-	goahead.anim.PushBack({ 0, 0, 1, 1 });
-	goahead.anim.PushBack({ 198, 87, 50, 48 });
-	goahead.anim.PushBack({ 0, 0, 1, 1 });
-	goahead.anim.PushBack({ 198, 87, 50, 48 });
-	goahead.anim.PushBack({ 0, 0, 1, 1 });
-	goahead.anim.speed = 0.1f;
-	goahead.anim.loop = true;
 }
 
 ModuleParticles::~ModuleParticles()

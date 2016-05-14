@@ -112,10 +112,6 @@ public:
 	Particle laserball;
 
 	Particle enemyshoot;
-
-	Particle goahead;
-
-
 };
 
 #endif // __MODULEPARTICLES_H__

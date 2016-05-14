@@ -51,6 +51,12 @@ ModuleEffects::ModuleEffects()
 	bomb.PushBack({ 960, 981, 240, 320 });
 	bomb.loop = true;
 	bomb.speed = 0.5f;
+
+	goahead.PushBack({ 198, 87, 50, 48 });
+	goahead.PushBack({ 0, 0, 1, 1 });
+	goahead.loop = true;
+	goahead.speed = 0.1f;
+
 }
 
 ModuleEffects::~ModuleEffects()
@@ -121,11 +127,33 @@ update_status ModuleEffects::Update()
 	}
 	
 	//go ahead
+	/*
+	goaheadcurrenttime
+	goaheadactiontime
+	*/
+	goaheadcurrenttime = SDL_GetTicks();
+	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+		&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE){
 
+		if (goaheadfirstloop == true){
+			goaheadactiontime = SDL_GetTicks();
+			goaheadfirstloop = false;
+		}
 
-
-
-
+		if (goaheadcurrenttime > (goaheadactiontime + 5000)){
+			effect3 = &goahead;
+			goaheadactiontime = goaheadcurrenttime;
+		}
+	}
+	else{
+		effect3 = NULL;
+		goaheadfirstloop = true;
+	}
+	if (effect3 != nullptr){
+		App->render->Blit(graphics, App->render->camera.x + 95, (App->render->camera.y / 2) + 80, &(effect3->GetCurrentFrame()));
+	}
 
 	return UPDATE_CONTINUE;
 }
