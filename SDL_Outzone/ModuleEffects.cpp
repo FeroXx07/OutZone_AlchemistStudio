@@ -107,9 +107,11 @@ update_status ModuleEffects::Update()
 	bombcurrenttime = SDL_GetTicks();
 	if (App->input->keyboard[SDL_SCANCODE_X] == KEY_STATE::KEY_DOWN)
 	{
-		bombactive = true;
-		effect2collider = App->collision->AddCollider({ App->render->camera.x, App->render->camera.y / 2, 240, 340 }, COLLIDER_BOMB);
-		bombactiontime = SDL_GetTicks();
+		if (bombactive == false){
+			bombactive = true;
+			effect2collider = App->collision->AddCollider({ App->render->camera.x, App->render->camera.y / 2, 240, 340 }, COLLIDER_BOMB);
+			bombactiontime = SDL_GetTicks();
+		}
 	}
 	if (bombcurrenttime > (bombactiontime + 700)){
 		bombactive = false;
@@ -127,10 +129,6 @@ update_status ModuleEffects::Update()
 	}
 	
 	//go ahead
-	/*
-	goaheadcurrenttime
-	goaheadactiontime
-	*/
 	goaheadcurrenttime = SDL_GetTicks();
 
 	if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
