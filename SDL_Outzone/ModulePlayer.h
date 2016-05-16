@@ -50,6 +50,7 @@ public:
 	bool Superspeed = false;
 	bool Fly = false;
 	bool Immobile = false;
+	bool changetaim = false;
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
@@ -83,6 +84,11 @@ public:
 	Animation Lefthtop;
 	Animation Drighbot;
 	Animation Lefthbot;
+
+	Animation upTAim;
+	Animation Idle_upTAim;
+	
+
 	iPoint position;
 	iPoint PreviousPos;
 	Collider* playercollision;

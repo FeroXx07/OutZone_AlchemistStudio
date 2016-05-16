@@ -27,77 +27,90 @@ ModulePlayer::ModulePlayer()
 	position.x = 100;
 	position.y = 200;
 
-	// idle animation
-	idle_w.PushBack({ 0, 50, 40, 50 });
-	idle_wa.PushBack({ 0, 450, 40, 50 });
-	idle_wd.PushBack({ 200, 450, 40, 50 });
-	idle_a.PushBack({ 120, 100, 40, 50 });
-	idle_s.PushBack({ 120, 0, 40, 50 });
-	idle_sa.PushBack({ 120, 400, 40, 50 });
-	idle_sd.PushBack({ 120, 500, 40, 50 });
-	idle_d.PushBack({ 160, 150, 40, 50 });
-	//MOVEMENT
-	// move upwards
-	up.PushBack({ 0, 50, 40, 50 });
-	up.PushBack({ 40, 50, 40, 50 });
-	up.PushBack({ 80, 50, 40, 50 });
-	up.PushBack({ 120, 50, 40, 50 });
-	up.PushBack({ 160, 50, 40, 50 });
-	up.loop = true;
-	up.speed = 0.1f;
+	
+		// idle animation
+		idle_w.PushBack({ 0, 50, 40, 50 });
+		idle_wa.PushBack({ 0, 450, 40, 50 });
+		idle_wd.PushBack({ 200, 450, 40, 50 });
+		idle_a.PushBack({ 120, 100, 40, 50 });
+		idle_s.PushBack({ 120, 0, 40, 50 });
+		idle_sa.PushBack({ 120, 400, 40, 50 });
+		idle_sd.PushBack({ 120, 500, 40, 50 });
+		idle_d.PushBack({ 160, 150, 40, 50 });
+		//MOVEMENT
+		// move upwards
+		up.PushBack({ 0, 50, 40, 50 });
+		up.PushBack({ 40, 50, 40, 50 });
+		up.PushBack({ 80, 50, 40, 50 });
+		up.PushBack({ 120, 50, 40, 50 });
+		up.PushBack({ 160, 50, 40, 50 });
+		up.loop = true;
+		up.speed = 0.1f;
 
-	// Move down
-	down.PushBack({ 0, 0, 40, 50 });
-	down.PushBack({ 40, 0, 40, 50 });
-	down.PushBack({ 80, 0, 40, 50 });
-	down.PushBack({ 120, 0, 40, 50 });
-	down.PushBack({ 160, 0, 40, 50 });
-	down.loop = true;
-	down.speed = 0.1f;
-	//left
-	left.PushBack({ 0, 100, 40, 50 });
-	left.PushBack({ 40, 100, 40, 50 });
-	left.PushBack({ 80, 100, 40, 50 });
-	left.PushBack({ 120, 100, 40, 50 });
-	left.PushBack({ 160, 100, 40, 50 });
-	left.loop = true;
-	left.speed = 0.1f;
-	//right
-	right.PushBack({ 0, 150, 40, 50 });
-	right.PushBack({ 40, 150, 40, 50 });
-	right.PushBack({ 80, 150, 40, 50 });
-	right.PushBack({ 120, 150, 40, 50 });
-	right.PushBack({ 160, 150, 40, 50 });
-	right.loop = true;
-	right.speed = 0.1f;
-	//Diagonal right top
-	Drightop.PushBack({ 160, 400, 40, 50 });
-	Drightop.PushBack({ 200, 400, 40, 50 });
-	Drightop.PushBack({ 160, 450, 40, 50 });
-	Drightop.PushBack({ 200, 450, 40, 50 });
-	Drightop.loop = true;
-	Drightop.speed = 0.1f;
-	//Diagonal left top
-	Lefthtop.PushBack({ 0, 450, 40, 50 });
-	Lefthtop.PushBack({ 40, 450, 40, 50 });
-	Lefthtop.PushBack({ 80, 450, 40, 50 });
-	Lefthtop.PushBack({ 120, 450, 40, 50 });
-	Lefthtop.loop = true;
-	Lefthtop.speed = 0.1f;
-	//Diagonal right bot
-	Drighbot.PushBack({ 0, 500, 40, 50 });
-	Drighbot.PushBack({ 40, 500, 40, 50 });
-	Drighbot.PushBack({ 80, 500, 40, 50 });
-	Drighbot.PushBack({ 120, 500, 40, 50 });
-	Drighbot.loop = true;
-	Drighbot.speed = 0.1f;
-	//Diagonal left bot
-	Lefthbot.PushBack({ 0, 400, 40, 50 });
-	Lefthbot.PushBack({ 40, 400, 40, 50 });
-	Lefthbot.PushBack({ 80, 400, 40, 50 });
-	Lefthbot.PushBack({ 120, 400, 40, 50 });
-	Lefthbot.loop = true;
-	Lefthbot.speed = 0.1f;
+		// Move down
+		down.PushBack({ 0, 0, 40, 50 });
+		down.PushBack({ 40, 0, 40, 50 });
+		down.PushBack({ 80, 0, 40, 50 });
+		down.PushBack({ 120, 0, 40, 50 });
+		down.PushBack({ 160, 0, 40, 50 });
+		down.loop = true;
+		down.speed = 0.1f;
+		//left
+		left.PushBack({ 0, 100, 40, 50 });
+		left.PushBack({ 40, 100, 40, 50 });
+		left.PushBack({ 80, 100, 40, 50 });
+		left.PushBack({ 120, 100, 40, 50 });
+		left.PushBack({ 160, 100, 40, 50 });
+		left.loop = true;
+		left.speed = 0.1f;
+		//right
+		right.PushBack({ 0, 150, 40, 50 });
+		right.PushBack({ 40, 150, 40, 50 });
+		right.PushBack({ 80, 150, 40, 50 });
+		right.PushBack({ 120, 150, 40, 50 });
+		right.PushBack({ 160, 150, 40, 50 });
+		right.loop = true;
+		right.speed = 0.1f;
+		//Diagonal right top
+		Drightop.PushBack({ 160, 400, 40, 50 });
+		Drightop.PushBack({ 200, 400, 40, 50 });
+		Drightop.PushBack({ 160, 450, 40, 50 });
+		Drightop.PushBack({ 200, 450, 40, 50 });
+		Drightop.loop = true;
+		Drightop.speed = 0.1f;
+		//Diagonal left top
+		Lefthtop.PushBack({ 0, 450, 40, 50 });
+		Lefthtop.PushBack({ 40, 450, 40, 50 });
+		Lefthtop.PushBack({ 80, 450, 40, 50 });
+		Lefthtop.PushBack({ 120, 450, 40, 50 });
+		Lefthtop.loop = true;
+		Lefthtop.speed = 0.1f;
+		//Diagonal right bot
+		Drighbot.PushBack({ 0, 500, 40, 50 });
+		Drighbot.PushBack({ 40, 500, 40, 50 });
+		Drighbot.PushBack({ 80, 500, 40, 50 });
+		Drighbot.PushBack({ 120, 500, 40, 50 });
+		Drighbot.loop = true;
+		Drighbot.speed = 0.1f;
+		//Diagonal left bot
+		Lefthbot.PushBack({ 0, 400, 40, 50 });
+		Lefthbot.PushBack({ 40, 400, 40, 50 });
+		Lefthbot.PushBack({ 80, 400, 40, 50 });
+		Lefthbot.PushBack({ 120, 400, 40, 50 });
+		Lefthbot.loop = true;
+		Lefthbot.speed = 0.1f;
+	
+	//TRIPLE AIM
+		//up
+		upTAim.PushBack({ 0, 200, 40, 50 });
+		upTAim.PushBack({ 40, 200, 40, 50 });
+		upTAim.PushBack({ 80, 200, 40, 50 });
+		upTAim.PushBack({ 120, 200, 40, 50 });
+		upTAim.loop = true;
+		upTAim.speed = 0.1f;
+		
+		Idle_upTAim.PushBack({ 120, 200, 40, 50 });
+
 
 	//fall
 	fall.PushBack({ 200, 0, 40, 50 });
@@ -144,6 +157,9 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	
+	
+	
 	if (destroyed == false){
 		int speed = 0;
 		PreviousPos = position;
@@ -184,7 +200,12 @@ update_status ModulePlayer::Update()
 			if (current_animation != &left)
 			{
 				left.Reset();
-				current_animation = &left;
+				if (changetaim == false){
+					current_animation = &left;
+				}
+				else{
+					current_animation = &upTAim;
+				}
 			}
 		}
 
@@ -203,9 +224,19 @@ update_status ModulePlayer::Update()
 					position.x += speed;
 				}
 			}
-			current_animation = &right;
+			if (changetaim == false){
+				current_animation = &right;
+			}
+			else{
+				current_animation = &upTAim;
+			}
 			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-				current_animation = &idle_w;
+				if (changetaim == false){
+					current_animation = &idle_w;
+				}
+				else{
+					current_animation = &Idle_upTAim;
+				}
 			}
 		}
 
@@ -224,23 +255,49 @@ update_status ModulePlayer::Update()
 					position.y += speed;
 				}
 			}
-			current_animation = &down;
 
-			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
-				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-					current_animation = &down;
+			if (changetaim == false){
+				current_animation = &down;
+			}
+			else{
+				current_animation = &upTAim;
+			}
+			if (changetaim == false){
+				if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+					if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+						current_animation = &down;
+					}
+					else{
+						current_animation = &Drighbot;
+					}
 				}
-				else{
-					current_animation = &Drighbot;
+				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+					if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+						current_animation = &down;
+					}
+					else{
+						current_animation = &Lefthbot;
+					}
 				}
 			}
-			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+			else{
 				if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
-					current_animation = &down;
+					if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+						current_animation = &upTAim;
+					}
+					else{
+						current_animation = &upTAim;
+					}
 				}
-				else{
-					current_animation = &Lefthbot;
+				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+					if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+						current_animation = &upTAim;
+					}
+					else{
+						current_animation = &upTAim;
+					}
 				}
+
 			}
 		}
 
@@ -263,27 +320,58 @@ update_status ModulePlayer::Update()
 			//{
 			//	up.Reset();
 			if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT){
-				current_animation = &idle_w;
+				if (changetaim == false){
+					current_animation = &idle_w;
+				}
+				else{
+					current_animation = &Idle_upTAim;
+				}
 			}
 			else{
+				if (changetaim == false){
 				current_animation = &up;
+				}
+				else{
+					current_animation = &upTAim;
+				}
+				
 			}
 
 			//}
-			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
-				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-					current_animation = &up;
+			if (changetaim == false){
+				if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+					if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+						current_animation = &up;
+					}
+					else{
+						current_animation = &Drightop;
+					}
 				}
-				else{
-					current_animation = &Drightop;
+				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+					if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+						current_animation = &up;
+					}
+					else{
+						current_animation = &Lefthtop;
+					}
 				}
 			}
-			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+			else{
 				if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
-					current_animation = &up;
+					if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+						current_animation = &upTAim;
+					}
+					else{
+						current_animation = &upTAim;
+					}
 				}
-				else{
-					current_animation = &Lefthtop;
+				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+					if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+						current_animation = &upTAim;
+					}
+					else{
+						current_animation = &upTAim;
+					}
 				}
 			}
 		}
@@ -375,6 +463,14 @@ update_status ModulePlayer::Update()
 				lastkeypressed = LAST_KEY::LAST_KEY_WA;
 			}
 		}
+		if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN){
+			if (changetaim == false){
+				changetaim = true;
+			}
+			else{
+				changetaim = false;
+			}
+		}
 
 		if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN){
 			if (Invencible == false){
@@ -402,6 +498,7 @@ update_status ModulePlayer::Update()
 				Fly = false;
 			}
 		}
+
 
 		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN){
 			position.x = 100;
@@ -612,31 +709,77 @@ update_status ModulePlayer::Update()
 			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE){
 
 			if (lastkeypressed == LAST_KEY_W){
-				current_animation = &idle_w;
+				if (changetaim == false){
+					current_animation = &idle_w;
+				}
+				else{
+					current_animation = &Idle_upTAim;
+				}
+
 			}
 			else if (lastkeypressed == LAST_KEY_A){
-				current_animation = &idle_a;
+				if (changetaim == false){
+					current_animation = &idle_a;
+				}
+				else{
+					current_animation = &Idle_upTAim;
+				}
 			}
 			else if (lastkeypressed == LAST_KEY_S){
-				current_animation = &idle_s;
+				if (changetaim == false){
+					current_animation = &idle_s;
+				}
+				else{
+					current_animation = &Idle_upTAim;
+				}
 			}
 			else if (lastkeypressed == LAST_KEY_D){
-				current_animation = &idle_d;
+				if (changetaim == false){
+					current_animation = &idle_d;
+				}
+				else{
+					current_animation = &Idle_upTAim;
+				}
 			}
 			else if (lastkeypressed == LAST_KEY_WA){
-				current_animation = &idle_wa;
+				if (changetaim == false){
+					current_animation = &idle_wa;
+				}
+				else{
+					current_animation = &Idle_upTAim;
+				}
 			}
 			else if (lastkeypressed == LAST_KEY_WD){
-				current_animation = &idle_wd;
+				if (changetaim == false){
+					current_animation = &idle_wd;
+				}
+				else{
+					current_animation = &Idle_upTAim;
+				}
 			}
 			else if (lastkeypressed == LAST_KEY_SA){
-				current_animation = &idle_sa;
+				if (changetaim == false){
+					current_animation = &idle_sa;
+				}
+				else{
+					current_animation = &Idle_upTAim;
+				}
 			}
 			else if (lastkeypressed == LAST_KEY_SD){
-				current_animation = &idle_sd;
+				if (changetaim == false){
+					current_animation = &idle_sd;
+				}
+				else{
+					current_animation = &Idle_upTAim;
+				}
 			}
 			else{
-				current_animation = &idle_w;
+				if (changetaim == false){
+					current_animation = &idle_w;
+				}
+				else{
+					current_animation = &Idle_upTAim;
+				}
 			}
 		}
 	}
@@ -661,6 +804,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 	
+
 	return UPDATE_CONTINUE;
 }
 
