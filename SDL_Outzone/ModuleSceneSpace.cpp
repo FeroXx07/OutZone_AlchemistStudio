@@ -81,7 +81,8 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 148, -746);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 188, -762);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 28, -859);
-
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, -4, -1066);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 204, -1066);
 
 	return true;
 }
