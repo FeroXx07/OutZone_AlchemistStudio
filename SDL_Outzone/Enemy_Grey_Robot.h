@@ -30,6 +30,15 @@ private:
 	Animation GRobot__315;
 	Animation GRobot__337_5;
 
+	Animation GRobot__w;
+	Animation GRobot__wa;
+	Animation GRobot__wd;
+	Animation GRobot__a;
+	Animation GRobot__s;
+	Animation GRobot__sa;
+	Animation GRobot__sd;
+	Animation GRobot__d;
+
 public:
 
 	Enemy_GreyRobot(int x, int y);

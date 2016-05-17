@@ -18,22 +18,79 @@
 Enemy_GreyRobot::Enemy_GreyRobot(int x, int y) : Enemy(x, y)
 {
 	live = 100;
-	GRobot__0.PushBack({ 342, 54, 29, 47 });
-	GRobot__22_5.PushBack({ 342, 109, 29, 47 });
-	GRobot__45.PushBack({ 297, 109, 29, 47 });
-	GRobot__67_5.PushBack({ 251, 109, 29, 47 });
-	GRobot__90.PushBack({ 206, 109, 29, 47 });
-	GRobot__112_5.PushBack({ 161, 110, 29, 47 });
-	GRobot__135.PushBack({ 116, 110, 29, 47 });
-	GRobot__157_5.PushBack({ 70, 111, 29, 47 });
-	GRobot__180.PushBack({ 23, 111, 29, 47 });
-	GRobot__202_5.PushBack({ 25, 55, 29, 47 });
-	GRobot__225.PushBack({ 70, 55, 29, 47 });
-	GRobot__247_5.PushBack({ 117, 54, 29, 47 });
-	GRobot__270.PushBack({ 161, 54, 29, 47 });
-	GRobot__292_5.PushBack({ 208, 54, 29, 47 });
-	GRobot__315.PushBack({ 253, 54, 29, 47 });
-	GRobot__337_5.PushBack({ 298, 54, 29, 47 });
+	GRobot__0.PushBack({ 280, 0, 40, 40 });
+	GRobot__22_5.PushBack({ 280, 40, 40, 40 });
+	GRobot__45.PushBack({ 240, 40, 40, 40 });
+	GRobot__67_5.PushBack({ 200, 40, 40, 40 });
+	GRobot__90.PushBack({ 160, 40, 40, 40 });
+	GRobot__112_5.PushBack({ 120, 40, 40, 40 });
+	GRobot__135.PushBack({ 80, 40, 40, 40 });
+	GRobot__157_5.PushBack({ 40, 40, 40, 40 });
+	GRobot__180.PushBack({ 0, 40, 40, 40 });
+	GRobot__202_5.PushBack({ 0, 0, 40, 40 });
+	GRobot__225.PushBack({ 40, 0, 40, 40 });
+	GRobot__247_5.PushBack({ 80, 0, 40, 40 });
+	GRobot__270.PushBack({ 120, 0, 40, 40 });
+	GRobot__292_5.PushBack({ 160, 0, 40, 40 });
+	GRobot__315.PushBack({ 200, 0, 40, 40 });
+	GRobot__337_5.PushBack({ 240, 0, 40, 40 });
+
+	GRobot__w.PushBack({ 160, 200, 40, 40 });
+	GRobot__w.PushBack({ 200, 200, 40, 40 });
+	GRobot__w.PushBack({ 240, 200, 40, 40 });
+	GRobot__w.PushBack({ 280, 200, 40, 40 });
+	GRobot__w.loop = true;
+	GRobot__w.speed = 0.1f;
+
+	GRobot__wa.PushBack({ 160, 80, 40, 40 });
+	GRobot__wa.PushBack({ 200, 80, 40, 40 });
+	GRobot__wa.PushBack({ 240, 80, 40, 40 });
+	GRobot__wa.PushBack({ 280, 80, 40, 40 });
+	GRobot__wa.loop = true;
+	GRobot__wa.speed = 0.1f;
+
+	GRobot__wd.PushBack({ 0, 80, 40, 40 });
+	GRobot__wd.PushBack({ 40, 80, 40, 40 });
+	GRobot__wd.PushBack({ 80, 80, 40, 40 });
+	GRobot__wd.PushBack({ 120, 80, 40, 40 });
+	GRobot__wd.loop = true;
+	GRobot__wd.speed = 0.1f;
+
+	GRobot__a.PushBack({ 160, 120, 40, 40 });
+	GRobot__a.PushBack({ 200, 120, 40, 40 });
+	GRobot__a.PushBack({ 240, 120, 40, 40 });
+	GRobot__a.PushBack({ 280, 120, 40, 40 });
+	GRobot__a.loop = true;
+	GRobot__a.speed = 0.1f;
+
+	GRobot__s.PushBack({ 0, 200, 40, 40 });
+	GRobot__s.PushBack({ 40, 200, 40, 40 });
+	GRobot__s.PushBack({ 80, 200, 40, 40 });
+	GRobot__s.PushBack({ 120, 200, 40, 40 });
+	GRobot__s.loop = true;
+	GRobot__s.speed = 0.1f;
+
+	GRobot__sa.PushBack({ 160, 160, 40, 40 });
+	GRobot__sa.PushBack({ 200, 160, 40, 40 });
+	GRobot__sa.PushBack({ 240, 160, 40, 40 });
+	GRobot__sa.PushBack({ 280, 160, 40, 40 });
+	GRobot__sa.loop = true;
+	GRobot__sa.speed = 0.1f;
+
+	GRobot__sd.PushBack({ 0, 160, 40, 40 });
+	GRobot__sd.PushBack({ 40, 160, 40, 40 });
+	GRobot__sd.PushBack({ 80, 160, 40, 40 });
+	GRobot__sd.PushBack({ 160, 160, 40, 40 });
+	GRobot__sd.loop = true;
+	GRobot__sd.speed = 0.1f;
+
+	GRobot__d.PushBack({ 0, 120, 40, 40 });
+	GRobot__d.PushBack({ 40, 120, 40, 40 });
+	GRobot__d.PushBack({ 120, 120, 40, 40 });
+	GRobot__d.PushBack({ 160, 120, 40, 40 });
+	GRobot__d.loop = true;
+	GRobot__d.speed = 0.1f;
+
 
 	animation = &GRobot__180;
 

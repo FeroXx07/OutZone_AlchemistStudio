@@ -17,22 +17,22 @@
 Enemy_Turret1::Enemy_Turret1(int x, int y) : Enemy(x, y)
 {
 	live = 100;
-	turret1__0.PushBack({ 342, 54, 29, 47 });
-	turret1__22_5.PushBack({ 342, 109, 29, 47 });
-	turret1__45.PushBack({ 297, 109, 29, 47 });
-	turret1__67_5.PushBack({ 251, 109, 29, 47 });
-	turret1__90.PushBack({ 206, 109, 29, 47 });
-	turret1__112_5.PushBack({ 161, 110, 29, 47 });
-	turret1__135.PushBack({ 116, 110, 29, 47 });
-	turret1__157_5.PushBack({ 70, 111, 29, 47 });
-	turret1__180.PushBack({ 23, 111, 29, 47 });
-	turret1__202_5.PushBack({ 25, 55, 29, 47 });
-	turret1__225.PushBack({ 70, 55, 29, 47 });
-	turret1__247_5.PushBack({ 117, 54, 29, 47 });
-	turret1__270.PushBack({ 161, 54, 29, 47 });
-	turret1__292_5.PushBack({ 208, 54, 29, 47 });
-	turret1__315.PushBack({ 253, 54, 29, 47 });
-	turret1__337_5.PushBack({ 298, 54, 29, 47 });
+	turret1__0.PushBack({ 240, 240, 40, 60 });
+	turret1__22_5.PushBack({ 240, 300, 40, 60 });
+	turret1__45.PushBack({ 200, 300, 40, 60 });
+	turret1__67_5.PushBack({ 160, 300, 40, 60 });
+	turret1__90.PushBack({ 120, 300, 40, 60 });
+	turret1__112_5.PushBack({ 80, 300, 40, 60 });
+	turret1__135.PushBack({ 40, 300, 40, 60 });
+	turret1__157_5.PushBack({ 0, 300, 40, 60 });
+	turret1__180.PushBack({ 280, 300, 40, 60 });
+	turret1__202_5.PushBack({ 280, 240, 40, 60 });
+	turret1__225.PushBack({ 0, 240, 40, 60 });
+	turret1__247_5.PushBack({ 40, 240, 40, 60 });
+	turret1__270.PushBack({ 80, 240, 40, 60 });
+	turret1__292_5.PushBack({ 120, 240, 40, 60 });
+	turret1__315.PushBack({ 160, 240, 40, 60 });
+	turret1__337_5.PushBack({ 200, 240, 40, 60 });
 
 	animation = &turret1__180;
 
