@@ -51,6 +51,7 @@ public:
 	bool Fly = false;
 	bool Immobile = false;
 	bool changetaim = false;
+	unsigned int poweruplevel = 0;
 	update_status Update();
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);

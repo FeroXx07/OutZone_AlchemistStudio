@@ -473,6 +473,23 @@ update_status ModulePlayer::Update()
 			}
 		}
 
+		if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN){
+			if (poweruplevel == 0){
+				poweruplevel = 1;
+			}
+			else if (poweruplevel == 1){
+				poweruplevel = 2;
+			}
+			else{
+				poweruplevel = 2;
+			}
+
+		}
+
+		if (App->input->keyboard[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN){
+			poweruplevel = 0;
+		}
+
 		if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN){
 			if (Invencible == false){
 				Invencible = true;
@@ -706,10 +723,23 @@ update_status ModulePlayer::Update()
 			}
 			else{
 				if (shootcurrenttime > (shootactiontime + SHOOTDELAY3SHOOTWEAPON)){
-					App->particles->AddParticle(App->particles->Frontthreeshoot, position.x + 17, position.y, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->Rightthreeshoot, position.x + 26, position.y, COLLIDER_PLAYER_SHOT);
-					App->particles->AddParticle(App->particles->Leftthreeshoot, position.x + 5, position.y, COLLIDER_PLAYER_SHOT);
+					if (poweruplevel == 0){
+						App->particles->AddParticle(App->particles->Frontthreeshoot, position.x + 17, position.y, COLLIDER_PLAYER_SHOT);
+						App->particles->AddParticle(App->particles->Rightthreeshoot, position.x + 26, position.y, COLLIDER_PLAYER_SHOT);
+						App->particles->AddParticle(App->particles->Leftthreeshoot, position.x + 5, position.y, COLLIDER_PLAYER_SHOT);
+					}
+					if (poweruplevel == 1){
+						App->particles->AddParticle(App->particles->Frontthreeshootonepowerup, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
+						App->particles->AddParticle(App->particles->Rightthreeshootonepowerup, position.x + 26, position.y, COLLIDER_PLAYER_SHOT);
+						App->particles->AddParticle(App->particles->Leftthreeshootonepowerup, position.x + 5, position.y, COLLIDER_PLAYER_SHOT);
+					}
+					if (poweruplevel == 2){
+						App->particles->AddParticle(App->particles->Frontthreeshoottwopowerup, position.x + 15, position.y - 4, COLLIDER_PLAYER_SHOT);
+						App->particles->AddParticle(App->particles->Rightthreeshoottwopowerup, position.x + 24, position.y - 4, COLLIDER_PLAYER_SHOT);
+						App->particles->AddParticle(App->particles->Leftthreeshoottwopowerup, position.x + 3, position.y - 4, COLLIDER_PLAYER_SHOT);
+					}
 					shootactiontime = shootcurrenttime;
+					lastkeypressed = LAST_KEY::LAST_KEY_W;
 				}
 			}
 		}

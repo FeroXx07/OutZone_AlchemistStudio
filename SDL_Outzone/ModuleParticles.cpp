@@ -42,6 +42,7 @@ ModuleParticles::ModuleParticles()
 	playerexplosion.anim.speed = 0.4f;
 
 	//Thre shoot aim
+	//0powerup
 	Frontthreeshoot.anim.PushBack({ 58, 63, 6, 14 });
 	Frontthreeshoot.anim.speed = 0.2f;
 	Frontthreeshoot.speed.y = -10;
@@ -58,6 +59,42 @@ ModuleParticles::ModuleParticles()
 	Leftthreeshoot.speed.x = -3;
 	Leftthreeshoot.speed.y = -9;
 	Leftthreeshoot.life = laserlife;
+
+	//1powerup
+	Frontthreeshootonepowerup.anim.PushBack({ 47, 63, 10, 18 });
+	Frontthreeshootonepowerup.anim.speed = 0.2f;
+	Frontthreeshootonepowerup.speed.y = -10;
+	Frontthreeshootonepowerup.life = laserlife;
+
+	Rightthreeshootonepowerup.anim.PushBack({ 81, 85, 11, 17 });
+	Rightthreeshootonepowerup.anim.speed = 0.2f;
+	Rightthreeshootonepowerup.speed.x = 3;
+	Rightthreeshootonepowerup.speed.y = -9;
+	Rightthreeshootonepowerup.life = laserlife;
+
+	Leftthreeshootonepowerup.anim.PushBack({ 69, 85, 10, 17 });
+	Leftthreeshootonepowerup.anim.speed = 0.2f;
+	Leftthreeshootonepowerup.speed.x = -3;
+	Leftthreeshootonepowerup.speed.y = -9;
+	Leftthreeshootonepowerup.life = laserlife;
+
+	//2powerup
+	Frontthreeshoottwopowerup.anim.PushBack({ 32, 63, 14, 23 });
+	Frontthreeshoottwopowerup.anim.speed = 0.2f;
+	Frontthreeshoottwopowerup.speed.y = -10;
+	Frontthreeshoottwopowerup.life = laserlife;
+
+	Rightthreeshoottwopowerup.anim.PushBack({ 80, 63, 15, 22 });
+	Rightthreeshoottwopowerup.anim.speed = 0.2f;
+	Rightthreeshoottwopowerup.speed.x = 3;
+	Rightthreeshoottwopowerup.speed.y = -9;
+	Rightthreeshoottwopowerup.life = laserlife;
+
+	Leftthreeshoottwopowerup.anim.PushBack({ 65, 63, 15, 22 });
+	Leftthreeshoottwopowerup.anim.speed = 0.2f;
+	Leftthreeshoottwopowerup.speed.x = -3;
+	Leftthreeshoottwopowerup.speed.y = -9;
+	Leftthreeshoottwopowerup.life = laserlife;
 
 	//colision particle normal weapon
 	lascoll.anim.PushBack({ 180, 89, 16, 16 });

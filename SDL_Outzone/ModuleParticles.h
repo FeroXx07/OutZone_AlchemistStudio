@@ -113,6 +113,14 @@ public:
 	Particle Leftthreeshoot;
 	Particle Rightthreeshoot;
 
+	Particle Frontthreeshootonepowerup;
+	Particle Leftthreeshootonepowerup;
+	Particle Rightthreeshootonepowerup;
+
+	Particle Frontthreeshoottwopowerup;
+	Particle Leftthreeshoottwopowerup;
+	Particle Rightthreeshoottwopowerup;
+
 	Particle laserball;
 
 	Particle enemyshoot;
