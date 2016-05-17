@@ -47,7 +47,16 @@ bool ModuleSceneSpace::Start()
 	App->collision->AddCollider({ 190, -3100, 69, 108 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 0, -3100, 69, 108 }, COLLIDER_WALL);
 	App->collision->AddCollider({ 95, -2550, 68, 169 }, COLLIDER_WALL);
+	
+	//Bottom holes
+	App->collision->AddCollider({ 80, -1589, 83, 30 }, COLLIDER_HOLE);
 
+	App->collision->AddCollider({ 0, -1717, 80, 45 }, COLLIDER_HOLE);
+	App->collision->AddCollider({ 48, -1781, 49, 109 }, COLLIDER_HOLE);
+
+	App->collision->AddCollider({ 176, -1750, 18, 75 }, COLLIDER_HOLE);
+	App->collision->AddCollider({ 176, -1717, 70, 45 }, COLLIDER_HOLE);
+	//Top holes
 	App->collision->AddCollider({ 208, -3989, 35, 45 }, COLLIDER_HOLE);
 
 	App->collision->AddCollider({ 80, -4021, 48, 76 }, COLLIDER_HOLE);
