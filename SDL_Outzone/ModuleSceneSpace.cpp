@@ -77,9 +77,10 @@ bool ModuleSceneSpace::Start()
 	App->collision->AddCollider({ 110, -4661, 20, 108 }, COLLIDER_HOLE);
 
 	// Enemies ---
-	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 60, -500);
-
-
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 124, -714);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 148, -746);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 188, -762);
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 28, -859);
 
 
 	return true;
