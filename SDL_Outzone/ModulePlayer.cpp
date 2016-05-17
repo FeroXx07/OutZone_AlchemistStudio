@@ -13,6 +13,7 @@
 
 #define PLAYER_MULTIPLE_SHOOT_DELAY 750
 #define SHOOTDELAY 175
+#define SHOOTDELAY3SHOOTWEAPON 125
 #define PLAYERCOLIDERX 9
 #define PLAYERCOLIDERY 7
 #define SUPERSPEED 5
@@ -704,9 +705,12 @@ update_status ModulePlayer::Update()
 				}
 			}
 			else{
-				App->particles->AddParticle(App->particles->Frontthreeshoot, position.x+17, position.y, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->Rightthreeshoot, position.x+26, position.y, COLLIDER_PLAYER_SHOT);
-				App->particles->AddParticle(App->particles->Leftthreeshoot, position.x+5, position.y, COLLIDER_PLAYER_SHOT);
+				if (shootcurrenttime > (shootactiontime + SHOOTDELAY3SHOOTWEAPON)){
+					App->particles->AddParticle(App->particles->Frontthreeshoot, position.x + 17, position.y, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->Rightthreeshoot, position.x + 26, position.y, COLLIDER_PLAYER_SHOT);
+					App->particles->AddParticle(App->particles->Leftthreeshoot, position.x + 5, position.y, COLLIDER_PLAYER_SHOT);
+					shootactiontime = shootcurrenttime;
+				}
 			}
 		}
 
