@@ -41,6 +41,24 @@ ModuleParticles::ModuleParticles()
 	playerexplosion.anim.loop = false;
 	playerexplosion.anim.speed = 0.4f;
 
+	//Thre shoot aim
+	Frontthreeshoot.anim.PushBack({ 58, 63, 6, 14 });
+	Frontthreeshoot.anim.speed = 0.2f;
+	Frontthreeshoot.speed.y = -10;
+	Frontthreeshoot.life = laserlife;
+
+	Rightthreeshoot.anim.PushBack({ 81, 104, 8, 14 });
+	Rightthreeshoot.anim.speed = 0.2f;
+	Rightthreeshoot.speed.x = 3;
+	Rightthreeshoot.speed.y = -9;
+	Rightthreeshoot.life = laserlife;
+
+	Leftthreeshoot.anim.PushBack({ 71, 104, 8, 12 });
+	Leftthreeshoot.anim.speed = 0.2f;
+	Leftthreeshoot.speed.x = -3;
+	Leftthreeshoot.speed.y = -9;
+	Leftthreeshoot.life = laserlife;
+
 	//colision particle normal weapon
 	lascoll.anim.PushBack({ 180, 89, 16, 16 });
 	lascoll.anim.PushBack({ 144, 121, 16, 16 });
@@ -422,7 +440,12 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		if(active[i] != nullptr && active[i]->collider == c1)
 		{
 			if (c1->type != COLLIDER_ENEMY_SHOT){
-				AddParticle(lascoll, (active[i]->position.x) - 7, (active[i]->position.y) - 6);
+				if (App->player->changetaim == false){
+					AddParticle(lascoll, (active[i]->position.x) - 7, (active[i]->position.y) - 6);
+				}
+				else{
+					AddParticle(lascoll2, (active[i]->position.x) - 7, (active[i]->position.y) - 6);
+				}
 			}
 				delete active[i];
 				active[i] = nullptr;

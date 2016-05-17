@@ -108,6 +108,10 @@ public:
 	Particle laserweaponshoot292_5;
 	Particle laserweaponshoot315;
 	Particle laserweaponshoot337_5;
+	
+	Particle Frontthreeshoot;
+	Particle Leftthreeshoot;
+	Particle Rightthreeshoot;
 
 	Particle laserball;
 
