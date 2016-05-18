@@ -109,13 +109,17 @@ update_status ModuleEffects::Update()
 	{
 		if (bombactive == false){
 			bombactive = true;
-			effect2collider = App->collision->AddCollider({ App->render->camera.x, App->render->camera.y / 2, 240, 340 }, COLLIDER_BOMB);
+			effect2collider = App->collision->AddCollider({ App->render->camera.x, App->render->camera.y / 2, 240, 320 }, COLLIDER_BOMB);
 			bombactiontime = SDL_GetTicks();
+			effect2collidercreated = true;
 		}
 	}
-	if (bombcurrenttime > (bombactiontime + 700)){
+	if (bombcurrenttime > (bombactiontime + 550)){
 		bombactive = false;
-		App->collision->EraseCollider(effect2collider);
+		if (effect2collidercreated == true){
+			effect2collider->to_delete = true;
+			effect2collidercreated = false;
+		}
 	}
 	if (bombactive == true){
 		effect2 = &bomb;

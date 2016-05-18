@@ -32,6 +32,7 @@ public:
 	Animation* effect1 = nullptr;
 	Animation* effect2 = nullptr;
 	Collider* effect2collider;
+	bool effect2collidercreated = false;
 	Animation* effect3 = nullptr;
 
 	Animation god;
