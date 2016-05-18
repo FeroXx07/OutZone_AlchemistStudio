@@ -13,6 +13,12 @@
 #include "Enemy_tank.h"
 #include "Enemy_Door.h"
 #include"Enemy_Grey_Robot.h"
+#include"Enemy_RedMachine.h"
+#include"Enemy_BlueMachine.h"
+#include"Enemy_OrangeRobot.h"
+#include"Enemy_PurpleMachine.h"
+#include"Enemy_Turret3.h"
+#include"Enemy_BigRedMachine.h"
 #define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()
@@ -156,6 +162,30 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 			case ENEMY_TYPES::GREYROBOT:
 				enemies[i] = new Enemy_GreyRobot(info.x, info.y);
+				break;
+
+			case ENEMY_TYPES::REDMACHINE:
+				enemies[i] = new Enemy_RedMachine(info.x, info.y);
+				break;
+
+			case ENEMY_TYPES::BLUEMACHINE:
+				enemies[i] = new Enemy_BlueMachine(info.x, info.y);
+				break;
+
+			case ENEMY_TYPES::ORANGEROBOT:
+				enemies[i] = new Enemy_OrangeRobot(info.x, info.y);
+				break;
+
+			case ENEMY_TYPES::PURPLEMACHINE:
+				enemies[i] = new Enemy_PurpleMachine(info.x, info.y);
+				break;
+
+			case ENEMY_TYPES::TURRET3:
+				enemies[i] = new Enemy_Turret3(info.x, info.y);
+				break;
+
+			case ENEMY_TYPES::BIGREDMACHINE:
+				enemies[i] = new Enemy_BigRedMachine(info.x, info.y);
 				break;
 
 			case ENEMY_TYPES::MAZURKA:
