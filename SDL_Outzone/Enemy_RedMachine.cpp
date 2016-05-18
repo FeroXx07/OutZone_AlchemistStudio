@@ -17,24 +17,13 @@
 Enemy_RedMachine::Enemy_RedMachine(int x, int y) : Enemy(x, y)
 {
 	live = 100;
-	RedMachine__0.PushBack({ 240, 240, 40, 60 });
-	RedMachine__22_5.PushBack({ 240, 300, 40, 60 });
-	RedMachine__45.PushBack({ 200, 300, 40, 60 });
-	RedMachine__67_5.PushBack({ 160, 300, 40, 60 });
-	RedMachine__90.PushBack({ 120, 300, 40, 60 });
-	RedMachine__112_5.PushBack({ 80, 300, 40, 60 });
-	RedMachine__135.PushBack({ 40, 300, 40, 60 });
-	RedMachine__157_5.PushBack({ 0, 300, 40, 60 });
-	RedMachine__180.PushBack({ 280, 300, 40, 60 });
-	RedMachine__202_5.PushBack({ 280, 240, 40, 60 });
-	RedMachine__225.PushBack({ 0, 240, 40, 60 });
-	RedMachine__247_5.PushBack({ 40, 240, 40, 60 });
-	RedMachine__270.PushBack({ 80, 240, 40, 60 });
-	RedMachine__292_5.PushBack({ 120, 240, 40, 60 });
-	RedMachine__315.PushBack({ 160, 240, 40, 60 });
-	RedMachine__337_5.PushBack({ 200, 240, 40, 60 });
+	RedMachine.PushBack({ 0, 360, 57, 49 });
+	RedMachine.PushBack({ 57, 360, 57, 49 });
+	RedMachine.PushBack({ 114, 360, 57, 49 });
+	RedMachine.PushBack({ 171, 360, 57, 49 });
+	RedMachine.speed = 0.25f;
 
-	animation = &RedMachine__180;
+	animation = &RedMachine;
 
 	collider = App->collision->AddCollider({ 0, 0, 27, 47 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -44,6 +33,7 @@ Enemy_RedMachine::Enemy_RedMachine(int x, int y) : Enemy(x, y)
 
 void Enemy_RedMachine::Move()
 {
+	/*
 	bool left = false;
 	float angle = 0;
 
@@ -123,12 +113,14 @@ void Enemy_RedMachine::Move()
 			animation = &RedMachine__0;
 		}
 	}
+	*/
 	position.y = original_y;
 	position.x = original_x;
 }
 
 void Enemy_RedMachine::Shoot()
 {
+	/*
 	unsigned int currentTime = 0;
 	bool left = false;
 	float angle = 0;
@@ -229,4 +221,5 @@ void Enemy_RedMachine::Shoot()
 			lastTime = currentTime;
 		}
 	}
+	*/
 }

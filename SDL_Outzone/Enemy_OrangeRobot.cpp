@@ -17,24 +17,11 @@
 Enemy_OrangeRobot::Enemy_OrangeRobot(int x, int y) : Enemy(x, y)
 {
 	live = 100;
-	OrangeRobot__0.PushBack({ 240, 240, 40, 60 });
-	OrangeRobot__22_5.PushBack({ 240, 300, 40, 60 });
-	OrangeRobot__45.PushBack({ 200, 300, 40, 60 });
-	OrangeRobot__67_5.PushBack({ 160, 300, 40, 60 });
-	OrangeRobot__90.PushBack({ 120, 300, 40, 60 });
-	OrangeRobot__112_5.PushBack({ 80, 300, 40, 60 });
-	OrangeRobot__135.PushBack({ 40, 300, 40, 60 });
-	OrangeRobot__157_5.PushBack({ 0, 300, 40, 60 });
-	OrangeRobot__180.PushBack({ 280, 300, 40, 60 });
-	OrangeRobot__202_5.PushBack({ 280, 240, 40, 60 });
-	OrangeRobot__225.PushBack({ 0, 240, 40, 60 });
-	OrangeRobot__247_5.PushBack({ 40, 240, 40, 60 });
-	OrangeRobot__270.PushBack({ 80, 240, 40, 60 });
-	OrangeRobot__292_5.PushBack({ 120, 240, 40, 60 });
-	OrangeRobot__315.PushBack({ 160, 240, 40, 60 });
-	OrangeRobot__337_5.PushBack({ 200, 240, 40, 60 });
+	OrangeRobot.PushBack({ 0, 458, 50, 50 });
+	OrangeRobot.PushBack({ 50, 458, 50, 50 });
+	OrangeRobot.speed = 0.25f;
 
-	animation = &OrangeRobot__180;
+	animation = &OrangeRobot;
 
 	collider = App->collision->AddCollider({ 0, 0, 27, 47 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -44,6 +31,7 @@ Enemy_OrangeRobot::Enemy_OrangeRobot(int x, int y) : Enemy(x, y)
 
 void Enemy_OrangeRobot::Move()
 {
+	/*
 	bool left = false;
 	float angle = 0;
 
@@ -123,12 +111,14 @@ void Enemy_OrangeRobot::Move()
 			animation = &OrangeRobot__0;
 		}
 	}
+	*/
 	position.y = original_y;
 	position.x = original_x;
 }
 
 void Enemy_OrangeRobot::Shoot()
 {
+	/*
 	unsigned int currentTime = 0;
 	bool left = false;
 	float angle = 0;
@@ -229,4 +219,5 @@ void Enemy_OrangeRobot::Shoot()
 			lastTime = currentTime;
 		}
 	}
+	*/
 }

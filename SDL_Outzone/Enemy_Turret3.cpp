@@ -17,24 +17,11 @@
 Enemy_Turret3::Enemy_Turret3(int x, int y) : Enemy(x, y)
 {
 	live = 100;
-	Turret3__0.PushBack({ 240, 240, 40, 60 });
-	Turret3__22_5.PushBack({ 240, 300, 40, 60 });
-	Turret3__45.PushBack({ 200, 300, 40, 60 });
-	Turret3__67_5.PushBack({ 160, 300, 40, 60 });
-	Turret3__90.PushBack({ 120, 300, 40, 60 });
-	Turret3__112_5.PushBack({ 80, 300, 40, 60 });
-	Turret3__135.PushBack({ 40, 300, 40, 60 });
-	Turret3__157_5.PushBack({ 0, 300, 40, 60 });
-	Turret3__180.PushBack({ 280, 300, 40, 60 });
-	Turret3__202_5.PushBack({ 280, 240, 40, 60 });
-	Turret3__225.PushBack({ 0, 240, 40, 60 });
-	Turret3__247_5.PushBack({ 40, 240, 40, 60 });
-	Turret3__270.PushBack({ 80, 240, 40, 60 });
-	Turret3__292_5.PushBack({ 120, 240, 40, 60 });
-	Turret3__315.PushBack({ 160, 240, 40, 60 });
-	Turret3__337_5.PushBack({ 200, 240, 40, 60 });
+	Turret3.PushBack({ 0, 550, 30, 45 });
+	Turret3.PushBack({ 30, 550, 30, 45 });
+	Turret3.speed = 0.25f;
 
-	animation = &Turret3__180;
+	animation = &Turret3;
 
 	collider = App->collision->AddCollider({ 0, 0, 27, 47 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -44,6 +31,7 @@ Enemy_Turret3::Enemy_Turret3(int x, int y) : Enemy(x, y)
 
 void Enemy_Turret3::Move()
 {
+	/*
 	bool left = false;
 	float angle = 0;
 
@@ -123,12 +111,14 @@ void Enemy_Turret3::Move()
 			animation = &Turret3__0;
 		}
 	}
+	*/
 	position.y = original_y;
 	position.x = original_x;
 }
 
 void Enemy_Turret3::Shoot()
 {
+	/*
 	unsigned int currentTime = 0;
 	bool left = false;
 	float angle = 0;
@@ -229,4 +219,5 @@ void Enemy_Turret3::Shoot()
 			lastTime = currentTime;
 		}
 	}
+	*/
 }

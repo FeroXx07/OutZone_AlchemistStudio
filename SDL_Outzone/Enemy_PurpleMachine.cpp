@@ -17,24 +17,11 @@
 Enemy_PurpleMachine::Enemy_PurpleMachine(int x, int y) : Enemy(x, y)
 {
 	live = 100;
-	PurpleMachine__0.PushBack({ 240, 240, 40, 60 });
-	PurpleMachine__22_5.PushBack({ 240, 300, 40, 60 });
-	PurpleMachine__45.PushBack({ 200, 300, 40, 60 });
-	PurpleMachine__67_5.PushBack({ 160, 300, 40, 60 });
-	PurpleMachine__90.PushBack({ 120, 300, 40, 60 });
-	PurpleMachine__112_5.PushBack({ 80, 300, 40, 60 });
-	PurpleMachine__135.PushBack({ 40, 300, 40, 60 });
-	PurpleMachine__157_5.PushBack({ 0, 300, 40, 60 });
-	PurpleMachine__180.PushBack({ 280, 300, 40, 60 });
-	PurpleMachine__202_5.PushBack({ 280, 240, 40, 60 });
-	PurpleMachine__225.PushBack({ 0, 240, 40, 60 });
-	PurpleMachine__247_5.PushBack({ 40, 240, 40, 60 });
-	PurpleMachine__270.PushBack({ 80, 240, 40, 60 });
-	PurpleMachine__292_5.PushBack({ 120, 240, 40, 60 });
-	PurpleMachine__315.PushBack({ 160, 240, 40, 60 });
-	PurpleMachine__337_5.PushBack({ 200, 240, 40, 60 });
+	PurpleMachine.PushBack({ 0, 508, 40, 42 });
+	PurpleMachine.PushBack({ 40, 508, 40, 42 });
+	PurpleMachine.speed = 0.25f;
 
-	animation = &PurpleMachine__180;
+	animation = &PurpleMachine;
 
 	collider = App->collision->AddCollider({ 0, 0, 27, 47 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -44,6 +31,7 @@ Enemy_PurpleMachine::Enemy_PurpleMachine(int x, int y) : Enemy(x, y)
 
 void Enemy_PurpleMachine::Move()
 {
+	/*
 	bool left = false;
 	float angle = 0;
 
@@ -123,12 +111,14 @@ void Enemy_PurpleMachine::Move()
 			animation = &PurpleMachine__0;
 		}
 	}
+	*/
 	position.y = original_y;
 	position.x = original_x;
 }
 
 void Enemy_PurpleMachine::Shoot()
 {
+	/*
 	unsigned int currentTime = 0;
 	bool left = false;
 	float angle = 0;
@@ -229,4 +219,5 @@ void Enemy_PurpleMachine::Shoot()
 			lastTime = currentTime;
 		}
 	}
+	*/
 }

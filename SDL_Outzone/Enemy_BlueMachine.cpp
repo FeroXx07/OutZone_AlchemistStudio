@@ -17,24 +17,12 @@
 Enemy_BlueMachine::Enemy_BlueMachine(int x, int y) : Enemy(x, y)
 {
 	live = 100;
-	BlueMachine__0.PushBack({ 240, 240, 40, 60 });
-	BlueMachine__22_5.PushBack({ 240, 300, 40, 60 });
-	BlueMachine__45.PushBack({ 200, 300, 40, 60 });
-	BlueMachine__67_5.PushBack({ 160, 300, 40, 60 });
-	BlueMachine__90.PushBack({ 120, 300, 40, 60 });
-	BlueMachine__112_5.PushBack({ 80, 300, 40, 60 });
-	BlueMachine__135.PushBack({ 40, 300, 40, 60 });
-	BlueMachine__157_5.PushBack({ 0, 300, 40, 60 });
-	BlueMachine__180.PushBack({ 280, 300, 40, 60 });
-	BlueMachine__202_5.PushBack({ 280, 240, 40, 60 });
-	BlueMachine__225.PushBack({ 0, 240, 40, 60 });
-	BlueMachine__247_5.PushBack({ 40, 240, 40, 60 });
-	BlueMachine__270.PushBack({ 80, 240, 40, 60 });
-	BlueMachine__292_5.PushBack({ 120, 240, 40, 60 });
-	BlueMachine__315.PushBack({ 160, 240, 40, 60 });
-	BlueMachine__337_5.PushBack({ 200, 240, 40, 60 });
-
-	animation = &BlueMachine__180;
+	BlueMachine.PushBack({ 0, 409, 57, 49 });
+	BlueMachine.PushBack({ 57, 409, 57, 49 });
+	BlueMachine.PushBack({ 114, 409, 57, 49 });
+	BlueMachine.PushBack({ 171, 409, 57, 49 });
+	BlueMachine.speed = 0.25f;
+	animation = &BlueMachine;
 
 	collider = App->collision->AddCollider({ 0, 0, 27, 47 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
@@ -44,6 +32,7 @@ Enemy_BlueMachine::Enemy_BlueMachine(int x, int y) : Enemy(x, y)
 
 void Enemy_BlueMachine::Move()
 {
+	/*
 	bool left = false;
 	float angle = 0;
 
@@ -123,12 +112,14 @@ void Enemy_BlueMachine::Move()
 			animation = &BlueMachine__0;
 		}
 	}
+	*/
 	position.y = original_y;
 	position.x = original_x;
 }
 
 void Enemy_BlueMachine::Shoot()
 {
+	/*
 	unsigned int currentTime = 0;
 	bool left = false;
 	float angle = 0;
@@ -229,4 +220,5 @@ void Enemy_BlueMachine::Shoot()
 			lastTime = currentTime;
 		}
 	}
+	*/
 }
