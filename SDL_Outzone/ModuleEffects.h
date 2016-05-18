@@ -23,8 +23,6 @@ public:
 	bool goaheadfirstloop = true;
 	unsigned int godcurrenttime = 0;
 	unsigned int godactiontime = 0;
-	unsigned int bombcurrenttime = 0;
-	unsigned int bombactiontime = 0;
 	unsigned int goaheadcurrenttime = 0;
 	unsigned int goaheadactiontime = 0;
 
