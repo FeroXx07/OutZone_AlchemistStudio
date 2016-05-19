@@ -169,62 +169,60 @@ void Enemy_Turret1::Shoot()
 					App->particles->enemyshoot.speed.y = ENEMY_SHOOT_SPEED * cos(angle * ANGLE_CONVERT_REVERSE);
 				}
 			}
-
 			if ((angle <= 11.25) && (angle >= 0) && (left == false)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x + 8, original_y + 20, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 17, original_y + 22, COLLIDER_ENEMY_SHOT);
 			}
 			else if ((angle <= 33.75) && (angle >= 11.25) && (left == false)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x + 13, original_y + 17, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 22, original_y + 22, COLLIDER_ENEMY_SHOT);
 			}
 			else if ((angle <= 56.25) && (angle >= 33.75) && (left == false)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x + 17, original_y + 17, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 25, original_y + 21, COLLIDER_ENEMY_SHOT);
 			}
 			else if ((angle <= 78.75) && (angle >= 56.25) && (left == false)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x + 20, original_y + 14, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 30, original_y + 18, COLLIDER_ENEMY_SHOT);
 			}
 			else if ((angle <= 101.25) && (angle >= 78.75) && (left == false)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x + 22, original_y + 10, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 32, original_y + 13, COLLIDER_ENEMY_SHOT);
 			}
 			else if ((angle <= 123.75) && (angle >= 101.25) && (left == false)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x + 20, original_y + 3, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 28, original_y + 7, COLLIDER_ENEMY_SHOT);
 			}
 			else if ((angle <= 146.25) && (angle >= 123.75) && (left == false)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x + 18, original_y, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 26, original_y + 4, COLLIDER_ENEMY_SHOT);
 			}
 			else if ((angle <= 168.75) && (angle >= 146.25) && (left == false)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x + 14, original_y - 3, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 23, original_y + 1, COLLIDER_ENEMY_SHOT);
 			}
 			else if ((angle <= 180) && (angle >= 168.75) && (left == false)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x + 8, original_y - 4, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 17, original_y + 1, COLLIDER_ENEMY_SHOT);
 			}
-
 			//Left
 			else if ((angle <= 11.25) && (angle >= 0) && (left == true)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x + 8, original_y + 20, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 17, original_y + 22, COLLIDER_ENEMY_SHOT);
 			}
 			else if ((angle <= 33.75) && (angle >= 11.25) && (left == true)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x + 3, original_y + 19, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 12, original_y + 22, COLLIDER_ENEMY_SHOT);
 			}
 			else if ((angle <= 56.25) && (angle >= 33.75) && (left == true)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x - 1, original_y + 13, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 9, original_y + 20, COLLIDER_ENEMY_SHOT);
 			}
 			else if ((angle <= 78.75) && (angle >= 56.25) && (left == true)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x - 3, original_y + 9, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 4, original_y + 18, COLLIDER_ENEMY_SHOT);
 			}
 			else if ((angle <= 101.25) && (angle >= 78.75) && (left == true)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x - 4, original_y + 8, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 2, original_y + 13, COLLIDER_ENEMY_SHOT);
 			}
 			else if ((angle <= 123.75) && (angle >= 101.25) && (left == true)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x - 3, original_y + 3, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 4, original_y + 6, COLLIDER_ENEMY_SHOT);
 			}
 			else if ((angle <= 146.25) && (angle >= 123.75) && (left == true)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x - 1, original_y + 1, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 7, original_y + 3, COLLIDER_ENEMY_SHOT);
 			}
 			else if ((angle <= 168.75) && (angle >= 146.25) && (left == true)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x + 4, original_y, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 11, original_y + 1, COLLIDER_ENEMY_SHOT);
 			}
 			else if ((angle <= 180) && (angle >= 168.75) && (left == true)){
-				App->particles->AddParticle(App->particles->enemyshoot, original_x + 8, original_y - 4, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->enemyshoot, original_x + 17, original_y + 1, COLLIDER_ENEMY_SHOT);
 			}
 			lastTime = currentTime;
 		}

@@ -89,11 +89,7 @@ update_status ModuleEffects::Update()
 {
 	//god
 	if ((App->player->Invencible == true) || (App->player->Superspeed == true) || (App->player->Fly == true)){
-		godcurrenttime = SDL_GetTicks();
-		if (godcurrenttime > (godactiontime + 400)){
-			effect1 = &god;
-			godactiontime = godcurrenttime;
-		}
+		effect1 = &god;
 	}
 	else{
 		effect1 = NULL;
@@ -135,30 +131,36 @@ update_status ModuleEffects::Update()
 	
 	//go ahead
 	goaheadcurrenttime = SDL_GetTicks();
-	if (App->render->camera.y != -10424){
-		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
-			|| (App->player->position.y >= (170 + (App->render->camera.y / 2)))){
+	if (App->input->keyboard[SDL_SCANCODE_F11] == KEY_STATE::KEY_DOWN){
+		goaheadactive = !goaheadactive;
+	}
+	if (goaheadactive == true){
+		if (App->render->camera.y != -10424){
+			if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+				&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+				&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+				&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
+				|| (App->player->position.y >= (170 + (App->render->camera.y / 2)))){
 
-			if (goaheadfirstloop == true){
-				goaheadactiontime = SDL_GetTicks();
-				goaheadfirstloop = false;
-			}
+				if (goaheadfirstloop == true){
+					goaheadactiontime = SDL_GetTicks();
+					goaheadfirstloop = false;
+				}
 
-			if (goaheadcurrenttime > (goaheadactiontime + 5000)){
-				effect3 = &goahead;
-				goaheadactiontime = goaheadcurrenttime;
+				if (goaheadcurrenttime > (goaheadactiontime + 5000)){
+					effect3 = &goahead;
+					goaheadactiontime = goaheadcurrenttime;
+				}
 			}
-		}
-		else{
-			effect3 = NULL;
-			goaheadfirstloop = true;
-		}
-		if (effect3 != nullptr){
-			App->render->Blit(graphics, App->render->camera.x + 95, (App->render->camera.y / 2) + 80, &(effect3->GetCurrentFrame()));
+			else{
+				effect3 = NULL;
+				goaheadfirstloop = true;
+			}
+			if (effect3 != nullptr){
+				App->render->Blit(graphics, App->render->camera.x + 95, (App->render->camera.y / 2) + 80, &(effect3->GetCurrentFrame()));
+			}
 		}
 	}
+	
 	return UPDATE_CONTINUE;
 }

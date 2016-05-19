@@ -21,10 +21,9 @@ public:
 public:
 	bool bombactive = false;
 	bool goaheadfirstloop = true;
-	unsigned int godcurrenttime = 0;
-	unsigned int godactiontime = 0;
 	unsigned int goaheadcurrenttime = 0;
 	unsigned int goaheadactiontime = 0;
+	bool goaheadactive = true;
 
 	SDL_Texture* graphics = nullptr;
 	Animation* effect1 = nullptr;

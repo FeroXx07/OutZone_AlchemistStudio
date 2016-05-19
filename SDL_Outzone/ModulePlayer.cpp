@@ -158,9 +158,6 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
-	
-	
-	
 	if (destroyed == false){
 		int speed = 0;
 		PreviousPos = position;
@@ -465,12 +462,7 @@ update_status ModulePlayer::Update()
 			}
 		}
 		if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN){
-			if (changetaim == false){
-				changetaim = true;
-			}
-			else{
-				changetaim = false;
-			}
+			changetaim = !changetaim;
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN){
@@ -491,30 +483,15 @@ update_status ModulePlayer::Update()
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN){
-			if (Invencible == false){
-				Invencible = true;
-			}
-			else{
-				Invencible = false;
-			}
+			Invencible = !Invencible;
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN){
-			if (Superspeed == false){
-				Superspeed = true;
-			}
-			else{
-				Superspeed = false;
-			}
+			Superspeed = !Superspeed;
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN){
-			if (Fly == false){
-				Fly = true;
-			}
-			else{
-				Fly = false;
-			}
+			Fly = !Fly;
 		}
 
 
@@ -537,12 +514,7 @@ update_status ModulePlayer::Update()
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN){
-			if (Immobile == false){
-				Immobile = true;
-			}
-			else{
-				Immobile = false;
-			}
+			Immobile = !Immobile;
 		}
 
 		// AD
