@@ -112,6 +112,12 @@ ModuleParticles::ModuleParticles()
 	lascoll2.anim.loop = false;
 	lascoll2.anim.speed = 0.25f;
 
+	//TRILASER
+
+	trilaser.anim.PushBack({ 32, 86, 36, 17 });
+	trilaser.anim.speed = 0.2f;
+	trilaser.life = weaponshootlife;
+
 	//Normal weapon
 	//1st q
 	laser0.anim.PushBack({ 26, 87, 4, 16 });

@@ -710,6 +710,7 @@ update_status ModulePlayer::Update()
 						App->particles->AddParticle(App->particles->Rightthreeshoottwopowerup, position.x + 24, position.y - 4, COLLIDER_PLAYER_SHOT);
 						App->particles->AddParticle(App->particles->Leftthreeshoottwopowerup, position.x + 3, position.y - 4, COLLIDER_PLAYER_SHOT);
 					}
+					App->particles->AddParticle(App->particles->trilaser, position.x + 3, position.y - 8);
 					shootactiontime = shootcurrenttime;
 					lastkeypressed = LAST_KEY::LAST_KEY_W;
 				}

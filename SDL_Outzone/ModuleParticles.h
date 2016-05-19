@@ -56,6 +56,8 @@ public:
 	Particle explosionturret;
 	Particle playerexplosion;
 
+	Particle trilaser;
+
 	Particle laser;
 	Particle laser0;
 	Particle laser22_5;
