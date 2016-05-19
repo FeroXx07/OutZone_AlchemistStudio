@@ -136,7 +136,7 @@ void Enemy_Turret1::Shoot()
 
 	currentTime = SDL_GetTicks();
 
-	if ((original_y >= (App->render->camera.y / 2) - RANGE) && (original_y <= (App->render->camera.y / 2) + 340 - RANGE)){
+	if ((original_y >= (App->render->camera.y / 2) - RANGE) && (original_y <= (App->render->camera.y / 2) + 320 - RANGE)){
 		
 		if (App->player->position.x >= original_x){
 			left = false;
