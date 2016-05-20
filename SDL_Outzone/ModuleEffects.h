@@ -33,6 +33,8 @@ public:
 	bool effect2collidercreated = false;
 	Animation* effect3 = nullptr;
 	Animation* effect4 = nullptr;
+	Collider* shieldcollision;
+	bool effect4collidercreated = false;
 
 	Animation god;
 	Animation shield;
