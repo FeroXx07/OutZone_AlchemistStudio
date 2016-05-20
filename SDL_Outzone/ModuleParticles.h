@@ -94,6 +94,24 @@ public:
 	Particle poweredlaser315;
 	Particle poweredlaser337_5;
 
+	Particle balllaser;
+	Particle balllaser0;
+	Particle balllaser22_5;
+	Particle balllaser45;
+	Particle balllaser67_5;
+	Particle balllaser90;
+	Particle balllaser112_5;
+	Particle balllaser135;
+	Particle balllaser157_5;
+	Particle balllaser180;
+	Particle balllaser202_5;
+	Particle balllaser225;
+	Particle balllaser247_5;
+	Particle balllaser270;
+	Particle balllaser292_5;
+	Particle balllaser315;
+	Particle balllaser337_5;
+
 	Particle laserweaponshoot0;
 	Particle laserweaponshoot22_5;
 	Particle laserweaponshoot45;
@@ -122,8 +140,6 @@ public:
 	Particle Frontthreeshoottwopowerup;
 	Particle Leftthreeshoottwopowerup;
 	Particle Rightthreeshoottwopowerup;
-
-	Particle laserball;
 
 	Particle enemyshoot;
 };
