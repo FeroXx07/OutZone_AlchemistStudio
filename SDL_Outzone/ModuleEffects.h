@@ -24,6 +24,7 @@ public:
 	unsigned int goaheadcurrenttime = 0;
 	unsigned int goaheadactiontime = 0;
 	bool goaheadactive = true;
+	bool shieldactive = false;
 
 	SDL_Texture* graphics = nullptr;
 	Animation* effect1 = nullptr;
@@ -31,8 +32,10 @@ public:
 	Collider* effect2collider;
 	bool effect2collidercreated = false;
 	Animation* effect3 = nullptr;
+	Animation* effect4 = nullptr;
 
 	Animation god;
+	Animation shield;
 	Animation lascoll;
 	Animation bomb;
 	Animation goahead;

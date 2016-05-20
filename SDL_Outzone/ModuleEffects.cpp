@@ -32,6 +32,13 @@ ModuleEffects::ModuleEffects()
 	god.loop = true;
 	god.speed = 0.2f;
 
+	shield.PushBack({ 96, 47, 38, 38 });
+	shield.PushBack({ 134, 47, 38, 38 });
+	shield.PushBack({ 172, 47, 38, 38 });
+	shield.PushBack({ 210, 47, 38, 38 });
+	shield.loop = true;
+	shield.speed = 0.2f;
+
 	bomb.PushBack({ 0, 341, 240, 320 });
 	bomb.PushBack({ 240, 341, 240, 320 });
 	bomb.PushBack({ 480, 341, 240, 320 });
@@ -160,6 +167,21 @@ update_status ModuleEffects::Update()
 				App->render->Blit(graphics, App->render->camera.x + 95, (App->render->camera.y / 2) + 80, &(effect3->GetCurrentFrame()));
 			}
 		}
+	}
+
+	//shield
+	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN){
+		shieldactive = !shieldactive;
+	}
+	if (shieldactive == true){
+		effect4 = &shield;
+	}
+	else{
+		effect4 = NULL;
+	}
+	position = App->player->position;
+	if (effect4 != nullptr){
+		App->render->Blit(graphics, position.x, position.y, &(effect4->GetCurrentFrame()));
 	}
 	
 	return UPDATE_CONTINUE;
