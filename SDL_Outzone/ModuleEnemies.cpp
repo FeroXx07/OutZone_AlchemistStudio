@@ -19,6 +19,7 @@
 #include"Enemy_PurpleMachine.h"
 #include"Enemy_Turret3.h"
 #include"Enemy_BigRedMachine.h"
+#include"Box.h"
 #define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()
@@ -182,6 +183,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 			case ENEMY_TYPES::TURRET3:
 				enemies[i] = new Enemy_Turret3(info.x, info.y);
+				break;
+
+			case ENEMY_TYPES::BOX:
+				enemies[i] = new Box(info.x, info.y);
 				break;
 
 			case ENEMY_TYPES::BIGREDMACHINE:

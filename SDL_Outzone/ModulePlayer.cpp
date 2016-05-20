@@ -8,6 +8,7 @@
 #include "ModuleFadeToBlack.h"
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
+#include"ModuleSceneSpace.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -195,16 +196,16 @@ update_status ModulePlayer::Update()
 					position.x -= speed;
 				}
 			}
-			if (current_animation != &left)
-			{
-				left.Reset();
+		//	if (current_animation != &left)
+			//{
+			//	left.Reset();
 				if (changetaim == false){
 					current_animation = &left;
 				}
 				else{
 					current_animation = &upTAim;
 				}
-			}
+			//}
 		}
 
 		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
@@ -1156,6 +1157,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					position = PreviousPos;
 					collisionWallS = true;
 				}
+				break;
+			case COLLIDER_CHANGEAIM:
+				changetaim = !changetaim;
+
 				break;
 			default:
 				if (Invencible == false){

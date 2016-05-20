@@ -101,6 +101,11 @@ bool ModuleSceneSpace::Start()
 	App->collision->AddCollider({ 0, -4798, 62, 37 }, COLLIDER_HOLE);
 	
 	App->collision->AddCollider({ 176, -4798, 15, 37 }, COLLIDER_HOLE);
+
+	//CHANGE AIM COLLIDER
+
+	//colliderchangeaim1 = App->collision->AddCollider({ 90, -100, 40, 40 }, COLLIDER_CHANGEAIM);
+	//colliderchangeaim1 = App->collision->AddCollider({ 90, -150, 40, 40 }, COLLIDER_CHANGEAIM);
 	// Enemies ---
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 124, -714);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET1, 148, -746);
@@ -118,7 +123,10 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 50, 150);
 	App->enemies->AddEnemy(ENEMY_TYPES::ORANGEROBOT, 50, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 50, 50);
-	
+
+	//BOX
+	App->enemies->AddEnemy(ENEMY_TYPES::BOX, 90, -100);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOX, 90, -150);
 
 	return true;
 }
