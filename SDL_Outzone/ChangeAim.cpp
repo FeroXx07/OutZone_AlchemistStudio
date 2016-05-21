@@ -10,7 +10,7 @@ ChangeAim::ChangeAim(int x, int y) : Enemy(x, y)
 {
 	live = 100;
 
-	collider = App->collision->AddCollider({ 0, 0, 30, 30 }, COLLIDER_TYPE::COLLIDER_CHANGEAIM, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_CHANGEAIM, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;

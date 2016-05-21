@@ -325,10 +325,10 @@ void ModuleCollision::DebugDraw()
 			App->render->DrawQuad(colliders[i]->rect, 150, 150, 0, alpha);
 			break;
 			case COLLIDER_BOX:
-			App->render->DrawQuad(colliders[i]->rect, 30, 30, 0, alpha);
+			App->render->DrawQuad(colliders[i]->rect, 255, 0, 145, alpha);
 			break;
 			case COLLIDER_CHANGEAIM:
-			App->render->DrawQuad(colliders[i]->rect, 15, 15, 0, alpha);
+			App->render->DrawQuad(colliders[i]->rect, 190, 250, 90, alpha);
 			break;
 			case COLLIDER_HOLE:
 			App->render->DrawQuad(colliders[i]->rect, 255, 255, 0, alpha);
