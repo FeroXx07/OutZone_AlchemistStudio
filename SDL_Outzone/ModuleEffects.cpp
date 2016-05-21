@@ -147,6 +147,10 @@ update_status ModuleEffects::Update()
 				&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 				&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
 				&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)
+				&& (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
+				&& App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
+				&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE
+				&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE)
 				|| (App->player->position.y >= (170 + (App->render->camera.y / 2)))){
 
 				if (goaheadfirstloop == true){
