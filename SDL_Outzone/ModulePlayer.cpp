@@ -167,8 +167,9 @@ update_status ModulePlayer::Update()
 		if (Superspeed == true){
 			speed *= SUPERSPEED;
 		}
-
-		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
+		// W for scroll
+		if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) 
+			|| (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)){
 			if (Immobile == false){
 				if (App->player->position.y <= (160 + (App->render->camera.y / 2))){
 					App->render->camera.y -= speed;
@@ -180,8 +181,9 @@ update_status ModulePlayer::Update()
 		if (Superspeed == true){
 			speed *= SUPERSPEED;
 		}
-
-		if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+		//A
+		if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
+			|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT))
 		{
 			if (Immobile == false){
 				if ((position.x -= speed) <= 0){
@@ -196,19 +198,16 @@ update_status ModulePlayer::Update()
 					position.x -= speed;
 				}
 			}
-		//	if (current_animation != &left)
-			//{
-			//	left.Reset();
 				if (changetaim == false){
 					current_animation = &left;
 				}
 				else{
 					current_animation = &upTAim;
 				}
-			//}
 		}
-
-		if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+		//D
+		if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
+			|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT))
 		{
 			if (Immobile == false){
 				if ((position.x += speed) >= 200){
@@ -229,7 +228,7 @@ update_status ModulePlayer::Update()
 			else{
 				current_animation = &upTAim;
 			}
-			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+			if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) || (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
 				if (changetaim == false){
 					current_animation = &idle_w;
 				}
@@ -238,8 +237,9 @@ update_status ModulePlayer::Update()
 				}
 			}
 		}
-
-		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+		//S
+		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) 
+			|| (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT))
 		{
 			if (Immobile == false){
 				if (collisionWallT == true)
@@ -262,16 +262,20 @@ update_status ModulePlayer::Update()
 				current_animation = &upTAim;
 			}
 			if (changetaim == false){
-				if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
-					if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+				if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
+					|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
+					if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
+						|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
 						current_animation = &down;
 					}
 					else{
 						current_animation = &Drighbot;
 					}
 				}
-				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-					if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+				if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
+					|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
+					if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
+						|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
 						current_animation = &down;
 					}
 					else{
@@ -280,16 +284,20 @@ update_status ModulePlayer::Update()
 				}
 			}
 			else{
-				if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
-					if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+				if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
+					|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
+					if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
+						|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
 						current_animation = &upTAim;
 					}
 					else{
 						current_animation = &upTAim;
 					}
 				}
-				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-					if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+				if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
+					|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
+					if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
+						|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
 						current_animation = &upTAim;
 					}
 					else{
@@ -299,8 +307,9 @@ update_status ModulePlayer::Update()
 
 			}
 		}
-
-		if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+		//W
+		if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) 
+			|| (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT))
 		{
 			if (Immobile == false){
 				if ((position.y -= speed) <= -5050){
@@ -315,10 +324,8 @@ update_status ModulePlayer::Update()
 					position.y -= speed;
 				}
 			}
-			//if (current_animation != &up)
-			//{
-			//	up.Reset();
-			if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT){
+			if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) 
+				|| (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)){
 				if (changetaim == false){
 					current_animation = &idle_w;
 				}
@@ -336,18 +343,21 @@ update_status ModulePlayer::Update()
 				
 			}
 
-			//}
 			if (changetaim == false){
-				if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
-					if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+				if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
+					|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
+					if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
+						|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
 						current_animation = &up;
 					}
 					else{
 						current_animation = &Drightop;
 					}
 				}
-				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-					if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+				if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
+					|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
+					if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
+						|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
 						current_animation = &up;
 					}
 					else{
@@ -356,16 +366,20 @@ update_status ModulePlayer::Update()
 				}
 			}
 			else{
-				if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
-					if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+				if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
+					|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
+					if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
+						|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
 						current_animation = &upTAim;
 					}
 					else{
 						current_animation = &upTAim;
 					}
 				}
-				if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
-					if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+				if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
+					|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
+					if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
+						|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
 						current_animation = &upTAim;
 					}
 					else{
@@ -376,7 +390,8 @@ update_status ModulePlayer::Update()
 		}
 
 		// A
-		if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
+		if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)) 
+			|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)))
 		{
 			if (lastkeypressed != LAST_KEY_A){
 				beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
@@ -386,7 +401,8 @@ update_status ModulePlayer::Update()
 		}
 
 		// D
-		if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE))
+		if (((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)) 
+			|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)))
 		{
 			if (lastkeypressed != LAST_KEY_D){
 				beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
@@ -396,7 +412,8 @@ update_status ModulePlayer::Update()
 		}
 
 		// S / ASD
-		if (((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)) || ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)))
+		if ((((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)) || ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT))) 
+			|| (((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)) || ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT))))
 		{
 			if (lastkeypressed != LAST_KEY_S){
 				beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
@@ -406,8 +423,9 @@ update_status ModulePlayer::Update()
 		}
 
 		// SD
-		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)){
-			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+		if (((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)) 
+			|| ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE))){
+			if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) || (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
 			}
 			else{
 				if (lastkeypressed != LAST_KEY_SD){
@@ -419,8 +437,9 @@ update_status ModulePlayer::Update()
 		}
 
 		// SA
-		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)){
-			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+		if (((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)) 
+			|| ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE))){
+			if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) || (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
 			}
 			else{
 				if (lastkeypressed != LAST_KEY_SA){
@@ -432,14 +451,16 @@ update_status ModulePlayer::Update()
 		}
 
 		// W / AWD
-		if (((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)) || ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)))
+		if ((((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)) || ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))) 
+			|| (((App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)) || ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT))))
 		{
 			lastkeypressed = LAST_KEY::LAST_KEY_W;
 		}
 
 		// WD
-		if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)){
-			if (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT){
+		if (((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)) 
+			|| ((App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE))){
+			if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) || (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
 			}
 			else{
 				if (lastkeypressed != LAST_KEY_WD){
@@ -451,8 +472,9 @@ update_status ModulePlayer::Update()
 		}
 
 		// WA
-		if (((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))){
-			if (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT){
+		if ((((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)))
+			|| (((App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)))){
+			if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) || (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
 			}
 			else{
 				if (lastkeypressed != LAST_KEY_WA){
@@ -519,31 +541,36 @@ update_status ModulePlayer::Update()
 		}
 
 		// AD
-		if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
+		if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
+			|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)))
 		{
 			lastkeypressed = LAST_KEY::LAST_KEY_W;
 		}
 
 		// WS
-		if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
+		if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
+			|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)))
 		{
 			lastkeypressed = LAST_KEY::LAST_KEY_W;
 		}
 
 		// WASD
-		if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
+		if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
+			|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)))
 		{
 			lastkeypressed = LAST_KEY::LAST_KEY_W;
 		}
 
 		//WSD
-		if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
+		if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
+			|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)))
 		{
 			lastkeypressed = LAST_KEY::LAST_KEY_WD;
 		}
 
 		//WAS
-		if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
+		if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
+			|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)))
 		{
 			lastkeypressed = LAST_KEY::LAST_KEY_WA;
 		}
@@ -1006,7 +1033,11 @@ update_status ModulePlayer::Update()
 		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE){
+			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE
+			&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE){
 
 			if (lastkeypressed == LAST_KEY_W){
 				if (changetaim == false){

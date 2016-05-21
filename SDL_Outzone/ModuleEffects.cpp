@@ -172,17 +172,23 @@ update_status ModuleEffects::Update()
 	//shield
 	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN){
 		shieldactive = !shieldactive;
-		effect4collidercreated = true;
 	}
 	if (shieldactive == true){
 		effect4 = &shield;
-		/*
-		shieldcollision = App->collision->AddCollider({ App->player->position.x, App->player->position.y, 23, 28 }, COLLIDER_PLAYER, this);
-		shieldcollision->SetPos(App->player->position.x, App->player->position.y);
-		*/
+		if (effect4collidercreated == false){
+			shieldcollision = App->collision->AddCollider({ App->player->position.x, App->player->position.y, 38, 38 }, COLLIDER_PLAYER, this);
+			effect4collidercreated = true;
+		}
+		if (effect4collidercreated == true){
+			shieldcollision->SetPos(App->player->position.x, App->player->position.y);
+		}
 	}
 	else{
 		effect4 = NULL;
+		if (effect4collidercreated == true){
+			effect4collidercreated = false;
+			shieldcollision->to_delete = true;
+		}
 	}
 	position = App->player->position;
 	if (effect4 != nullptr){
