@@ -125,8 +125,9 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 50, 50);
 
 	//BOX
-	App->enemies->AddEnemy(ENEMY_TYPES::BOX, 90, -100);
-	App->enemies->AddEnemy(ENEMY_TYPES::BOX, 90, -150);
+	App->enemies->AddEnemy(ENEMY_TYPES::CHANGEAIM, 90, -100);
+	App->enemies->AddEnemy(ENEMY_TYPES::CHANGEAIM, 90, -150);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOX, 150, -150);
 
 	return true;
 }

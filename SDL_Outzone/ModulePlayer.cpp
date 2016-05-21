@@ -1193,6 +1193,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				changetaim = !changetaim;
 
 				break;
+			case COLLIDER_BOX:
+				if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 2))
+				{
+					position = PreviousPos;
+					collisionWallT = true;
+				}
+				else if (((c2->rect.x + c2->rect.w) <= c1->rect.x + 1) || ((c1->rect.x + c1->rect.w) >= c2->rect.x + 1))
+				{
+					position = PreviousPos;
+					collisionWallS = true;
+				}
+				break;
 			default:
 				if (Invencible == false){
 					App->player->Disable();
