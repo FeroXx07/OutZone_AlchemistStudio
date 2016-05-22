@@ -15,6 +15,7 @@
 #include "ModuleSceneGameOver.h"
 #include "ModuleWinScreen.h"
 #include "ModuleEffects.h"
+#include "ModuleUI.h"
 
 Application::Application()
 {
@@ -33,8 +34,10 @@ Application::Application()
 	modules[i++] = scene_space_upper = new ModuleSceneSpaceUpper();
 	modules[i++] = particles = new ModuleParticles();
 	modules[i++] = effects = new ModuleEffects();
+	modules[i++] = ui = new ModuleUI();
 	modules[i++] = collision = new ModuleCollision();
 	modules[i++] = fade = new ModuleFadeToBlack();
+
 }	
 
 Application::~Application()
@@ -55,6 +58,7 @@ bool Application::Init()
 	effects->Disable();
 	collision->Disable();
 	enemies->Disable();
+	ui->Disable();
 	// ----------------------------
 
 	for(int i = 0; i < NUM_MODULES && ret == true; ++i)

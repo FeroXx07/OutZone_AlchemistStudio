@@ -10,6 +10,7 @@
 #include "ModuleSceneSpace.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleEffects.h"
+#include "ModuleUI.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -31,6 +32,7 @@ bool ModuleSceneSpace::Start()
 	App->particles->Enable();
 	App->collision->Enable();
 	App->enemies->Enable();
+	App->ui->Enable();
 
 	App->audio->PlayMusic("Outzone/outzone_2.ogg", 1.0f);
 	
