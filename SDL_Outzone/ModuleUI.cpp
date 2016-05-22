@@ -27,6 +27,8 @@ bool ModuleUI::Start()
 {
 	LOG("Loading space scene");
 	background = App->textures->Load("Outzone/UI.png");
+	UI.PushBack({ 86, 6, 93, 10 });
+	effect1 = &UI;
 	return true;
 }
 
@@ -50,11 +52,13 @@ bool ModuleUI::CleanUp()
 // Update: draw background
 update_status ModuleUI::Update()
 {
+	//if (effect)
+	App->render->Blit(background, App->render->camera.x, App->render->camera.y / 2, &(effect1->GetCurrentFrame()));
 	/*
 	if (App->player->position.y <= -3160){
 	App->fade->FadeToBlack(this, (Module*)App->scene_gamewin);
 	}
-	*/
+	
 	// Draw everything --------------------------------------
 	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
 		if (App->player->position.y == (160 + (App->render->camera.y / 2))){
@@ -75,6 +79,6 @@ update_status ModuleUI::Update()
 	}
 	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT){
 		firstimeblit = true;
-	}
+	}*/
 	return UPDATE_CONTINUE;
 }

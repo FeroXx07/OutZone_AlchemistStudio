@@ -19,6 +19,8 @@ public:
 	bool firstimeblit = true;
 	SDL_Texture* background = nullptr;
 	SDL_Texture* stars = nullptr;
+	Animation* effect1 = nullptr;
+	Animation UI;
 };
 
 #endif // __MODULESCENESPACEUPPER_H__
