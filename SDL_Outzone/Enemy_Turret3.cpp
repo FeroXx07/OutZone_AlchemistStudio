@@ -24,7 +24,7 @@ Enemy_Turret3::Enemy_Turret3(int x, int y) : Enemy(x, y)
 
 	animation = &Turret3;
 
-	collider = App->collision->AddCollider({ 0, 0, 30, 45 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 30, 45 }, COLLIDER_TYPE::COLLIDER_TURRET3, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;

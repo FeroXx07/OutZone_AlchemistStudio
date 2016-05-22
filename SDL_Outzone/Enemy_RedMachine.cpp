@@ -25,7 +25,7 @@ Enemy_RedMachine::Enemy_RedMachine(int x, int y) : Enemy(x, y)
 
 	animation = &RedMachine;
 
-	collider = App->collision->AddCollider({ 0, 0, 50, 43 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 50, 43 }, COLLIDER_TYPE::COLLIDER_RED_MACHINE, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;

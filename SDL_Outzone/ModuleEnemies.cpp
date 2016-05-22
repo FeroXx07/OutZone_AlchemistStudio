@@ -216,20 +216,20 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			if ((c1->type == COLLIDER_ENEMY) && (c2->type == COLLIDER_PLAYER_SHOT)){
+			if (((c1->type == COLLIDER_ENEMY) || (c1->type == COLLIDER_GREY_ROBOT) || (c1->type == COLLIDER_BIG_RED_MACHINE) || (c1->type == COLLIDER_BLUE_MACHINE) || (c1->type == COLLIDER_ORANGE_ROBOT) || (c1->type == COLLIDER_PURPLE_MACHINE) || (c1->type == COLLIDER_RED_MACHINE) || (c1->type == COLLIDER_TURRET1) || (c1->type == COLLIDER_TURRET3)) && (c2->type == COLLIDER_PLAYER_SHOT)){
 				App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				enemycount++;
 				break;
 			}
-			else if ((c1->type == COLLIDER_ENEMY) && (c2->type == COLLIDER_PLAYER)){
+			else if (((c1->type == COLLIDER_ENEMY) || (c1->type == COLLIDER_GREY_ROBOT) || (c1->type == COLLIDER_BIG_RED_MACHINE) || (c1->type == COLLIDER_BLUE_MACHINE) || (c1->type == COLLIDER_ORANGE_ROBOT) || (c1->type == COLLIDER_PURPLE_MACHINE) || (c1->type == COLLIDER_RED_MACHINE) || (c1->type == COLLIDER_TURRET1) || (c1->type == COLLIDER_TURRET3)) && (c2->type == COLLIDER_PLAYER)){
 				App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;
 			}
-			else if ((c1->type == COLLIDER_ENEMY) && (c2->type == COLLIDER_BOMB)){
+			else if (((c1->type == COLLIDER_ENEMY) || (c1->type == COLLIDER_GREY_ROBOT) || (c1->type == COLLIDER_BIG_RED_MACHINE) || (c1->type == COLLIDER_BLUE_MACHINE) || (c1->type == COLLIDER_ORANGE_ROBOT) || (c1->type == COLLIDER_PURPLE_MACHINE) || (c1->type == COLLIDER_RED_MACHINE) || (c1->type == COLLIDER_TURRET1) || (c1->type == COLLIDER_TURRET3)) && (c2->type == COLLIDER_BOMB)){
 				App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;

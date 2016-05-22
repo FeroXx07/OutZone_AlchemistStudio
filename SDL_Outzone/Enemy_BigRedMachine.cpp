@@ -19,7 +19,7 @@ Enemy_BigRedMachine::Enemy_BigRedMachine(int x, int y) : Enemy(x, y)
 	live = 100;
 
 
-	collider = App->collision->AddCollider({ 0, 0, 27, 47 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 27, 47 }, COLLIDER_TYPE::COLLIDER_BIG_RED_MACHINE, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;

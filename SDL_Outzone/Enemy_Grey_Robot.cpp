@@ -94,7 +94,7 @@ Enemy_GreyRobot::Enemy_GreyRobot(int x, int y) : Enemy(x, y)
 
 	animation = &GRobot__180;
 
-	collider = App->collision->AddCollider({ 0, 0, 27, 47 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 27, 47 }, COLLIDER_TYPE::COLLIDER_GREY_ROBOT, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;
