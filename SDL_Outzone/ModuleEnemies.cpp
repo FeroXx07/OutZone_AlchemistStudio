@@ -229,6 +229,12 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				enemies[i] = nullptr;
 				break;
 			}
+			else if ((c1->type == COLLIDER_ENEMY) && (c2->type == COLLIDER_BOMB)){
+				App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
+				delete enemies[i];
+				enemies[i] = nullptr;
+				break;
+			}
  			else if ((c1->type == COLLIDER_CHANGEAIM) && (c2->type == COLLIDER_PLAYER)){
 				delete enemies[i];
 				enemies[i] = nullptr;
