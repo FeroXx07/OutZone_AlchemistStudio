@@ -23,7 +23,7 @@ Enemy_OrangeRobot::Enemy_OrangeRobot(int x, int y) : Enemy(x, y)
 
 	animation = &OrangeRobot;
 
-	collider = App->collision->AddCollider({ 0, 0, 45, 45 }, COLLIDER_TYPE::COLLIDER_ORANGE_ROBOT, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 36, 36 }, COLLIDER_TYPE::COLLIDER_ORANGE_ROBOT, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;

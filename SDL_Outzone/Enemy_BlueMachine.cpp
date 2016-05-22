@@ -24,7 +24,7 @@ Enemy_BlueMachine::Enemy_BlueMachine(int x, int y) : Enemy(x, y)
 	BlueMachine.speed = 0.25f;
 	animation = &BlueMachine;
 
-	collider = App->collision->AddCollider({ 0, 0, 50, 43 }, COLLIDER_TYPE::COLLIDER_BLUE_MACHINE, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 44, 35 }, COLLIDER_TYPE::COLLIDER_BLUE_MACHINE, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;

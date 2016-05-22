@@ -23,7 +23,7 @@ Enemy_PurpleMachine::Enemy_PurpleMachine(int x, int y) : Enemy(x, y)
 
 	animation = &PurpleMachine;
 
-	collider = App->collision->AddCollider({ 0, 0, 40, 42 }, COLLIDER_TYPE::COLLIDER_PURPLE_MACHINE, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 30, 30 }, COLLIDER_TYPE::COLLIDER_PURPLE_MACHINE, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;

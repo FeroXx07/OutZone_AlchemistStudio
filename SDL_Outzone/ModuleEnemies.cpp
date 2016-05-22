@@ -143,8 +143,8 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		switch(info.type)
 		{
 			case ENEMY_TYPES::REDBIRD:
-			enemies[i] = new Enemy_RedBird(info.x,info.y);
-			break;
+				enemies[i] = new Enemy_RedBird(info.x,info.y);
+				break;
 			case ENEMY_TYPES::BROWCOOKIES:
 				enemies[i] = new Enemy_Cookies(info.x, info.y);
 				break;
