@@ -69,7 +69,7 @@ private:
 
 public:
 	unsigned int enemycount = 0;
-
+	unsigned int pointscount = 0;
 };
 
 #endif // __ModuleEnemies_H__

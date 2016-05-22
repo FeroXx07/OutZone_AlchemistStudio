@@ -83,6 +83,7 @@ int main(int argc, char* argv[])
 		}
 	}
 	LOG("You had killed %i enemies.", App->enemies->enemycount);
+	LOG("You had earned %i points.", App->enemies->pointscount);
 	delete App;
 	LOG("Bye :)\n");
 	return main_return;
