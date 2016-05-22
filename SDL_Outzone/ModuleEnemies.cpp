@@ -129,7 +129,6 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y)
 			break;
 		}
 	}
-
 	return ret;
 }
 
@@ -221,6 +220,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;
+				enemycount++;
 				break;
 			}
 			else if ((c1->type == COLLIDER_ENEMY) && (c2->type == COLLIDER_PLAYER)){

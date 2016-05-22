@@ -3,7 +3,7 @@
 
 #include "Enemy.h"
 
-#define SHOOTRANGE 45
+#define SHOOTRANGE 67.5
 
 class Enemy_Turret3 : public Enemy
 {

@@ -8,7 +8,7 @@
 #include <math.h>
 
 #define RANGE 30
-#define SPINSPEED 0.25f
+#define SPINSPEED 0.5f
 #define PI 3.14159265
 #define ANGLE_CONVERT (180.0 / PI)
 #define ANGLE_CONVERT_REVERSE (PI / 180.0)
@@ -84,7 +84,7 @@ void Enemy_Turret3::Shoot()
 				App->particles->enemyshoot.speed.y = ENEMY_SHOOT_SPEED * cos(angle * ANGLE_CONVERT_REVERSE);
 			}
 		}
-		if ((angle == 0) || (angle == 11.25) || (angle == 22.5) || (angle == 33.25) || (angle == 45)){
+		if ((angle == 0) || (angle == 11.5) || (angle == 22.5) || (angle == 34) || (angle == 45) || (angle == 56.5) || (angle == 67.5)){
 			App->particles->AddParticle(App->particles->enemyshoot, original_x + 12, original_y + 13, COLLIDER_ENEMY_SHOT);
 		}
 	}

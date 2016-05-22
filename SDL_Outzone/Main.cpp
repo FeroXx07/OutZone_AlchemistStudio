@@ -2,6 +2,7 @@
 #include "Application.h"
 #include "Globals.h"
 #include "MemLeaks.h"
+#include "ModuleEnemies.h"
 
 #include "SDL/include/SDL.h"
 #pragma comment( lib, "SDL/libx86/SDL2.lib" )
@@ -81,7 +82,7 @@ int main(int argc, char* argv[])
 
 		}
 	}
-
+	LOG("You had killed %i enemies.", App->enemies->enemycount);
 	delete App;
 	LOG("Bye :)\n");
 	return main_return;
