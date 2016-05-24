@@ -104,7 +104,13 @@ void Enemy_GreyRobot::Move()
 {
 	bool left = false;
 	float angle = 0;
-
+	
+	original_y += 1;
+	if (original_y <= 30)
+	{
+		original_x += 2;
+		original_y += 2;
+	}
 	if ((original_y >= (App->render->camera.y / 2) - RANGE) && (original_y <= (App->render->camera.y / 2) + 340 - RANGE)){
 		//left or right of the turret
 		if (App->player->position.x >= original_x){

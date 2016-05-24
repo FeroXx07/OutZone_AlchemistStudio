@@ -123,13 +123,16 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET3, 45, -940);
 	App->enemies->AddEnemy(ENEMY_TYPES::TURRET3, 175, -940);
 
-
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYROBOT, 20, -100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYROBOT, 40, -100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYROBOT, 60, -100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYROBOT, 220, -100);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::REDMACHINE, 50, 200);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 50, 150);
 	App->enemies->AddEnemy(ENEMY_TYPES::ORANGEROBOT, 50, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 50, 50);
-
+	
 	//BOX
 	//App->enemies->AddEnemy(ENEMY_TYPES::CHANGEAIM, 90, -100);
 	
