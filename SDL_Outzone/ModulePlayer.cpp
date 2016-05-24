@@ -140,6 +140,7 @@ bool ModulePlayer::Start()
 	position.x = 100;
 	position.y = 250;
 
+	lastkeypressed = LAST_KEY_W;
 	playercollision = App->collision->AddCollider({ position.x + PLAYERCOLIDERX, position.y + PLAYERCOLIDERY, 23, 28 }, COLLIDER_PLAYER, this);
 
 	return true;
@@ -160,956 +161,959 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update()
 {
 	if (destroyed == false){
-		int speed = 0;
-		PreviousPos = position;
+		if (current_animation != &fall){
+			int speed = 0;
+			PreviousPos = position;
 
-		speed = 4;
-		if (Superspeed == true){
-			speed *= SUPERSPEED;
-		}
-		// W for scroll
-		if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) 
-			|| (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)){
-			if (Immobile == false){
-				if (App->player->position.y <= (160 + (App->render->camera.y / 2))){
-					App->render->camera.y -= speed;
+			speed = 4;
+			if (Superspeed == true){
+				speed *= SUPERSPEED;
+			}
+			// W for scroll
+			if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+				|| (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)){
+				if (Immobile == false){
+					if (App->player->position.y <= (160 + (App->render->camera.y / 2))){
+						App->render->camera.y -= speed;
+					}
 				}
 			}
-		}
 
-		speed = 1;
-		if (Superspeed == true){
-			speed *= SUPERSPEED;
-		}
-		//A
-		if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
-			|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT))
-		{
-			if (Immobile == false){
-				if ((position.x -= speed) <= 0){
-					position.x = 0;
-				}
-				if (collisionWallS == true)
-				{
-					position.x = PreviousPos.x;
-					collisionWallS = false;
-				}
-				else{
-					position.x -= speed;
-				}
+			speed = 1;
+			if (Superspeed == true){
+				speed *= SUPERSPEED;
 			}
+			//A
+			if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+				|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT))
+			{
+				if (Immobile == false){
+					if ((position.x -= speed) <= 0){
+						position.x = 0;
+					}
+					if (collisionWallS == true)
+					{
+						position.x = PreviousPos.x;
+						collisionWallS = false;
+					}
+					else{
+						position.x -= speed;
+					}
+				}
 				if (changetaim == false){
 					current_animation = &left;
 				}
 				else{
 					current_animation = &upTAim;
 				}
-		}
-		//D
-		if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
-			|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT))
-		{
-			if (Immobile == false){
-				if ((position.x += speed) >= 200){
-					position.x = 200;
-				}
-				if (collisionWallS == true)
-				{
-					position.x = PreviousPos.x;
-					collisionWallS = false;
-				}
-				else{
-					position.x += speed;
-				}
 			}
-			if (changetaim == false){
-				current_animation = &right;
-			}
-			else{
-				current_animation = &upTAim;
-			}
-			if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) || (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
+			//D
+			if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+				|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT))
+			{
+				if (Immobile == false){
+					if ((position.x += speed) >= 200){
+						position.x = 200;
+					}
+					if (collisionWallS == true)
+					{
+						position.x = PreviousPos.x;
+						collisionWallS = false;
+					}
+					else{
+						position.x += speed;
+					}
+				}
 				if (changetaim == false){
-					current_animation = &idle_w;
-				}
-				else{
-					current_animation = &Idle_upTAim;
-				}
-			}
-		}
-		//S
-		if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) 
-			|| (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT))
-		{
-			if (Immobile == false){
-				if (collisionWallT == true)
-				{
-					position.y = PreviousPos.y;
-					collisionWallT = false;
-				}
-				if ((position.y += speed) >= (280 + (App->render->camera.y / 2))){
-					position.y = (280 + (App->render->camera.y / 2));
-				}
-				else{
-					position.y += speed;
-				}
-			}
-
-			if (changetaim == false){
-				current_animation = &down;
-			}
-			else{
-				current_animation = &upTAim;
-			}
-			if (changetaim == false){
-				if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
-					|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
-					if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
-						|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
-						current_animation = &down;
-					}
-					else{
-						current_animation = &Drighbot;
-					}
-				}
-				if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
-					|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
-					if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
-						|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
-						current_animation = &down;
-					}
-					else{
-						current_animation = &Lefthbot;
-					}
-				}
-			}
-			else{
-				if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
-					|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
-					if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
-						|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
-						current_animation = &upTAim;
-					}
-					else{
-						current_animation = &upTAim;
-					}
-				}
-				if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
-					|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
-					if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
-						|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
-						current_animation = &upTAim;
-					}
-					else{
-						current_animation = &upTAim;
-					}
-				}
-
-			}
-		}
-		//W
-		if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) 
-			|| (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT))
-		{
-			if (Immobile == false){
-				if ((position.y -= speed) <= -5050){
-					position.y = -5050;
-				}
-				if (collisionWallT == true)
-				{
-					position.y = PreviousPos.y;
-					collisionWallT = false;
-				}
-				else{
-					position.y -= speed;
-				}
-			}
-			if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) 
-				|| (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)){
-				if (changetaim == false){
-					current_animation = &idle_w;
-				}
-				else{
-					current_animation = &Idle_upTAim;
-				}
-			}
-			else{
-				if (changetaim == false){
-				current_animation = &up;
+					current_animation = &right;
 				}
 				else{
 					current_animation = &upTAim;
 				}
-				
+				if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) || (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
+					if (changetaim == false){
+						current_animation = &idle_w;
+					}
+					else{
+						current_animation = &Idle_upTAim;
+					}
+				}
 			}
+			//S
+			if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+				|| (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT))
+			{
+				if (Immobile == false){
+					if (collisionWallT == true)
+					{
+						position.y = PreviousPos.y;
+						collisionWallT = false;
+					}
+					if ((position.y += speed) >= (280 + (App->render->camera.y / 2))){
+						position.y = (280 + (App->render->camera.y / 2));
+					}
+					else{
+						position.y += speed;
+					}
+				}
 
-			if (changetaim == false){
-				if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
-					|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
-					if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
+				if (changetaim == false){
+					current_animation = &down;
+				}
+				else{
+					current_animation = &upTAim;
+				}
+				if (changetaim == false){
+					if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+						|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
+						if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+							|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
+							current_animation = &down;
+						}
+						else{
+							current_animation = &Drighbot;
+						}
+					}
+					if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 						|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
+						if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+							|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
+							current_animation = &down;
+						}
+						else{
+							current_animation = &Lefthbot;
+						}
+					}
+				}
+				else{
+					if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+						|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
+						if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+							|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
+							current_animation = &upTAim;
+						}
+						else{
+							current_animation = &upTAim;
+						}
+					}
+					if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+						|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
+						if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+							|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
+							current_animation = &upTAim;
+						}
+						else{
+							current_animation = &upTAim;
+						}
+					}
+
+				}
+			}
+			//W
+			if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
+				|| (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT))
+			{
+				if (Immobile == false){
+					if ((position.y -= speed) <= -5050){
+						position.y = -5050;
+					}
+					if (collisionWallT == true)
+					{
+						position.y = PreviousPos.y;
+						collisionWallT = false;
+					}
+					else{
+						position.y -= speed;
+					}
+				}
+				if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT)
+					|| (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT)){
+					if (changetaim == false){
+						current_animation = &idle_w;
+					}
+					else{
+						current_animation = &Idle_upTAim;
+					}
+				}
+				else{
+					if (changetaim == false){
 						current_animation = &up;
 					}
 					else{
-						current_animation = &Drightop;
+						current_animation = &upTAim;
 					}
+
 				}
-				if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
-					|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
-					if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
+
+				if (changetaim == false){
+					if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 						|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
-						current_animation = &up;
+						if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+							|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
+							current_animation = &up;
+						}
+						else{
+							current_animation = &Drightop;
+						}
 					}
-					else{
-						current_animation = &Lefthtop;
-					}
-				}
-			}
-			else{
-				if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
-					|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
-					if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
+					if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
 						|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
-						current_animation = &upTAim;
-					}
-					else{
-						current_animation = &upTAim;
+						if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+							|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
+							current_animation = &up;
+						}
+						else{
+							current_animation = &Lefthtop;
+						}
 					}
 				}
-				if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) 
-					|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
-					if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) 
+				else{
+					if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
 						|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
-						current_animation = &upTAim;
+						if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+							|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
+							current_animation = &upTAim;
+						}
+						else{
+							current_animation = &upTAim;
+						}
 					}
-					else{
-						current_animation = &upTAim;
+					if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)
+						|| (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
+						if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)
+							|| (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
+							current_animation = &upTAim;
+						}
+						else{
+							current_animation = &upTAim;
+						}
 					}
 				}
 			}
-		}
 
-		// A
-		if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)) 
-			|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)))
-		{
-			if (lastkeypressed != LAST_KEY_A){
-				beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
-				playeractiontime = SDL_GetTicks();
-			}
-			lastkeypressed = LAST_KEY::LAST_KEY_A;
-		}
-
-		// D
-		if (((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)) 
-			|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)))
-		{
-			if (lastkeypressed != LAST_KEY_D){
-				beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
-				playeractiontime = SDL_GetTicks();
-			}
-			lastkeypressed = LAST_KEY::LAST_KEY_D;
-		}
-
-		// S / ASD
-		if ((((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)) || ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT))) 
-			|| (((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)) || ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT))))
-		{
-			if (lastkeypressed != LAST_KEY_S){
-				beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
-				playeractiontime = SDL_GetTicks();
-			}
-			lastkeypressed = LAST_KEY::LAST_KEY_S;
-		}
-
-		// SD
-		if (((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)) 
-			|| ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE))){
-			if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) || (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
-			}
-			else{
-				if (lastkeypressed != LAST_KEY_SD){
+			// A
+			if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
+				|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)))
+			{
+				if (lastkeypressed != LAST_KEY_A){
 					beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
 					playeractiontime = SDL_GetTicks();
 				}
-				lastkeypressed = LAST_KEY::LAST_KEY_SD;
+				lastkeypressed = LAST_KEY::LAST_KEY_A;
 			}
-		}
 
-		// SA
-		if (((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)) 
-			|| ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE))){
-			if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) || (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
-			}
-			else{
-				if (lastkeypressed != LAST_KEY_SA){
+			// D
+			if (((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE))
+				|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)))
+			{
+				if (lastkeypressed != LAST_KEY_D){
 					beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
 					playeractiontime = SDL_GetTicks();
 				}
-				lastkeypressed = LAST_KEY::LAST_KEY_SA;
+				lastkeypressed = LAST_KEY::LAST_KEY_D;
 			}
-		}
 
-		// W / AWD
-		if ((((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)) || ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))) 
-			|| (((App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)) || ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT))))
-		{
-			lastkeypressed = LAST_KEY::LAST_KEY_W;
-		}
-
-		// WD
-		if (((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE)) 
-			|| ((App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE))){
-			if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) || (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
-			}
-			else{
-				if (lastkeypressed != LAST_KEY_WD){
+			// S / ASD
+			if ((((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)) || ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)))
+				|| (((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)) || ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT))))
+			{
+				if (lastkeypressed != LAST_KEY_S){
 					beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
 					playeractiontime = SDL_GetTicks();
 				}
-				lastkeypressed = LAST_KEY::LAST_KEY_WD;
+				lastkeypressed = LAST_KEY::LAST_KEY_S;
 			}
-		}
 
-		// WA
-		if ((((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)))
-			|| (((App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)))){
-			if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) || (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
-			}
-			else{
-				if (lastkeypressed != LAST_KEY_WA){
-					beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
-					playeractiontime = SDL_GetTicks();
+			// SD
+			if (((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE))
+				|| ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE))){
+				if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) || (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
 				}
-				lastkeypressed = LAST_KEY::LAST_KEY_WA;
-			}
-		}
-		if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN){
-			changetaim = !changetaim;
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN){
-			if (poweruplevel == 0){
-				poweruplevel = 1;
-			}
-			else if (poweruplevel == 1){
-				poweruplevel = 2;
-			}
-			else{
-				poweruplevel = 2;
+				else{
+					if (lastkeypressed != LAST_KEY_SD){
+						beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
+						playeractiontime = SDL_GetTicks();
+					}
+					lastkeypressed = LAST_KEY::LAST_KEY_SD;
+				}
 			}
 
-		}
+			// SA
+			if (((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
+				|| ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE))){
+				if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) || (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
+				}
+				else{
+					if (lastkeypressed != LAST_KEY_SA){
+						beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
+						playeractiontime = SDL_GetTicks();
+					}
+					lastkeypressed = LAST_KEY::LAST_KEY_SA;
+				}
+			}
 
-		if (App->input->keyboard[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN){
-			poweruplevel = 0;
-		}
+			// W / AWD
+			if ((((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)) || ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT)))
+				|| (((App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)) || ((App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT))))
+			{
+				lastkeypressed = LAST_KEY::LAST_KEY_W;
+			}
 
-		if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN){
-			Invencible = !Invencible;
-		}
+			// WD
+			if (((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE))
+				|| ((App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE))){
+				if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) || (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT)){
+				}
+				else{
+					if (lastkeypressed != LAST_KEY_WD){
+						beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
+						playeractiontime = SDL_GetTicks();
+					}
+					lastkeypressed = LAST_KEY::LAST_KEY_WD;
+				}
+			}
 
-		if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN){
-			Superspeed = !Superspeed;
-		}
+			// WA
+			if ((((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE)))
+				|| (((App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)))){
+				if ((App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT) || (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)){
+				}
+				else{
+					if (lastkeypressed != LAST_KEY_WA){
+						beforelastkeypressed = (BEFORE_LAST_KEY)lastkeypressed;
+						playeractiontime = SDL_GetTicks();
+					}
+					lastkeypressed = LAST_KEY::LAST_KEY_WA;
+				}
+			}
+			if (App->input->keyboard[SDL_SCANCODE_P] == KEY_STATE::KEY_DOWN){
+				changetaim = !changetaim;
+			}
 
-		if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN){
-			Fly = !Fly;
-		}
-
-
-		if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN){
-			position.x = 100;
-			position.y = 250;
-			App->render->camera.y = 0;
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN){
-			position.x = 100;
-			position.y = -2256;
-			App->render->camera.y = -4832;
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_STATE::KEY_DOWN){
-			position.x = 100;
-			position.y = -4806;
-			App->render->camera.y = -9932;
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN){
-			Immobile = !Immobile;
-		}
-
-		// AD
-		if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
-			|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)))
-		{
-			lastkeypressed = LAST_KEY::LAST_KEY_W;
-		}
-
-		// WS
-		if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
-			|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)))
-		{
-			lastkeypressed = LAST_KEY::LAST_KEY_W;
-		}
-
-		// WASD
-		if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
-			|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)))
-		{
-			lastkeypressed = LAST_KEY::LAST_KEY_W;
-		}
-
-		//WSD
-		if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
-			|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)))
-		{
-			lastkeypressed = LAST_KEY::LAST_KEY_WD;
-		}
-
-		//WAS
-		if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
-			|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)))
-		{
-			lastkeypressed = LAST_KEY::LAST_KEY_WA;
-		}
-
-		if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT)
-		{
-			shootcurrenttime = SDL_GetTicks();
-			playercurrenttime = SDL_GetTicks();
-
-			if (changetaim == false){
+			if (App->input->keyboard[SDL_SCANCODE_K] == KEY_STATE::KEY_DOWN){
 				if (poweruplevel == 0){
-					if (shootcurrenttime > (shootactiontime + SHOOTDELAY)){
-						if (lastkeypressed == LAST_KEY_W){
-							/*
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-							if (beforelastkeypressed == LAST_KEY_A){
-							App->particles->AddParticle(App->particles->laser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							}
-							else if (beforelastkeypressed == LAST_KEY_D){
-							App->particles->AddParticle(App->particles->laser67_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							}
-							//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-							playeractiontime = playercurrenttime;
-							}
-							*/
-							App->particles->AddParticle(App->particles->laser0, position.x + 24, position.y + 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot0, position.x + 19, position.y - 8);
-						}
-						else if (lastkeypressed == LAST_KEY_A){
-							/*
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-							if (beforelastkeypressed == LAST_KEY_W){
-							App->particles->AddParticle(App->particles->laser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							}
-							else if (beforelastkeypressed == LAST_KEY_S){
-							App->particles->AddParticle(App->particles->laser202_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laser247_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							}
-							//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-							playeractiontime = playercurrenttime;
-							}
-							*/
-							App->particles->AddParticle(App->particles->laser270, position.x + 1, position.y + 13, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot270, position.x - 7, position.y + 8);
-						}
-						else if (lastkeypressed == LAST_KEY_S){
-							/*
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-							if (beforelastkeypressed == LAST_KEY_A){
-							App->particles->AddParticle(App->particles->laser247_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laser202_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							}
-							else if (beforelastkeypressed == LAST_KEY_D){
-							App->particles->AddParticle(App->particles->laser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							}
-							//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-							playeractiontime = playercurrenttime;
-							}
-							*/
-							App->particles->AddParticle(App->particles->laser180, position.x + 13, position.y + 20, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot180, position.x + 8, position.y + 28);
-						}
-						else if (lastkeypressed == LAST_KEY_D){
-							/*
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-							if (beforelastkeypressed == LAST_KEY_W){
-							App->particles->AddParticle(App->particles->laser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laser67_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							}
-							else if (beforelastkeypressed == LAST_KEY_S){
-							App->particles->AddParticle(App->particles->laser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							}
-							//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-							playeractiontime = playercurrenttime;
-							}
-							*/
-							App->particles->AddParticle(App->particles->laser90, position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot90, position.x + 33, position.y + 10);
-						}
-						else if (lastkeypressed == LAST_KEY_WA){
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-								if (beforelastkeypressed == LAST_KEY_W){
-									App->particles->AddParticle(App->particles->laser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-								}
-								else if (beforelastkeypressed == LAST_KEY_A){
-									App->particles->AddParticle(App->particles->laser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-								}
-								beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-								playeractiontime = playercurrenttime;
-							}
-							App->particles->AddParticle(App->particles->laser315, position.x + 10, position.y + 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot315, position.x + 5, position.y - 4);
-						}
-						else if (lastkeypressed == LAST_KEY_WD){
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-								if (beforelastkeypressed == LAST_KEY_W){
-									App->particles->AddParticle(App->particles->laser22_5, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
-								}
-								else if (beforelastkeypressed == LAST_KEY_D){
-									App->particles->AddParticle(App->particles->laser67_5, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
-								}
-								beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-								playeractiontime = playercurrenttime;
-							}
-							App->particles->AddParticle(App->particles->laser45, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot45, position.x + 29, position.y - 1);
-						}
-						else if (lastkeypressed == LAST_KEY_SA){
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-								if (beforelastkeypressed == LAST_KEY_S){
-									App->particles->AddParticle(App->particles->laser202_5, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
-								}
-								else if (beforelastkeypressed == LAST_KEY_A){
-									App->particles->AddParticle(App->particles->laser247_5, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
-								}
-								beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-								playeractiontime = playercurrenttime;
-							}
-							App->particles->AddParticle(App->particles->laser225, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot225, position.x - 4, position.y + 19);
-						}
-						else if (lastkeypressed == LAST_KEY_SD){
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-								if (beforelastkeypressed == LAST_KEY_S){
-									App->particles->AddParticle(App->particles->laser157_5, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
-								}
-								else if (beforelastkeypressed == LAST_KEY_D){
-									App->particles->AddParticle(App->particles->laser112_5, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
-								}
-								beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-								playeractiontime = playercurrenttime;
-							}
-							App->particles->AddParticle(App->particles->laser135, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot135, position.x + 22, position.y + 25);
-						}
-						shootactiontime = shootcurrenttime;
-					}
+					poweruplevel = 1;
 				}
 				else if (poweruplevel == 1){
-					if (shootcurrenttime > (shootactiontime + SHOOTDELAY)){
-						if (lastkeypressed == LAST_KEY_W){
-							/*
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-							if (beforelastkeypressed == LAST_KEY_A){
-							App->particles->AddParticle(App->particles->poweredlaser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->poweredlaser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->poweredlaser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							}
-							else if (beforelastkeypressed == LAST_KEY_D){
-							App->particles->AddParticle(App->particles->poweredlaser67_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->poweredlaser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->poweredlaser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							}
-							//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-							playeractiontime = playercurrenttime;
-							}
-							*/
-							App->particles->AddParticle(App->particles->poweredlaser0, position.x + 24, position.y + 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot0, position.x + 19, position.y - 8);
-						}
-						else if (lastkeypressed == LAST_KEY_A){
-							/*
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-							if (beforelastkeypressed == LAST_KEY_W){
-							App->particles->AddParticle(App->particles->poweredlaser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->poweredlaser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->poweredlaser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							}
-							else if (beforelastkeypressed == LAST_KEY_S){
-							App->particles->AddParticle(App->particles->poweredlaser202_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->poweredlaser247_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->poweredlaser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							}
-							//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-							playeractiontime = playercurrenttime;
-							}
-							*/
-							App->particles->AddParticle(App->particles->poweredlaser270, position.x + 1, position.y + 13, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot270, position.x - 7, position.y + 8);
-						}
-						else if (lastkeypressed == LAST_KEY_S){
-							/*
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-							if (beforelastkeypressed == LAST_KEY_A){
-							App->particles->AddParticle(App->particles->poweredlaser247_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->poweredlaser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->poweredlaser202_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							}
-							else if (beforelastkeypressed == LAST_KEY_D){
-							App->particles->AddParticle(App->particles->poweredlaser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->poweredlaser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->poweredlaser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							}
-							//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-							playeractiontime = playercurrenttime;
-							}
-							*/
-							App->particles->AddParticle(App->particles->poweredlaser180, position.x + 13, position.y + 20, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot180, position.x + 8, position.y + 28);
-						}
-						else if (lastkeypressed == LAST_KEY_D){
-							/*
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-							if (beforelastkeypressed == LAST_KEY_W){
-							App->particles->AddParticle(App->particles->poweredlaser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->poweredlaser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->poweredlaser67_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							}
-							else if (beforelastkeypressed == LAST_KEY_S){
-							App->particles->AddParticle(App->particles->poweredlaser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->poweredlaser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->poweredlaser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							}
-							//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-							playeractiontime = playercurrenttime;
-							}
-							*/
-							App->particles->AddParticle(App->particles->poweredlaser90, position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot90, position.x + 33, position.y + 10);
-						}
-						else if (lastkeypressed == LAST_KEY_WA){
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-								if (beforelastkeypressed == LAST_KEY_W){
-									App->particles->AddParticle(App->particles->poweredlaser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-								}
-								else if (beforelastkeypressed == LAST_KEY_A){
-									App->particles->AddParticle(App->particles->poweredlaser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-								}
-								beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-								playeractiontime = playercurrenttime;
-							}
-							App->particles->AddParticle(App->particles->poweredlaser315, position.x + 10, position.y + 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot315, position.x + 5, position.y - 4);
-						}
-						else if (lastkeypressed == LAST_KEY_WD){
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-								if (beforelastkeypressed == LAST_KEY_W){
-									App->particles->AddParticle(App->particles->poweredlaser22_5, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
-								}
-								else if (beforelastkeypressed == LAST_KEY_D){
-									App->particles->AddParticle(App->particles->poweredlaser67_5, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
-								}
-								beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-								playeractiontime = playercurrenttime;
-							}
-							App->particles->AddParticle(App->particles->poweredlaser45, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot45, position.x + 29, position.y - 1);
-						}
-						else if (lastkeypressed == LAST_KEY_SA){
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-								if (beforelastkeypressed == LAST_KEY_S){
-									App->particles->AddParticle(App->particles->poweredlaser202_5, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
-								}
-								else if (beforelastkeypressed == LAST_KEY_A){
-									App->particles->AddParticle(App->particles->poweredlaser247_5, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
-								}
-								beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-								playeractiontime = playercurrenttime;
-							}
-							App->particles->AddParticle(App->particles->poweredlaser225, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot225, position.x - 4, position.y + 19);
-						}
-						else if (lastkeypressed == LAST_KEY_SD){
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-								if (beforelastkeypressed == LAST_KEY_S){
-									App->particles->AddParticle(App->particles->poweredlaser157_5, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
-								}
-								else if (beforelastkeypressed == LAST_KEY_D){
-									App->particles->AddParticle(App->particles->poweredlaser112_5, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
-								}
-								beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-								playeractiontime = playercurrenttime;
-							}
-							App->particles->AddParticle(App->particles->poweredlaser135, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot135, position.x + 22, position.y + 25);
-						}
-						shootactiontime = shootcurrenttime;
-					}
+					poweruplevel = 2;
 				}
-				else if (poweruplevel == 2){
-					if (shootcurrenttime > (shootactiontime + SHOOTDELAY)){
-						if (lastkeypressed == LAST_KEY_W){
-							/*
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-							if (beforelastkeypressed == LAST_KEY_A){
-							App->particles->AddParticle(App->particles->balllaser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->balllaser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->balllaser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							}
-							else if (beforelastkeypressed == LAST_KEY_D){
-							App->particles->AddParticle(App->particles->balllaser67_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->balllaser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->balllaser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							}
-							//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-							playeractiontime = playercurrenttime;
-							}
-							*/
-							App->particles->AddParticle(App->particles->balllaser0, position.x + 24, position.y + 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot0, position.x + 19, position.y - 8);
-						}
-						else if (lastkeypressed == LAST_KEY_A){
-							/*
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-							if (beforelastkeypressed == LAST_KEY_W){
-							App->particles->AddParticle(App->particles->balllaser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->balllaser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->balllaser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-							}
-							else if (beforelastkeypressed == LAST_KEY_S){
-							App->particles->AddParticle(App->particles->balllaser202_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->balllaser247_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->balllaser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							}
-							//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-							playeractiontime = playercurrenttime;
-							}
-							*/
-							App->particles->AddParticle(App->particles->balllaser270, position.x + 1, position.y + 13, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot270, position.x - 7, position.y + 8);
-						}
-						else if (lastkeypressed == LAST_KEY_S){
-							/*
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-							if (beforelastkeypressed == LAST_KEY_A){
-							App->particles->AddParticle(App->particles->balllaser247_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->balllaser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->balllaser202_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
-							}
-							else if (beforelastkeypressed == LAST_KEY_D){
-							App->particles->AddParticle(App->particles->balllaser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->balllaser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->balllaser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							}
-							//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-							playeractiontime = playercurrenttime;
-							}
-							*/
-							App->particles->AddParticle(App->particles->balllaser180, position.x + 13, position.y + 20, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot180, position.x + 8, position.y + 28);
-						}
-						else if (lastkeypressed == LAST_KEY_D){
-							/*
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-							if (beforelastkeypressed == LAST_KEY_W){
-							App->particles->AddParticle(App->particles->balllaser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->balllaser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->balllaser67_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
-							}
-							else if (beforelastkeypressed == LAST_KEY_S){
-							App->particles->AddParticle(App->particles->balllaser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->balllaser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->balllaser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
-							}
-							//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-							playeractiontime = playercurrenttime;
-							}
-							*/
-							App->particles->AddParticle(App->particles->balllaser90, position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot90, position.x + 33, position.y + 10);
-						}
-						else if (lastkeypressed == LAST_KEY_WA){
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-								if (beforelastkeypressed == LAST_KEY_W){
-									App->particles->AddParticle(App->particles->balllaser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-								}
-								else if (beforelastkeypressed == LAST_KEY_A){
-									App->particles->AddParticle(App->particles->balllaser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
-								}
-								beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-								playeractiontime = playercurrenttime;
-							}
-							App->particles->AddParticle(App->particles->balllaser315, position.x + 10, position.y + 1, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot315, position.x + 5, position.y - 4);
-						}
-						else if (lastkeypressed == LAST_KEY_WD){
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-								if (beforelastkeypressed == LAST_KEY_W){
-									App->particles->AddParticle(App->particles->balllaser22_5, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
-								}
-								else if (beforelastkeypressed == LAST_KEY_D){
-									App->particles->AddParticle(App->particles->balllaser67_5, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
-								}
-								beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-								playeractiontime = playercurrenttime;
-							}
-							App->particles->AddParticle(App->particles->balllaser45, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot45, position.x + 29, position.y - 1);
-						}
-						else if (lastkeypressed == LAST_KEY_SA){
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-								if (beforelastkeypressed == LAST_KEY_S){
-									App->particles->AddParticle(App->particles->balllaser202_5, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
-								}
-								else if (beforelastkeypressed == LAST_KEY_A){
-									App->particles->AddParticle(App->particles->balllaser247_5, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
-								}
-								beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-								playeractiontime = playercurrenttime;
-							}
-							App->particles->AddParticle(App->particles->balllaser225, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot225, position.x - 4, position.y + 19);
-						}
-						else if (lastkeypressed == LAST_KEY_SD){
-							if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
-								if (beforelastkeypressed == LAST_KEY_S){
-									App->particles->AddParticle(App->particles->balllaser157_5, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
-								}
-								else if (beforelastkeypressed == LAST_KEY_D){
-									App->particles->AddParticle(App->particles->balllaser112_5, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
-								}
-								beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
-								playeractiontime = playercurrenttime;
-							}
-							App->particles->AddParticle(App->particles->balllaser135, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
-							App->particles->AddParticle(App->particles->laserweaponshoot135, position.x + 22, position.y + 25);
-						}
-						shootactiontime = shootcurrenttime;
-					}
+				else{
+					poweruplevel = 2;
 				}
+
 			}
-			else{
-				if (shootcurrenttime > (shootactiontime + SHOOTDELAY3SHOOTWEAPON)){
+
+			if (App->input->keyboard[SDL_SCANCODE_L] == KEY_STATE::KEY_DOWN){
+				poweruplevel = 0;
+			}
+
+			if (App->input->keyboard[SDL_SCANCODE_F2] == KEY_STATE::KEY_DOWN){
+				Invencible = !Invencible;
+			}
+
+			if (App->input->keyboard[SDL_SCANCODE_F3] == KEY_STATE::KEY_DOWN){
+				Superspeed = !Superspeed;
+			}
+
+			if (App->input->keyboard[SDL_SCANCODE_F4] == KEY_STATE::KEY_DOWN){
+				Fly = !Fly;
+			}
+
+
+			if (App->input->keyboard[SDL_SCANCODE_F5] == KEY_STATE::KEY_DOWN){
+				position.x = 100;
+				position.y = 250;
+				App->render->camera.y = 0;
+			}
+
+			if (App->input->keyboard[SDL_SCANCODE_F6] == KEY_STATE::KEY_DOWN){
+				position.x = 100;
+				position.y = -2256;
+				App->render->camera.y = -4832;
+			}
+
+			if (App->input->keyboard[SDL_SCANCODE_F7] == KEY_STATE::KEY_DOWN){
+				position.x = 100;
+				position.y = -4806;
+				App->render->camera.y = -9932;
+			}
+
+			if (App->input->keyboard[SDL_SCANCODE_F8] == KEY_STATE::KEY_DOWN){
+				Immobile = !Immobile;
+			}
+
+			// AD
+			if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
+				|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)))
+			{
+				lastkeypressed = LAST_KEY::LAST_KEY_W;
+			}
+
+			// WS
+			if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
+				|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)))
+			{
+				lastkeypressed = LAST_KEY::LAST_KEY_W;
+			}
+
+			// WASD
+			if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
+				|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)))
+			{
+				lastkeypressed = LAST_KEY::LAST_KEY_W;
+			}
+
+			//WSD
+			if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_REPEAT))
+				|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_REPEAT)))
+			{
+				lastkeypressed = LAST_KEY::LAST_KEY_WD;
+			}
+
+			//WAS
+			if (((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE))
+				|| ((App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_REPEAT) && (App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE)))
+			{
+				lastkeypressed = LAST_KEY::LAST_KEY_WA;
+			}
+
+			if (App->input->keyboard[SDL_SCANCODE_SPACE] == KEY_STATE::KEY_REPEAT)
+			{
+				shootcurrenttime = SDL_GetTicks();
+				playercurrenttime = SDL_GetTicks();
+
+				if (changetaim == false){
 					if (poweruplevel == 0){
-						App->particles->AddParticle(App->particles->Frontthreeshoot, position.x + 17, position.y, COLLIDER_PLAYER_SHOT);
-						App->particles->AddParticle(App->particles->Rightthreeshoot, position.x + 26, position.y, COLLIDER_PLAYER_SHOT);
-						App->particles->AddParticle(App->particles->Leftthreeshoot, position.x + 5, position.y, COLLIDER_PLAYER_SHOT);
+						if (shootcurrenttime > (shootactiontime + SHOOTDELAY)){
+							if (lastkeypressed == LAST_KEY_W){
+								/*
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+								if (beforelastkeypressed == LAST_KEY_A){
+								App->particles->AddParticle(App->particles->laser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								}
+								else if (beforelastkeypressed == LAST_KEY_D){
+								App->particles->AddParticle(App->particles->laser67_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								}
+								//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+								playeractiontime = playercurrenttime;
+								}
+								*/
+								App->particles->AddParticle(App->particles->laser0, position.x + 24, position.y + 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot0, position.x + 19, position.y - 8);
+							}
+							else if (lastkeypressed == LAST_KEY_A){
+								/*
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+								if (beforelastkeypressed == LAST_KEY_W){
+								App->particles->AddParticle(App->particles->laser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								}
+								else if (beforelastkeypressed == LAST_KEY_S){
+								App->particles->AddParticle(App->particles->laser202_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laser247_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								}
+								//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+								playeractiontime = playercurrenttime;
+								}
+								*/
+								App->particles->AddParticle(App->particles->laser270, position.x + 1, position.y + 13, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot270, position.x - 7, position.y + 8);
+							}
+							else if (lastkeypressed == LAST_KEY_S){
+								/*
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+								if (beforelastkeypressed == LAST_KEY_A){
+								App->particles->AddParticle(App->particles->laser247_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laser202_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								}
+								else if (beforelastkeypressed == LAST_KEY_D){
+								App->particles->AddParticle(App->particles->laser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								}
+								//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+								playeractiontime = playercurrenttime;
+								}
+								*/
+								App->particles->AddParticle(App->particles->laser180, position.x + 13, position.y + 20, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot180, position.x + 8, position.y + 28);
+							}
+							else if (lastkeypressed == LAST_KEY_D){
+								/*
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+								if (beforelastkeypressed == LAST_KEY_W){
+								App->particles->AddParticle(App->particles->laser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laser67_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								}
+								else if (beforelastkeypressed == LAST_KEY_S){
+								App->particles->AddParticle(App->particles->laser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								}
+								//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+								playeractiontime = playercurrenttime;
+								}
+								*/
+								App->particles->AddParticle(App->particles->laser90, position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot90, position.x + 33, position.y + 10);
+							}
+							else if (lastkeypressed == LAST_KEY_WA){
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+									if (beforelastkeypressed == LAST_KEY_W){
+										App->particles->AddParticle(App->particles->laser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+									}
+									else if (beforelastkeypressed == LAST_KEY_A){
+										App->particles->AddParticle(App->particles->laser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+									}
+									beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+									playeractiontime = playercurrenttime;
+								}
+								App->particles->AddParticle(App->particles->laser315, position.x + 10, position.y + 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot315, position.x + 5, position.y - 4);
+							}
+							else if (lastkeypressed == LAST_KEY_WD){
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+									if (beforelastkeypressed == LAST_KEY_W){
+										App->particles->AddParticle(App->particles->laser22_5, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
+									}
+									else if (beforelastkeypressed == LAST_KEY_D){
+										App->particles->AddParticle(App->particles->laser67_5, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
+									}
+									beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+									playeractiontime = playercurrenttime;
+								}
+								App->particles->AddParticle(App->particles->laser45, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot45, position.x + 29, position.y - 1);
+							}
+							else if (lastkeypressed == LAST_KEY_SA){
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+									if (beforelastkeypressed == LAST_KEY_S){
+										App->particles->AddParticle(App->particles->laser202_5, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
+									}
+									else if (beforelastkeypressed == LAST_KEY_A){
+										App->particles->AddParticle(App->particles->laser247_5, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
+									}
+									beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+									playeractiontime = playercurrenttime;
+								}
+								App->particles->AddParticle(App->particles->laser225, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot225, position.x - 4, position.y + 19);
+							}
+							else if (lastkeypressed == LAST_KEY_SD){
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+									if (beforelastkeypressed == LAST_KEY_S){
+										App->particles->AddParticle(App->particles->laser157_5, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
+									}
+									else if (beforelastkeypressed == LAST_KEY_D){
+										App->particles->AddParticle(App->particles->laser112_5, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
+									}
+									beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+									playeractiontime = playercurrenttime;
+								}
+								App->particles->AddParticle(App->particles->laser135, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot135, position.x + 22, position.y + 25);
+							}
+							shootactiontime = shootcurrenttime;
+						}
 					}
 					else if (poweruplevel == 1){
-						App->particles->AddParticle(App->particles->Frontthreeshootonepowerup, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
-						App->particles->AddParticle(App->particles->Rightthreeshootonepowerup, position.x + 26, position.y, COLLIDER_PLAYER_SHOT);
-						App->particles->AddParticle(App->particles->Leftthreeshootonepowerup, position.x + 5, position.y, COLLIDER_PLAYER_SHOT);
+						if (shootcurrenttime > (shootactiontime + SHOOTDELAY)){
+							if (lastkeypressed == LAST_KEY_W){
+								/*
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+								if (beforelastkeypressed == LAST_KEY_A){
+								App->particles->AddParticle(App->particles->poweredlaser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->poweredlaser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->poweredlaser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								}
+								else if (beforelastkeypressed == LAST_KEY_D){
+								App->particles->AddParticle(App->particles->poweredlaser67_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->poweredlaser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->poweredlaser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								}
+								//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+								playeractiontime = playercurrenttime;
+								}
+								*/
+								App->particles->AddParticle(App->particles->poweredlaser0, position.x + 24, position.y + 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot0, position.x + 19, position.y - 8);
+							}
+							else if (lastkeypressed == LAST_KEY_A){
+								/*
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+								if (beforelastkeypressed == LAST_KEY_W){
+								App->particles->AddParticle(App->particles->poweredlaser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->poweredlaser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->poweredlaser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								}
+								else if (beforelastkeypressed == LAST_KEY_S){
+								App->particles->AddParticle(App->particles->poweredlaser202_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->poweredlaser247_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->poweredlaser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								}
+								//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+								playeractiontime = playercurrenttime;
+								}
+								*/
+								App->particles->AddParticle(App->particles->poweredlaser270, position.x + 1, position.y + 13, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot270, position.x - 7, position.y + 8);
+							}
+							else if (lastkeypressed == LAST_KEY_S){
+								/*
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+								if (beforelastkeypressed == LAST_KEY_A){
+								App->particles->AddParticle(App->particles->poweredlaser247_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->poweredlaser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->poweredlaser202_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								}
+								else if (beforelastkeypressed == LAST_KEY_D){
+								App->particles->AddParticle(App->particles->poweredlaser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->poweredlaser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->poweredlaser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								}
+								//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+								playeractiontime = playercurrenttime;
+								}
+								*/
+								App->particles->AddParticle(App->particles->poweredlaser180, position.x + 13, position.y + 20, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot180, position.x + 8, position.y + 28);
+							}
+							else if (lastkeypressed == LAST_KEY_D){
+								/*
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+								if (beforelastkeypressed == LAST_KEY_W){
+								App->particles->AddParticle(App->particles->poweredlaser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->poweredlaser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->poweredlaser67_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								}
+								else if (beforelastkeypressed == LAST_KEY_S){
+								App->particles->AddParticle(App->particles->poweredlaser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->poweredlaser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->poweredlaser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								}
+								//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+								playeractiontime = playercurrenttime;
+								}
+								*/
+								App->particles->AddParticle(App->particles->poweredlaser90, position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot90, position.x + 33, position.y + 10);
+							}
+							else if (lastkeypressed == LAST_KEY_WA){
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+									if (beforelastkeypressed == LAST_KEY_W){
+										App->particles->AddParticle(App->particles->poweredlaser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+									}
+									else if (beforelastkeypressed == LAST_KEY_A){
+										App->particles->AddParticle(App->particles->poweredlaser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+									}
+									beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+									playeractiontime = playercurrenttime;
+								}
+								App->particles->AddParticle(App->particles->poweredlaser315, position.x + 10, position.y + 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot315, position.x + 5, position.y - 4);
+							}
+							else if (lastkeypressed == LAST_KEY_WD){
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+									if (beforelastkeypressed == LAST_KEY_W){
+										App->particles->AddParticle(App->particles->poweredlaser22_5, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
+									}
+									else if (beforelastkeypressed == LAST_KEY_D){
+										App->particles->AddParticle(App->particles->poweredlaser67_5, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
+									}
+									beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+									playeractiontime = playercurrenttime;
+								}
+								App->particles->AddParticle(App->particles->poweredlaser45, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot45, position.x + 29, position.y - 1);
+							}
+							else if (lastkeypressed == LAST_KEY_SA){
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+									if (beforelastkeypressed == LAST_KEY_S){
+										App->particles->AddParticle(App->particles->poweredlaser202_5, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
+									}
+									else if (beforelastkeypressed == LAST_KEY_A){
+										App->particles->AddParticle(App->particles->poweredlaser247_5, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
+									}
+									beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+									playeractiontime = playercurrenttime;
+								}
+								App->particles->AddParticle(App->particles->poweredlaser225, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot225, position.x - 4, position.y + 19);
+							}
+							else if (lastkeypressed == LAST_KEY_SD){
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+									if (beforelastkeypressed == LAST_KEY_S){
+										App->particles->AddParticle(App->particles->poweredlaser157_5, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
+									}
+									else if (beforelastkeypressed == LAST_KEY_D){
+										App->particles->AddParticle(App->particles->poweredlaser112_5, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
+									}
+									beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+									playeractiontime = playercurrenttime;
+								}
+								App->particles->AddParticle(App->particles->poweredlaser135, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot135, position.x + 22, position.y + 25);
+							}
+							shootactiontime = shootcurrenttime;
+						}
 					}
 					else if (poweruplevel == 2){
-						App->particles->AddParticle(App->particles->Frontthreeshoottwopowerup, position.x + 15, position.y - 4, COLLIDER_PLAYER_SHOT);
-						App->particles->AddParticle(App->particles->Rightthreeshoottwopowerup, position.x + 24, position.y - 4, COLLIDER_PLAYER_SHOT);
-						App->particles->AddParticle(App->particles->Leftthreeshoottwopowerup, position.x + 3, position.y - 4, COLLIDER_PLAYER_SHOT);
+						if (shootcurrenttime > (shootactiontime + SHOOTDELAY)){
+							if (lastkeypressed == LAST_KEY_W){
+								/*
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+								if (beforelastkeypressed == LAST_KEY_A){
+								App->particles->AddParticle(App->particles->balllaser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->balllaser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->balllaser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								}
+								else if (beforelastkeypressed == LAST_KEY_D){
+								App->particles->AddParticle(App->particles->balllaser67_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->balllaser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->balllaser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								}
+								//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+								playeractiontime = playercurrenttime;
+								}
+								*/
+								App->particles->AddParticle(App->particles->balllaser0, position.x + 24, position.y + 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot0, position.x + 19, position.y - 8);
+							}
+							else if (lastkeypressed == LAST_KEY_A){
+								/*
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+								if (beforelastkeypressed == LAST_KEY_W){
+								App->particles->AddParticle(App->particles->balllaser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->balllaser315, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->balllaser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+								}
+								else if (beforelastkeypressed == LAST_KEY_S){
+								App->particles->AddParticle(App->particles->balllaser202_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->balllaser247_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->balllaser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								}
+								//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+								playeractiontime = playercurrenttime;
+								}
+								*/
+								App->particles->AddParticle(App->particles->balllaser270, position.x + 1, position.y + 13, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot270, position.x - 7, position.y + 8);
+							}
+							else if (lastkeypressed == LAST_KEY_S){
+								/*
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+								if (beforelastkeypressed == LAST_KEY_A){
+								App->particles->AddParticle(App->particles->balllaser247_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->balllaser225, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->balllaser202_5, position.x - 1, position.y + 7, COLLIDER_PLAYER_SHOT);
+								}
+								else if (beforelastkeypressed == LAST_KEY_D){
+								App->particles->AddParticle(App->particles->balllaser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->balllaser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->balllaser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								}
+								//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+								playeractiontime = playercurrenttime;
+								}
+								*/
+								App->particles->AddParticle(App->particles->balllaser180, position.x + 13, position.y + 20, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot180, position.x + 8, position.y + 28);
+							}
+							else if (lastkeypressed == LAST_KEY_D){
+								/*
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+								if (beforelastkeypressed == LAST_KEY_W){
+								App->particles->AddParticle(App->particles->balllaser22_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->balllaser45, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->balllaser67_5, position.x + 17, position.y - 1, COLLIDER_PLAYER_SHOT);
+								}
+								else if (beforelastkeypressed == LAST_KEY_S){
+								App->particles->AddParticle(App->particles->balllaser157_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->balllaser135, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->balllaser112_5, position.x + 10, position.y + 10, COLLIDER_PLAYER_SHOT);
+								}
+								//beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+								playeractiontime = playercurrenttime;
+								}
+								*/
+								App->particles->AddParticle(App->particles->balllaser90, position.x + 25, position.y + 15, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot90, position.x + 33, position.y + 10);
+							}
+							else if (lastkeypressed == LAST_KEY_WA){
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+									if (beforelastkeypressed == LAST_KEY_W){
+										App->particles->AddParticle(App->particles->balllaser337_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+									}
+									else if (beforelastkeypressed == LAST_KEY_A){
+										App->particles->AddParticle(App->particles->balllaser292_5, position.x + 2, position.y - 6, COLLIDER_PLAYER_SHOT);
+									}
+									beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+									playeractiontime = playercurrenttime;
+								}
+								App->particles->AddParticle(App->particles->balllaser315, position.x + 10, position.y + 1, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot315, position.x + 5, position.y - 4);
+							}
+							else if (lastkeypressed == LAST_KEY_WD){
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+									if (beforelastkeypressed == LAST_KEY_W){
+										App->particles->AddParticle(App->particles->balllaser22_5, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
+									}
+									else if (beforelastkeypressed == LAST_KEY_D){
+										App->particles->AddParticle(App->particles->balllaser67_5, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
+									}
+									beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+									playeractiontime = playercurrenttime;
+								}
+								App->particles->AddParticle(App->particles->balllaser45, position.x + 23, position.y + 5, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot45, position.x + 29, position.y - 1);
+							}
+							else if (lastkeypressed == LAST_KEY_SA){
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+									if (beforelastkeypressed == LAST_KEY_S){
+										App->particles->AddParticle(App->particles->balllaser202_5, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
+									}
+									else if (beforelastkeypressed == LAST_KEY_A){
+										App->particles->AddParticle(App->particles->balllaser247_5, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
+									}
+									beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+									playeractiontime = playercurrenttime;
+								}
+								App->particles->AddParticle(App->particles->balllaser225, position.x, position.y + 14, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot225, position.x - 4, position.y + 19);
+							}
+							else if (lastkeypressed == LAST_KEY_SD){
+								if (playercurrenttime < (playeractiontime + PLAYER_MULTIPLE_SHOOT_DELAY)) {
+									if (beforelastkeypressed == LAST_KEY_S){
+										App->particles->AddParticle(App->particles->balllaser157_5, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
+									}
+									else if (beforelastkeypressed == LAST_KEY_D){
+										App->particles->AddParticle(App->particles->balllaser112_5, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
+									}
+									beforelastkeypressed = BEFORE_LAST_KEY::NO_KEY_PRESSED_BEFORE;
+									playeractiontime = playercurrenttime;
+								}
+								App->particles->AddParticle(App->particles->balllaser135, position.x + 19, position.y + 21, COLLIDER_PLAYER_SHOT);
+								App->particles->AddParticle(App->particles->laserweaponshoot135, position.x + 22, position.y + 25);
+							}
+							shootactiontime = shootcurrenttime;
+						}
 					}
-					App->particles->AddParticle(App->particles->trilaser, position.x + 3, position.y - 8);
-					shootactiontime = shootcurrenttime;
-					lastkeypressed = LAST_KEY::LAST_KEY_W;
+				}
+				else{
+					if (shootcurrenttime > (shootactiontime + SHOOTDELAY3SHOOTWEAPON)){
+						if (poweruplevel == 0){
+							App->particles->AddParticle(App->particles->Frontthreeshoot, position.x + 17, position.y, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->Rightthreeshoot, position.x + 26, position.y, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->Leftthreeshoot, position.x + 5, position.y, COLLIDER_PLAYER_SHOT);
+						}
+						else if (poweruplevel == 1){
+							App->particles->AddParticle(App->particles->Frontthreeshootonepowerup, position.x + 15, position.y, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->Rightthreeshootonepowerup, position.x + 26, position.y, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->Leftthreeshootonepowerup, position.x + 5, position.y, COLLIDER_PLAYER_SHOT);
+						}
+						else if (poweruplevel == 2){
+							App->particles->AddParticle(App->particles->Frontthreeshoottwopowerup, position.x + 15, position.y - 4, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->Rightthreeshoottwopowerup, position.x + 24, position.y - 4, COLLIDER_PLAYER_SHOT);
+							App->particles->AddParticle(App->particles->Leftthreeshoottwopowerup, position.x + 3, position.y - 4, COLLIDER_PLAYER_SHOT);
+						}
+						App->particles->AddParticle(App->particles->trilaser, position.x + 3, position.y - 8);
+						shootactiontime = shootcurrenttime;
+						lastkeypressed = LAST_KEY::LAST_KEY_W;
+					}
 				}
 			}
-		}
 
 
-		if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE
-			&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE){
+			if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
+				&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
+				&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
+				&& App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_IDLE
+				&& App->input->keyboard[SDL_SCANCODE_DOWN] == KEY_STATE::KEY_IDLE
+				&& App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_IDLE
+				&& App->input->keyboard[SDL_SCANCODE_RIGHT] == KEY_STATE::KEY_IDLE
+				&& App->input->keyboard[SDL_SCANCODE_LEFT] == KEY_STATE::KEY_IDLE){
+				if (current_animation != &fall){
+					if (lastkeypressed == LAST_KEY_W){
+						if (changetaim == false){
+							current_animation = &idle_w;
+						}
+						else{
+							current_animation = &Idle_upTAim;
+						}
 
-			if (lastkeypressed == LAST_KEY_W){
-				if (changetaim == false){
-					current_animation = &idle_w;
-				}
-				else{
-					current_animation = &Idle_upTAim;
-				}
-
-			}
-			else if (lastkeypressed == LAST_KEY_A){
-				if (changetaim == false){
-					current_animation = &idle_a;
-				}
-				else{
-					current_animation = &Idle_upTAim;
-				}
-			}
-			else if (lastkeypressed == LAST_KEY_S){
-				if (changetaim == false){
-					current_animation = &idle_s;
-				}
-				else{
-					current_animation = &Idle_upTAim;
-				}
-			}
-			else if (lastkeypressed == LAST_KEY_D){
-				if (changetaim == false){
-					current_animation = &idle_d;
-				}
-				else{
-					current_animation = &Idle_upTAim;
-				}
-			}
-			else if (lastkeypressed == LAST_KEY_WA){
-				if (changetaim == false){
-					current_animation = &idle_wa;
-				}
-				else{
-					current_animation = &Idle_upTAim;
-				}
-			}
-			else if (lastkeypressed == LAST_KEY_WD){
-				if (changetaim == false){
-					current_animation = &idle_wd;
-				}
-				else{
-					current_animation = &Idle_upTAim;
-				}
-			}
-			else if (lastkeypressed == LAST_KEY_SA){
-				if (changetaim == false){
-					current_animation = &idle_sa;
-				}
-				else{
-					current_animation = &Idle_upTAim;
-				}
-			}
-			else if (lastkeypressed == LAST_KEY_SD){
-				if (changetaim == false){
-					current_animation = &idle_sd;
-				}
-				else{
-					current_animation = &Idle_upTAim;
-				}
-			}
-			else{
-				if (changetaim == false){
-					current_animation = &idle_w;
-				}
-				else{
-					current_animation = &Idle_upTAim;
+					}
+					else if (lastkeypressed == LAST_KEY_A){
+						if (changetaim == false){
+							current_animation = &idle_a;
+						}
+						else{
+							current_animation = &Idle_upTAim;
+						}
+					}
+					else if (lastkeypressed == LAST_KEY_S){
+						if (changetaim == false){
+							current_animation = &idle_s;
+						}
+						else{
+							current_animation = &Idle_upTAim;
+						}
+					}
+					else if (lastkeypressed == LAST_KEY_D){
+						if (changetaim == false){
+							current_animation = &idle_d;
+						}
+						else{
+							current_animation = &Idle_upTAim;
+						}
+					}
+					else if (lastkeypressed == LAST_KEY_WA){
+						if (changetaim == false){
+							current_animation = &idle_wa;
+						}
+						else{
+							current_animation = &Idle_upTAim;
+						}
+					}
+					else if (lastkeypressed == LAST_KEY_WD){
+						if (changetaim == false){
+							current_animation = &idle_wd;
+						}
+						else{
+							current_animation = &Idle_upTAim;
+						}
+					}
+					else if (lastkeypressed == LAST_KEY_SA){
+						if (changetaim == false){
+							current_animation = &idle_sa;
+						}
+						else{
+							current_animation = &Idle_upTAim;
+						}
+					}
+					else if (lastkeypressed == LAST_KEY_SD){
+						if (changetaim == false){
+							current_animation = &idle_sd;
+						}
+						else{
+							current_animation = &Idle_upTAim;
+						}
+					}
+					else{
+						if (changetaim == false){
+							current_animation = &idle_w;
+						}
+						else{
+							current_animation = &Idle_upTAim;
+						}
+					}
 				}
 			}
 		}
@@ -1147,6 +1151,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 			switch (c2->type){
 			case COLLIDER_WALL:
+			case COLLIDER_WALL2:
+			case COLLIDER_DOOR:
+			case COLLIDER_BOX:
 				if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 2))
 				{
 					position = PreviousPos;
@@ -1159,51 +1166,18 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				}
 				break;
 			case COLLIDER_HOLE:
-				App->player->Disable();
-				App->particles->AddParticle(App->particles->playerexplosion, position.x - 47, position.y - 54, COLLIDER_NONE);
-				App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
-				destroyed = true;
-				break;
-			case COLLIDER_DOOR:
-				if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 2))
-				{
-					position = PreviousPos;
-					collisionWallT = true;
-				}
-				else if (((c2->rect.x + c2->rect.w) <= c1->rect.x + 1) || ((c1->rect.x + c1->rect.w) >= c2->rect.x + 1))
-				{
-					position = PreviousPos;
-					collisionWallS = true;
-				}
-				break;
-			case COLLIDER_WALL2:
-				int height;
-				if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 2))
-				{
-					position = PreviousPos;
-					collisionWallT = true;
-				}
-				else if (((c2->rect.x + c2->rect.w) <= c1->rect.x + 1) || ((c1->rect.x + c1->rect.w) >= c2->rect.x + 1))
-				{
-					position = PreviousPos;
-					collisionWallS = true;
+				current_animation = &fall;
+				if (current_animation->Finished() == true){
+					current_animation->Reset();
+					current_animation = NULL;
+					App->player->Disable();
+					App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
+					destroyed = true;
 				}
 				break;
 			case COLLIDER_CHANGEAIM:
 				changetaim = !changetaim;
 
-				break;
-			case COLLIDER_BOX:
-				if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 2))
-				{
-					position = PreviousPos;
-					collisionWallT = true;
-				}
-				else if (((c2->rect.x + c2->rect.w) <= c1->rect.x + 1) || ((c1->rect.x + c1->rect.w) >= c2->rect.x + 1))
-				{
-					position = PreviousPos;
-					collisionWallS = true;
-				}
 				break;
 			default:
 				if (Invencible == false){
