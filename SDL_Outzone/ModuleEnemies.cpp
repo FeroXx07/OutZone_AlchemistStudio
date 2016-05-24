@@ -21,6 +21,7 @@
 #include"Enemy_BigRedMachine.h"
 #include"ChangeAim.h"
 #include "BoxChangeAim.h"
+#include"ModulePlayer.h"
 #define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()

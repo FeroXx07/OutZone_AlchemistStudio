@@ -31,89 +31,30 @@ Enemy_OrangeRobot::Enemy_OrangeRobot(int x, int y) : Enemy(x, y)
 
 void Enemy_OrangeRobot::Move()
 {
-	/*
-	bool left = false;
-	float angle = 0;
-
+	int i = 0;
 	if ((original_y >= (App->render->camera.y / 2) - RANGE) && (original_y <= (App->render->camera.y / 2) + 340 - RANGE)){
-		//left or right of the turret
-		if (App->player->position.x >= original_x){
-			left = false;
-		}
-		else{
-			left = true;
-		}
-
-		//angle
-		//angle = (float)acos(((App->player->position.x * 0) + (App->player->position.y * 1)) / ((sqrt((pow((double)App->player->position.x, 2)) + (pow((double)App->player->position.y, 2))))*(sqrt((pow(0.0, 2.0)) + (pow(1.0, 2.0)))))) * ANGLE_CONVERT;
-
-		//angle = ((float)acos(((App->player->position.x * 0) + (App->player->position.y * 1)) / (sqrt((double)((App->player->position.x)*(App->player->position.x) + (App->player->position.y)*(App->player->position.y)))*sqrt((double)(0 * 0 + 1 * 1))))) * ANGLE_CONVERT;
-
-		angle = ((float)acos((((App->player->position.x - original_x) * 0) + ((App->player->position.y - original_y) * 1)) / (sqrt((double)((App->player->position.x - original_x)*(App->player->position.x - original_x) + (App->player->position.y - original_y)*(App->player->position.y - original_y)))*sqrt((double)(0 * 0 + 1 * 1))))) * ANGLE_CONVERT;
-
-		//LOG("Angle %.2f", angle);
-
-		//Right
-		if ((angle <= 11.25) && (angle >= 0) && (left == false)){
-			animation = &OrangeRobot__180;
-		}
-		else if ((angle <= 33.75) && (angle >= 11.25) && (left == false)){
-			animation = &OrangeRobot__157_5;
-		}
-		else if ((angle <= 56.25) && (angle >= 33.75) && (left == false)){
-			animation = &OrangeRobot__135;
-		}
-		else if ((angle <= 78.75) && (angle >= 56.25) && (left == false)){
-			animation = &OrangeRobot__112_5;
-		}
-		else if ((angle <= 101.25) && (angle >= 78.75) && (left == false)){
-			animation = &OrangeRobot__90;
-		}
-		else if ((angle <= 123.75) && (angle >= 101.25) && (left == false)){
-			animation = &OrangeRobot__67_5;
-		}
-		else if ((angle <= 146.25) && (angle >= 123.75) && (left == false)){
-			animation = &OrangeRobot__45;
-		}
-		else if ((angle <= 168.75) && (angle >= 146.25) && (left == false)){
-			animation = &OrangeRobot__22_5;
-		}
-		else if ((angle <= 180) && (angle >= 168.75) && (left == false)){
-			animation = &OrangeRobot__0;
-		}
-
-		//Left
-		else if ((angle <= 11.25) && (angle >= 0) && (left == true)){
-			animation = &OrangeRobot__180;
-		}
-		else if ((angle <= 33.75) && (angle >= 11.25) && (left == true)){
-			animation = &OrangeRobot__202_5;
-		}
-		else if ((angle <= 56.25) && (angle >= 33.75) && (left == true)){
-			animation = &OrangeRobot__225;
-		}
-		else if ((angle <= 78.75) && (angle >= 56.25) && (left == true)){
-			animation = &OrangeRobot__247_5;
-		}
-		else if ((angle <= 101.25) && (angle >= 78.75) && (left == true)){
-			animation = &OrangeRobot__270;
-		}
-		else if ((angle <= 123.75) && (angle >= 101.25) && (left == true)){
-			animation = &OrangeRobot__292_5;
-		}
-		else if ((angle <= 146.25) && (angle >= 123.75) && (left == true)){
-			animation = &OrangeRobot__315;
-		}
-		else if ((angle <= 168.75) && (angle >= 146.25) && (left == true)){
-			animation = &OrangeRobot__337_5;
-		}
-		else if ((angle <= 180) && (angle >= 168.75) && (left == true)){
-			animation = &OrangeRobot__0;
+		if (original_x == 200 && original_y == -200){
+			if (position.x > 100){
+				position.x -= 2;
+			}
+			else{
+				position.y -= 2;
+			}
 		}
 	}
-	*/
-	position.y = original_y;
-	position.x = original_x;
+	
+	/*if (original_x < original_x+20){
+		original_x += 5;
+		i++;
+	}
+	if (i < 10){
+		original_y -= 1;
+	}
+	else{
+		original_y += 1;
+	}*/
+	
+
 }
 
 void Enemy_OrangeRobot::Shoot()
