@@ -47,6 +47,7 @@ bool ModuleUI::CleanUp()
 	App->player->Disable();
 	App->effects->Disable();
 	App->textures->Unload(background);
+	App->ui->Disable();
 
 	return true;
 }
@@ -55,8 +56,8 @@ bool ModuleUI::CleanUp()
 update_status ModuleUI::Update()
 {
 	//if (effect)
-	App->render->Blit(background, App->render->camera.x, App->render->camera.y / 2+15, &(effect1->GetCurrentFrame()));
-	App->render->Blit(background, App->render->camera.x+18, App->render->camera.y / 2, &(effect2->GetCurrentFrame()));
+	App->render->Blit(background, App->render->camera.x+2, App->render->camera.y / 2+16, &(effect1->GetCurrentFrame()));
+	App->render->Blit(background, App->render->camera.x+19, App->render->camera.y / 2+1, &(effect2->GetCurrentFrame()));
 	/*
 	if (App->player->position.y <= -3160){
 	App->fade->FadeToBlack(this, (Module*)App->scene_gamewin);
