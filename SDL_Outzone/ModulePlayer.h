@@ -93,6 +93,7 @@ public:
 	iPoint position;
 	iPoint PreviousPos;
 	Collider* playercollision;
+	Collider* stopshotscollision;
 	bool destroyed = false;
 	bool collisionWallS = false;
 	bool collisionWallT = false;

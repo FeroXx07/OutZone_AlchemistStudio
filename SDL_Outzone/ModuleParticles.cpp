@@ -574,7 +574,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 		// Always destroy particles that collide
 		if(active[i] != nullptr && active[i]->collider == c1)
 		{
-			if (c1->type != COLLIDER_ENEMY_SHOT){
+			if ((c2->type != COLLIDER_ENEMY_SHOT) && (c2->type != COLLIDER_STOP_SHOTS)){
 				if (App->player->changetaim == false){
 					AddParticle(lascoll, (active[i]->position.x) - 7, (active[i]->position.y) - 6);
 				}

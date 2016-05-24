@@ -29,89 +29,89 @@ ModulePlayer::ModulePlayer()
 	position.x = 100;
 	position.y = 200;
 
-	
-		// idle animation
-		idle_w.PushBack({ 0, 50, 40, 50 });
-		idle_wa.PushBack({ 0, 450, 40, 50 });
-		idle_wd.PushBack({ 200, 450, 40, 50 });
-		idle_a.PushBack({ 120, 100, 40, 50 });
-		idle_s.PushBack({ 120, 0, 40, 50 });
-		idle_sa.PushBack({ 120, 400, 40, 50 });
-		idle_sd.PushBack({ 120, 500, 40, 50 });
-		idle_d.PushBack({ 160, 150, 40, 50 });
-		//MOVEMENT
-		// move upwards
-		up.PushBack({ 0, 50, 40, 50 });
-		up.PushBack({ 40, 50, 40, 50 });
-		up.PushBack({ 80, 50, 40, 50 });
-		up.PushBack({ 120, 50, 40, 50 });
-		up.PushBack({ 160, 50, 40, 50 });
-		up.loop = true;
-		up.speed = 0.1f;
 
-		// Move down
-		down.PushBack({ 0, 0, 40, 50 });
-		down.PushBack({ 40, 0, 40, 50 });
-		down.PushBack({ 80, 0, 40, 50 });
-		down.PushBack({ 120, 0, 40, 50 });
-		down.PushBack({ 160, 0, 40, 50 });
-		down.loop = true;
-		down.speed = 0.1f;
-		//left
-		left.PushBack({ 0, 100, 40, 50 });
-		left.PushBack({ 40, 100, 40, 50 });
-		left.PushBack({ 80, 100, 40, 50 });
-		left.PushBack({ 120, 100, 40, 50 });
-		left.PushBack({ 160, 100, 40, 50 });
-		left.loop = true;
-		left.speed = 0.1f;
-		//right
-		right.PushBack({ 0, 150, 40, 50 });
-		right.PushBack({ 40, 150, 40, 50 });
-		right.PushBack({ 80, 150, 40, 50 });
-		right.PushBack({ 120, 150, 40, 50 });
-		right.PushBack({ 160, 150, 40, 50 });
-		right.loop = true;
-		right.speed = 0.1f;
-		//Diagonal right top
-		Drightop.PushBack({ 160, 400, 40, 50 });
-		Drightop.PushBack({ 200, 400, 40, 50 });
-		Drightop.PushBack({ 160, 450, 40, 50 });
-		Drightop.PushBack({ 200, 450, 40, 50 });
-		Drightop.loop = true;
-		Drightop.speed = 0.1f;
-		//Diagonal left top
-		Lefthtop.PushBack({ 0, 450, 40, 50 });
-		Lefthtop.PushBack({ 40, 450, 40, 50 });
-		Lefthtop.PushBack({ 80, 450, 40, 50 });
-		Lefthtop.PushBack({ 120, 450, 40, 50 });
-		Lefthtop.loop = true;
-		Lefthtop.speed = 0.1f;
-		//Diagonal right bot
-		Drighbot.PushBack({ 0, 500, 40, 50 });
-		Drighbot.PushBack({ 40, 500, 40, 50 });
-		Drighbot.PushBack({ 80, 500, 40, 50 });
-		Drighbot.PushBack({ 120, 500, 40, 50 });
-		Drighbot.loop = true;
-		Drighbot.speed = 0.1f;
-		//Diagonal left bot
-		Lefthbot.PushBack({ 0, 400, 40, 50 });
-		Lefthbot.PushBack({ 40, 400, 40, 50 });
-		Lefthbot.PushBack({ 80, 400, 40, 50 });
-		Lefthbot.PushBack({ 120, 400, 40, 50 });
-		Lefthbot.loop = true;
-		Lefthbot.speed = 0.1f;
-	
+	// idle animation
+	idle_w.PushBack({ 0, 50, 40, 50 });
+	idle_wa.PushBack({ 0, 450, 40, 50 });
+	idle_wd.PushBack({ 200, 450, 40, 50 });
+	idle_a.PushBack({ 120, 100, 40, 50 });
+	idle_s.PushBack({ 120, 0, 40, 50 });
+	idle_sa.PushBack({ 120, 400, 40, 50 });
+	idle_sd.PushBack({ 120, 500, 40, 50 });
+	idle_d.PushBack({ 160, 150, 40, 50 });
+	//MOVEMENT
+	// move upwards
+	up.PushBack({ 0, 50, 40, 50 });
+	up.PushBack({ 40, 50, 40, 50 });
+	up.PushBack({ 80, 50, 40, 50 });
+	up.PushBack({ 120, 50, 40, 50 });
+	up.PushBack({ 160, 50, 40, 50 });
+	up.loop = true;
+	up.speed = 0.1f;
+
+	// Move down
+	down.PushBack({ 0, 0, 40, 50 });
+	down.PushBack({ 40, 0, 40, 50 });
+	down.PushBack({ 80, 0, 40, 50 });
+	down.PushBack({ 120, 0, 40, 50 });
+	down.PushBack({ 160, 0, 40, 50 });
+	down.loop = true;
+	down.speed = 0.1f;
+	//left
+	left.PushBack({ 0, 100, 40, 50 });
+	left.PushBack({ 40, 100, 40, 50 });
+	left.PushBack({ 80, 100, 40, 50 });
+	left.PushBack({ 120, 100, 40, 50 });
+	left.PushBack({ 160, 100, 40, 50 });
+	left.loop = true;
+	left.speed = 0.1f;
+	//right
+	right.PushBack({ 0, 150, 40, 50 });
+	right.PushBack({ 40, 150, 40, 50 });
+	right.PushBack({ 80, 150, 40, 50 });
+	right.PushBack({ 120, 150, 40, 50 });
+	right.PushBack({ 160, 150, 40, 50 });
+	right.loop = true;
+	right.speed = 0.1f;
+	//Diagonal right top
+	Drightop.PushBack({ 160, 400, 40, 50 });
+	Drightop.PushBack({ 200, 400, 40, 50 });
+	Drightop.PushBack({ 160, 450, 40, 50 });
+	Drightop.PushBack({ 200, 450, 40, 50 });
+	Drightop.loop = true;
+	Drightop.speed = 0.1f;
+	//Diagonal left top
+	Lefthtop.PushBack({ 0, 450, 40, 50 });
+	Lefthtop.PushBack({ 40, 450, 40, 50 });
+	Lefthtop.PushBack({ 80, 450, 40, 50 });
+	Lefthtop.PushBack({ 120, 450, 40, 50 });
+	Lefthtop.loop = true;
+	Lefthtop.speed = 0.1f;
+	//Diagonal right bot
+	Drighbot.PushBack({ 0, 500, 40, 50 });
+	Drighbot.PushBack({ 40, 500, 40, 50 });
+	Drighbot.PushBack({ 80, 500, 40, 50 });
+	Drighbot.PushBack({ 120, 500, 40, 50 });
+	Drighbot.loop = true;
+	Drighbot.speed = 0.1f;
+	//Diagonal left bot
+	Lefthbot.PushBack({ 0, 400, 40, 50 });
+	Lefthbot.PushBack({ 40, 400, 40, 50 });
+	Lefthbot.PushBack({ 80, 400, 40, 50 });
+	Lefthbot.PushBack({ 120, 400, 40, 50 });
+	Lefthbot.loop = true;
+	Lefthbot.speed = 0.1f;
+
 	//TRIPLE AIM
-		//up
-		upTAim.PushBack({ 0, 200, 40, 50 });
-		upTAim.PushBack({ 40, 200, 40, 50 });
-		upTAim.PushBack({ 80, 200, 40, 50 });
-		upTAim.PushBack({ 120, 200, 40, 50 });
-		upTAim.loop = true;
-		upTAim.speed = 0.1f;
-		
-		Idle_upTAim.PushBack({ 120, 200, 40, 50 });
+	//up
+	upTAim.PushBack({ 0, 200, 40, 50 });
+	upTAim.PushBack({ 40, 200, 40, 50 });
+	upTAim.PushBack({ 80, 200, 40, 50 });
+	upTAim.PushBack({ 120, 200, 40, 50 });
+	upTAim.loop = true;
+	upTAim.speed = 0.1f;
+
+	Idle_upTAim.PushBack({ 120, 200, 40, 50 });
 
 
 	//fall
@@ -142,7 +142,7 @@ bool ModulePlayer::Start()
 
 	lastkeypressed = LAST_KEY_W;
 	playercollision = App->collision->AddCollider({ position.x + PLAYERCOLIDERX, position.y + PLAYERCOLIDERY, 23, 28 }, COLLIDER_PLAYER, this);
-
+	stopshotscollision = App->collision->AddCollider({ 0, (App->render->camera.y / 2), 240, 10 }, COLLIDER_STOP_SHOTS, this);
 	return true;
 }
 
@@ -153,6 +153,7 @@ bool ModulePlayer::CleanUp()
 
 	App->textures->Unload(graphics);
 	App->collision->EraseCollider(playercollision);
+	App->collision->EraseCollider(stopshotscollision);
 
 	return true;
 }
@@ -1119,6 +1120,7 @@ update_status ModulePlayer::Update()
 		}
 	}
 	playercollision->SetPos(position.x + PLAYERCOLIDERX, position.y + PLAYERCOLIDERY);
+	stopshotscollision->SetPos(0, (App->render->camera.y / 2) - 5);
 
 	// Draw everything --------------------------------------
 	if (current_animation != nullptr){
@@ -1128,18 +1130,13 @@ update_status ModulePlayer::Update()
 			if (collisionPrint == true)
 			{
 				App->render->Blit(graphics, PreviousPos.x, PreviousPos.y, &(current_animation->GetCurrentFrame()));
-				//collisionPrint = false;
 			}
 			else
 			{
-
 				App->render->Blit(graphics, position.x, position.y, &(current_animation->GetCurrentFrame()));
-
 			}
 		}
 	}
-	
-
 	return UPDATE_CONTINUE;
 }
 
