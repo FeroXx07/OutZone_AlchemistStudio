@@ -224,7 +224,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				break;
 			}
 			else if ((c1->type == COLLIDER_GREY_ROBOT) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB))){
-				App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
+				App->particles->AddParticle(App->particles->soldierexplosion, enemies[i]->position.x, enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				enemycount++;
@@ -232,7 +232,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				break;
 			}
 			else if ((c1->type == COLLIDER_BIG_RED_MACHINE) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB))){
-				App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
+				App->particles->AddParticle(App->particles->tankexplosion, enemies[i]->position.x, enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				enemycount++;
@@ -240,7 +240,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				break;
 			}
 			else if ((c1->type == COLLIDER_BLUE_MACHINE) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB))){
-				App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
+				App->particles->AddParticle(App->particles->soldierexplosion, enemies[i]->position.x, enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				enemycount++;
@@ -248,7 +248,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				break;
 			}
 			else if ((c1->type == COLLIDER_ORANGE_ROBOT) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB))){
-				App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
+				App->particles->AddParticle(App->particles->soldierexplosion, enemies[i]->position.x, enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				enemycount++;
@@ -256,7 +256,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				break;
 			}
 			else if ((c1->type == COLLIDER_PURPLE_MACHINE) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB))){
-				App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
+				App->particles->AddParticle(App->particles->soldierexplosion, enemies[i]->position.x, enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				enemycount++;
@@ -264,7 +264,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				break;
 			}
 			else if ((c1->type == COLLIDER_RED_MACHINE) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB))){
-				App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
+				App->particles->AddParticle(App->particles->soldierexplosion, enemies[i]->position.x, enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				enemycount++;
@@ -280,7 +280,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				break;
 			}
 			else if ((c1->type == COLLIDER_TURRET3) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB))){
-				App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
+				App->particles->AddParticle(App->particles->soldierexplosion, enemies[i]->position.x, enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				enemycount++;
@@ -288,7 +288,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				break;
 			}
 			else if (((c1->type == COLLIDER_ENEMY) || (c1->type == COLLIDER_GREY_ROBOT) || (c1->type == COLLIDER_BIG_RED_MACHINE) || (c1->type == COLLIDER_BLUE_MACHINE) || (c1->type == COLLIDER_ORANGE_ROBOT) || (c1->type == COLLIDER_PURPLE_MACHINE) || (c1->type == COLLIDER_RED_MACHINE) || (c1->type == COLLIDER_TURRET1) || (c1->type == COLLIDER_TURRET3)) && (c2->type == COLLIDER_PLAYER)){
-				App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
+				App->particles->AddParticle(App->particles->soldierexplosion, enemies[i]->position.x, enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;

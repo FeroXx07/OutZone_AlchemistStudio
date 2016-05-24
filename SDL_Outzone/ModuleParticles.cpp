@@ -31,6 +31,29 @@ ModuleParticles::ModuleParticles()
 	explosionturret.anim.loop = false;
 	explosionturret.anim.speed = 0.3f;
 
+	soldierexplosion.anim.PushBack({ 0, 192, 36, 39 });
+	soldierexplosion.anim.PushBack({ 36, 192, 36, 39 });
+	soldierexplosion.anim.PushBack({ 72, 192, 36, 39 });
+	soldierexplosion.anim.PushBack({ 108, 192, 36, 39 });
+	soldierexplosion.anim.PushBack({ 144, 192, 36, 39 });
+	soldierexplosion.anim.PushBack({ 180, 192, 36, 39 });
+	soldierexplosion.anim.PushBack({ 216, 192, 36, 39 });
+	soldierexplosion.anim.loop = false;
+	soldierexplosion.anim.speed = 0.3f;
+
+	tankexplosion.anim.PushBack({ 802, 11, 68, 68 });
+	tankexplosion.anim.PushBack({ 873, 11, 65, 68 });
+	tankexplosion.anim.PushBack({ 939, 11, 68, 68 });
+	tankexplosion.anim.PushBack({ 1008, 11, 68, 68 });
+	tankexplosion.anim.PushBack({ 1008, 80, 68, 68 });
+	tankexplosion.anim.PushBack({ 939, 80, 68, 68 });
+	tankexplosion.anim.PushBack({ 873, 80, 68, 68 });
+	tankexplosion.anim.PushBack({ 802, 80, 68, 68 });
+	tankexplosion.anim.PushBack({ 1143, 11, 68, 68 });
+	tankexplosion.anim.PushBack({ 1075, 11, 68, 68 });
+	tankexplosion.anim.loop = false;
+	tankexplosion.anim.speed = 0.3f;
+
 	playerexplosion.anim.PushBack({ 682, 114, 118, 115 });
 	playerexplosion.anim.PushBack({ 448, 228, 118, 115 });
 	playerexplosion.anim.PushBack({ 565, 228, 118, 115 });

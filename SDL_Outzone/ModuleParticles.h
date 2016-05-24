@@ -54,6 +54,8 @@ public:
 	Particle lascoll3;
 	Particle lascoll4;
 	Particle explosionturret;
+	Particle soldierexplosion;
+	Particle tankexplosion;
 	Particle playerexplosion;
 
 	Particle trilaser;
