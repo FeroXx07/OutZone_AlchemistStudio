@@ -20,7 +20,9 @@ public:
 	SDL_Texture* background = nullptr;
 	SDL_Texture* stars = nullptr;
 	Animation* effect1 = nullptr;
+	Animation* effect2 = nullptr;
 	Animation UI;
+	Animation UI2;
 };
 
 #endif // __MODULESCENESPACEUPPER_H__

@@ -27,8 +27,10 @@ bool ModuleUI::Start()
 {
 	LOG("Loading space scene");
 	background = App->textures->Load("Outzone/UI.png");
-	UI.PushBack({ 86, 6, 93, 10 });
+	UI.PushBack({ 25, 3, 93, 10 });
 	effect1 = &UI;
+	UI2.PushBack({ 0, 85, 110, 7 });
+	effect2 = &UI2;
 	return true;
 }
 
@@ -53,7 +55,8 @@ bool ModuleUI::CleanUp()
 update_status ModuleUI::Update()
 {
 	//if (effect)
-	App->render->Blit(background, App->render->camera.x, App->render->camera.y / 2, &(effect1->GetCurrentFrame()));
+	App->render->Blit(background, App->render->camera.x, App->render->camera.y / 2+15, &(effect1->GetCurrentFrame()));
+	App->render->Blit(background, App->render->camera.x+18, App->render->camera.y / 2, &(effect2->GetCurrentFrame()));
 	/*
 	if (App->player->position.y <= -3160){
 	App->fade->FadeToBlack(this, (Module*)App->scene_gamewin);
