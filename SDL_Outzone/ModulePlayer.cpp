@@ -1173,6 +1173,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					App->player->Disable();
 					App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
 					destroyed = true;
+					poweruplevel = 0;
+					changetaim = false;
 				}
 				break;
 			case COLLIDER_CHANGEAIM:
