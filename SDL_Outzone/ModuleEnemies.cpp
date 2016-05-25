@@ -307,6 +307,9 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				pointscount += 210;
 				break;
 			}
+			if (maxpointsearned < pointscount){
+				maxpointsearned = pointscount;
+			}
 		}
 	}
 }

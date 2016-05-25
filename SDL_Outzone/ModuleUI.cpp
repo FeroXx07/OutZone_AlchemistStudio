@@ -12,6 +12,9 @@
 #include "ModuleInput.h"
 #include "ModuleEffects.h"
 #include "ModuleTextures.h"
+#include "ModuleWinScreen.h"
+#include "ModuleSceneGameOver.h"
+#include "ModuleSceneIntro.h"
 
 #include "SDL/include/SDL_timer.h"
 #include<string.h>
@@ -150,11 +153,18 @@ bool ModuleUI::CleanUp()
 update_status ModuleUI::Update()
 {
 	//if (effect)
-	App->render->Blit(background, App->render->camera.x+2, App->render->camera.y / 2+18, &(effect1->GetCurrentFrame()));
-	App->render->Blit(background, App->render->camera.x+19, App->render->camera.y / 2+1, &(effect2->GetCurrentFrame()));
+	if (effect1 != nullptr){
+		if ((App->scene_gamewin->IsEnabled() == false) && (App->scene_gameover->IsEnabled() == false) && (App->scene_intro->IsEnabled() == false)){
+			App->render->Blit(background, App->render->camera.x + 2, App->render->camera.y / 2 + 18, &(effect1->GetCurrentFrame()));
+		}
+	}
+	if (effect2 != nullptr){
+		App->render->Blit(background, App->render->camera.x + 19, App->render->camera.y / 2 + 1, &(effect2->GetCurrentFrame()));
+	}
 	sprintf_s(score_text, 10, "%06i", App->enemies->pointscount);
-	App->ui->Blit(90, 9, font_score, score_text);
 	App->ui->Blit(32, 9, font_score, score_text);
+	sprintf_s(score_text, 10, "%06i", App->enemies->maxpointsearned);
+	App->ui->Blit(90, 9, font_score, score_text);
 	/*
 	if (App->player->position.y <= -3160){
 	App->fade->FadeToBlack(this, (Module*)App->scene_gamewin);
