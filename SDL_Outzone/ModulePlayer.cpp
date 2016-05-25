@@ -1141,8 +1141,9 @@ update_status ModulePlayer::Update()
 			}
 		}
 	}
-	sprintf_s(score_text, 10, "%i", App->enemies->pointscount);
-	App->ui->Blit(120, 9, font_score, score_text);
+	sprintf_s(score_text, 10, "%06i", App->enemies->pointscount);
+	App->ui->Blit(90, 9, font_score, score_text);
+	App->ui->Blit(32, 9, font_score, score_text);
 	return UPDATE_CONTINUE;
 }
 
@@ -1178,6 +1179,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					destroyed = true;
 					poweruplevel = 0;
 					changetaim = false;
+					App->enemies->pointscount = 0;
 				}
 				break;
 			case COLLIDER_CHANGEAIM:
@@ -1192,6 +1194,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					destroyed = true;
 					poweruplevel = 0;
 					changetaim = false;
+					
 				}
 				break;
 			}

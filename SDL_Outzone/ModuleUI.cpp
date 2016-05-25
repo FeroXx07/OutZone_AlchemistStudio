@@ -67,7 +67,7 @@ int ModuleUI::Load(const char* texture_path, const char* characters, uint rows)
 	f->row_chars = fonts[id].len / rows;
 	f->char_w = w / fonts[id].row_chars;
 	f->char_h = h / rows;
-	f->char_w = 11;
+	
 	LOG("Successfully loaded BMP font from %s", texture_path);
 
 	return id;
@@ -149,10 +149,10 @@ bool ModuleUI::CleanUp()
 update_status ModuleUI::Update()
 {
 	//if (effect)
-	App->render->Blit(background, App->render->camera.x+2, App->render->camera.y / 2+16, &(effect1->GetCurrentFrame()));
+	App->render->Blit(background, App->render->camera.x+2, App->render->camera.y / 2+18, &(effect1->GetCurrentFrame()));
 	App->render->Blit(background, App->render->camera.x+19, App->render->camera.y / 2+1, &(effect2->GetCurrentFrame()));
-	//sprintf_s(score_text, 10, "1", score);
-	//App->ui->Blit(0, 0, font_score, score_text);
+	sprintf_s(score_text, 10, "%i", App->enemies->pointscount);
+	App->ui->Blit(0, 0, font_score, score_text);
 	/*
 	if (App->player->position.y <= -3160){
 	App->fade->FadeToBlack(this, (Module*)App->scene_gamewin);
