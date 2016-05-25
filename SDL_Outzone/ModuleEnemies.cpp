@@ -74,6 +74,10 @@ update_status ModuleEnemies::Update()
 	for(uint i = 0; i < MAX_ENEMIES; ++i)
 		if(enemies[i] != nullptr) enemies[i]->Draw(sprites);
 
+	if (maxpointsearned < pointscount){
+		maxpointsearned = pointscount;
+	}
+
 	return UPDATE_CONTINUE;
 }
 
@@ -306,9 +310,6 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				enemies[i] = nullptr;
 				pointscount += 210;
 				break;
-			}
-			if (maxpointsearned < pointscount){
-				maxpointsearned = pointscount;
 			}
 		}
 	}
