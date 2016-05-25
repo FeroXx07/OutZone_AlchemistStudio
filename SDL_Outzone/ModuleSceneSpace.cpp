@@ -12,6 +12,7 @@
 #include "ModuleEffects.h"
 #include "ModuleUI.h"
 
+
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
 ModuleSceneSpace::ModuleSceneSpace()
@@ -33,6 +34,7 @@ bool ModuleSceneSpace::Start()
 	App->collision->Enable();
 	App->enemies->Enable();
 	App->ui->Enable();
+
 
 	App->audio->PlayMusic("Outzone/outzone_2.ogg", 1.0f);
 	
@@ -178,7 +180,6 @@ update_status ModuleSceneSpace::Update()
 		App->fade->FadeToBlack(this, (Module*)App->scene_gamewin);
 	}
 	*/
-	// Draw everything --------------------------------------
 	App->render->Blit(background, 0, -5253, NULL);
 	
 	return UPDATE_CONTINUE;

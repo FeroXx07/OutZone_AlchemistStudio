@@ -62,7 +62,9 @@ public:
 	BEFORE_LAST_KEY beforelastkeypressed = BEFORE_LAST_KEY::BEFORE_LAST_KEY_KEY_W;
 
 public:
-
+	int font_score = -1;
+	char score_text[10];
+	uint score = 0;
 	SDL_Texture* graphics = nullptr;
 	Animation* current_animation = nullptr;
 

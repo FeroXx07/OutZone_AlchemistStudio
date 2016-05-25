@@ -9,8 +9,10 @@
 #include "ModulePlayer.h"
 #include "ModuleAudio.h"
 #include"ModuleSceneSpace.h"
-
+#include "ModuleEnemies.h"
+#include "ModuleUI.h"
 #include "SDL/include/SDL_timer.h"
+#include <stdio.h>
 
 #define PLAYER_MULTIPLE_SHOOT_DELAY 750
 #define SHOOTDELAY 175
@@ -143,7 +145,9 @@ bool ModulePlayer::Start()
 	lastkeypressed = LAST_KEY_W;
 	playercollision = App->collision->AddCollider({ position.x + PLAYERCOLIDERX, position.y + PLAYERCOLIDERY, 23, 28 }, COLLIDER_PLAYER, this);
 	stopshotscollision = App->collision->AddCollider({ 0, (App->render->camera.y / 2), 240, 10 }, COLLIDER_STOP_SHOTS, this);
+	font_score = App->ui->Load("Outzone/scoreNumbers.png", "0123456789", 1);
 	return true;
+	
 }
 
 // Unload assets
@@ -1137,6 +1141,8 @@ update_status ModulePlayer::Update()
 			}
 		}
 	}
+	sprintf_s(score_text, 10, "%i", App->enemies->pointscount);
+	App->ui->Blit(120, 9, font_score, score_text);
 	return UPDATE_CONTINUE;
 }
 
