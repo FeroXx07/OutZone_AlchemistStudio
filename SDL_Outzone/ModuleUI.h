@@ -29,7 +29,7 @@ public:
 	// Create a surface from text
 	void Blit(int x, int y, int bmp_font_id, const char* text) const;
 
-	unsigned int playerlife = 24;
+	
 	unsigned int lastTime = 0;
 
 public:

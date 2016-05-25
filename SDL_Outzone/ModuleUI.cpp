@@ -124,7 +124,6 @@ void ModuleUI::Blit(int x, int y, int font_id, const char* text) const
 bool ModuleUI::Start()
 {
 	LOG("Loading space scene");
-	playerlife = 24;
 	background = App->textures->Load("Outzone/UI.png");
 	font_score = App->ui->Load("Outzone/scoreNumbers.png", "0123456789", 1);
 	UI.PushBack({ 25, 3, 93, 10 });
@@ -169,70 +168,60 @@ update_status ModuleUI::Update()
 	unsigned int currentTime = 0;
 	currentTime = SDL_GetTicks();
 	if (currentTime > (lastTime + 1000)) {
-		playerlife -= 1;
+		App->player->playerlife -= 1;
 		lastTime = currentTime;
-	}
-	if (playerlife == 0){
-		/*
-		App->player->Disable();
-		App->particles->AddParticle(App->particles->playerexplosion, App->player->position.x - 47, App->player->position.y - 54, COLLIDER_NONE);
-		App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
-		App->player->destroyed = true;
-		App->player->poweruplevel = 0;
-		App->player->changetaim = false;
-		*/
 	}
 	if (effect3 != nullptr){
 		if ((App->scene_gamewin->IsEnabled() == false) && (App->scene_gameover->IsEnabled() == false) && (App->scene_intro->IsEnabled() == false)){
-			if (playerlife >= 0){
+			if (App->player->playerlife >= 0){
 				App->render->Blit(background, App->render->camera.x + LIFEPOSITION, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-				if (playerlife >= 1){
+				if (App->player->playerlife >= 1){
 					App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 3, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-					if (playerlife >= 2){
+					if (App->player->playerlife >= 2){
 						App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 6, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-						if (playerlife >= 3){
+						if (App->player->playerlife >= 3){
 							App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 9, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-							if (playerlife >= 4){
+							if (App->player->playerlife >= 4){
 								App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 12, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-								if (playerlife >= 5){
+								if (App->player->playerlife >= 5){
 									App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 15, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-									if (playerlife >= 6){
+									if (App->player->playerlife >= 6){
 										App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 18, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-										if (playerlife >= 7){
+										if (App->player->playerlife >= 7){
 											App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 21, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-											if (playerlife >= 8){
+											if (App->player->playerlife >= 8){
 												App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 24, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-												if (playerlife >= 9){
+												if (App->player->playerlife >= 9){
 													App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 27, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-													if (playerlife >= 10){
+													if (App->player->playerlife >= 10){
 														App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 30, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-														if (playerlife >= 11){
+														if (App->player->playerlife >= 11){
 															App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 33, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-															if (playerlife >= 12){
+															if (App->player->playerlife >= 12){
 																App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 36, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																if (playerlife >= 13){
+																if (App->player->playerlife >= 13){
 																	App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 39, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																	if (playerlife >= 14){
+																	if (App->player->playerlife >= 14){
 																		App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 42, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																		if (playerlife >= 15){
+																		if (App->player->playerlife >= 15){
 																			App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 45, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																			if (playerlife >= 16){
+																			if (App->player->playerlife >= 16){
 																				App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 48, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																				if (playerlife >= 17){
+																				if (App->player->playerlife >= 17){
 																					App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 51, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																					if (playerlife >= 18){
+																					if (App->player->playerlife >= 18){
 																						App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 54, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																						if (playerlife >= 19){
+																						if (App->player->playerlife >= 19){
 																							App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 57, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																							if (playerlife >= 20){
+																							if (App->player->playerlife >= 20){
 																								App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 60, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																								if (playerlife >= 21){
+																								if (App->player->playerlife >= 21){
 																									App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 63, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																									if (playerlife >= 22){
+																									if (App->player->playerlife >= 22){
 																										App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 66, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																										if (playerlife >= 23){
+																										if (App->player->playerlife >= 23){
 																											App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 69, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																											if (playerlife >= 24){
+																											if (App->player->playerlife >= 24){
 																												App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 72, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 																											}
 																										}
@@ -262,120 +251,10 @@ update_status ModuleUI::Update()
 		}
 	}
 
-	/*
-	if (effect3 != nullptr){
-		if (playerlife >= 0){
-			App->render->Blit(background, App->render->camera.x + LIFEPOSITION, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-			if (playerlife >= 1){
-				App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 2, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-				if (playerlife >= 2){
-					App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 4, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-					if (playerlife >= 3){
-						App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 6, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-						if (playerlife >= 4){
-							App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 8, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-							if (playerlife >= 5){
-								App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 10, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-								if (playerlife >= 6){
-									App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 12, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-									if (playerlife >= 7){
-										App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 14, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-										if (playerlife >= 8){
-											App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 16, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-											if (playerlife >= 9){
-												App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 18, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-												if (playerlife >= 10){
-													App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 20, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-													if (playerlife >= 11){
-														App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 22, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-														if (playerlife >= 12){
-															App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 24, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-															if (playerlife >= 13){
-																App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 26, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																if (playerlife >= 14){
-																	App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 28, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																	if (playerlife >= 15){
-																		App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 30, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																		if (playerlife >= 16){
-																			App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 32, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																			if (playerlife >= 17){
-																				App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 34, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																				if (playerlife >= 18){
-																					App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 36, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																					if (playerlife >= 19){
-																						App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 38, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																						if (playerlife >= 20){
-																							App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 40, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																							if (playerlife >= 21){
-																								App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 42, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																								if (playerlife >= 22){
-																									App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 44, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																									if (playerlife >= 23){
-																										App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 46, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																										if (playerlife >= 24){
-																											App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 48, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																											if (playerlife >= 25){
-																												App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 50, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
-																											}
-																										}
-																									}
-																								}
-																							}
-																						}
-																					}
-																				}
-																			}
-																		}
-																	}
-																}
-															}
-														}
-													}
-												}
-
-											}
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	*/
-
-
 	sprintf_s(score_text, 10, "%06i", App->enemies->pointscount);
 	App->ui->Blit(32, 9, font_score, score_text);
 	sprintf_s(score_text, 10, "%06i", App->enemies->maxpointsearned);
 	App->ui->Blit(90, 9, font_score, score_text);
-	/*
-	if (App->player->position.y <= -3160){
-	App->fade->FadeToBlack(this, (Module*)App->scene_gamewin);
-	}
 	
-	// Draw everything --------------------------------------
-	if (App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT){
-		if (App->player->position.y == (160 + (App->render->camera.y / 2))){
-			if (firstimeblit == true){
-				App->render->Blit(background, 0, -5253, NULL);
-				firstimeblit = false;
-			}
-			else{
-				App->render->Blit(background, 0, -5255, NULL);
-			}
-		}
-		else{
-			App->render->Blit(background, 0, -5253, NULL);
-		}
-	}
-	else{
-		App->render->Blit(background, 0, -5253, NULL);
-	}
-	if (App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_REPEAT){
-		firstimeblit = true;
-	}*/
 	return UPDATE_CONTINUE;
 }

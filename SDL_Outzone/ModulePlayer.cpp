@@ -141,6 +141,7 @@ bool ModulePlayer::Start()
 	destroyed = false;
 	position.x = 100;
 	position.y = 250;
+	playerlife = 24;
 
 	lastkeypressed = LAST_KEY_W;
 	playercollision = App->collision->AddCollider({ position.x + PLAYERCOLIDERX, position.y + PLAYERCOLIDERY, 23, 28 }, COLLIDER_PLAYER, this);
@@ -1141,6 +1142,26 @@ update_status ModulePlayer::Update()
 			}
 		}
 	}
+	//Die when energy goes off
+	/*
+	unsigned int currentTime = 0;
+	currentTime = SDL_GetTicks();
+	if (playerlife <= 0){
+		if (firsttimedeath == true){
+			firsttimedeath = false;
+			lastTime = currentTime;
+		}
+		if (currentTime > (lastTime + 1500)) {
+			App->player->Disable();
+			App->particles->AddParticle(App->particles->playerexplosion, position.x - 47, position.y - 54, COLLIDER_NONE);
+			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
+			destroyed = true;
+			poweruplevel = 0;
+			changetaim = false;
+			firsttimedeath = true;
+		}
+	}
+	*/
 	//sprintf_s(score_text, 10, "%06i", App->enemies->pointscount);
 	//App->ui->Blit(90, 9, font_score, score_text);
 	//App->ui->Blit(32, 9, font_score, score_text);
@@ -1179,7 +1200,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					destroyed = true;
 					poweruplevel = 0;
 					changetaim = false;
-					App->enemies->pointscount = 0;
 				}
 				break;
 			case COLLIDER_CHANGEAIM:

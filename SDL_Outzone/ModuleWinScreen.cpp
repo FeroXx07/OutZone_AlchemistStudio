@@ -6,7 +6,7 @@
 #include "ModuleRender.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleWinScreen.h"
-
+#include "ModuleEnemies.h"
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -37,7 +37,7 @@ bool ModuleWinScreen::CleanUp()
 
 	App->textures->Unload(background);
 	App->audio->UnLoadFx(fx);
-
+	App->enemies->pointscount = 0;
 	return true;
 }
 

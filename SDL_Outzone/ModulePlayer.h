@@ -44,6 +44,8 @@ public:
 	unsigned int playeractiontime = 0;
 	unsigned int shootcurrenttime = 0;
 	unsigned int shootactiontime = 0;
+	unsigned int lastTime = 0;
+	bool firsttimedeath = true;
 	
 	bool Start();
 	bool Invencible = false;
@@ -51,6 +53,7 @@ public:
 	bool Fly = false;
 	bool Immobile = false;
 	bool changetaim = false;
+	int playerlife = 24;
 	unsigned int poweruplevel = 0;
 	update_status Update();
 	bool CleanUp();
