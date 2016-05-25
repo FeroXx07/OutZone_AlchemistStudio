@@ -13,6 +13,7 @@ private:
 	int original_y = 0;
 	int original_x = 0;
 	unsigned int lastTime = 0;
+	unsigned int lastTime2 = 0;
 	Animation OrangeRobot;
 
 public:

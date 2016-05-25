@@ -13,7 +13,8 @@
 #define ANGLE_CONVERT_REVERSE (PI / 180.0)
 #define ENEMY_SHOOT_SPEED 4
 #define ENEMYSHOOTDELAY 2500
-
+#define ENEMYMOVEDELAY 25
+#define ENEMYACTIVATIONDELAY 500
 Enemy_OrangeRobot::Enemy_OrangeRobot(int x, int y) : Enemy(x, y)
 {
 	live = 100;
@@ -32,14 +33,47 @@ Enemy_OrangeRobot::Enemy_OrangeRobot(int x, int y) : Enemy(x, y)
 void Enemy_OrangeRobot::Move()
 {
 	int i = 0;
+	unsigned int currentTime = 0;
+	unsigned int currentTime2 = 0;
+	currentTime = SDL_GetTicks();
+	currentTime2 = SDL_GetTicks();
+
 	if ((original_y >= (App->render->camera.y / 2) - RANGE) && (original_y <= (App->render->camera.y / 2) + 340 - RANGE)){
-		if (original_x == 200 && original_y == -200){
-			if (position.x > 100){
-				position.x -= 2;
+		if (currentTime > (lastTime + ENEMYMOVEDELAY)){
+			if (original_x == 200 && original_y == -480){
+				if (position.x > 100){
+					position.x -= 2;
+				}
+				else{
+
+					position.y -= 1;
+					position.x -= 2;
+
+				}
+				lastTime = currentTime;
+				lastTime2 = currentTime;
 			}
-			else{
-				position.y -= 2;
+
+			if (currentTime2>(lastTime + ENEMYACTIVATIONDELAY)){
+				if (currentTime > (lastTime + ENEMYMOVEDELAY)){
+					if (original_x == 210 && original_y == -480){
+						if (position.x > 100){
+							position.x -= 2;
+						}
+						else{
+
+							position.y -= 1;
+							position.x -= 2;
+
+						}
+
+					}
+				}
+
+				lastTime = currentTime;
+				lastTime2 = currentTime2;
 			}
+			//lastTime2 = currentTime2;
 		}
 	}
 	
