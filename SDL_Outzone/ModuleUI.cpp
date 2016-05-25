@@ -120,6 +120,7 @@ bool ModuleUI::Start()
 {
 	LOG("Loading space scene");
 	background = App->textures->Load("Outzone/UI.png");
+	font_score = App->ui->Load("Outzone/scoreNumbers.png", "0123456789", 1);
 	UI.PushBack({ 25, 3, 93, 10 });
 	effect1 = &UI;
 	UI2.PushBack({ 0, 85, 110, 7 });
@@ -151,8 +152,9 @@ update_status ModuleUI::Update()
 	//if (effect)
 	App->render->Blit(background, App->render->camera.x+2, App->render->camera.y / 2+18, &(effect1->GetCurrentFrame()));
 	App->render->Blit(background, App->render->camera.x+19, App->render->camera.y / 2+1, &(effect2->GetCurrentFrame()));
-	sprintf_s(score_text, 10, "%i", App->enemies->pointscount);
-	App->ui->Blit(0, 0, font_score, score_text);
+	sprintf_s(score_text, 10, "%06i", App->enemies->pointscount);
+	App->ui->Blit(90, 9, font_score, score_text);
+	App->ui->Blit(32, 9, font_score, score_text);
 	/*
 	if (App->player->position.y <= -3160){
 	App->fade->FadeToBlack(this, (Module*)App->scene_gamewin);

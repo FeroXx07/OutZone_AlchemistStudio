@@ -166,7 +166,7 @@ bool ModuleSceneSpace::CleanUp()
 	App->player->Disable();
 	App->effects->Disable();
 	App->textures->Unload(background);
-	App->ui->Disable();
+	//App->ui->Disable();
 	App->enemies->pointscount = 0;
 
 	return true;
