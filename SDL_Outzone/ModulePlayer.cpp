@@ -1194,7 +1194,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					destroyed = true;
 					poweruplevel = 0;
 					changetaim = false;
-					
 				}
 				break;
 			}

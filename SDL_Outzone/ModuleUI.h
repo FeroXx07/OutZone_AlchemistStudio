@@ -28,6 +28,10 @@ public:
 	void UnLoad(int font_id);
 	// Create a surface from text
 	void Blit(int x, int y, int bmp_font_id, const char* text) const;
+
+	unsigned int playerlife = 24;
+	unsigned int lastTime = 0;
+
 public:
 	int font_score = -1;
 	char score_text[10];
@@ -37,8 +41,10 @@ public:
 	SDL_Texture* stars = nullptr;
 	Animation* effect1 = nullptr;
 	Animation* effect2 = nullptr;
+	Animation* effect3 = nullptr;
 	Animation UI;
 	Animation UI2;
+	Animation UI3;
 private:
 
 	Font	 fonts[MAX_FONTS];
