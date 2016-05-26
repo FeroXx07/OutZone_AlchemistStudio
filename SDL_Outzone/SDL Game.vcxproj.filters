@@ -140,6 +140,9 @@
     <ClInclude Include="ModuleUI.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="EnergyCharge.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -252,6 +255,9 @@
     </ClCompile>
     <ClCompile Include="ModuleUI.cpp">
       <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="EnergyCharge.cpp">
+      <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
