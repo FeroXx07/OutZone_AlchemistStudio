@@ -167,9 +167,11 @@ update_status ModuleUI::Update()
 	}
 	unsigned int currentTime = 0;
 	currentTime = SDL_GetTicks();
-	if (currentTime > (lastTime + 1000)) {
-		App->player->playerlife -= 1;
-		lastTime = currentTime;
+	if (App->player->Invencible == false){
+		if (currentTime > (lastTime + 1000)) {
+			App->player->playerlife -= 1;
+			lastTime = currentTime;
+		}
 	}
 	if (effect3 != nullptr){
 		if ((App->scene_gamewin->IsEnabled() == false) && (App->scene_gameover->IsEnabled() == false) && (App->scene_intro->IsEnabled() == false)){

@@ -1143,7 +1143,6 @@ update_status ModulePlayer::Update()
 		}
 	}
 	//Die when energy goes off
-	/*
 	unsigned int currentTime = 0;
 	currentTime = SDL_GetTicks();
 	if (playerlife <= 0){
@@ -1161,7 +1160,6 @@ update_status ModulePlayer::Update()
 			firsttimedeath = true;
 		}
 	}
-	*/
 	//sprintf_s(score_text, 10, "%06i", App->enemies->pointscount);
 	//App->ui->Blit(90, 9, font_score, score_text);
 	//App->ui->Blit(32, 9, font_score, score_text);

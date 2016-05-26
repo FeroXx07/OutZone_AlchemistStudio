@@ -498,7 +498,9 @@ bool ModuleParticles::Start()
 
 	// Load particles fx particle
 	explosionturret.fx = App->audio->LoadFx("Outzone/outzone_033.wav");
+	soldierexplosion.fx = App->audio->LoadFx("Outzone/outzone_033.wav");
 	playerexplosion.fx = App->audio->LoadFx("Outzone/outzone_019.wav");
+	/*
 	laser0.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
 	laser22_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
 	laser45.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
@@ -515,7 +517,30 @@ bool ModuleParticles::Start()
 	laser292_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
 	laser315.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
 	laser337_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	*/
 
+
+	laserweaponshoot0.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laserweaponshoot22_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laserweaponshoot45.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laserweaponshoot67_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laserweaponshoot90.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laserweaponshoot112_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laserweaponshoot135.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laserweaponshoot157_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laserweaponshoot180.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laserweaponshoot202_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laserweaponshoot225.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laserweaponshoot247_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laserweaponshoot270.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laserweaponshoot292_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laserweaponshoot315.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	laserweaponshoot337_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+
+
+	Frontthreeshoot.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	Frontthreeshootonepowerup.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	Frontthreeshoottwopowerup.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
 	return true;
 }
 
