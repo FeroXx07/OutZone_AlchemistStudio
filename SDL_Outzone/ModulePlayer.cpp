@@ -1241,6 +1241,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				changetaim = !changetaim;
 
 				break;
+			case COLLIDER_ENERGY:
+				playerlife += 20;
+				if (playerlife > 37){
+					playerlife = 37;
+				}
+				break;
 			default:
 				if (Invencible == false){
 					App->player->Disable();
