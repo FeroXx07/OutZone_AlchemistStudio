@@ -131,7 +131,7 @@ uint ModuleAudio::LoadFx(const char* path)
 	}
 	else
 	{
-		fx[last_fx] = chunk;
+ 		fx[last_fx] = chunk;
 		ret = last_fx++;
 	}
 
@@ -148,6 +148,7 @@ bool ModuleAudio::UnLoadFx(uint id)
 		Mix_FreeChunk(fx[id]);
 		fx[id] = nullptr;
 		ret = true;
+		last_fx--;
 	}
 
 	return ret;

@@ -528,6 +528,29 @@ bool ModuleParticles::CleanUp()
 	LOG("Unloading particles");
 	App->textures->Unload(graphics);
 
+	App->audio->UnLoadFx(explosionturret.fx);
+	App->audio->UnLoadFx(soldierexplosion.fx);
+	App->audio->UnLoadFx(playerexplosion.fx);
+
+	App->audio->UnLoadFx(laserweaponshoot0.fx);
+	App->audio->UnLoadFx(laserweaponshoot22_5.fx);
+	App->audio->UnLoadFx(laserweaponshoot45.fx);
+	App->audio->UnLoadFx(laserweaponshoot67_5.fx);
+	App->audio->UnLoadFx(laserweaponshoot90.fx);
+	App->audio->UnLoadFx(laserweaponshoot112_5.fx);
+	App->audio->UnLoadFx(laserweaponshoot135.fx);
+	App->audio->UnLoadFx(laserweaponshoot157_5.fx);
+	App->audio->UnLoadFx(laserweaponshoot180.fx);
+	App->audio->UnLoadFx(laserweaponshoot202_5.fx);
+	App->audio->UnLoadFx(laserweaponshoot225.fx);
+	App->audio->UnLoadFx(laserweaponshoot247_5.fx);
+	App->audio->UnLoadFx(laserweaponshoot270.fx);
+	App->audio->UnLoadFx(laserweaponshoot292_5.fx);
+	App->audio->UnLoadFx(laserweaponshoot315.fx);
+	App->audio->UnLoadFx(laserweaponshoot337_5.fx);
+
+	App->audio->UnLoadFx(trilaser.fx);
+
 	// Unload fx
 
 	for(uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
