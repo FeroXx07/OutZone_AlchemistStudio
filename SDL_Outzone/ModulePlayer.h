@@ -72,6 +72,7 @@ public:
 	Animation* current_animation = nullptr;
 
 	Animation fall;
+	Animation engergy_empty_fall;
 
 	Animation idle_w;
 	Animation idle_wa;

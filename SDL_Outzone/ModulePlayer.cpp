@@ -126,6 +126,13 @@ ModulePlayer::ModulePlayer()
 	fall.PushBack({ 200, 300, 40, 50 });
 	fall.loop = false;
 	fall.speed = 0.1f;
+
+	engergy_empty_fall.PushBack({ 0, 550, 40, 50 });
+	engergy_empty_fall.PushBack({ 40, 550, 40, 50 });
+	engergy_empty_fall.PushBack({ 80, 550, 40, 50 });
+	engergy_empty_fall.PushBack({ 120, 550, 40, 50 });
+	engergy_empty_fall.loop = false;
+	engergy_empty_fall.speed = 0.03f;
 }
 
 ModulePlayer::~ModulePlayer()
@@ -167,7 +174,7 @@ bool ModulePlayer::CleanUp()
 update_status ModulePlayer::Update()
 {
 	if (destroyed == false){
-		if (current_animation != &fall){
+		if ((current_animation != &fall) && current_animation != &engergy_empty_fall){
 			int speed = 0;
 			PreviousPos = position;
 
@@ -1151,6 +1158,34 @@ update_status ModulePlayer::Update()
 			lastTime = currentTime;
 		}
 		if (currentTime > (lastTime + 1500)) {
+			current_animation = &engergy_empty_fall;
+			position.y += 100;
+			if (current_animation->Finished() == true){
+				current_animation->Reset();
+				current_animation = NULL;
+				App->player->Disable();
+				App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
+				destroyed = true;
+				poweruplevel = 0;
+				changetaim = false;
+				firsttimedeath = true;
+			}
+			/*
+			current_animation = &fall;
+				if (current_animation->Finished() == true){
+					current_animation->Reset();
+					current_animation = NULL;
+					App->player->Disable();
+					App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
+					destroyed = true;
+					poweruplevel = 0;
+					changetaim = false;
+				}
+			*/
+
+
+
+			/*
 			App->player->Disable();
 			App->particles->AddParticle(App->particles->playerexplosion, position.x - 47, position.y - 54, COLLIDER_NONE);
 			App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gameover);
@@ -1158,6 +1193,7 @@ update_status ModulePlayer::Update()
 			poweruplevel = 0;
 			changetaim = false;
 			firsttimedeath = true;
+			*/
 		}
 	}
 	//sprintf_s(score_text, 10, "%06i", App->enemies->pointscount);
