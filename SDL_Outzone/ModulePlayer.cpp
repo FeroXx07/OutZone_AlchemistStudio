@@ -127,10 +127,11 @@ ModulePlayer::ModulePlayer()
 	fall.loop = false;
 	fall.speed = 0.1f;
 
-	engergy_empty_fall.PushBack({ 0, 550, 40, 50 });
-	engergy_empty_fall.PushBack({ 40, 550, 40, 50 });
-	engergy_empty_fall.PushBack({ 80, 550, 40, 50 });
+	//ENERGY EMPTY
 	engergy_empty_fall.PushBack({ 120, 550, 40, 50 });
+	engergy_empty_fall.PushBack({ 80, 550, 40, 50 });
+	engergy_empty_fall.PushBack({ 40, 550, 40, 50 });
+	engergy_empty_fall.PushBack({ 0, 550, 40, 50 });
 	engergy_empty_fall.loop = false;
 	engergy_empty_fall.speed = 0.03f;
 }
