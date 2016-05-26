@@ -500,25 +500,6 @@ bool ModuleParticles::Start()
 	explosionturret.fx = App->audio->LoadFx("Outzone/outzone_033.wav");
 	soldierexplosion.fx = App->audio->LoadFx("Outzone/outzone_033.wav");
 	playerexplosion.fx = App->audio->LoadFx("Outzone/outzone_019.wav");
-	/*
-	laser0.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	laser22_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	laser45.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	laser67_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	laser90.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	laser112_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	laser135.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	laser157_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	laser180.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	laser202_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	laser225.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	laser247_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	laser270.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	laser292_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	laser315.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	laser337_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	*/
-
 
 	laserweaponshoot0.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
 	laserweaponshoot22_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
@@ -537,10 +518,7 @@ bool ModuleParticles::Start()
 	laserweaponshoot315.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
 	laserweaponshoot337_5.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
 
-
-	Frontthreeshoot.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	Frontthreeshootonepowerup.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
-	Frontthreeshoottwopowerup.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
+	trilaser.fx = App->audio->LoadFx("Outzone/outzone_040.wav");
 	return true;
 }
 

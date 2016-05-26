@@ -36,7 +36,7 @@ bool ModuleSceneSpace::Start()
 	App->ui->Enable();
 
 
-	App->audio->PlayMusic("Outzone/outzone_2.ogg", 1.0f);
+	App->audio->PlayMusic("Outzone/outzone_008.ogg", 1.0f);
 	
 	// Colliders ---
 	App->collision->AddCollider({ 160, -500, 80, 67 }, COLLIDER_WALL);
