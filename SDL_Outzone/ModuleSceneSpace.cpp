@@ -151,6 +151,25 @@ bool ModuleSceneSpace::Start()
 	
 	App->enemies->AddEnemy(ENEMY_TYPES::CHANGEAIM, 183, -2422);
 	App->enemies->AddEnemy(ENEMY_TYPES::BOX, 175, -2430);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::CHANGEAIM, 213, -2472);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOX, 205, -2480);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::CHANGEAIM, 173, -2512);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOX, 165, -2520);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::CHANGEAIM, 13, -3352);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOX, 5, -3360);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::CHANGEAIM, 213, -3822);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOX, 205, -3830);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::CHANGEAIM, 10, -4250);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOX, 2, -4258);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::CHANGEAIM, 173, -4850);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOX, 165, -4858);
+
 	return true;
 }
 
