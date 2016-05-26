@@ -23,6 +23,7 @@
 #include "BoxChangeAim.h"
 #include"ModulePlayer.h"
 #include"EnergyCharge.h"
+#include"BoxChargeEnergy.h"
 #define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()
@@ -199,6 +200,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				enemies[i] = new Energycharge(info.x, info.y);
 				break;
 
+			case ENEMY_TYPES::BOXENERGY:
+				enemies[i] = new BoxChargeEnergy(info.x, info.y);
+				break;
+				
 			case ENEMY_TYPES::BOX:
 				enemies[i] = new Box(info.x, info.y);
 				break;

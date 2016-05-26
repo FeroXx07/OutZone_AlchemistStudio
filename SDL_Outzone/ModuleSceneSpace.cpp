@@ -171,6 +171,7 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BOX, 165, -4858);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMYCHARGE, 18, -362);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOXENERGY, 10, -370);
 	return true;
 }
 
