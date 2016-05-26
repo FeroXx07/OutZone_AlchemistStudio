@@ -141,7 +141,7 @@ bool ModulePlayer::Start()
 	destroyed = false;
 	position.x = 100;
 	position.y = 250;
-	playerlife = 24;
+	playerlife = 37;
 
 	lastkeypressed = LAST_KEY_W;
 	playercollision = App->collision->AddCollider({ position.x + PLAYERCOLIDERX, position.y + PLAYERCOLIDERY, 23, 28 }, COLLIDER_PLAYER, this);

@@ -20,7 +20,7 @@
 #include<string.h>
 #include <stdio.h>
 
-#define LIFEPOSITION 18	
+#define LIFEPOSITION 19	
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -178,53 +178,92 @@ update_status ModuleUI::Update()
 			if (App->player->playerlife >= 0){
 				App->render->Blit(background, App->render->camera.x + LIFEPOSITION, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 				if (App->player->playerlife >= 1){
-					App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 3, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+					App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 2, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 					if (App->player->playerlife >= 2){
-						App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 6, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+						App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 4, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 						if (App->player->playerlife >= 3){
-							App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 9, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+							App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 6, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 							if (App->player->playerlife >= 4){
-								App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 12, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+								App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 8, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 								if (App->player->playerlife >= 5){
-									App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 15, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+									App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 10, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 									if (App->player->playerlife >= 6){
-										App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 18, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+										App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 12, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 										if (App->player->playerlife >= 7){
-											App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 21, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+											App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 14, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 											if (App->player->playerlife >= 8){
-												App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 24, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+												App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 16, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 												if (App->player->playerlife >= 9){
-													App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 27, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+													App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 18, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 													if (App->player->playerlife >= 10){
-														App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 30, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+														App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 20, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 														if (App->player->playerlife >= 11){
-															App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 33, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+															App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 22, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 															if (App->player->playerlife >= 12){
-																App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 36, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 24, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 																if (App->player->playerlife >= 13){
-																	App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 39, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																	App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 26, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 																	if (App->player->playerlife >= 14){
-																		App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 42, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																		App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 28, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 																		if (App->player->playerlife >= 15){
-																			App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 45, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																			App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 30, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 																			if (App->player->playerlife >= 16){
-																				App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 48, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																				App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 32, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 																				if (App->player->playerlife >= 17){
-																					App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 51, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																					App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 34, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 																					if (App->player->playerlife >= 18){
-																						App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 54, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																						App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 36, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 																						if (App->player->playerlife >= 19){
-																							App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 57, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																							App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 38, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 																							if (App->player->playerlife >= 20){
-																								App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 60, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																								App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 40, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 																								if (App->player->playerlife >= 21){
-																									App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 63, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																									App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 42, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 																									if (App->player->playerlife >= 22){
-																										App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 66, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																										App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 44, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 																										if (App->player->playerlife >= 23){
-																											App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 69, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																											App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 46, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
 																											if (App->player->playerlife >= 24){
-																												App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 72, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																												App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 48, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																												if (App->player->playerlife >= 25){
+																													App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 50, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																													if (App->player->playerlife >= 26){
+																														App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 52, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																														if (App->player->playerlife >= 27){
+																															App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 54, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																															if (App->player->playerlife >= 28){
+																																App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 56, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																																if (App->player->playerlife >= 29){
+																																	App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 58, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																																	if (App->player->playerlife >= 30){
+																																		App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 60, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																																		if (App->player->playerlife >= 31){
+																																			App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 62, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																																			if (App->player->playerlife >= 32){
+																																				App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 64, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																																				if (App->player->playerlife >= 33){
+																																					App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 66, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																																					if (App->player->playerlife >= 34){
+																																						App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 68, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																																						if (App->player->playerlife >= 35){
+																																							App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 70, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																																							if (App->player->playerlife >= 36){
+																																								App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 72, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																																								if (App->player->playerlife == 37){
+																																									App->render->Blit(background, App->render->camera.x + LIFEPOSITION + 74, App->render->camera.y / 2 + 19, &(effect3->GetCurrentFrame()));
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
 																											}
 																										}
 																									}
