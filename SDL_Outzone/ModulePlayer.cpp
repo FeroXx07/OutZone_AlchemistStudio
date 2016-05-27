@@ -184,6 +184,9 @@ update_status ModulePlayer::Update()
 			if (Superspeed == true){
 				speed *= SUPERSPEED;
 			}
+			if (SPSpeed == true){
+				speed *= 2;
+			}
 			// W for scroll
 			if ((App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_REPEAT)
 				|| (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT)){
@@ -197,6 +200,9 @@ update_status ModulePlayer::Update()
 			speed = 1;
 			if (Superspeed == true){
 				speed *= SUPERSPEED;
+			}
+			if (SPSpeed == true){
+				speed *= 2;
 			}
 			//A
 			if ((App->input->keyboard[SDL_SCANCODE_A] == KEY_STATE::KEY_REPEAT)

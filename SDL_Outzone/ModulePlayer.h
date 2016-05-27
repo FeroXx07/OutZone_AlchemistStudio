@@ -50,6 +50,7 @@ public:
 	bool Start();
 	bool Invencible = false;
 	bool Superspeed = false;
+	bool SPSpeed = false;
 	bool Fly = false;
 	bool Immobile = false;
 	bool changetaim = false;
