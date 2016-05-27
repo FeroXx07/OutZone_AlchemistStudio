@@ -21,6 +21,7 @@ ModuleEffects::ModuleEffects()
 	effect1 = NULL;
 	effect2 = NULL;
 	effect3 = NULL;
+	effect4 = NULL;
 
 	position.x = 100;
 	position.y = 200;
@@ -63,6 +64,11 @@ ModuleEffects::ModuleEffects()
 	goahead.PushBack({ 0, 0, 1, 1 });
 	goahead.loop = true;
 	goahead.speed = 0.1f;
+
+	energyempty.PushBack({ 0, 232, 40, 24 });
+	energyempty.PushBack({ 0, 0, 1, 1 });
+	energyempty.loop = true;
+	energyempty.speed = 0.1f;
 
 }
 
@@ -200,6 +206,17 @@ update_status ModuleEffects::Update()
 	position = App->player->position;
 	if (effect4 != nullptr){
 		App->render->Blit(graphics, position.x, position.y, &(effect4->GetCurrentFrame()));
+	}
+
+	//energy empty
+	if ((App->player->playerlife <= 3) && (App->player->playerlife >= 0)){
+		effect4 = &energyempty;
+	}
+	else{
+		effect4 = NULL;
+	}
+	if (effect4 != nullptr){
+		App->render->Blit(graphics, App->render->camera.x + 5, (App->render->camera.y / 2) + 29, &(effect4->GetCurrentFrame()));
 	}
 	
 	return UPDATE_CONTINUE;

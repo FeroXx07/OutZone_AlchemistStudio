@@ -35,12 +35,14 @@ public:
 	Animation* effect4 = nullptr;
 	Collider* shieldcollision;
 	bool effect4collidercreated = false;
+	Animation* effect5 = nullptr;
 
 	Animation god;
 	Animation shield;
 	Animation lascoll;
 	Animation bomb;
 	Animation goahead;
+	Animation energyempty;
 
 	iPoint position;
 };
