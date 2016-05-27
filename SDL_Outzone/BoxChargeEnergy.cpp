@@ -9,8 +9,8 @@
 BoxChargeEnergy::BoxChargeEnergy(int x, int y) : Enemy(x, y)
 {
 	live = 100;
-	boxchaim.PushBack({ 239, 363, 42, 42 });
-	collider = App->collision->AddCollider({ 0, 0, 42, 42 }, COLLIDER_TYPE::COLLIDER_BOX, (Module*)App->enemies);
+	boxchaim.PushBack({ 240, 365, 42, 42 });
+	collider = App->collision->AddCollider({ 0, 0, 33, 33 }, COLLIDER_TYPE::COLLIDER_BOX, (Module*)App->enemies);
 	animation = &boxchaim;
 	original_y = y;
 	original_x = x;

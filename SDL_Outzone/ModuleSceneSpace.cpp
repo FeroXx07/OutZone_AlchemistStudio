@@ -172,6 +172,33 @@ bool ModuleSceneSpace::Start()
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMYCHARGE, 18, -362);
 	App->enemies->AddEnemy(ENEMY_TYPES::BOXENERGY, 10, -370);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMYCHARGE, 18, -1232);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOXENERGY, 10, -1240);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMYCHARGE, 10, -1762);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOXENERGY, 2, -1770);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMYCHARGE, 215, -2432);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOXENERGY, 207, -2440);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMYCHARGE, 175, -2472);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOXENERGY, 168, -2480);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMYCHARGE, 20, -2972);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOXENERGY, 13, -2980);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMYCHARGE, 190, -3350);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOXENERGY, 183, -3358);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMYCHARGE, 15, -3880);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOXENERGY, 8, -3888);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMYCHARGE, 7, -4390);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOXENERGY, 0, -4398);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::ENEMYCHARGE, 97, -4790);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOXENERGY, 90, -4798);
 	return true;
 }
 
