@@ -24,7 +24,7 @@
 #include"ModulePlayer.h"
 #include"EnergyCharge.h"
 #include"BoxChargeEnergy.h"
-#define SPAWN_MARGIN 50
+#define SPAWN_MARGIN 100
 
 ModuleEnemies::ModuleEnemies()
 {
@@ -52,11 +52,11 @@ update_status ModuleEnemies::PreUpdate()
 	{
 		if(queue[i].type != ENEMY_TYPES::NO_TYPE)
 		{
-			if(queue[i].x * SCREEN_SIZE < App->render->camera.x + (App->render->camera.w * SCREEN_SIZE) + SPAWN_MARGIN)
+			if(queue[i].y * SCREEN_SIZE > App->render->camera.y - SPAWN_MARGIN)
 			{
 				SpawnEnemy(queue[i]);
 				queue[i].type = ENEMY_TYPES::NO_TYPE;
-				LOG("Spawning enemy at %d", queue[i].x * SCREEN_SIZE);
+				LOG("Spawning enemy at %d", queue[i].y * SCREEN_SIZE);
 			}
 		}
 	}
