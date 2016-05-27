@@ -42,9 +42,11 @@ public:
 	Animation* effect1 = nullptr;
 	Animation* effect2 = nullptr;
 	Animation* effect3 = nullptr;
+	Animation* effect4 = nullptr;
 	Animation UI;
 	Animation UI2;
 	Animation UI3;
+	Animation UI4;
 private:
 
 	Font	 fonts[MAX_FONTS];

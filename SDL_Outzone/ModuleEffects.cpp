@@ -109,10 +109,13 @@ update_status ModuleEffects::Update()
 	//bomb
 	if (App->input->keyboard[SDL_SCANCODE_X] == KEY_STATE::KEY_DOWN)
 	{
-		if (bombactive == false){
-			bombactive = true;
-			effect2collider = App->collision->AddCollider({ App->render->camera.x, App->render->camera.y / 2, 240, 320 }, COLLIDER_BOMB);
-			effect2collidercreated = true;
+		if (App->player->playerbombsnum > 0){
+			if (bombactive == false){
+				bombactive = true;
+				effect2collider = App->collision->AddCollider({ App->render->camera.x, App->render->camera.y / 2, 240, 320 }, COLLIDER_BOMB);
+				effect2collidercreated = true;
+				App->player->playerbombsnum--;
+			}
 		}
 	}
 	if (bombactive == true){

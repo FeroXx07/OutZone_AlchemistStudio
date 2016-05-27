@@ -21,6 +21,8 @@
 #include <stdio.h>
 
 #define LIFEPOSITION 19	
+#define BOMBPOSITIONX 2
+#define BOMBPOSITIONY 301	
 
 // Reference at https://www.youtube.com/watch?v=OEhmUuehGOA
 
@@ -132,6 +134,8 @@ bool ModuleUI::Start()
 	effect2 = &UI2;
 	UI3.PushBack({ 20, 4, 1, 6 });
 	effect3 = &UI3;
+	UI4.PushBack({ 5, 14, 8, 16 });
+	effect4 = &UI4;
 	return true;
 }
 
@@ -292,10 +296,90 @@ update_status ModuleUI::Update()
 		}
 	}
 
+	if (effect4 != nullptr){
+		if ((App->scene_gamewin->IsEnabled() == false) && (App->scene_gameover->IsEnabled() == false) && (App->scene_intro->IsEnabled() == false)){
+			if (App->player->playerbombsnum == 1){
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+			}
+			else if (App->player->playerbombsnum == 2){
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 8, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+			}
+			else if (App->player->playerbombsnum == 3){
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 8, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 16, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+			}
+			else if (App->player->playerbombsnum == 4){
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 8, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 16, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 24, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+			}
+			else if (App->player->playerbombsnum == 5){
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 8, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 16, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 24, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 32, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+			}
+			else if (App->player->playerbombsnum == 6){
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 8, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 16, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 24, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 32, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 40, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+			}
+			else if (App->player->playerbombsnum == 7){
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 8, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 16, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 24, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 32, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 40, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 48, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+			}
+			else if (App->player->playerbombsnum == 8){
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 8, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 16, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 24, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 32, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 40, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 48, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 56, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+			}
+			else if (App->player->playerbombsnum == 9){
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 8, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 16, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 24, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 32, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 40, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 48, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 56, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 64, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+			}
+			else if (App->player->playerbombsnum == 10){
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 8, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 16, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 24, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 32, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 40, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 48, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 56, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 64, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+				App->render->Blit(background, App->render->camera.x + BOMBPOSITIONX + 72, App->render->camera.y / 2 + BOMBPOSITIONY, &(effect4->GetCurrentFrame()));
+			}
+		}
+	}
+
 	sprintf_s(score_text, 10, "%06i", App->enemies->pointscount);
 	App->ui->Blit(32, 9, font_score, score_text);
 	sprintf_s(score_text, 10, "%06i", App->enemies->maxpointsearned);
 	App->ui->Blit(90, 9, font_score, score_text);
-	
+
 	return UPDATE_CONTINUE;
 }

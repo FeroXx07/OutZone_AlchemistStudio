@@ -53,7 +53,8 @@ public:
 	bool Fly = false;
 	bool Immobile = false;
 	bool changetaim = false;
-	int playerlife = 24;
+	int playerlife = 0;
+	unsigned int playerbombsnum = 0;
 	unsigned int poweruplevel = 0;
 	update_status Update();
 	bool CleanUp();
