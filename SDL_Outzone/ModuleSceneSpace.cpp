@@ -199,7 +199,14 @@ bool ModuleSceneSpace::Start()
 
 	App->enemies->AddEnemy(ENEMY_TYPES::ENEMYCHARGE, 97, -4790);
 	App->enemies->AddEnemy(ENEMY_TYPES::BOXENERGY, 90, -4798);
-	return true;
+
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 191,-1179);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 0, -1180);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 191, -1139);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 0, -1140);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 191, -1099);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 0, -1100);
+	return true; 
 }
 
 // UnLoad assets
