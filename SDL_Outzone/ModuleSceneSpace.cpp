@@ -206,6 +206,8 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 0, -1140);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 191, -1099);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 0, -1100);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::TURRET3, 205, -1778 );
 	return true; 
 }
 
