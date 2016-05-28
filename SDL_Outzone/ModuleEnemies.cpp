@@ -16,6 +16,7 @@
 #include"Enemy_RedMachine.h"
 #include"Enemy_BlueMachine.h"
 #include"Enemy_OrangeRobot.h"
+#include"Enemy_Roollingrobot.h"
 #include"Enemy_PurpleMachine.h"
 #include"Enemy_Turret3.h"
 #include"Enemy_BigRedMachine.h"
@@ -182,6 +183,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 			case ENEMY_TYPES::ORANGEROBOT:
 				enemies[i] = new Enemy_OrangeRobot(info.x, info.y);
+				break;
+
+			case ENEMY_TYPES::ROOLLINGROBOT:
+				enemies[i] = new Enemy_Rollingrobot(info.x, info.y);
 				break;
 
 			case ENEMY_TYPES::PURPLEMACHINE:
