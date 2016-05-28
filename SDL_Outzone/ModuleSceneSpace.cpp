@@ -220,6 +220,14 @@ bool ModuleSceneSpace::Start()
 	//App->enemies->AddEnemy(ENEMY_TYPES::ROOLLINGROBOT, 206, -1970);
 	App->enemies->AddEnemy(ENEMY_TYPES::ROOLLINGROBOT, 0, -2160);
 	App->enemies->AddEnemy(ENEMY_TYPES::ROOLLINGROBOT, 206, -2200);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 1, -2310);
+	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 30, -2340);
+	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 50, -2310);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 200, -2310);
+	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 170, -2340);
+	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 150, -2310);
 	return true; 
 }
 

@@ -13,6 +13,7 @@
 #define ANGLE_CONVERT_REVERSE (PI / 180.0)
 #define ENEMY_SHOOT_SPEED 4
 #define ENEMYSHOOTDELAY 2500
+#define ENEMYMOVEDELAY 10
 
 Enemy_PurpleMachine::Enemy_PurpleMachine(int x, int y) : Enemy(x, y)
 {
@@ -31,89 +32,128 @@ Enemy_PurpleMachine::Enemy_PurpleMachine(int x, int y) : Enemy(x, y)
 
 void Enemy_PurpleMachine::Move()
 {
-	/*
-	bool left = false;
-	float angle = 0;
-
+	
+	unsigned int currentTime = 0;
+	currentTime = SDL_GetTicks();
 	if ((original_y >= (App->render->camera.y / 2) - RANGE) && (original_y <= (App->render->camera.y / 2) + 340 - RANGE)){
-		//left or right of the turret
-		if (App->player->position.x >= original_x){
-			left = false;
-		}
-		else{
-			left = true;
-		}
+			if (original_x == 50 && original_y == -2310){
+				if (position.x < 95 && position.y == -2310){
+				position.x += 1;
+				}
+				else if (position.x <110 && position.y <-2220){
+					position.y += 1;
+				}
+				else{
+					position.x -= 1;
+				}
 
-		//angle
-		//angle = (float)acos(((App->player->position.x * 0) + (App->player->position.y * 1)) / ((sqrt((pow((double)App->player->position.x, 2)) + (pow((double)App->player->position.y, 2))))*(sqrt((pow(0.0, 2.0)) + (pow(1.0, 2.0)))))) * ANGLE_CONVERT;
+			}
 
-		//angle = ((float)acos(((App->player->position.x * 0) + (App->player->position.y * 1)) / (sqrt((double)((App->player->position.x)*(App->player->position.x) + (App->player->position.y)*(App->player->position.y)))*sqrt((double)(0 * 0 + 1 * 1))))) * ANGLE_CONVERT;
+			if (original_x == 1 && original_y == -2310){
+				if (position.x < 50 && position.y == -2310){
+					position.x += 1;
+				}
+				else if (position.x < 95 && position.y == -2310){
+					position.x += 1;
+				}
+				else if (position.x <110 && position.y <-2220){
+					position.y += 1;
+				}
+				else{
+					position.x -= 1;
+				}
 
-		angle = ((float)acos((((App->player->position.x - original_x) * 0) + ((App->player->position.y - original_y) * 1)) / (sqrt((double)((App->player->position.x - original_x)*(App->player->position.x - original_x) + (App->player->position.y - original_y)*(App->player->position.y - original_y)))*sqrt((double)(0 * 0 + 1 * 1))))) * ANGLE_CONVERT;
+			}
 
-		//LOG("Angle %.2f", angle);
+			if (original_x == 30 && original_y == -2340){
+				if (position.x > 1 && position.y == -2340){
+					position.x -= 1;
+				}
+				else if (position.x > 1 && position.y < -2310){
+					position.y += 1;
+				}
+				else if (position.x < 95 && position.y == -2310){
+					position.x += 1;
+				}
+				else if (position.x <110 && position.y <-2220){
+					position.y += 1;
+				}
+				else{
+					position.x -= 1;
+				}
 
-		//Right
-		if ((angle <= 11.25) && (angle >= 0) && (left == false)){
-			animation = &PurpleMachine__180;
-		}
-		else if ((angle <= 33.75) && (angle >= 11.25) && (left == false)){
-			animation = &PurpleMachine__157_5;
-		}
-		else if ((angle <= 56.25) && (angle >= 33.75) && (left == false)){
-			animation = &PurpleMachine__135;
-		}
-		else if ((angle <= 78.75) && (angle >= 56.25) && (left == false)){
-			animation = &PurpleMachine__112_5;
-		}
-		else if ((angle <= 101.25) && (angle >= 78.75) && (left == false)){
-			animation = &PurpleMachine__90;
-		}
-		else if ((angle <= 123.75) && (angle >= 101.25) && (left == false)){
-			animation = &PurpleMachine__67_5;
-		}
-		else if ((angle <= 146.25) && (angle >= 123.75) && (left == false)){
-			animation = &PurpleMachine__45;
-		}
-		else if ((angle <= 168.75) && (angle >= 146.25) && (left == false)){
-			animation = &PurpleMachine__22_5;
-		}
-		else if ((angle <= 180) && (angle >= 168.75) && (left == false)){
-			animation = &PurpleMachine__0;
-		}
+			}
 
-		//Left
-		else if ((angle <= 11.25) && (angle >= 0) && (left == true)){
-			animation = &PurpleMachine__180;
+			if (original_x == 150 && original_y == -2310){
+				if (position.x > 122 && position.y == -2310){
+					position.x -= 1;
+				}
+				else if (position.x >119 && position.y <-2220){
+					position.y += 1;
+				}
+				else{
+					position.x += 1;
+				}
+
+			}
+
+			if (original_x == 200 && original_y == -2310){
+				if (position.x > 122 && position.y == -2310){
+					position.x -= 1;
+				}
+				else if (position.x >119 && position.y <-2220){
+					position.y += 1;
+				}
+				else{
+					position.x += 1;
+				}
+
+			}
+
+			if (original_x == 170 && original_y == -2340){
+				if (position.x < 200 && position.y == -2340){
+					position.x += 1;
+				}
+				else if (position.x <202 && position.y <-2310){
+					position.y += 1;
+				}
+				else if (position.x > 122 && position.y == -2310){
+					position.x -= 1;
+				}
+				else if (position.x >119 && position.y <-2220){
+					position.y += 1;
+				}
+				else{
+					position.x += 1;
+				}
+
+			}
+			/*if (original_x == 0 && original_y == -2160){
+
+				position.x += 1;
+
+
+			}
+			if (original_x == 206 && original_y == -2200){
+				position.x -= 1;
+
+			}
+
+			if (original_x == 0 && original_y == -1850){
+				if (position.x < 110 && position.y == -1850){
+					position.x += 1;
+				}
+				else if (position.x < 120 && position.y <-1830){
+					position.y += 1;
+				}
+				else{
+					position.x += 1;
+				}
+
+			}*/
+
 		}
-		else if ((angle <= 33.75) && (angle >= 11.25) && (left == true)){
-			animation = &PurpleMachine__202_5;
-		}
-		else if ((angle <= 56.25) && (angle >= 33.75) && (left == true)){
-			animation = &PurpleMachine__225;
-		}
-		else if ((angle <= 78.75) && (angle >= 56.25) && (left == true)){
-			animation = &PurpleMachine__247_5;
-		}
-		else if ((angle <= 101.25) && (angle >= 78.75) && (left == true)){
-			animation = &PurpleMachine__270;
-		}
-		else if ((angle <= 123.75) && (angle >= 101.25) && (left == true)){
-			animation = &PurpleMachine__292_5;
-		}
-		else if ((angle <= 146.25) && (angle >= 123.75) && (left == true)){
-			animation = &PurpleMachine__315;
-		}
-		else if ((angle <= 168.75) && (angle >= 146.25) && (left == true)){
-			animation = &PurpleMachine__337_5;
-		}
-		else if ((angle <= 180) && (angle >= 168.75) && (left == true)){
-			animation = &PurpleMachine__0;
-		}
-	}
-	*/
-	position.y = original_y;
-	position.x = original_x;
+	
 }
 
 void Enemy_PurpleMachine::Shoot()
