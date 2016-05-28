@@ -214,7 +214,7 @@ update_status ModulePlayer::Update()
 					}
 					if (collisionWallS == true)
 					{
-						position.x = PreviousPos.x;
+						position.x = PreviousPos.x-1;
 						collisionWallS = false;
 					}
 					else{
@@ -267,7 +267,7 @@ update_status ModulePlayer::Update()
 				if (Immobile == false){
 					if (collisionWallT == true)
 					{
-						position.y = PreviousPos.y;
+						position.y = PreviousPos.y-2;
 						collisionWallT = false;
 					}
 					if ((position.y += speed) >= (280 + (App->render->camera.y / 2))){
@@ -1241,14 +1241,21 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			case COLLIDER_WALL2:
 			case COLLIDER_DOOR:
 			case COLLIDER_BOX:
-				if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 2))
+				if(c1->rect.y < c2->rect.y + c2->rect.h && c1->rect.y + 3 > c2->rect.y + c2->rect.h)
+				//if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 2))
 				{
-					position = PreviousPos;
+					position.y = PreviousPos.y;
+					collisionWallT = true;
+				}
+				else if (c1->rect.y + c1->rect.h > c2->rect.y && c1->rect.y + c1->rect.h - 3< c2->rect.y)
+					//if ((((c2->rect.y) + c2->rect.h) <= c1->rect.y + 2))
+				{
+					position.y = PreviousPos.y;
 					collisionWallT = true;
 				}
 				else if (((c2->rect.x + c2->rect.w) <= c1->rect.x + 1) || ((c1->rect.x + c1->rect.w) >= c2->rect.x + 1))
 				{
-					position = PreviousPos;
+					position.x = PreviousPos.x;
 					collisionWallS = true;
 				}
 				break;

@@ -559,7 +559,7 @@ update_status ModuleCollision::PreUpdate()
 				{
 					if (App->player->current_animation != nullptr){
 
-						App->render->Blit(App->player->graphics, App->player->PreviousPos.x, App->player->PreviousPos.y, &(App->player->current_animation->GetCurrentFrame()));
+					//	App->render->Blit(App->player->graphics, App->player->PreviousPos.x+2, App->player->PreviousPos.y-10, &(App->player->current_animation->GetCurrentFrame()));
 						App->player->collisionPrint = true;
 						c1->callback->OnCollision(c1, c2);
 					}
@@ -608,7 +608,7 @@ update_status ModuleCollision::Update()
 				{
 					
 					c1->callback->OnCollision(c1, c2);
-					//App->render->Blit(App->player->graphics, App->player->PreviousPos.x, App->player->PreviousPos.y, &(App->player->current_animation->GetCurrentFrame()));
+			//	App->render->Blit(App->player->graphics, App->player->PreviousPos.x, App->player->PreviousPos.y-1, &(App->player->current_animation->GetCurrentFrame()));
 
 				}
 					
