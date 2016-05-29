@@ -45,7 +45,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites = App->textures->Load("Outzone/enemies1.png");
+	sprites = App->textures->Load("Outzone/enemies.png");
 
 	return true;
 }

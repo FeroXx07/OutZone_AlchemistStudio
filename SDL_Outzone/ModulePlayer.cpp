@@ -335,8 +335,8 @@ update_status ModulePlayer::Update()
 				|| (App->input->keyboard[SDL_SCANCODE_UP] == KEY_STATE::KEY_REPEAT))
 			{
 				if (Immobile == false){
-					if ((position.y -= speed) <= -5050){
-						position.y = -5050;
+					if ((position.y -= speed) <= -5026){
+						position.y = -5026;
 					}
 					if (collisionWallT == true)
 					{

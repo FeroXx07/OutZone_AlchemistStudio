@@ -152,7 +152,7 @@ update_status ModuleEffects::Update()
 		goaheadactive = !goaheadactive;
 	}
 	if (goaheadactive == true){
-		if (App->render->camera.y != -10424){
+		if (App->render->camera.y > -10336){
 			if ((App->input->keyboard[SDL_SCANCODE_S] == KEY_STATE::KEY_IDLE
 				&& App->input->keyboard[SDL_SCANCODE_W] == KEY_STATE::KEY_IDLE
 				&& App->input->keyboard[SDL_SCANCODE_D] == KEY_STATE::KEY_IDLE
