@@ -63,7 +63,7 @@ void Enemy_Boss::Move()
 			if ((currentTime > lastTime) && (currentTime < (lastTime + 1750))){
 				position.y = -5188;
 			}
-			else if (currentTime == (lastTime + 1750)){
+			else if (currentTime >= (lastTime + 1750)){
 				movement = 3;
 				animation = &Bosslvl2move;
 				lastTime = currentTime;
@@ -80,6 +80,103 @@ void Enemy_Boss::Move()
 			}
 			break;
 		case 4:
+			if ((currentTime > lastTime) && (currentTime < (lastTime + 1450))){
+				position.y = -5220;
+			}
+			else if (currentTime >= (lastTime + 1450)){
+				movement = 5;
+				animation = &Bosslvl2move;
+				lastTime = currentTime;
+			}
+			break;
+		case 5:
+			if ((currentTime > lastTime) && (position.y > -5250)) {
+				position.y -= 1;
+			}
+			else if (position.y == -5250){
+				movement = 6;
+				animation = &Bosslvl2idle;
+				lastTime = currentTime;
+			}
+			break;
+		case 6:
+			if ((currentTime > lastTime) && (currentTime < (lastTime + 970))){
+				position.y = -5250;
+			}
+			else if (currentTime >= (lastTime + 970)){
+				movement = 7;
+				animation = &Bosslvl2move;
+				lastTime = currentTime;
+			}
+			break;
+		case 7:
+			if ((currentTime > lastTime) && (position.y < -5220)) {
+				position.y += 1;
+			}
+			else if (position.y == -5220){
+				movement = 8;
+				animation = &Bosslvl2idle;
+				lastTime = currentTime;
+			}
+			break;
+		case 8:
+			if ((currentTime > lastTime) && (currentTime < (lastTime + 1930))){
+				position.y = -5220;
+			}
+			else if (currentTime >= (lastTime + 1930)){
+				movement = 9;
+				animation = &Bosslvl2move;
+				lastTime = currentTime;
+			}
+			break;
+		case 9:
+			if ((currentTime > lastTime) && (position.y < -5188)) {
+				position.y += 1;
+			}
+			else if (position.y == -5188){
+				movement = 10;
+				animation = &Bosslvl2idle;
+				lastTime = currentTime;
+			}
+			break;
+		case 10:
+			if ((currentTime > lastTime) && (currentTime < (lastTime + 1500))){
+				position.y = -5188;
+			}
+			else if (currentTime >= (lastTime + 1500)){
+				movement = 1;
+				animation = &Bosslvl2move;
+				lastTime = currentTime;
+			}
+			break;
+		case 11:
+
+			break;
+		case 12:
+
+			break;
+		case 13:
+
+			break;
+		case 14:
+
+			break;
+		case 15:
+
+			break;
+		case 16:
+
+			break;
+		case 17:
+
+			break;
+		case 18:
+
+			break;
+		case 19:
+
+			break;
+		case 20:
 
 			break;
 		default:
