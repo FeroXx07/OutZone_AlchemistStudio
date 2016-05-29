@@ -63,7 +63,7 @@ update_status ModuleSceneSpaceUpper::Update()
 				firstimeblit = false;
 			}
 			else{
-				App->render->Blit(background, 0, -5255, NULL);
+				App->render->Blit(background, 0, -5253, NULL);
 			}
 		}
 		else{
