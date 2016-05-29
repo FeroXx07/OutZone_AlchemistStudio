@@ -28,6 +28,7 @@
 #include"Greydoor.h"
 #include"Enemy_bosslvl2.h"
 #include"Enemy_BossAim.h"
+#include"Enemy_BossEye.h"
 #define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()
@@ -211,6 +212,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 			case ENEMY_TYPES::BOSSAIM:
 				enemies[i] = new Enemy_Bossaim(info.x, info.y);
+				break;
+
+			case ENEMY_TYPES::EYEBOSS:
+				enemies[i] = new Enemy_Bosseye(info.x, info.y);
 				break;
 
 			case ENEMY_TYPES::CHANGEAIM:

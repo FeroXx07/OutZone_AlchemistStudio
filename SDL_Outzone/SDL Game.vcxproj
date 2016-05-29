@@ -78,6 +78,7 @@
     <ClInclude Include="Enemy_BigRedMachine.h" />
     <ClInclude Include="Enemy_BlueMachine.h" />
     <ClInclude Include="Enemy_BossAim.h" />
+    <ClInclude Include="Enemy_BossEye.h" />
     <ClInclude Include="Enemy_bosslvl2.h" />
     <ClInclude Include="Enemy_Cookies.h" />
     <ClInclude Include="Enemy_Door.h" />
@@ -126,6 +127,7 @@
     <ClCompile Include="Enemy_BigRedMachine.cpp" />
     <ClCompile Include="Enemy_BlueMachine.cpp" />
     <ClCompile Include="Enemy_BossAim.cpp" />
+    <ClCompile Include="Enemy_BossEye.cpp" />
     <ClCompile Include="Enemy_bosslvl2.cpp" />
     <ClCompile Include="Enemy_Cookies.cpp" />
     <ClCompile Include="Enemy_Door.cpp" />
