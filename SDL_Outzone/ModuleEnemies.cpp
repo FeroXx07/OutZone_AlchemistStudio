@@ -26,6 +26,8 @@
 #include"EnergyCharge.h"
 #include"BoxChargeEnergy.h"
 #include"Greydoor.h"
+#include"Enemy_bosslvl2.h"
+#include"Enemy_BossAim.h"
 #define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()
@@ -42,7 +44,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites = App->textures->Load("Outzone/enemies.png");
+	sprites = App->textures->Load("Outzone/enemies1.png");
 
 	return true;
 }
@@ -201,6 +203,14 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 			case ENEMY_TYPES::GREYDOOR:
 				enemies[i] = new Greydoor(info.x, info.y);
+				break;
+
+			case ENEMY_TYPES::BOSS:
+				enemies[i] = new Enemy_Boss(info.x, info.y);
+				break;
+
+			case ENEMY_TYPES::BOSSAIM:
+				enemies[i] = new Enemy_Bossaim(info.x, info.y);
 				break;
 
 			case ENEMY_TYPES::CHANGEAIM:
