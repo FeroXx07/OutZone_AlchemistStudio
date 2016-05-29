@@ -214,7 +214,7 @@ update_status ModulePlayer::Update()
 					}
 					if (collisionWallS == true)
 					{
-						position.x = PreviousPos.x-1;
+						position.x = PreviousPos.x;
 						collisionWallS = false;
 					}
 					else{
