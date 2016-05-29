@@ -25,6 +25,7 @@
 #include"ModulePlayer.h"
 #include"EnergyCharge.h"
 #include"BoxChargeEnergy.h"
+#include"Greydoor.h"
 #define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()
@@ -196,6 +197,11 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 			case ENEMY_TYPES::TURRET3:
 				enemies[i] = new Enemy_Turret3(info.x, info.y);
 				break;
+				
+
+			case ENEMY_TYPES::GREYDOOR:
+				enemies[i] = new Greydoor(info.x, info.y);
+				break;
 
 			case ENEMY_TYPES::CHANGEAIM:
 				enemies[i] = new ChangeAim(info.x, info.y);
@@ -317,6 +323,18 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				delete enemies[i];
 				enemies[i] = nullptr;
 				pointscount += 100;
+				break;
+			}
+			else if ((c1->type == COLLIDER_DOOR) && (c2->type == COLLIDER_PLAYER_SHOT)){
+				delete enemies[i];
+				enemies[i] = nullptr; 
+				pointscount += 100;// i don't know
+				if (c1->rect.x == 100 && c1->rect.y == -2270){
+					App->enemies->onprobot = true;
+				}
+				if (c1->rect.x == 38 && c1->rect.y == -2400){
+					App->enemies->onprobot2 = true;
+				}
 				break;
 			}
 			else if ((c1->type == COLLIDER_BOX) && (c2->type == COLLIDER_PLAYER_SHOT)){

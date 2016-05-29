@@ -92,6 +92,7 @@
     <ClInclude Include="EnergyCharge.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Enemy_Grey_Robot.h" />
+    <ClInclude Include="Greydoor.h" />
     <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleAudio.h" />
@@ -137,6 +138,7 @@
     <ClCompile Include="EnergyCharge.cpp" />
     <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Enemy_Grey_Robot.cpp" />
+    <ClCompile Include="Greydoor.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleAudio.cpp" />
     <ClCompile Include="ModuleCollision.cpp" />

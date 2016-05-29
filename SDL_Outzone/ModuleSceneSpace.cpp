@@ -228,6 +228,17 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 200, -2310);
 	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 170, -2340);
 	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 150, -2310);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 40, -2440);
+	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 40, -2480);
+	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 40, -2520);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 10, -2440);
+	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 10, -2480);
+	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 10, -2520);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYDOOR, 100, -2270);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYDOOR, 38, -2400);
 	return true; 
 }
 

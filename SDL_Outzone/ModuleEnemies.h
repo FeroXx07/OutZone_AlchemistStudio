@@ -29,6 +29,7 @@ enum ENEMY_TYPES
 	CHANGEAIM,
 	ENEMYCHARGE,
 	ROOLLINGROBOT,
+	GREYDOOR,
 	BOX,
 	BOXENERGY,
 	BIGREDMACHINE,
@@ -74,6 +75,8 @@ public:
 	unsigned int enemycount = 0;
 	unsigned int pointscount = 0;
 	unsigned int maxpointsearned = 0;
+	bool onprobot = false;
+	bool onprobot2 = false;
 };
 
 #endif // __ModuleEnemies_H__

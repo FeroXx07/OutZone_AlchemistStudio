@@ -14,7 +14,7 @@ private:
 	int original_x = 0;
 	unsigned int lastTime = 0;
 	Animation PurpleMachine;
-
+	int count;
 public:
 
 	Enemy_PurpleMachine(int x, int y);

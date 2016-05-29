@@ -5,6 +5,8 @@
 #include "ModuleParticles.h"
 #include "ModuleRender.h"
 #include "SDL/include/SDL_timer.h"
+#include"Enemy.h"
+#include"ModuleEnemies.h"
 #include <math.h>
 
 #define RANGE 30
@@ -36,11 +38,12 @@ void Enemy_PurpleMachine::Move()
 	unsigned int currentTime = 0;
 	currentTime = SDL_GetTicks();
 	if ((original_y >= (App->render->camera.y / 2) - RANGE) && (original_y <= (App->render->camera.y / 2) + 340 - RANGE)){
+		if (App->enemies->onprobot == true){
 			if (original_x == 50 && original_y == -2310){
 				if (position.x < 95 && position.y == -2310){
-				position.x += 1;
+					position.x += 1;
 				}
-				else if (position.x <110 && position.y <-2220){
+				else if (position.x < 110 && position.y < -2220){
 					position.y += 1;
 				}
 				else{
@@ -56,7 +59,7 @@ void Enemy_PurpleMachine::Move()
 				else if (position.x < 95 && position.y == -2310){
 					position.x += 1;
 				}
-				else if (position.x <110 && position.y <-2220){
+				else if (position.x < 110 && position.y <-2220){
 					position.y += 1;
 				}
 				else{
@@ -75,7 +78,7 @@ void Enemy_PurpleMachine::Move()
 				else if (position.x < 95 && position.y == -2310){
 					position.x += 1;
 				}
-				else if (position.x <110 && position.y <-2220){
+				else if (position.x < 110 && position.y <-2220){
 					position.y += 1;
 				}
 				else{
@@ -88,7 +91,7 @@ void Enemy_PurpleMachine::Move()
 				if (position.x > 122 && position.y == -2310){
 					position.x -= 1;
 				}
-				else if (position.x >119 && position.y <-2220){
+				else if (position.x > 119 && position.y <-2220){
 					position.y += 1;
 				}
 				else{
@@ -101,7 +104,7 @@ void Enemy_PurpleMachine::Move()
 				if (position.x > 122 && position.y == -2310){
 					position.x -= 1;
 				}
-				else if (position.x >119 && position.y <-2220){
+				else if (position.x > 119 && position.y < -2220){
 					position.y += 1;
 				}
 				else{
@@ -120,7 +123,7 @@ void Enemy_PurpleMachine::Move()
 				else if (position.x > 122 && position.y == -2310){
 					position.x -= 1;
 				}
-				else if (position.x >119 && position.y <-2220){
+				else if (position.x >119 && position.y < -2220){
 					position.y += 1;
 				}
 				else{
@@ -133,26 +136,50 @@ void Enemy_PurpleMachine::Move()
 				position.x += 1;
 
 
-			}
-			if (original_x == 206 && original_y == -2200){
+				}
+				if (original_x == 206 && original_y == -2200){
 				position.x -= 1;
 
-			}
+				}
 
-			if (original_x == 0 && original_y == -1850){
+				if (original_x == 0 && original_y == -1850){
 				if (position.x < 110 && position.y == -1850){
-					position.x += 1;
+				position.x += 1;
 				}
 				else if (position.x < 120 && position.y <-1830){
+				position.y += 1;
+				}
+				else{
+				position.x += 1;
+				}
+
+				}*/
+
+		}
+		//App->enemies->onprobot = false;
+		
+		if (App->enemies->onprobot2 == true){
+
+			if (original_x == 40 && original_y == -2440){
+				if (position.x == 40 && position.y < -2350){
 					position.y += 1;
 				}
 				else{
 					position.x += 1;
 				}
 
-			}*/
+			}
+
+
+
+
+
+
+
 
 		}
+
+	}
 	
 }
 

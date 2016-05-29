@@ -13,6 +13,7 @@ protected:
 	Animation* animation;
 	Collider* collider;
 	int live;
+	
 public:
 	iPoint position;
 	
