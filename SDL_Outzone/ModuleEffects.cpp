@@ -110,6 +110,7 @@ update_status ModuleEffects::Update()
 	position = App->player->position;
 	if (effect1 != nullptr){
 		App->render->Blit(graphics, position.x, position.y, &(effect1->GetCurrentFrame()));
+		//App->render->Blit(graphics, App->player->PreviousPos.x, App->player->PreviousPos.y, &(effect1->GetCurrentFrame()));
 	}
 	
 	//bomb
