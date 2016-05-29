@@ -1280,6 +1280,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					destroyed = true;
 					poweruplevel = 0;
 					changetaim = false;
+					App->enemies->onprobot = false;
+					App->enemies->onprobot2 = false;
 				}
 				break;
 			case COLLIDER_CHANGEAIM:
@@ -1300,6 +1302,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					destroyed = true;
 					poweruplevel = 0;
 					changetaim = false;
+					App->enemies->onprobot = false;
+					App->enemies->onprobot2 = false;
 				}
 				break;
 			}
