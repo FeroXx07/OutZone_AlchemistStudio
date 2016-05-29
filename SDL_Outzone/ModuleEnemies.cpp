@@ -329,10 +329,10 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				delete enemies[i];
 				enemies[i] = nullptr; 
 				pointscount += 100;// i don't know
-				if (c1->rect.x == 100 && c1->rect.y == -2270){
+				if (c1->rect.x == 95 && c1->rect.y == -2280){
 					App->enemies->onprobot = true;
 				}
-				if (c1->rect.x == 38 && c1->rect.y == -2400){
+				if (c1->rect.x == 30 && c1->rect.y == -2407){
 					App->enemies->onprobot2 = true;
 				}
 				break;

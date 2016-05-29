@@ -237,8 +237,8 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 10, -2480);
 	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 10, -2520);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYDOOR, 100, -2270);
-	App->enemies->AddEnemy(ENEMY_TYPES::GREYDOOR, 38, -2400);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYDOOR, 95, -2280);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYDOOR, 30, -2407);
 	return true; 
 }
 
