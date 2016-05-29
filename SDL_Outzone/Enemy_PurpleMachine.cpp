@@ -202,9 +202,12 @@ void Enemy_PurpleMachine::Move()
 				}
 
 			}
-
-			if (original_x == 10 && original_y == -2520){
-				if (position.x < 40 && position.y == -2520){
+			//5
+			if (original_x == 10 && original_y == -2480){
+				if (position.x == 10 && position.y > -2520){
+					position.y -= 1;
+				}
+				else if (position.x < 40 && position.y == -2520){
 					position.x += 1;
 				}
 				else if (position.x == 40 && position.y < -2350){
@@ -216,6 +219,21 @@ void Enemy_PurpleMachine::Move()
 
 			}
 
+			if (original_x == 10 && original_y == -2440){
+				if (position.x == 10 && position.y > -2520){
+					position.y -= 1;
+				}
+				else if (position.x < 40 && position.y == -2520){
+					position.x += 1;
+				}
+				else if (position.x == 40 && position.y < -2350){
+					position.y += 1;
+				}
+				else{
+					position.x += 1;
+				}
+
+			}
 
 
 
