@@ -94,7 +94,7 @@ Enemy_GreyRobot::Enemy_GreyRobot(int x, int y) : Enemy(x, y)
 
 	animation = &GRobot__180;
 
-	collider = App->collision->AddCollider({ 0, 0, 27, 47 }, COLLIDER_TYPE::COLLIDER_GREY_ROBOT, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 27,37 }, COLLIDER_TYPE::COLLIDER_GREY_ROBOT, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;
@@ -107,18 +107,26 @@ void Enemy_GreyRobot::Move()
 
 	
 	
-	if ((original_y >= (App->render->camera.y / 2) - RANGE) && (original_y <= (App->render->camera.y / 2) + 340 - RANGE)){
+	if ((original_y >= (App->render->camera.y / 2) - RANGE) && (position.y <= (App->render->camera.y / 2) + 340 - RANGE)){
 		//left or right of the turret
-		if (position.y < -50){
-			position.y += 2;
-		}
-		else if (position.y < -55 && position.x > 30){
+		if (original_y == -150)
+		{
+			if (position.y < -20){
+				position.y += 2;
+			}
+			else if (position.y < -55 && position.x > 30){
 
-			position.x -= 1;
+				position.x -= 1;
+			}
+		}
+		else if (original_y == -170)
+		{
+			position.y += 1;
+			position.x -= 2;
 		}
 			
 		position.x += 1;
-		if (App->player->position.x >= original_x){
+		if (App->player->position.x >= position.x){
 			left = false;
 		}
 		else{
@@ -133,60 +141,60 @@ void Enemy_GreyRobot::Move()
 
 		//Right
 		if ((angle <= 11.25) && (angle >= 0) && (left == false)){
-			animation = &GRobot__180;
+			animation = &GRobot__s;
 		}
 		else if ((angle <= 33.75) && (angle >= 11.25) && (left == false)){
-			animation = &GRobot__157_5;
+			animation = &GRobot__sd;
 		}
 		else if ((angle <= 56.25) && (angle >= 33.75) && (left == false)){
-			animation = &GRobot__135;
+			animation = &GRobot__sd;
 		}
 		else if ((angle <= 78.75) && (angle >= 56.25) && (left == false)){
-			animation = &GRobot__112_5;
+			animation = &GRobot__sd;
 		}
 		else if ((angle <= 101.25) && (angle >= 78.75) && (left == false)){
-			animation = &GRobot__90;
+			animation = &GRobot__d;
 		}
 		else if ((angle <= 123.75) && (angle >= 101.25) && (left == false)){
-			animation = &GRobot__67_5;
+			animation = &GRobot__wd;
 		}
 		else if ((angle <= 146.25) && (angle >= 123.75) && (left == false)){
-			animation = &GRobot__45;
+			animation = &GRobot__wd;
 		}
 		else if ((angle <= 168.75) && (angle >= 146.25) && (left == false)){
-			animation = &GRobot__22_5;
+			animation = &GRobot__wd;
 		}
 		else if ((angle <= 180) && (angle >= 168.75) && (left == false)){
-			animation = &GRobot__0;
+			animation = &GRobot__w;
 		}
 
 		//Left
 		else if ((angle <= 11.25) && (angle >= 0) && (left == true)){
-			animation = &GRobot__180;
+			animation = &GRobot__s;
 		}
 		else if ((angle <= 33.75) && (angle >= 11.25) && (left == true)){
-			animation = &GRobot__202_5;
+			animation = &GRobot__sa;
 		}
 		else if ((angle <= 56.25) && (angle >= 33.75) && (left == true)){
-			animation = &GRobot__225;
+			animation = &GRobot__sa;
 		}
 		else if ((angle <= 78.75) && (angle >= 56.25) && (left == true)){
-			animation = &GRobot__247_5;
+			animation = &GRobot__sa;
 		}
 		else if ((angle <= 101.25) && (angle >= 78.75) && (left == true)){
-			animation = &GRobot__270;
+			animation = &GRobot__a;
 		}
 		else if ((angle <= 123.75) && (angle >= 101.25) && (left == true)){
-			animation = &GRobot__292_5;
+			animation = &GRobot__wa;
 		}
 		else if ((angle <= 146.25) && (angle >= 123.75) && (left == true)){
-			animation = &GRobot__315;
+			animation = &GRobot__wa;
 		}
 		else if ((angle <= 168.75) && (angle >= 146.25) && (left == true)){
-			animation = &GRobot__337_5;
+			animation = &GRobot__wa;
 		}
 		else if ((angle <= 180) && (angle >= 168.75) && (left == true)){
-			animation = &GRobot__0;
+			animation = &GRobot__w;
 		}
 	}
 	
@@ -203,14 +211,14 @@ void Enemy_GreyRobot::Shoot()
 
 	if ((original_y >= (App->render->camera.y / 2) - RANGE) && (original_y <= (App->render->camera.y / 2) + 340 - RANGE)){
 
-		if (App->player->position.x >= original_x){
+		if (App->player->position.x >= position.x){
 			left = false;
 		}
 		else{
 			left = true;
 		}
 
-		angle = ((float)acos((((App->player->position.x + 14 - original_x) * 0) + ((App->player->position.y + 16 - original_y) * 1)) / (sqrt((double)((App->player->position.x + 14 - original_x)*(App->player->position.x + 14 - original_x) + (App->player->position.y + 16 - original_y)*(App->player->position.y + 16 - original_y)))*sqrt((double)(0 * 0 + 1 * 1))))) * ANGLE_CONVERT;
+		angle = ((float)acos((((App->player->position.x + 14 - position.x) * 0) + ((App->player->position.y + 16 - position.y) * 1)) / (sqrt((double)((App->player->position.x + 14 - position.x)*(App->player->position.x + 14 - position.x) + (App->player->position.y + 16 - position.y)*(App->player->position.y + 16 - position.y)))*sqrt((double)(0 * 0 + 1 * 1))))) * ANGLE_CONVERT;
 		//LOG("Angle %.2f", angle);
 
 		if (currentTime > (lastTime + ENEMYSHOOTDELAY)) {
