@@ -111,7 +111,7 @@ void Enemy_GreyRobot::Move()
 		//left or right of the turret
 		if (original_y == -150)
 		{
-			if (position.y < -20){
+			if (position.y < -50){
 				position.y += 2;
 			}
 			else if (position.y < -55 && position.x > 30){
@@ -119,13 +119,28 @@ void Enemy_GreyRobot::Move()
 				position.x -= 1;
 			}
 		}
-		else if (original_y == -170)
+		else if (original_y == -170 )
 		{
 			position.y += 1;
-			position.x -= 2;
+			position.x -= 1;
+		}
+		else if (original_y == -200)
+		{
+			position.y += 1;
+			//position.x = position.x-1;
+		}
+		else if (original_y == -300 || original_y == -302 || original_y == -305)
+		{
+			position.y += 1;
+			position.x = position.x - 1;
+		}
+		else if (original_y == -301)
+		{
+			position.y += 1;
+			position.x = position.x - 1;
 		}
 			
-		position.x += 1;
+		//position.x += 1;
 		if (App->player->position.x >= position.x){
 			left = false;
 		}
