@@ -255,6 +255,11 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, -30, -3690);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 230, -3630);
 
+
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREYROBOT, 100, -150);
+
+
 	/*App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 200, -3500);
 	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 200, -3550);
 	App->enemies->AddEnemy(ENEMY_TYPES::REDMACHINE, 200, -3600);*/
