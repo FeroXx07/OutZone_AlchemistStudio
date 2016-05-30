@@ -90,19 +90,71 @@ void Enemy_BlueMachine::Move()
 				else if (position.y <= -3470 && position.x < 58){
 					position.y += 2;
 				}
-				else if (position.x <59 && position.y < -3470){
-					position.x -= 2;
+				
+
+			}
+
+			if (original_x == -50 && original_y == -3550){
+				if (position.x < 30 && position.y == -3550){
+					position.x += 2;
 				}
+				else if (position.x < 31 && position.y >= -3600){
+					position.y -= 2;
+				}
+				else if (position.x < 55 && position.y >= -3605){
+					position.x += 2;
+				}
+				else if (position.y <= -3520 && position.x < 58){
+					position.y += 2;
+				}
+
+
+			}
+
+			if (original_x == -50 && original_y == -3600){
+				if (position.x < 30 && position.y == -3600){
+					position.x += 2;
+				}
+				else if (position.x < 31 && position.y >= -3650){
+					position.y -= 2;
+				}
+				else if (position.x < 55 && position.y >= -3655){
+					position.x += 2;
+				}
+				else if (position.y <= -3570 && position.x < 58){
+					position.y += 2;
+				}
+
 
 			}
 		     }
+
+		if (original_x == 230 && original_y == -3570){
+			if (position.x > 150 && position.y == -3570){
+				position.x -= 2;
+			}
+		}
+
+		if (original_x == 230 && original_y == -3520){
+			if (position.x > 150 && position.y == -3520){
+				position.x -= 2;
+			}
+		}
+
+		if (original_x == 230 && original_y == -3470){
+			if (position.x > 150 && position.y == -3470){
+				position.x -= 2;
+			}
+		}
+
+	}
 
 	}
 
 
 	
 	
-}
+
 
 void Enemy_BlueMachine::Shoot()
 {
