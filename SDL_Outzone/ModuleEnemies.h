@@ -83,6 +83,14 @@ public:
 	bool onprobot2 = false;
 	int bosseyehits = 0;
 	int bossweaponhits = 0;
+
+	int bigredmachinehits = 0;
+	int bluemachinehits = 0;
+	int redmachinehits = 0;
+	int orangerobothits = 0;
+	int turret1hits = 0;
+	int turret3hits = 0;
+	int rollingrobot = 0;
 };
 
 #endif // __ModuleEnemies_H__
