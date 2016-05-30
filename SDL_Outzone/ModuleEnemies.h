@@ -81,6 +81,7 @@ public:
 	bool onprobot = false;
 	bool onprobot2 = false;
 	int bosseyehits = 0;
+	int bossweaponhits = 0;
 };
 
 #endif // __ModuleEnemies_H__

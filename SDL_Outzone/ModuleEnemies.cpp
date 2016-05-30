@@ -360,6 +360,28 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 				break;
 			}
+			else if ((c1->type == COLLIDER_BOSSWEAPON) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER))){
+				bossweaponhits++;
+				pointscount += 10;
+				if (c2->type == COLLIDER_BOMB){
+					bossweaponhits++;
+					pointscount += 10;
+					bossweaponhits++;
+					pointscount += 10;
+					bossweaponhits++;
+					pointscount += 10;
+					bossweaponhits++;
+					pointscount += 10;
+				}
+				if (bossweaponhits >= 10){
+					delete enemies[i];
+					enemies[i] = nullptr;
+					enemycount++;
+					pointscount += 1690;
+					bossweaponhits = 0;
+				}
+				break;
+			}
  			else if ((c1->type == COLLIDER_CHANGEAIM) && (c2->type == COLLIDER_PLAYER)){
 				delete enemies[i];
 				enemies[i] = nullptr;

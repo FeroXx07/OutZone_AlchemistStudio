@@ -20,13 +20,12 @@
 Enemy_Bossaim::Enemy_Bossaim(int x, int y) : Enemy(x, y)
 {
 	live = 100;
-	BossAIMlvl2.PushBack({ 0, 508, 40, 42 });
-	BossAIMlvl2.PushBack({ 40, 508, 40, 42 });
-	BossAIMlvl2.speed = 0.25f;
+	BossAIMlvl2weaponidleNOSHOT.PushBack({ 94, 1218, 16, 66 });
+	BossAIMlvl2weaponidleNOSHOT.speed = 0.25f;
 
-	animation = &BossAIMlvl2;
+	animation = &BossAIMlvl2weaponidleNOSHOT;
 
-	collider = App->collision->AddCollider({ 0, 0, 30, 30 }, COLLIDER_TYPE::COLLIDER_PURPLE_MACHINE, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 16, 66 }, COLLIDER_TYPE::COLLIDER_BOSSWEAPON, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;
@@ -34,9 +33,153 @@ Enemy_Bossaim::Enemy_Bossaim(int x, int y) : Enemy(x, y)
 
 void Enemy_Bossaim::Move()
 {
+	currentTime = SDL_GetTicks();
 
+	if (App->render->camera.y <= -10376){
+		if (firsttime == true){
+			lastTime = SDL_GetTicks();
+			firsttime = false;
+			movement = 1;
+		}
+		switch (movement){
+		case 1:
+			if ((currentTime > lastTime) && (position.y < -5098)) {
+				position.y += 1;
+			}
+			else if (position.y == -5098){
+				movement = 2;
+				animation = &BossAIMlvl2weaponidleNOSHOT;
+				lastTime = currentTime;
+			}
+			break;
+		case 2:
+			if ((currentTime > lastTime) && (currentTime < (lastTime + 1750))){
+				position.y = -5098;
+			}
+			else if (currentTime >= (lastTime + 1750)){
+				movement = 3;
+				animation = &BossAIMlvl2weaponidleNOSHOT;
+				lastTime = currentTime;
+			}
+			break;
+		case 3:
+			if ((currentTime > lastTime) && (position.y > -5130)) {
+				position.y -= 1;
+			}
+			else if (position.y == -5130){
+				movement = 4;
+				animation = &BossAIMlvl2weaponidleNOSHOT;
+				lastTime = currentTime;
+			}
+			break;
+		case 4:
+			if ((currentTime > lastTime) && (currentTime < (lastTime + 1450))){
+				position.y = -5130;
+			}
+			else if (currentTime >= (lastTime + 1450)){
+				movement = 5;
+				animation = &BossAIMlvl2weaponidleNOSHOT;
+				lastTime = currentTime;
+			}
+			break;
+		case 5:
+			if ((currentTime > lastTime) && (position.y > -5160)) {
+				position.y -= 1;
+			}
+			else if (position.y == -5160){
+				movement = 6;
+				animation = &BossAIMlvl2weaponidleNOSHOT;
+				lastTime = currentTime;
+			}
+			break;
+		case 6:
+			if ((currentTime > lastTime) && (currentTime < (lastTime + 970))){
+				position.y = -5160;
+			}
+			else if (currentTime >= (lastTime + 970)){
+				movement = 7;
+				animation = &BossAIMlvl2weaponidleNOSHOT;
+				lastTime = currentTime;
+			}
+			break;
+		case 7:
+			if ((currentTime > lastTime) && (position.y < -5130)) {
+				position.y += 1;
+			}
+			else if (position.y == -5130){
+				movement = 8;
+				animation = &BossAIMlvl2weaponidleNOSHOT;
+				lastTime = currentTime;
+			}
+			break;
+		case 8:
+			if ((currentTime > lastTime) && (currentTime < (lastTime + 1930))){
+				position.y = -5130;
+			}
+			else if (currentTime >= (lastTime + 1930)){
+				movement = 9;
+				animation = &BossAIMlvl2weaponidleNOSHOT;
+				lastTime = currentTime;
+			}
+			break;
+		case 9:
+			if ((currentTime > lastTime) && (position.y < -5098)) {
+				position.y += 1;
+			}
+			else if (position.y == -5098){
+				movement = 10;
+				animation = &BossAIMlvl2weaponidleNOSHOT;
+				lastTime = currentTime;
+			}
+			break;
+		case 10:
+			if ((currentTime > lastTime) && (currentTime < (lastTime + 1500))){
+				position.y = -5098;
+			}
+			else if (currentTime >= (lastTime + 1500)){
+				movement = 11;
+				animation = &BossAIMlvl2weaponidleNOSHOT;
+				lastTime = currentTime;
+				//To do the loop
+				movement = 1;
+			}
+			break;
+		case 11:
 
+			break;
+		case 12:
 
+			break;
+		case 13:
+
+			break;
+		case 14:
+
+			break;
+		case 15:
+
+			break;
+		case 16:
+
+			break;
+		case 17:
+
+			break;
+		case 18:
+
+			break;
+		case 19:
+
+			break;
+		case 20:
+
+			break;
+		default:
+
+			break;
+		}
+		//lastTime = currentTime;
+	}
 }
 
 void Enemy_Bossaim::Shoot()

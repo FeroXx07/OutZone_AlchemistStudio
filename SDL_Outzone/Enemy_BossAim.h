@@ -13,12 +13,16 @@ private:
 	int original_y = 0;
 	int original_x = 0;
 	unsigned int lastTime = 0;
-	Animation BossAIMlvl2;
+	Animation BossAIMlvl2weaponidleNOSHOT;
 	int count;
+	bool firsttime = true;
+
 public:
+	int movement = 0;
+	unsigned int currentTime = 0;
 
+public:
 	Enemy_Bossaim(int x, int y);
-
 	void Move();
 	void Shoot();
 };
