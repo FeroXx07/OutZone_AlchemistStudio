@@ -17,8 +17,6 @@
 #define ENEMYSHOOTDELAY 2500
 #define ENEMYMOVEDELAY 10
 
-#define bosslaserx 89
-#define bosslasery 63
 
 Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 {
@@ -195,43 +193,5 @@ void Enemy_Boss::Move()
 
 void Enemy_Boss::Shoot()
 {
-	currentTime = SDL_GetTicks();
-	if (App->render->camera.y <= -10376){
-		if (firstlaser == true){
-			lastTime2 = SDL_GetTicks();
-			firstlaser = false;
-			lasershoot = 1;
-		}
-		switch (lasershoot){
-		case 1:
-			if (currentTime > (lastTime2 + 7500)){
-				App->particles->bosslaser1.speed.x = 2;
-				App->particles->bosslaser1.speed.y = 1;
-				App->particles->AddParticle(App->particles->bosslaser1, position.x + bosslaserx, position.y + bosslasery, COLLIDER_ENEMY_SHOT);
-				App->particles->bosslaser1.speed.x = 2;
-				App->particles->bosslaser1.speed.y = 2;
-				App->particles->AddParticle(App->particles->bosslaser1, position.x + bosslaserx, position.y + bosslasery, COLLIDER_ENEMY_SHOT);
-				App->particles->bosslaser1.speed.x = 1;
-				App->particles->bosslaser1.speed.y = 2;
-				App->particles->AddParticle(App->particles->bosslaser1, position.x + bosslaserx, position.y + bosslasery, COLLIDER_ENEMY_SHOT);
 
-				App->particles->bosslaser1.speed.x = 0;
-				App->particles->bosslaser1.speed.y = 3;
-				App->particles->AddParticle(App->particles->bosslaser1, position.x + bosslaserx, position.y + bosslasery, COLLIDER_ENEMY_SHOT);
-
-				App->particles->bosslaser1.speed.x = -2;
-				App->particles->bosslaser1.speed.y = 1;
-				App->particles->AddParticle(App->particles->bosslaser1, position.x + bosslaserx, position.y + bosslasery, COLLIDER_ENEMY_SHOT);
-				App->particles->bosslaser1.speed.x = -2;
-				App->particles->bosslaser1.speed.y = 2;
-				App->particles->AddParticle(App->particles->bosslaser1, position.x + bosslaserx, position.y + bosslasery, COLLIDER_ENEMY_SHOT);
-				App->particles->bosslaser1.speed.x = -1;
-				App->particles->bosslaser1.speed.y = 2;
-				App->particles->AddParticle(App->particles->bosslaser1, position.x + bosslaserx, position.y + bosslasery, COLLIDER_ENEMY_SHOT);
-				
-				lasershoot = 2;
-			}
-			break;
-		}
-	}
 }
