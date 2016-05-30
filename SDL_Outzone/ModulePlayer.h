@@ -102,6 +102,9 @@ public:
 	iPoint PreviousPos;
 	Collider* playercollision;
 	Collider* stopshotscollision;
+	Collider* stopshotscollision2;
+	Collider* stopshotscollision3;
+	Collider* stopshotscollision4;
 	bool destroyed = false;
 	bool collisionWallS = false;
 	bool collisionWallT = false;

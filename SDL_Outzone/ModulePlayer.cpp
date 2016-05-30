@@ -155,6 +155,9 @@ bool ModulePlayer::Start()
 	lastkeypressed = LAST_KEY_W;
 	playercollision = App->collision->AddCollider({ position.x + PLAYERCOLIDERX, position.y + PLAYERCOLIDERY, 23, 28 }, COLLIDER_PLAYER, this);
 	stopshotscollision = App->collision->AddCollider({ 0, (App->render->camera.y / 2), 240, 10 }, COLLIDER_STOP_SHOTS, this);
+	stopshotscollision2 = App->collision->AddCollider({ 0, (App->render->camera.y / 2), 10, 320 }, COLLIDER_STOP_SHOTS, this);
+	stopshotscollision3 = App->collision->AddCollider({ 0, (App->render->camera.y / 2), 10, 320 }, COLLIDER_STOP_SHOTS, this);
+	stopshotscollision4 = App->collision->AddCollider({ 0, (App->render->camera.y / 2), 240, 10 }, COLLIDER_STOP_SHOTS, this);
 	font_score = App->ui->Load("Outzone/scoreNumbers.png", "0123456789", 1);
 	return true;
 	
@@ -168,6 +171,9 @@ bool ModulePlayer::CleanUp()
 	App->textures->Unload(graphics);
 	App->collision->EraseCollider(playercollision);
 	App->collision->EraseCollider(stopshotscollision);
+	App->collision->EraseCollider(stopshotscollision2);
+	App->collision->EraseCollider(stopshotscollision3);
+	App->collision->EraseCollider(stopshotscollision4);
 
 	return true;
 }
@@ -1161,6 +1167,9 @@ update_status ModulePlayer::Update()
 	}
 	playercollision->SetPos(position.x + PLAYERCOLIDERX, position.y + PLAYERCOLIDERY);
 	stopshotscollision->SetPos(0, (App->render->camera.y / 2) - 5);
+	stopshotscollision2->SetPos(-5, (App->render->camera.y / 2) - 5);
+	stopshotscollision3->SetPos(240 - 5, (App->render->camera.y / 2) - 5);
+	stopshotscollision4->SetPos(0, (App->render->camera.y / 2) - 5 + 320);
 
 	// Draw everything --------------------------------------
 	if (current_animation != nullptr){
