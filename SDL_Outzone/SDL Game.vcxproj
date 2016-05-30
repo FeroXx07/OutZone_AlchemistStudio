@@ -82,6 +82,7 @@
     <ClInclude Include="Enemy_bosslvl2.h" />
     <ClInclude Include="Enemy_Cookies.h" />
     <ClInclude Include="Enemy_Door.h" />
+    <ClInclude Include="Enemy_GreenRobot.h" />
     <ClInclude Include="Enemy_Mazurka.h" />
     <ClInclude Include="Enemy_OrangeRobot.h" />
     <ClInclude Include="Enemy_PurpleMachine.h" />
@@ -131,6 +132,7 @@
     <ClCompile Include="Enemy_bosslvl2.cpp" />
     <ClCompile Include="Enemy_Cookies.cpp" />
     <ClCompile Include="Enemy_Door.cpp" />
+    <ClCompile Include="Enemy_GreenRobot.cpp" />
     <ClCompile Include="Enemy_Mazurka.cpp" />
     <ClCompile Include="Enemy_OrangeRobot.cpp" />
     <ClCompile Include="Enemy_PurpleMachine.cpp" />
