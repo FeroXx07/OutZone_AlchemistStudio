@@ -332,6 +332,16 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			else if ((c1->type == COLLIDER_BOSSEYE) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER))){
 				bosseyehits++;
 				pointscount += 10;
+				if (c2->type == COLLIDER_BOMB){
+					bosseyehits++;
+					pointscount += 10;
+					bosseyehits++;
+					pointscount += 10;
+					bosseyehits++;
+					pointscount += 10;
+					bosseyehits++;
+					pointscount += 10;
+				}
 				if (bosseyehits >= 35){
 					delete enemies[i];
 					enemies[i] = nullptr;
