@@ -42,7 +42,7 @@ Enemy_Bosseye::Enemy_Bosseye(int x, int y) : Enemy(x, y)
 
 	animation = &BossEYElvl2idleclose;
 
-	collider = App->collision->AddCollider({ 0, 0, 40, 35 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 40, 35 }, COLLIDER_TYPE::COLLIDER_BOSSEYE, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;

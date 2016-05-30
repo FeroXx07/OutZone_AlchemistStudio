@@ -31,7 +31,7 @@ Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 
 	animation = &Bosslvl2move;
 
-	collider = App->collision->AddCollider({ 0, 0, 200, 200 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 200, 200 }, COLLIDER_TYPE::COLLIDER_BOSS, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;

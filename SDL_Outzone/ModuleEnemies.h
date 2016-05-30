@@ -80,6 +80,7 @@ public:
 	unsigned int maxpointsearned = 0;
 	bool onprobot = false;
 	bool onprobot2 = false;
+	int bosseyehits = 0;
 };
 
 #endif // __ModuleEnemies_H__

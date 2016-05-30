@@ -29,6 +29,7 @@
 #include"Enemy_bosslvl2.h"
 #include"Enemy_BossAim.h"
 #include"Enemy_BossEye.h"
+#include"ModuleFadeToBlack.h"
 #define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()
@@ -326,6 +327,27 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				enemies[i] = nullptr;
 				enemycount++;
 				pointscount += 290;
+				break;
+			}
+			else if ((c1->type == COLLIDER_BOSSEYE) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER))){
+				bosseyehits++;
+				pointscount += 10;
+				if (bosseyehits >= 35){
+					delete enemies[i];
+					enemies[i] = nullptr;
+					enemycount++;
+					pointscount += 20000;
+					bosseyehits = 0;
+
+					App->player->Disable();
+					App->fade->FadeToBlack((Module*)App->scene_space, (Module*)App->scene_gamewin);
+					App->player->destroyed = true;
+					App->player->poweruplevel = 0;
+					App->player->changetaim = false;
+					App->enemies->onprobot = false;
+					App->enemies->onprobot2 = false;
+
+				}
 				break;
 			}
  			else if ((c1->type == COLLIDER_CHANGEAIM) && (c2->type == COLLIDER_PLAYER)){
