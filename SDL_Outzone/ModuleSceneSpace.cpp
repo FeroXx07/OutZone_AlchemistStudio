@@ -240,6 +240,21 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYDOOR, 95, -2280);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYDOOR, 30, -2407);
 
+
+
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, -30, -3500);
+	
+	
+
+	/*App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 200, -3500);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 200, -3550);
+	App->enemies->AddEnemy(ENEMY_TYPES::REDMACHINE, 200, -3600);*/
+	/*App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 0, -1180);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 191, -1139);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 0, -1140);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 191, -1099);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, 0, -1100);*/
+
 	//Boss
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSS, 15, -5403);
 

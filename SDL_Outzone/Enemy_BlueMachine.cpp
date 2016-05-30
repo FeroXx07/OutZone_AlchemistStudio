@@ -76,6 +76,16 @@ void Enemy_BlueMachine::Move()
 				}
 
 			}
+
+			if (original_x == -30 && original_y == -3500){
+				if (position.x < 30 && position.y == -3500){
+					position.x += 2;
+				}
+				else if (position.x < 31 && position.y >= -3600){
+					position.y -= 2;
+				}
+
+			}
 		     }
 
 	}

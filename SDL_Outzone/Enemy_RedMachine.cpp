@@ -13,7 +13,7 @@
 #define ANGLE_CONVERT_REVERSE (PI / 180.0)
 #define ENEMY_SHOOT_SPEED 4
 #define ENEMYSHOOTDELAY 2500
-
+#define ENEMYMOVEDELAY 25
 Enemy_RedMachine::Enemy_RedMachine(int x, int y) : Enemy(x, y)
 {
 	live = 100;
@@ -33,87 +33,26 @@ Enemy_RedMachine::Enemy_RedMachine(int x, int y) : Enemy(x, y)
 
 void Enemy_RedMachine::Move()
 {
-	/*
-	bool left = false;
-	float angle = 0;
 
+	unsigned int currentTime = 0;
+	currentTime = SDL_GetTicks();
 	if ((original_y >= (App->render->camera.y / 2) - RANGE) && (original_y <= (App->render->camera.y / 2) + 340 - RANGE)){
-		//left or right of the turret
-		if (App->player->position.x >= original_x){
-			left = false;
-		}
-		else{
-			left = true;
-		}
+		if (currentTime > (lastTime + ENEMYMOVEDELAY)){
+			if (original_x == 200 && original_y == -3600){
+				/*if (position.x > 120 && position.y == -3600){
+					position.x -= 2;
+				}*/
 
-		//angle
-		//angle = (float)acos(((App->player->position.x * 0) + (App->player->position.y * 1)) / ((sqrt((pow((double)App->player->position.x, 2)) + (pow((double)App->player->position.y, 2))))*(sqrt((pow(0.0, 2.0)) + (pow(1.0, 2.0)))))) * ANGLE_CONVERT;
-
-		//angle = ((float)acos(((App->player->position.x * 0) + (App->player->position.y * 1)) / (sqrt((double)((App->player->position.x)*(App->player->position.x) + (App->player->position.y)*(App->player->position.y)))*sqrt((double)(0 * 0 + 1 * 1))))) * ANGLE_CONVERT;
-
-		angle = ((float)acos((((App->player->position.x - original_x) * 0) + ((App->player->position.y - original_y) * 1)) / (sqrt((double)((App->player->position.x - original_x)*(App->player->position.x - original_x) + (App->player->position.y - original_y)*(App->player->position.y - original_y)))*sqrt((double)(0 * 0 + 1 * 1))))) * ANGLE_CONVERT;
-
-		//LOG("Angle %.2f", angle);
-
-		//Right
-		if ((angle <= 11.25) && (angle >= 0) && (left == false)){
-			animation = &RedMachine__180;
-		}
-		else if ((angle <= 33.75) && (angle >= 11.25) && (left == false)){
-			animation = &RedMachine__157_5;
-		}
-		else if ((angle <= 56.25) && (angle >= 33.75) && (left == false)){
-			animation = &RedMachine__135;
-		}
-		else if ((angle <= 78.75) && (angle >= 56.25) && (left == false)){
-			animation = &RedMachine__112_5;
-		}
-		else if ((angle <= 101.25) && (angle >= 78.75) && (left == false)){
-			animation = &RedMachine__90;
-		}
-		else if ((angle <= 123.75) && (angle >= 101.25) && (left == false)){
-			animation = &RedMachine__67_5;
-		}
-		else if ((angle <= 146.25) && (angle >= 123.75) && (left == false)){
-			animation = &RedMachine__45;
-		}
-		else if ((angle <= 168.75) && (angle >= 146.25) && (left == false)){
-			animation = &RedMachine__22_5;
-		}
-		else if ((angle <= 180) && (angle >= 168.75) && (left == false)){
-			animation = &RedMachine__0;
-		}
-
-		//Left
-		else if ((angle <= 11.25) && (angle >= 0) && (left == true)){
-			animation = &RedMachine__180;
-		}
-		else if ((angle <= 33.75) && (angle >= 11.25) && (left == true)){
-			animation = &RedMachine__202_5;
-		}
-		else if ((angle <= 56.25) && (angle >= 33.75) && (left == true)){
-			animation = &RedMachine__225;
-		}
-		else if ((angle <= 78.75) && (angle >= 56.25) && (left == true)){
-			animation = &RedMachine__247_5;
-		}
-		else if ((angle <= 101.25) && (angle >= 78.75) && (left == true)){
-			animation = &RedMachine__270;
-		}
-		else if ((angle <= 123.75) && (angle >= 101.25) && (left == true)){
-			animation = &RedMachine__292_5;
-		}
-		else if ((angle <= 146.25) && (angle >= 123.75) && (left == true)){
-			animation = &RedMachine__315;
-		}
-		else if ((angle <= 168.75) && (angle >= 146.25) && (left == true)){
-			animation = &RedMachine__337_5;
-		}
-		else if ((angle <= 180) && (angle >= 168.75) && (left == true)){
-			animation = &RedMachine__0;
+			}
 		}
 	}
-	*/
+
+
+
+
+
+
+
 	position.y = original_y;
 	position.x = original_x;
 }
