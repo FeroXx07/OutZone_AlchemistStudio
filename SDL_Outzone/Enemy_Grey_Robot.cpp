@@ -109,14 +109,15 @@ void Enemy_GreyRobot::Move()
 	
 	if ((original_y >= (App->render->camera.y / 2) - RANGE) && (position.y <= (App->render->camera.y / 2) + 340 - RANGE)){
 		//left or right of the turret
-		if (original_y == -150)
+		if (original_y == -50)
 		{
-			if (position.y < -50){
-				position.y += 2;
+			if (position.y < 50){
+				position.y += 1;
 			}
-			else if (position.y < -55 && position.x > 30){
+			else if ( position.x > -30){
 
-				position.x -= 1;
+				position.x += 1;
+				position.y += 1;
 			}
 		}
 		else if (original_y == -170 )
@@ -213,13 +214,13 @@ void Enemy_GreyRobot::Move()
 			animation = &GRobot__sa;
 		}
 		else if ((angle <= 78.75) && (angle >= 56.25) && (left == true)){
-			animation = &GRobot__sa;
+			animation = &GRobot__a;
 		}
 		else if ((angle <= 101.25) && (angle >= 78.75) && (left == true)){
 			animation = &GRobot__a;
 		}
 		else if ((angle <= 123.75) && (angle >= 101.25) && (left == true)){
-			animation = &GRobot__wa;
+			animation = &GRobot__a;
 		}
 		else if ((angle <= 146.25) && (angle >= 123.75) && (left == true)){
 			animation = &GRobot__wa;
