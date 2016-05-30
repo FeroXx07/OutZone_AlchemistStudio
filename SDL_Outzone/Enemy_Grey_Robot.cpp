@@ -129,10 +129,17 @@ void Enemy_GreyRobot::Move()
 			position.y += 1;
 			//position.x = position.x-1;
 		}
-		else if (original_y == -300 || original_y == -302 || original_y == -305)
+		else if (original_y == -350 || original_y == -330 || original_y == -310)
 		{
-			position.y += 1;
-			position.x = position.x - 1;
+			if (position.x > 160)
+			{
+				position.x = position.x - 1;
+			}
+			else if (position.y < -50)
+			{
+				position.y = position.y + 1;
+			}
+			
 		}
 		else if (original_y == -301)
 		{
