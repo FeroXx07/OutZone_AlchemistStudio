@@ -135,7 +135,9 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::ORANGEROBOT, 50, 100);
 	App->enemies->AddEnemy(ENEMY_TYPES::PURPLEMACHINE, 50, 50);*/
 	App->enemies->AddEnemy(ENEMY_TYPES::ORANGEROBOT, 200, -480);
-	App->enemies->AddEnemy(ENEMY_TYPES::ORANGEROBOT, 210, -480);
+	App->enemies->AddEnemy(ENEMY_TYPES::ORANGEROBOT, 250, -480);
+	App->enemies->AddEnemy(ENEMY_TYPES::ORANGEROBOT, 300, -480);
+	App->enemies->AddEnemy(ENEMY_TYPES::ORANGEROBOT, 350, -480);
 	//BOX
 	//App->enemies->AddEnemy(ENEMY_TYPES::CHANGEAIM, 90, -100);
 	
@@ -242,7 +244,7 @@ bool ModuleSceneSpace::Start()
 
 
 
-	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, -30, -3500);
+	App->enemies->AddEnemy(ENEMY_TYPES::BLUEMACHINE, -50, -3500);
 	
 	
 

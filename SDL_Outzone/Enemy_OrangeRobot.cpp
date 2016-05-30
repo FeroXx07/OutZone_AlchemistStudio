@@ -40,7 +40,6 @@ void Enemy_OrangeRobot::Move()
 
 	if ((original_y >= (App->render->camera.y / 2) - RANGE) && (original_y <= (App->render->camera.y / 2) + 340 - RANGE)){
 		if (currentTime > (lastTime + ENEMYMOVEDELAY)){
-			if (original_x == 200 && original_y == -480){
 				if (position.x > 100){
 					position.x -= 2;
 				}
@@ -51,44 +50,10 @@ void Enemy_OrangeRobot::Move()
 
 				}
 				lastTime = currentTime;
-				lastTime2 = currentTime;
-			}
 
-			if (currentTime2>(lastTime + ENEMYACTIVATIONDELAY)){
-				if (currentTime > (lastTime + ENEMYMOVEDELAY)){
-					if (original_x == 210 && original_y == -480){
-						if (position.x > 100){
-							position.x -= 2;
-						}
-						else{
-
-							position.y -= 1;
-							position.x -= 2;
-
-						}
-
-					}
-				}
-
-				lastTime = currentTime;
-				lastTime2 = currentTime2;
-			}
-			//lastTime2 = currentTime2;
+			
 		}
 	}
-	
-	/*if (original_x < original_x+20){
-		original_x += 5;
-		i++;
-	}
-	if (i < 10){
-		original_y -= 1;
-	}
-	else{
-		original_y += 1;
-	}*/
-	
-
 }
 
 void Enemy_OrangeRobot::Shoot()
