@@ -502,6 +502,20 @@ ModuleParticles::ModuleParticles()
 
 	enemyshoot.anim.PushBack({ 282, 36, 6, 6 });
 	enemyshoot.life = enemyshootlife;
+
+	bosslaser1.anim.PushBack({ 12, 302, 24, 24 });
+	bosslaser1.anim.PushBack({ 45, 302, 24, 24 });
+	bosslaser1.anim.speed = 0.2f;
+	bosslaser2.speed.x = 0;
+	bosslaser2.speed.y = -5;
+	bosslaser1.life = 5000;
+
+	bosslaser2.anim.PushBack({ 12, 302, 24, 24 });
+	bosslaser2.anim.PushBack({ 45, 302, 24, 24 });
+	bosslaser2.anim.speed = 0.2f;
+	bosslaser2.speed.x = 5;
+	bosslaser2.speed.y = 0;
+	bosslaser2.life = 5000;
 }
 
 ModuleParticles::~ModuleParticles()

@@ -31,7 +31,7 @@ Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 
 	animation = &Bosslvl2move;
 
-	collider = App->collision->AddCollider({ 0, 0, 30, 30 }, COLLIDER_TYPE::COLLIDER_PURPLE_MACHINE, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 200, 200 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;
@@ -39,7 +39,6 @@ Enemy_Boss::Enemy_Boss(int x, int y) : Enemy(x, y)
 
 void Enemy_Boss::Move()
 {
-	unsigned int currentTime = 0;
 	currentTime = SDL_GetTicks();
 
 	if (App->render->camera.y <= -10376){
@@ -144,9 +143,13 @@ void Enemy_Boss::Move()
 				position.y = -5188;
 			}
 			else if (currentTime >= (lastTime + 1500)){
-				movement = 1;
+				movement = 11;
 				animation = &Bosslvl2move;
 				lastTime = currentTime;
+				//To do the loop
+				movement = 1;
+				lastTime2 = SDL_GetTicks();
+				lasershoot = 1;
 			}
 			break;
 		case 11:
@@ -189,6 +192,37 @@ void Enemy_Boss::Move()
 
 void Enemy_Boss::Shoot()
 {
-	
-
+	currentTime = SDL_GetTicks();
+	if (App->render->camera.y <= -10376){
+		if (firstlaser == true){
+			lastTime2 = SDL_GetTicks();
+			firstlaser = false;
+			lasershoot = 1;
+		}
+		/*
+		switch (lasershoot){
+		case 1:
+			if (currentTime > (lastTime2 + 11330)){
+				App->particles->AddParticle(App->particles->bosslaser1, position.x + 100, position.y + 100, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->bosslaser2, position.x + 100, position.y + 100, COLLIDER_ENEMY_SHOT);
+				lasershoot = 2;
+			}
+			break;
+		case 2:
+			if (currentTime > (lastTime2 + 19100)){
+				App->particles->AddParticle(App->particles->bosslaser1, position.x + 100, position.y + 100, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->bosslaser2, position.x + 100, position.y + 100, COLLIDER_ENEMY_SHOT);
+				lasershoot = 3;
+			}
+			break;
+		case 3:
+			if (currentTime > (lastTime2 + 26970)){
+				App->particles->AddParticle(App->particles->bosslaser1, position.x + 100, position.y + 100, COLLIDER_ENEMY_SHOT);
+				App->particles->AddParticle(App->particles->bosslaser2, position.x + 100, position.y + 100, COLLIDER_ENEMY_SHOT);
+				lasershoot = 0;
+			}
+			break;
+		}
+		*/
+	}
 }

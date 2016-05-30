@@ -13,13 +13,17 @@ private:
 	int original_y = 0;
 	int original_x = 0;
 	unsigned int lastTime = 0;
+	unsigned int lastTime2 = 0;
 	bool firsttime = true;
+	bool firstlaser = true;
+	unsigned int currentTime = 0;
 	Animation Bosslvl2idle;
 	Animation Bosslvl2move;
 	int count;
 
 public:
 	int movement = 0;
+	int lasershoot = 0;
 
 public:
 	Enemy_Boss(int x, int y);

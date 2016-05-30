@@ -144,6 +144,9 @@ public:
 	Particle Rightthreeshoottwopowerup;
 
 	Particle enemyshoot;
+
+	Particle bosslaser1;
+	Particle bosslaser2;
 };
 
 #endif // __MODULEPARTICLES_H__
