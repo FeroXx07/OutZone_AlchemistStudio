@@ -24,7 +24,7 @@ Enemy_Rollingrobot::Enemy_Rollingrobot(int x, int y) : Enemy(x, y)
 	Rollingrobot.speed = 0.09f;
 	animation = &Rollingrobot;
 
-	collider = App->collision->AddCollider({ 0, 0, 44, 42 }, COLLIDER_TYPE::COLLIDER_ENEMY, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 44, 42 }, COLLIDER_TYPE::COLLIDER_ROLLINGROBOT, (Module*)App->enemies);
 
 	original_y = y;
 	original_x = x;

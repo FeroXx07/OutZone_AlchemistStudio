@@ -90,7 +90,7 @@ public:
 	int orangerobothits = 0;
 	int turret1hits = 0;
 	int turret3hits = 0;
-	int rollingrobot = 0;
+	int rollingrobothits = 0;
 };
 
 #endif // __ModuleEnemies_H__
