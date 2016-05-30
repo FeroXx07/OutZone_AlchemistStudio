@@ -257,6 +257,7 @@ bool ModuleSceneSpace::Start()
 
 	//Boss
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSS, 15, -5403);
+	App->enemies->AddEnemy(ENEMY_TYPES::EYEBOSS, 95, -5340);
 
 	return true; 
 }
