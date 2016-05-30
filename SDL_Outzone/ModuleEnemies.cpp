@@ -266,7 +266,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				break;
 			}
 			else if ((c1->type == COLLIDER_ROLLINGROBOT) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER))){
-				rollingrobothits++;
+ 				rollingrobothits++;
 				if (rollingrobothits >= 3){
 					App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
 					delete enemies[i];
