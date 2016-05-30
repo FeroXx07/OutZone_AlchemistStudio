@@ -503,6 +503,15 @@ ModuleParticles::ModuleParticles()
 	enemyshoot.anim.PushBack({ 282, 36, 6, 6 });
 	enemyshoot.life = enemyshootlife;
 
+	enemymissile.anim.PushBack({ 4, 256, 16, 32 });
+	enemymissile.anim.PushBack({ 22, 256, 16, 32 });
+	enemymissile.anim.PushBack({ 40, 256, 16, 32 });
+	enemymissile.anim.PushBack({ 56, 256, 16, 32 });
+	enemymissile.anim.speed = 0.1f;
+	enemymissile.anim.loop = true;
+	enemymissile.speed.y = 3;
+	enemymissile.life = enemyshootlife;
+
 	bosslaser1.anim.PushBack({ 12, 302, 24, 24 });
 	bosslaser1.anim.PushBack({ 45, 302, 24, 24 });
 	bosslaser1.anim.speed = 0.2f;

@@ -144,6 +144,7 @@ public:
 	Particle Rightthreeshoottwopowerup;
 
 	Particle enemyshoot;
+	Particle enemymissile;
 
 	Particle bosslaser1;
 	Particle bosslaser2;
