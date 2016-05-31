@@ -1063,6 +1063,9 @@ void ModuleCollision::DebugDraw()
 			case COLLIDER_SPSHIELD:
 				App->render->DrawQuad(colliders[i]->rect, 240, 140, 255, alpha);
 				break;
+			case COLLIDER_POWERUP:
+				App->render->DrawQuad(colliders[i]->rect, 255, 0, 150, alpha);
+				break;
 			case COLLIDER_BOSS:
 				App->render->DrawQuad(colliders[i]->rect, 90, 90, 90, alpha);
 				break;
