@@ -113,6 +113,7 @@ void Enemy_GeenRobot::Move()
 		{
 				position.y += 1;
 		}
+
 		else if (original_y == -1420)
 		{
 				position.y += 1;
@@ -123,7 +124,7 @@ void Enemy_GeenRobot::Move()
 			if (original_x < 50)
 			{
 				position.y += 1;
-				if (position.y > -1540)
+				if (position.y > -1520)
 				{
 					position.y -= 1;
 					position.x = position.x + 1;
@@ -132,16 +133,103 @@ void Enemy_GeenRobot::Move()
 			else if (original_x > 50)
 			{
 				position.y += 1;
-				if (position.y > -1540)
+				if (position.y > -1555)
 				{
 					position.y -= 1;
 					position.x = position.x - 1;
 				}
 			}
 		}
-		/*else if ()
+
+		else if (original_y == -2750)
 		{
-		}*/
+			if (original_x < 100)
+			{
+				position.y += 1;
+				if (position.y > -2690)
+				{
+					position.x = position.x - 1;
+				}
+			}
+			else if (original_x > 100)
+			{
+				position.y += 1;
+				if (position.y > -2690)
+				{
+					position.x = position.x + 1;
+				}
+			}
+		}
+
+		else if (original_y == -2900)
+		{
+			if (original_x < 60)
+			{
+				position.y += 1;
+				if (position.y > -2770)
+				{
+					position.y -= 1;
+					position.x = position.x + 1;
+				}
+			}
+			else if (original_x > 60 && original_x < 130)
+			{
+				position.y += 1;
+			}
+			else if (original_x > 130)
+			{
+				position.y += 1;
+				if (position.y > -2730)
+				{
+					position.y -= 1;
+					position.x = position.x - 1;
+				}
+			}
+		}
+
+		else if (original_y == -3100)
+		{
+			if (original_x < 90)
+			{
+				position.y += 1;
+				if (position.y > -2950)
+				{
+					position.y -= 1;
+					position.x = position.x - 1;
+					if (position.x < 10)
+					{
+						position.y += 1;
+						position.x = position.x + 1;
+					}
+				}
+			}
+			else if (original_x > 90)
+			{
+				position.y += 1;
+				if (position.y > -2950)
+				{
+					position.y -= 1;
+					position.x = position.x + 1;
+					if (position.x > 200)
+					{
+						position.y += 1;
+						position.x = position.x - 1;
+					}
+				}
+			}
+		}
+
+		else if (original_y == -3950)
+		{
+			if (position.x > 60)
+			{
+				position.x += 1;
+			}
+			if (position.x < 60)
+			{
+				position.x -= 1;
+			}
+		}
 
 		//position.x += 1;
 		if (App->player->position.x >= position.x){

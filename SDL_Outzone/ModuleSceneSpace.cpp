@@ -264,6 +264,32 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 175, -1610);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 205, -1610);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 30, -2750);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 80, -2750);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 140, -2750);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 190, -2750);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, -5, -2900);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 22, -2900);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 98, -2900);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 120, -2900);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 198, -2900);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 80, -3100);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 140, -3100);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 50, -3950);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 160, -3950);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 0, -4220);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 40, -4220);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 160, -4220);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 55, -4520);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 150, -4520);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 150, -4600);
+
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYROBOT, 0, -50);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYROBOT, 30, -50);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYROBOT, 60, -50);
