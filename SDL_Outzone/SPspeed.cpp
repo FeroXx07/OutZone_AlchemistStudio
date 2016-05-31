@@ -9,10 +9,10 @@
 SPspeed::SPspeed(int x, int y) : Enemy(x, y)
 {
 	live = 100;
-	spspeed.PushBack({ 0, 1203, 16, 16 });
-	spspeed.PushBack({ 16, 1203, 16, 16 });
+	spspeed.PushBack({ 47, 1179, 24, 24 });
+	spspeed.PushBack({ 71, 1179, 24, 24 });
 	spspeed.speed = 0.2f;
-	collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_CHANGEAIM, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_SPSPEED, (Module*)App->enemies);
 	animation = &spspeed;
 	original_y = y;
 	original_x = x;

@@ -289,6 +289,9 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSAIM, 168, -5313);
 	App->enemies->AddEnemy(ENEMY_TYPES::BOSSAIM, 48, -5313);
 
+	//Test
+	App->enemies->AddEnemy(ENEMY_TYPES::SPSPEED, 100, 0);
+
 	return true; 
 }
 

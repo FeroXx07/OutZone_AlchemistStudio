@@ -1317,7 +1317,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				break;
 			case COLLIDER_CHANGEAIM:
 				changetaim = !changetaim;
-
+				break;
+			case COLLIDER_SPSPEED:
+				SPSpeed = true;
 				break;
 			case COLLIDER_ENERGY:
 				playerlife += 20;
