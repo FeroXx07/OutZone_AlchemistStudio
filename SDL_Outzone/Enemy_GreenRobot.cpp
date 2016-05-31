@@ -35,59 +35,59 @@ Enemy_GeenRobot::Enemy_GeenRobot(int x, int y) : Enemy(x, y)
 	GRobot__315.PushBack({ 200, 0, 40, 40 });
 	GRobot__337_5.PushBack({ 240, 0, 40, 40 });
 
-	GRobot__w.PushBack({ 160, 200, 40, 40 });
-	GRobot__w.PushBack({ 200, 200, 40, 40 });
-	GRobot__w.PushBack({ 240, 200, 40, 40 });
-	GRobot__w.PushBack({ 280, 200, 40, 40 });
+	GRobot__w.PushBack({ 160, 900, 40, 40 });
+	GRobot__w.PushBack({ 200, 900, 40, 40 });
+	GRobot__w.PushBack({ 240, 900, 40, 40 });
+	GRobot__w.PushBack({ 280, 900, 40, 40 });
 	GRobot__w.loop = true;
 	GRobot__w.speed = 0.1f;
 
-	GRobot__wa.PushBack({ 160, 80, 40, 40 });
-	GRobot__wa.PushBack({ 200, 80, 40, 40 });
-	GRobot__wa.PushBack({ 240, 80, 40, 40 });
-	GRobot__wa.PushBack({ 280, 80, 40, 40 });
+	GRobot__wa.PushBack({ 0, 860, 40, 40 });
+	GRobot__wa.PushBack({ 40, 860, 40, 40 });
+	GRobot__wa.PushBack({ 80, 860, 40, 40 });
+	GRobot__wa.PushBack({ 120, 860, 40, 40 });
 	GRobot__wa.loop = true;
 	GRobot__wa.speed = 0.1f;
 
-	GRobot__wd.PushBack({ 0, 80, 40, 40 });
-	GRobot__wd.PushBack({ 40, 80, 40, 40 });
-	GRobot__wd.PushBack({ 80, 80, 40, 40 });
-	GRobot__wd.PushBack({ 120, 80, 40, 40 });
+	GRobot__wd.PushBack({ 160, 782, 40, 40 });
+	GRobot__wd.PushBack({ 200, 782, 40, 40 });
+	GRobot__wd.PushBack({ 240, 782, 40, 40 });
+	GRobot__wd.PushBack({ 280, 782, 40, 40 });
 	GRobot__wd.loop = true;
 	GRobot__wd.speed = 0.1f;
 
-	GRobot__a.PushBack({ 160, 120, 40, 40 });
-	GRobot__a.PushBack({ 200, 120, 40, 40 });
-	GRobot__a.PushBack({ 240, 120, 40, 40 });
-	GRobot__a.PushBack({ 280, 120, 40, 40 });
+	GRobot__a.PushBack({ 120, 822, 40, 40 });
+	GRobot__a.PushBack({ 160, 822, 40, 40 });
+	GRobot__a.PushBack({ 200, 822, 40, 40 });
+	GRobot__a.PushBack({ 240, 822, 40, 40 });
 	GRobot__a.loop = true;
 	GRobot__a.speed = 0.1f;
 
-	GRobot__s.PushBack({ 0, 200, 40, 40 });
-	GRobot__s.PushBack({ 40, 200, 40, 40 });
-	GRobot__s.PushBack({ 80, 200, 40, 40 });
-	GRobot__s.PushBack({ 120, 200, 40, 40 });
+	GRobot__s.PushBack({ 0, 900, 40, 40 });
+	GRobot__s.PushBack({ 40, 900, 40, 40 });
+	GRobot__s.PushBack({ 80, 900, 40, 40 });
+	GRobot__s.PushBack({ 120, 900, 40, 40 });
 	GRobot__s.loop = true;
 	GRobot__s.speed = 0.1f;
 
-	GRobot__sa.PushBack({ 160, 160, 40, 40 });
-	GRobot__sa.PushBack({ 200, 160, 40, 40 });
-	GRobot__sa.PushBack({ 240, 160, 40, 40 });
-	GRobot__sa.PushBack({ 280, 160, 40, 40 });
+	GRobot__sa.PushBack({ 0, 782, 40, 40 });
+	GRobot__sa.PushBack({ 40, 782, 40, 40 });
+	GRobot__sa.PushBack({ 80, 782, 40, 40 });
+	GRobot__sa.PushBack({ 120, 782, 40, 40 });
 	GRobot__sa.loop = true;
 	GRobot__sa.speed = 0.1f;
 
-	GRobot__sd.PushBack({ 0, 160, 40, 40 });
-	GRobot__sd.PushBack({ 40, 160, 40, 40 });
-	GRobot__sd.PushBack({ 80, 160, 40, 40 });
-	GRobot__sd.PushBack({ 160, 160, 40, 40 });
+	GRobot__sd.PushBack({ 160, 860, 40, 40 });
+	GRobot__sd.PushBack({ 200, 860, 40, 40 });
+	GRobot__sd.PushBack({ 240, 860, 40, 40 });
+	GRobot__sd.PushBack({ 280, 860, 40, 40 });
 	GRobot__sd.loop = true;
 	GRobot__sd.speed = 0.1f;
 
-	GRobot__d.PushBack({ 0, 120, 40, 40 });
-	GRobot__d.PushBack({ 40, 120, 40, 40 });
-	GRobot__d.PushBack({ 120, 120, 40, 40 });
-	GRobot__d.PushBack({ 160, 120, 40, 40 });
+	GRobot__d.PushBack({ 0, 820, 40, 40 });
+	GRobot__d.PushBack({ 40, 820, 40, 40 });
+	GRobot__d.PushBack({ 80, 820, 40, 40 });
+	GRobot__d.PushBack({ 280, 820, 40, 40 });
 	GRobot__d.loop = true;
 	GRobot__d.speed = 0.1f;
 
@@ -109,31 +109,15 @@ void Enemy_GeenRobot::Move()
 
 	if ((original_y >= (App->render->camera.y / 2) - RANGE) && (position.y <= (App->render->camera.y / 2) + 340 - RANGE)){
 		//left or right of the turret
-		if (original_y == -150)
-		{
-			if (position.y < -20){
-				position.y += 2;
-			}
-			else if (position.y < -55 && position.x > 30){
 
-				position.x -= 1;
-			}
-		}
-		else if (original_y == -170)
-		{
-			position.y += 1;
-			position.x -= 2;
-		}
 
-		position.x += 1;
+		//position.x += 1;
 		if (App->player->position.x >= position.x){
 			left = false;
 		}
 		else{
 			left = true;
 		}
-
-
 
 		angle = ((float)acos((((App->player->position.x - original_x) * 0) + ((App->player->position.y - original_y) * 1)) / (sqrt((double)((App->player->position.x - original_x)*(App->player->position.x - original_x) + (App->player->position.y - original_y)*(App->player->position.y - original_y)))*sqrt((double)(0 * 0 + 1 * 1))))) * ANGLE_CONVERT;
 

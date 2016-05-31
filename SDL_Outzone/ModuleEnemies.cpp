@@ -13,6 +13,7 @@
 #include "Enemy_tank.h"
 #include "Enemy_Door.h"
 #include"Enemy_Grey_Robot.h"
+#include"Enemy_GreenRobot.h"
 #include"Enemy_RedMachine.h"
 #include"Enemy_BlueMachine.h"
 #include"Enemy_OrangeRobot.h"
@@ -178,6 +179,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 			case ENEMY_TYPES::GREYROBOT:
 				enemies[i] = new Enemy_GreyRobot(info.x, info.y);
+				break;
+
+			case ENEMY_TYPES::GREENROBOT:
+				enemies[i] = new Enemy_GeenRobot(info.x, info.y);
 				break;
 
 			case ENEMY_TYPES::REDMACHINE:
