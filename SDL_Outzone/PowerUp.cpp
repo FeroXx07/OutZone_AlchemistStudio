@@ -12,7 +12,7 @@ Powerup::Powerup(int x, int y) : Enemy(x, y)
 	powerup.PushBack({ 64, 1203, 16, 16 });
 	powerup.PushBack({ 80, 1203, 16, 16 });
 	powerup.speed = 0.2f;
-	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_POWERUP, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_POWERUP, (Module*)App->enemies);
 	animation = &powerup;
 	original_y = y;
 	original_x = x;
