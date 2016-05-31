@@ -80,7 +80,7 @@ Enemy_GreyRobot::Enemy_GreyRobot(int x, int y) : Enemy(x, y)
 	GRobot__sd.PushBack({ 0, 160, 40, 40 });
 	GRobot__sd.PushBack({ 40, 160, 40, 40 });
 	GRobot__sd.PushBack({ 80, 160, 40, 40 });
-	GRobot__sd.PushBack({ 160, 160, 40, 40 });
+	//GRobot__sd.PushBack({ 160, 160, 40, 40 });
 	GRobot__sd.loop = true;
 	GRobot__sd.speed = 0.1f;
 
@@ -175,62 +175,34 @@ void Enemy_GreyRobot::Move()
 		//LOG("Angle %.2f", angle);
 
 		//Right
-		if ((angle <= 11.25) && (angle >= 0) && (left == false)){
+		if (App->player->position.x == position.x && App->player->position.y > position.y){
 			animation = &GRobot__s;
 		}
-		else if ((angle <= 33.75) && (angle >= 11.25) && (left == false)){
+		else if (App->player->position.x > position.x && App->player->position.y > position.y){
 			animation = &GRobot__sd;
 		}
-		else if ((angle <= 56.25) && (angle >= 33.75) && (left == false)){
-			animation = &GRobot__sd;
-		}
-		else if ((angle <= 78.75) && (angle >= 56.25) && (left == false)){
-			animation = &GRobot__sd;
-		}
-		else if ((angle <= 101.25) && (angle >= 78.75) && (left == false)){
+		
+		else if (App->player->position.x > position.x && App->player->position.y == position.y){
 			animation = &GRobot__d;
 		}
-		else if ((angle <= 123.75) && (angle >= 101.25) && (left == false)){
+		else if (App->player->position.x > position.x && App->player->position.y < position.y){
 			animation = &GRobot__wd;
 		}
-		else if ((angle <= 146.25) && (angle >= 123.75) && (left == false)){
-			animation = &GRobot__wd;
-		}
-		else if ((angle <= 168.75) && (angle >= 146.25) && (left == false)){
-			animation = &GRobot__wd;
-		}
-		else if ((angle <= 180) && (angle >= 168.75) && (left == false)){
+		else if (App->player->position.x == position.x && App->player->position.y < position.y){
 			animation = &GRobot__w;
 		}
-
 		//Left
-		else if ((angle <= 11.25) && (angle >= 0) && (left == true)){
-			animation = &GRobot__s;
-		}
-		else if ((angle <= 33.75) && (angle >= 11.25) && (left == true)){
+		else if (App->player->position.x < position.x && App->player->position.y > position.y){
 			animation = &GRobot__sa;
 		}
-		else if ((angle <= 56.25) && (angle >= 33.75) && (left == true)){
-			animation = &GRobot__sa;
-		}
-		else if ((angle <= 78.75) && (angle >= 56.25) && (left == true)){
+		else if (App->player->position.x < position.x && App->player->position.y == position.y){
 			animation = &GRobot__a;
 		}
-		else if ((angle <= 101.25) && (angle >= 78.75) && (left == true)){
-			animation = &GRobot__a;
-		}
-		else if ((angle <= 123.75) && (angle >= 101.25) && (left == true)){
-			animation = &GRobot__a;
-		}
-		else if ((angle <= 146.25) && (angle >= 123.75) && (left == true)){
+		else if (App->player->position.x < position.x && App->player->position.y < position.y){
 			animation = &GRobot__wa;
 		}
-		else if ((angle <= 168.75) && (angle >= 146.25) && (left == true)){
-			animation = &GRobot__wa;
-		}
-		else if ((angle <= 180) && (angle >= 168.75) && (left == true)){
-			animation = &GRobot__w;
-		}
+		
+		
 	}
 	
 }
