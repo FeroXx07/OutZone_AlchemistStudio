@@ -231,6 +231,27 @@ void Enemy_GeenRobot::Move()
 			}
 		}
 
+		else if (original_y == -4220)
+		{
+			if (original_x == 0)
+			{
+				position.y += 1;
+				if (position.y > -4100)
+				{
+					position.y -= 1;
+					position.x = position.x - 1;
+				}
+			}
+			if (original_x == 35)
+			{
+				position.y += 1;
+			}
+			if (original_x == 160)
+			{
+				position.y += 1;
+			}
+		}
+
 		//position.x += 1;
 		if (App->player->position.x >= position.x){
 			left = false;
