@@ -30,6 +30,7 @@
 #include"Enemy_BossAim.h"
 #include"Enemy_BossEye.h"
 #include"ModuleFadeToBlack.h"
+#include"SPspeed.h"
 #define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()
@@ -233,6 +234,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 				
 			case ENEMY_TYPES::BOX:
 				enemies[i] = new Box(info.x, info.y);
+				break;
+
+			case ENEMY_TYPES::SPSPEED:
+				enemies[i] = new SPspeed(info.x, info.y);
 				break;
 
 			case ENEMY_TYPES::BIGREDMACHINE:

@@ -699,6 +699,31 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_ROLLINGROBOT][COLLIDER_BOSSWEAPON] = false;
 	
 
+	matrix[COLLIDER_SPSPEED][COLLIDER_WALL] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_PLAYER] = true;
+	matrix[COLLIDER_SPSPEED][COLLIDER_ENEMY] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_PLAYER_SHOT] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_ENEMY_SHOT] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_BOMB] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_DOOR] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_WALL2] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_HOLE] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_BOX] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_SHIELD] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_GREY_ROBOT] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_BIG_RED_MACHINE] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_BLUE_MACHINE] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_ORANGE_ROBOT] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_PURPLE_MACHINE] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_TURRET1] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_TURRET3] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_RED_MACHINE] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_STOP_SHOTS] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_ENERGY] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_BOSS] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_BOSSWEAPON] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_BOSSEYE] = false;
+	matrix[COLLIDER_SPSPEED][COLLIDER_ROLLINGROBOT] = false;
 }
 
 // Destructor
@@ -894,6 +919,9 @@ void ModuleCollision::DebugDraw()
 				break;
 			case COLLIDER_ROLLINGROBOT:
 				App->render->DrawQuad(colliders[i]->rect, 220, 60, 0, alpha);
+				break;
+			case COLLIDER_SPSPEED:
+				App->render->DrawQuad(colliders[i]->rect, 0, 125, 255, alpha);
 				break;
 			case COLLIDER_BOSS:
 				App->render->DrawQuad(colliders[i]->rect, 90, 90, 90, alpha);

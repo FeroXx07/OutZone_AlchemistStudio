@@ -1,4 +1,4 @@
-ifndef __SPSPEED_H__
+#ifndef __SPSPEED_H__
 #define __SPSPEED_H__
 
 #include "Enemy.h"
