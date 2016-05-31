@@ -33,6 +33,7 @@
 #include"ModuleFadeToBlack.h"
 #include"SPspeed.h"
 #include"SPshield.h"
+#include"PowerUp.h"
 #define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()
@@ -248,6 +249,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 			case ENEMY_TYPES::SPSHIELD:
 				enemies[i] = new SPshield(info.x, info.y);
+				break;
+
+			case ENEMY_TYPES::POWERUP:
+				enemies[i] = new Powerup(info.x, info.y);
 				break;
 
 			case ENEMY_TYPES::BIGREDMACHINE:
