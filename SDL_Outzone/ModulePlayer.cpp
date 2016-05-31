@@ -11,6 +11,7 @@
 #include"ModuleSceneSpace.h"
 #include "ModuleEnemies.h"
 #include "ModuleUI.h"
+#include "ModuleEffects.h"
 #include "SDL/include/SDL_timer.h"
 #include <stdio.h>
 
@@ -1320,6 +1321,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				break;
 			case COLLIDER_SPSPEED:
 				SPSpeed = true;
+				break;
+				App->effects->shieldactive = true;
 				break;
 			case COLLIDER_ENERGY:
 				playerlife += 20;

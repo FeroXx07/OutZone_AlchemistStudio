@@ -9,10 +9,10 @@
 SPshield::SPshield(int x, int y) : Enemy(x, y)
 {
 	live = 100;
-	spshield.PushBack({ 0, 1203, 16, 16 });
-	spshield.PushBack({ 16, 1203, 16, 16 });
+	spshield.PushBack({ 143, 1179, 24, 24 });
+	spshield.PushBack({ 167, 1179, 24, 24 });
 	spshield.speed = 0.2f;
-	collider = App->collision->AddCollider({ 0, 0, 16, 16 }, COLLIDER_TYPE::COLLIDER_CHANGEAIM, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_SPSHIELD, (Module*)App->enemies);
 	animation = &spshield;
 	original_y = y;
 	original_x = x;

@@ -428,13 +428,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 				break;
 			}
- 			else if ((c1->type == COLLIDER_CHANGEAIM) && (c2->type == COLLIDER_PLAYER)){
-				delete enemies[i];
-				enemies[i] = nullptr;
-				pointscount += 100;
-				break;
-			}
-			else if ((c1->type == COLLIDER_ENERGY) && (c2->type == COLLIDER_PLAYER)){
+			else if (((c1->type == COLLIDER_CHANGEAIM) || (c1->type == COLLIDER_ENERGY) || (c1->type == COLLIDER_SPSHIELD) || (c1->type == COLLIDER_SPSPEED)) && (c2->type == COLLIDER_PLAYER)){
 				delete enemies[i];
 				enemies[i] = nullptr;
 				pointscount += 100;
@@ -452,9 +446,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 				break;
 			}
-		
-			
-			else if ((c1->type == COLLIDER_BOX) && (c2->type == COLLIDER_PLAYER_SHOT)){
+			else if ((c1->type == COLLIDER_BOX) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB))){
 				App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;
