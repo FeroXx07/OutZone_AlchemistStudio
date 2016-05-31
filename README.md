@@ -69,12 +69,45 @@ M -> Activate the shield
 
 ##Win lose condition
 
-Win -> Achieve the end of the level.
+Win -> Kill the eye of the boss.
 
-Lose -> Get shoot by an enemy.
+Lose -> Get shoot by an enemy or fall down.
 
 
 ##Changelist
+
+###Version 1.0
+
+- Level 2
+
+- God mode keys added
+
+- Movement change
+
+- Weapon 3shots added
+
+- Aded shield, power ups for the weapons and boxes
+
+- New music
+
+- More colliders for every enemy and power up
+
+- Go ahead and bomb fix
+
+- Module effects added
+
+- Colisions fixed.
+
+- Added boss and enemies.
+
+- Added holes
+
+- Added UI
+
+- Added enemy paths
+
+
+###Version 0.5
 
 - Level 1, win screen, lose screen, intro screen implemented.
 
