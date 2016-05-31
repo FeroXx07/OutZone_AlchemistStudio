@@ -1322,6 +1322,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			case COLLIDER_SPSPEED:
 				SPSpeed = true;
 				break;
+			case COLLIDER_SPSHIELD:
 				App->effects->shieldactive = true;
 				break;
 			case COLLIDER_ENERGY:
