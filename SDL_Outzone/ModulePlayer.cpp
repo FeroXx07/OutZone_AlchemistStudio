@@ -1431,6 +1431,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					playerlife = 37;
 				}
 				break;
+			case COLLIDER_BOOMBPICKUP:
+				playerbombsnum++;
+				if (playerbombsnum > 10){
+					playerbombsnum = 10;
+				}
+				break;
 			default:
 				if (Invencible == false){
 					App->player->Disable();

@@ -9,10 +9,10 @@
 BoombPickUp::BoombPickUp(int x, int y) : Enemy(x, y)
 {
 	live = 100;
-	BoombpickUp.PushBack({ 143, 1179, 24, 24 });
-	BoombpickUp.PushBack({ 167, 1179, 24, 24 });
+	BoombpickUp.PushBack({ 245, 1183, 15, 16 });
+	BoombpickUp.PushBack({ 263, 1183, 15, 16 });
 	BoombpickUp.speed = 0.2f;
-	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_SPSHIELD, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 15, 16 }, COLLIDER_TYPE::COLLIDER_BOOMBPICKUP, (Module*)App->enemies);
 	animation = &BoombpickUp;
 	original_y = y;
 	original_x = x;

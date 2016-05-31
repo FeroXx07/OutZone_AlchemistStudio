@@ -450,10 +450,10 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				break;
 			}
 			*/
-			else if (((c1->type == COLLIDER_CHANGEAIM) || (c1->type == COLLIDER_ENERGY) || (c1->type == COLLIDER_SPSHIELD) || (c1->type == COLLIDER_SPSPEED) || (c1->type == COLLIDER_POWERUP)) && (c2->type == COLLIDER_SHIELD)){
+			else if (((c1->type == COLLIDER_CHANGEAIM) || (c1->type == COLLIDER_ENERGY) || (c1->type == COLLIDER_SPSHIELD) || (c1->type == COLLIDER_SPSPEED) || (c1->type == COLLIDER_POWERUP) || (c1->type == COLLIDER_BOOMBPICKUP)) && (c2->type == COLLIDER_SHIELD)){
 				break;
 			}
-			else if (((c1->type == COLLIDER_CHANGEAIM) || (c1->type == COLLIDER_ENERGY) || (c1->type == COLLIDER_SPSHIELD) || (c1->type == COLLIDER_SPSPEED) || (c1->type == COLLIDER_POWERUP)) && (c2->type == COLLIDER_PLAYER)){
+			else if (((c1->type == COLLIDER_CHANGEAIM) || (c1->type == COLLIDER_ENERGY) || (c1->type == COLLIDER_SPSHIELD) || (c1->type == COLLIDER_SPSPEED) || (c1->type == COLLIDER_POWERUP) || (c1->type == COLLIDER_BOOMBPICKUP)) && (c2->type == COLLIDER_PLAYER)){
 				delete enemies[i];
 				enemies[i] = nullptr;
 				pointscount += 100;
