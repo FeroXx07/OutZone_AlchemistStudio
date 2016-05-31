@@ -346,6 +346,10 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::SPSPEED, 100, -1500);
 	App->enemies->AddEnemy(ENEMY_TYPES::SPSPEED, 50, -3150);
 
+	App->enemies->AddEnemy(ENEMY_TYPES::BOOMBPICKUP, 60, -1890);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOOMBPICKUP, 100, -2600);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOOMBPICKUP, 100, -3300);
+	App->enemies->AddEnemy(ENEMY_TYPES::BOOMBPICKUP, 170, -4550);
 	return true; 
 }
 
