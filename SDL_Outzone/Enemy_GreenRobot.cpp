@@ -245,13 +245,54 @@ void Enemy_GeenRobot::Move()
 			if (original_x == 35)
 			{
 				position.y += 1;
+				if (position.y > -4070)
+				{
+					position.y -= 1;
+					position.x = position.x + 1;
+				}
 			}
 			if (original_x == 160)
 			{
 				position.y += 1;
+				if (position.y > -4040)
+				{
+					position.y -= 1;
+					position.x = position.x + 1;
+				}
 			}
 		}
 
+		else if (original_y == -4520)
+		{
+			if (original_x == 63)
+			{
+				position.y -= 1;
+				if (position.y < -4560)
+				{
+					position.y += 1;
+					position.x = position.x + 1;
+				}
+			}
+		}
+
+		else if (original_y == -4840)
+		{
+			if (original_x == 80)
+			{
+				position.x -= 1;
+				
+			}
+			if (original_x == 200)
+			{
+				position.y += 1;
+				if (position.y > -4745)
+				{
+					position.y -= 1;
+					position.x = position.x - 1;
+				}
+
+			}
+		}
 		//position.x += 1;
 		if (App->player->position.x >= position.x){
 			left = false;

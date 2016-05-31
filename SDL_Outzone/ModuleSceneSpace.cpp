@@ -288,7 +288,10 @@ bool ModuleSceneSpace::Start()
 	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 63, -4520);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 133, -4490);
 
-	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 63, -4650);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 64, -4650);
+
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 80, -4840);
+	App->enemies->AddEnemy(ENEMY_TYPES::GREENROBOT, 200, -4840);
 
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYROBOT, 0, -50);
 	App->enemies->AddEnemy(ENEMY_TYPES::GREYROBOT, 30, -50);
