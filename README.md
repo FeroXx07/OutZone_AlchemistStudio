@@ -22,56 +22,56 @@ Unzip the realese folder and execute the .exe file.
 
 ###Movement keys (combine them to go in diagonal):
 
-W,↑ -> Move player up
+W,↑ ➣ Move player up
 
-A,← -> Move player left
+A,← ➣ Move player left
 
-S,↓ -> Move player down
+S,↓ ➣ Move player down
 
-D,→ -> Move player right
+D,→ ➣ Move player right
 
 
 ###Shoot key (hold for automatic triggering):
 
-Space bar -> Shoot
+Space bar ➣ Shoot
 
-X -> Activate one bomb to clean all the enemies in the screen
+X ➣ Activate one bomb to clean all the enemies in the screen
 
 
 ###Debug modes keys:
 
-F1 -> Show colliders
+F1 ➣ Show colliders
 
-F2 -> Inmortal mode
+F2 ➣ Inmortal mode
 
-F3 -> Superspeed mode
+F3 ➣ Superspeed mode
 
-F4 -> Noclip mode
+F4 ➣ Noclip mode
 
-F5 -> Teleportation to the start of the map
+F5 ➣ Teleportation to the start of the map
 
-F6 -> Teleportation to the middle of the map
+F6 ➣ Teleportation to the middle of the map
 
-F7 -> Teleportation to the end of the map
+F7 ➣ Teleportation to the end of the map
 
-F8 -> Block player movement
+F8 ➣ Block player movement
 
-F11 -> Hide "go ahead" signal
+F11 ➣ Hide "go ahead" signal
 
-P -> Change weapon
+P ➣ Change weapon
 
-K -> Weapon +1 power up
+K ➣ Weapon +1 power up
 
-L -> Weapon 0 power up
+L ➣ Weapon 0 power up
 
-M -> Activate the shield
+M ➣ Activate the shield
 
 
 ##Win lose condition
 
-Win -> Kill the eye of the boss.
+Win ➣ Kill the eye of the boss.
 
-Lose -> Get shoot by an enemy or fall down.
+Lose ➣ Get shoot by an enemy or fall down.
 
 
 ##Changelist
@@ -139,7 +139,7 @@ https://github.com/nicobabot/OutZone_AlchemistStudio/wiki
 
 ##Project web
 
-
+http://nicobabot.github.io/OutZone_AlchemistStudio/
 
 ## Credits
 
