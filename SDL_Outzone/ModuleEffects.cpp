@@ -100,6 +100,9 @@ bool ModuleEffects::CleanUp()
 
 update_status ModuleEffects::Update()
 {
+	unsigned int currentTime = 0;
+	currentTime = SDL_GetTicks();
+
 	//god
 	if ((App->player->Invencible == true) || (App->player->Superspeed == true) || (App->player->Fly == true)){
 		effect1 = &god;
@@ -184,12 +187,18 @@ update_status ModuleEffects::Update()
 	}
 
 	//shield
+	if (shieldactive == true){
+		if (currentTime > (lastTime + 10000)) {
+			shieldactive = false;
+		}
+	}
 	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN){
 		shieldactive = !shieldactive;
 	}
 	if (shieldactive == true){
 		effect4 = &shield;
 		if (effect4collidercreated == false){
+			lastTime = SDL_GetTicks();
 			shieldcollision = App->collision->AddCollider({ App->player->position.x, App->player->position.y, 38, 38 }, COLLIDER_SHIELD, this);
 			effect4collidercreated = true;
 		}

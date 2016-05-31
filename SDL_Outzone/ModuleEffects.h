@@ -19,6 +19,7 @@ public:
 	bool CleanUp();
 
 public:
+	unsigned int lastTime = 0;
 	bool bombactive = false;
 	bool goaheadfirstloop = true;
 	unsigned int goaheadcurrenttime = 0;
