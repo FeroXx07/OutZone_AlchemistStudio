@@ -1329,6 +1329,17 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			case COLLIDER_SPSHIELD:
 				App->effects->shieldactive = true;
 				break;
+			case COLLIDER_POWERUP:
+				if (poweruplevel == 0){
+					poweruplevel = 1;
+				}
+				else if (poweruplevel == 1){
+					poweruplevel = 2;
+				}
+				else{
+					poweruplevel = 2;
+				}
+				break;
 			case COLLIDER_ENERGY:
 				playerlife += 20;
 				if (playerlife > 37){

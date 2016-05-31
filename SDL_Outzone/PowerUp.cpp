@@ -9,10 +9,10 @@
 Powerup::Powerup(int x, int y) : Enemy(x, y)
 {
 	live = 100;
-	powerup.PushBack({ 143, 1179, 24, 24 });
-	powerup.PushBack({ 167, 1179, 24, 24 });
+	powerup.PushBack({ 64, 1203, 16, 16 });
+	powerup.PushBack({ 80, 1203, 16, 16 });
 	powerup.speed = 0.2f;
-	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_SPSHIELD, (Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 24, 24 }, COLLIDER_TYPE::COLLIDER_POWERUP, (Module*)App->enemies);
 	animation = &powerup;
 	original_y = y;
 	original_x = x;

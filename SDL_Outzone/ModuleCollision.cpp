@@ -503,7 +503,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_HOLE] = false;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_CHANGEAIM] = false;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_BOX] = false;
-	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_SHIELD] = false;
+	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_SHIELD] = true;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_GREY_ROBOT] = false;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_BIG_RED_MACHINE] = false;
 	matrix[COLLIDER_ENEMY_SHOT][COLLIDER_BLUE_MACHINE] = false;
@@ -588,7 +588,7 @@ ModuleCollision::ModuleCollision()
 	matrix[COLLIDER_SHIELD][COLLIDER_PLAYER] = true;
 	matrix[COLLIDER_SHIELD][COLLIDER_ENEMY] = true;
 	matrix[COLLIDER_SHIELD][COLLIDER_PLAYER_SHOT] = true;
-	matrix[COLLIDER_SHIELD][COLLIDER_ENEMY_SHOT] = false;
+	matrix[COLLIDER_SHIELD][COLLIDER_ENEMY_SHOT] = true;
 	matrix[COLLIDER_SHIELD][COLLIDER_BOMB] = true;
 	matrix[COLLIDER_SHIELD][COLLIDER_DOOR] = false;
 	matrix[COLLIDER_SHIELD][COLLIDER_WALL2] = false;
@@ -1017,6 +1017,9 @@ void ModuleCollision::DebugDraw()
 				break;
 			case COLLIDER_BOX:
 				App->render->DrawQuad(colliders[i]->rect, 255, 0, 145, alpha);
+				break;
+			case COLLIDER_SHIELD:
+				App->render->DrawQuad(colliders[i]->rect, 0, 0, 0, alpha);
 				break;
 			case COLLIDER_CHANGEAIM:
 				App->render->DrawQuad(colliders[i]->rect, 190, 250, 90, alpha);

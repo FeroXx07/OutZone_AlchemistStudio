@@ -190,7 +190,7 @@ update_status ModuleEffects::Update()
 	if (shieldactive == true){
 		effect4 = &shield;
 		if (effect4collidercreated == false){
-			shieldcollision = App->collision->AddCollider({ App->player->position.x, App->player->position.y, 38, 38 }, COLLIDER_PLAYER, this);
+			shieldcollision = App->collision->AddCollider({ App->player->position.x, App->player->position.y, 38, 38 }, COLLIDER_SHIELD, this);
 			effect4collidercreated = true;
 		}
 		if (effect4collidercreated == true){

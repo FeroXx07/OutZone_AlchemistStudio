@@ -279,14 +279,14 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 	{
 		if(enemies[i] != nullptr && enemies[i]->GetCollider() == c1)
 		{
-			if ((c1->type == COLLIDER_ENEMY) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER))){
+			if ((c1->type == COLLIDER_ENEMY) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER) || (c2->type == COLLIDER_SHIELD))){
 				App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				enemycount++;
 				break;
 			}
-			else if ((c1->type == COLLIDER_ROLLINGROBOT) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER))){
+			else if ((c1->type == COLLIDER_ROLLINGROBOT) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER) || (c2->type == COLLIDER_SHIELD))){
  				rollingrobothits++;
 				if (rollingrobothits >= 3){
 					App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
@@ -298,7 +298,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 				break;
 			}
-			else if ((c1->type == COLLIDER_GREY_ROBOT) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER))){
+			else if ((c1->type == COLLIDER_GREY_ROBOT) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER) || (c2->type == COLLIDER_SHIELD))){
 				App->particles->AddParticle(App->particles->soldierexplosion, enemies[i]->position.x, enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;
@@ -306,7 +306,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				pointscount += 390;
 				break;
 			}
-			else if ((c1->type == COLLIDER_BIG_RED_MACHINE) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER))){
+			else if ((c1->type == COLLIDER_BIG_RED_MACHINE) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER) || (c2->type == COLLIDER_SHIELD))){
 				bigredmachinehits++;
 				if (bigredmachinehits >= 5){
 					App->particles->AddParticle(App->particles->tankexplosion, enemies[i]->position.x, enemies[i]->position.y);
@@ -318,7 +318,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 				break;
 			}
-			else if ((c1->type == COLLIDER_BLUE_MACHINE) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER))){
+			else if ((c1->type == COLLIDER_BLUE_MACHINE) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER) || (c2->type == COLLIDER_SHIELD))){
 				bluemachinehits++;
 				if (bluemachinehits >= 2){
 					App->particles->AddParticle(App->particles->soldierexplosion, enemies[i]->position.x, enemies[i]->position.y);
@@ -330,7 +330,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 				break;
 			}
-			else if ((c1->type == COLLIDER_ORANGE_ROBOT) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER))){
+			else if ((c1->type == COLLIDER_ORANGE_ROBOT) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER) || (c2->type == COLLIDER_SHIELD))){
   				orangerobothits++;
 				if (orangerobothits >= 2){
 					App->particles->AddParticle(App->particles->soldierexplosion, enemies[i]->position.x, enemies[i]->position.y);
@@ -342,7 +342,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 				break;
 			}
-			else if ((c1->type == COLLIDER_PURPLE_MACHINE) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER))){
+			else if ((c1->type == COLLIDER_PURPLE_MACHINE) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER) || (c2->type == COLLIDER_SHIELD))){
 				App->particles->AddParticle(App->particles->soldierexplosion, enemies[i]->position.x, enemies[i]->position.y);
 				delete enemies[i];
 				enemies[i] = nullptr;
@@ -350,7 +350,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				pointscount += 410;
 				break;
 			}
-			else if ((c1->type == COLLIDER_RED_MACHINE) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER))){
+			else if ((c1->type == COLLIDER_RED_MACHINE) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER) || (c2->type == COLLIDER_SHIELD))){
 				redmachinehits++;
 				if (redmachinehits >= 2){
 					App->particles->AddParticle(App->particles->soldierexplosion, enemies[i]->position.x, enemies[i]->position.y);
@@ -362,7 +362,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 				break;
 			}
-			else if ((c1->type == COLLIDER_TURRET1) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER))){
+			else if ((c1->type == COLLIDER_TURRET1) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER) || (c2->type == COLLIDER_SHIELD))){
 				turret1hits++;
 				if (turret1hits >= 2){
 					App->particles->AddParticle(App->particles->explosionturret, enemies[i]->position.x, enemies[i]->position.y);
@@ -374,7 +374,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 				break;
 			}
-			else if ((c1->type == COLLIDER_TURRET3) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER))){
+			else if ((c1->type == COLLIDER_TURRET3) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER) || (c2->type == COLLIDER_SHIELD))){
 				turret3hits++;
 				if (turret3hits >= 3){
 					App->particles->AddParticle(App->particles->soldierexplosion, enemies[i]->position.x, enemies[i]->position.y);
@@ -386,7 +386,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 				break;
 			}
-			else if ((c1->type == COLLIDER_BOSSEYE) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER))){
+			else if ((c1->type == COLLIDER_BOSSEYE) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER) || (c2->type == COLLIDER_SHIELD))){
 				bosseyehits++;
 				pointscount += 10;
 				if (c2->type == COLLIDER_BOMB){
@@ -418,7 +418,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 				break;
 			}
-			else if ((c1->type == COLLIDER_BOSSWEAPON) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER))){
+			else if ((c1->type == COLLIDER_BOSSWEAPON) && ((c2->type == COLLIDER_PLAYER_SHOT) || (c2->type == COLLIDER_BOMB) || (c2->type == COLLIDER_PLAYER) || (c2->type == COLLIDER_SHIELD))){
 				bossweaponhits++;
 				pointscount += 10;
 				if (c2->type == COLLIDER_BOMB){
@@ -440,7 +440,13 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				}
 				break;
 			}
-			else if (((c1->type == COLLIDER_CHANGEAIM) || (c1->type == COLLIDER_ENERGY) || (c1->type == COLLIDER_SPSHIELD) || (c1->type == COLLIDER_SPSPEED)) && (c2->type == COLLIDER_PLAYER)){
+			else if (((c2->type == COLLIDER_CHANGEAIM) || (c2->type == COLLIDER_ENERGY) || (c2->type == COLLIDER_SPSHIELD) || (c2->type == COLLIDER_SPSPEED) || (c2->type == COLLIDER_POWERUP)) && (c1->type == COLLIDER_SHIELD)){
+				break;
+			}
+			else if (((c1->type == COLLIDER_CHANGEAIM) || (c1->type == COLLIDER_ENERGY) || (c1->type == COLLIDER_SPSHIELD) || (c1->type == COLLIDER_SPSPEED) || (c1->type == COLLIDER_POWERUP)) && (c2->type == COLLIDER_SHIELD)){
+				break;
+			}
+			else if (((c1->type == COLLIDER_CHANGEAIM) || (c1->type == COLLIDER_ENERGY) || (c1->type == COLLIDER_SPSHIELD) || (c1->type == COLLIDER_SPSPEED) || (c1->type == COLLIDER_POWERUP)) && (c2->type == COLLIDER_PLAYER)){
 				delete enemies[i];
 				enemies[i] = nullptr;
 				pointscount += 100;
