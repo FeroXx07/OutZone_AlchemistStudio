@@ -4,6 +4,15 @@ This project is a tribute to the game that Toaplan brought in 1990 for arcade, O
 This project is being done by 4 students of CITM Terrassa (Catalonia/Spain).
 
 
+##Description
+
+Outzone is a shoot'em up game developed by Toaplan in 1990 with seven levels of vertical scrolling, containing many different enemies and a boss at the end of each level, when it is defeated, you can advance to the next level, with difficulty increased.
+
+The plot happens in 2097, mankind is invaded by an alien force from the planet Owagira, and it is up to cyborg soldiers to destroy the invasion force.
+
+The game is endless, when you finish the game, it restarts to the first stage with increased difficulty, so the game allow the player to keep playing until he die, repeating over and over again the seven stages.
+
+
 ## Installation
 
 Unzip the realese folder and execute the .exe file.
@@ -11,19 +20,51 @@ Unzip the realese folder and execute the .exe file.
 
 ## Usage
 
-W -> Go ahead.
+###Movement keys (combine them to go in diagonal):
 
-A -> Go left.
+W,↑ -> Move player up
 
-S -> Go down.
+A,← -> Move player left
 
-D -> Go right.
+S,↓ -> Move player down
 
-You can combine the keys above to use the diagonal movement.
+D,→ -> Move player right
 
-SPACE -> To shoot.
 
-X -> Bomb.
+###Shoot key (hold for automatic triggering):
+
+Space bar -> Shoot
+
+X -> Activate one bomb to clean all the enemies in the screen
+
+
+###Debug modes keys:
+
+F1 -> Show colliders
+
+F2 -> Inmortal mode
+
+F3 -> Superspeed mode
+
+F4 -> Noclip mode
+
+F5 -> Teleportation to the start of the map
+
+F6 -> Teleportation to the middle of the map
+
+F7 -> Teleportation to the end of the map
+
+F8 -> Block player movement
+
+F11 -> Hide "go ahead" signal
+
+P -> Change weapon
+
+K -> Weapon +1 power up
+
+L -> Weapon 0 power up
+
+M -> Activate the shield
 
 
 ##Win lose condition
@@ -61,6 +102,10 @@ Lose -> Get shoot by an enemy.
 ##Project wiki
 
 https://github.com/nicobabot/OutZone_AlchemistStudio/wiki
+
+
+##Project web
+
 
 
 ## Credits
