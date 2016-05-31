@@ -34,6 +34,7 @@
 #include"SPspeed.h"
 #include"SPshield.h"
 #include"PowerUp.h"
+#include "ModuleEffects.h"
 #define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()
@@ -412,7 +413,8 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 					App->player->changetaim = false;
 					App->enemies->onprobot = false;
 					App->enemies->onprobot2 = false;
-
+					App->player->SPSpeed = false;
+					App->effects->shieldactive = false;
 				}
 				break;
 			}

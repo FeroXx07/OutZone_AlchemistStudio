@@ -1229,6 +1229,8 @@ update_status ModulePlayer::Update()
 				poweruplevel = 0;
 				changetaim = false;
 				firsttimedeath = true;
+				SPSpeed = false;
+				App->effects->shieldactive = false;
 			}
 			/*
 			current_animation = &fall;
@@ -1314,6 +1316,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					changetaim = false;
 					App->enemies->onprobot = false;
 					App->enemies->onprobot2 = false;
+					SPSpeed = false;
+					App->effects->shieldactive = false;
 				}
 				break;
 			case COLLIDER_CHANGEAIM:
@@ -1341,6 +1345,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					changetaim = false;
 					App->enemies->onprobot = false;
 					App->enemies->onprobot2 = false;
+					SPSpeed = false;
+					App->effects->shieldactive = false;
 				}
 				break;
 			}
