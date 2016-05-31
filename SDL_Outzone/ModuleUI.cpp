@@ -172,7 +172,7 @@ update_status ModuleUI::Update()
 	unsigned int currentTime = 0;
 	currentTime = SDL_GetTicks();
 	if (App->player->Invencible == false){
-		if (currentTime > (lastTime + 1000)) {
+		if (currentTime > (lastTime + 1250)) {
 			App->player->playerlife -= 1;
 			lastTime = currentTime;
 		}
