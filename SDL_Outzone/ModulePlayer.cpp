@@ -182,6 +182,14 @@ bool ModulePlayer::CleanUp()
 // Update: draw background
 update_status ModulePlayer::Update()
 {
+	speedcurrenttime = SDL_GetTicks();
+
+	if (SPSpeed == true){
+		if (speedcurrenttime > (speedactiontime + 10000)) {
+			SPSpeed = false;
+		}
+	}
+
 	if (destroyed == false){
 		if ((current_animation != &fall) && current_animation != &engergy_empty_fall){
 			int speed = 0;
@@ -1410,6 +1418,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				break;
 			case COLLIDER_SPSPEED:
 				SPSpeed = true;
+				speedactiontime = SDL_GetTicks();
 				break;
 			case COLLIDER_SPSHIELD:
 				App->effects->shieldactive = true;

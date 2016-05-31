@@ -39,7 +39,8 @@ class ModulePlayer : public Module
 public:
 	ModulePlayer();
 	~ModulePlayer();
-
+	unsigned int speedcurrenttime = 0;
+	unsigned int speedactiontime = 0;
 	unsigned int playercurrenttime = 0;
 	unsigned int playeractiontime = 0;
 	unsigned int shootcurrenttime = 0;
