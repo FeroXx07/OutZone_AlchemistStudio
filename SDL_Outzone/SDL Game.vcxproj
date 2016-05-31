@@ -71,6 +71,7 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="BoombpickUp.h" />
     <ClInclude Include="BoxChangeAim.h" />
     <ClInclude Include="BoxChargeEnergy.h" />
     <ClInclude Include="ChangeAim.h" />
@@ -124,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="BoombpickUp.cpp" />
     <ClCompile Include="BoxChangeAim.cpp" />
     <ClCompile Include="BoxChargeEnergy.cpp" />
     <ClCompile Include="ChangeAim.cpp" />

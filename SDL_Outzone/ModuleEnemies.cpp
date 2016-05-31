@@ -35,6 +35,7 @@
 #include"SPshield.h"
 #include"PowerUp.h"
 #include "ModuleEffects.h"
+#include"BoombpickUp.h"
 #define SPAWN_MARGIN 50
 
 ModuleEnemies::ModuleEnemies()
@@ -254,6 +255,10 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 
 			case ENEMY_TYPES::POWERUP:
 				enemies[i] = new Powerup(info.x, info.y);
+				break;
+
+			case ENEMY_TYPES::BOOMBPICKUP:
+				enemies[i] = new BoombPickUp(info.x, info.y);
 				break;
 
 			case ENEMY_TYPES::BIGREDMACHINE:
