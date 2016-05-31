@@ -187,11 +187,6 @@ update_status ModuleEffects::Update()
 	}
 
 	//shield
-	if (shieldactive == true){
-		if (currentTime > (lastTime + 10000)) {
-			shieldactive = false;
-		}
-	}
 	if (App->input->keyboard[SDL_SCANCODE_M] == KEY_STATE::KEY_DOWN){
 		shieldactive = !shieldactive;
 	}
@@ -211,6 +206,11 @@ update_status ModuleEffects::Update()
 		if (effect4collidercreated == true){
 			effect4collidercreated = false;
 			shieldcollision->to_delete = true;
+		}
+	}
+	if (shieldactive == true){
+		if (currentTime > (lastTime + 10000)) {
+			shieldactive = false;
 		}
 	}
 	position = App->player->position;
